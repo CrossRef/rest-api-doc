@@ -4,7 +4,7 @@
 
 - V1: 2013-09-08, first draft.
 - V2: 2013-09-24, reference platform deployed
-- v3: 2013-09-25, reworked filters. Added aAPI versioning doc 
+- v3: 2013-09-25, reworked filters. Added API versioning doc 
 
 ## Background
 
