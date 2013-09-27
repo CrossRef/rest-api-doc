@@ -4,6 +4,7 @@
 
 - V1: 2013-09-08, first draft.
 - V2: 2013-09-24, reference platform deployed
+- v3: 2013-09-25, reworked filters. Added aAPI versioning doc 
 
 ## Background
 
@@ -42,6 +43,9 @@ All results are returned in JSON. There are two general types of results:
 - Singletons
 - Lists
 
+The mime-type for API results is `application/vnd.crossref-api-message+json` 
+
+
 ### Singletons
 
 Singletons are single results. Retrieving metadata for a specific identifier (e.g. DOI, ISSN, funder_identifier) typically returns in a singleton result.
@@ -56,10 +60,6 @@ Lists results can contain multiple entries. Searching or filtering typically ret
 -Items, which will will contain the items matching the query. 
 
 Normally, and API list result will return both the summary and the items. If you want to just retrieve the summary, you can do so by specifying that the number of rows returned should be zero. 
-
-##  HTTP Headers
-
-What do we say about mime types? 
 
 
 ## Resource Components
@@ -77,18 +77,6 @@ These can be used alone like this
 | `/funders`    |returns a list of all funders (??? all in registry or all that have works in index) |
 | `/publishers` |returns a list of all publishers|
 
-### Selecting random results
-
-Being able to select random results is useful for both testing and sampling. You can specify that you want random results by appending '/random' to any resource component. You can also specify the number of random results you want returned.
-
-| resource           | description                       |
-|:-------------------|:----------------------------------|
-| `/works/random`    | returns metadata for 20 (default) random CrossRef DOI records |
-| `/works/random/500`  | returns metadata for 500 random CrossRef DOI records |
-| `/funders/random/10`  | returns metadata for 10 random FundRef funders |
-| `/publishers/random/5`  | returns metadata for 5 random CrossRef publishers |
-
-TBD How random is random?
 
 ### Resource components and identifiers
 Resource components can be used in conjunction with identifiers to retrieve the metadata for that identifier.
@@ -121,19 +109,19 @@ Parameters can be used to query, filter and control the results returned by the 
 | `filter={filter_name}:{value}`| filter results by specific fields |
 | `rows={#}`                   | results per per page | 
 | `offset={#}`                 | page offset |                         
-| `sample={#}`                 | return random [^1] N results |
+| `sample={#}`                 | return random N results |
 
 
 
-[^1]: Being able to select random results is useful for both testing and sampling. 
+
 
 ### Example query using URI parameters
 
-    http://fundref.crossref.org/v1/funders/100000015/works?query=electron+pairs&filter=has-orcid:true&rows=1
+    http://fundref.crossref.org/funders/100000015/works?query=electron+pairs&filter=has-orcid:true&rows=1
 
 ### Example query using JSON in body of GET request
 
-Note that, if you include a body in your get request, and URI parameters will be ignored. In short, you cannot mix URI parameters and JSON queries.
+Note that if you include a body in your `GET` request, any URI parameters will be ignored. In short, you cannot mix URI parameters and JSON queries.
 
 To use the API using JSON, pass the JSON in the body of the HTTP GET request like this:
 
@@ -143,34 +131,84 @@ To use the API using JSON, pass the JSON in the body of the HTTP GET request lik
 
 Queries support a subset of [DisMax](https://wiki.apache.org/solr/DisMax), so, for example you can refine queries as follows.
 
-Works that include "Renear" but not "Ontologies"
+**Works that include "renear" but not "ontologies"**
 
-    http://fundref.crossref.org/v1/funders/100000015/works?query=electron+pairs
+    http://fundref.crossref.org/works?query=renear+-ontologies
+    
+or using JSON
+
+    curl -X GET -H "Content-Type: application/json" -d '{"query": "renear -ontologies"}'  http://fundref.crossref.org/works
+    
+
 
 ## Filter Names
-Filters allow you to narrow queries. All filter results are lists. Note that dates in filters should always be of the form `YYYY-MM--DD`. The following filters are supported:
+
+Filters allow you to narrow queries. All filter results are lists.  The following filters are supported:
 
 
 | filter     | possible values | description|
 |:-----------|:----------------|:-----------|
-| from-update-date | date | earliest date metadata was last updated |
-| until-update-date | date | latest date metadata was last updated |
-| from-pub-date | date | earliest published date |
-| until-pub-date | date | latest published date |
-| has-full-text | [content type] | does metadata include link to full text resource [of content type]|
-| has-license |  [content type] | does metadata include license URI [for content type] |
-| has-references | | is distribute_references set? |
-| has-archive | | does metadata include name of archive partner(s) |
-| has-orcid | | metadata includes one or more ORCIDs |
-| orcid | orcid | contains matching ORCID |
-| has-representation | mime type | metadata includes URI to representation of mime type |
-| license | URI | metadata includes license identified by URI |
-| publisher | owner prefix | metadata belongs to published identified by owner prefix |
-| funder | funder DOI | metadata include funder_doi in FndRef data |
+| `funder` | `{funder_id}` | metadata which include the `{funder_id}` in FundRef data |
+| `publisher` | `{owner_prefix}` | metadata belongs to published identified by `{owner_prefix}` (e.g. `10.1016` ) |
+| `from-update-date` | `{date}` | metadata updated since (inclusive) `{date}` |
+| `until-update-date` | `{date}` | metadata updated before (inclusive) `{date}` |
+| `from-pub-date` | `{date}` | metadata where published date is since (inclusive) `{date}` |
+| `until-pub-date` | `{date}` | metadata where published date is before (inclusive)  `{date}` |
+| `has-license` | | metadata that includes any `<license_ref>` elements. |
+| `license.uri` | `{uri}` | metadata where `<license_ref>` value equals `{uri}` |
+| `license.content-version` | `{string}` | metadata where the `<license_ref>`'s `applies_to` attribute  is `{string}`|
+| `license.max-embargo-days` | `{integer}` | metadata where difference between publication date and the `<license_ref>`'s `start_date` attribute is <= `{integer}`|
+| `has-full-text` |  | metadata that includes any full text `<resource>` elements. |
+| `fulltext.content-version` | `{string}`  | metadata where `<resource>` element's `content_version` attribute is `{string}`. |
+| `fulltext.content-type` | `{mime_type}`  | metadata where `<resource>` element's `content_type` attribute is `{mime_type}` (e.g. `application/pdf`). |
+| `public-references` | | metadata where publishers allow references to be distributed publically. |
+| `has-archive` | | metadata which include name of archive partner[^*] |
+| `archive` | `{string}` | metadata which where value of archive partner is `{string}`[^*] |
+| `has-orcid` | | metadata which includes one or more ORCIDs |
+| `orcid` | `{orcid}` | metadata where `<orcid>` element's value = `{orcid}` |
+
+[^*]: Not implemented yet.
+
+### Notes on owner prefixes
+
+The prefix of a CrossRef DOI does **NOT** indicate who currently owns the DOI. It only reflects who originally registered the DOI. CrossRef metadata has a separate **owner prefix** element that record the current owner of the CrossRef DOI in question.
+
+### Notes on dates
+
+Note that dates in filters should always be of the form `YYYY-MM--DD`. Also not that date information in CrossRef metadata can often be incomplete. So, for example, a publisher may only include the year and month of publication for a journal article. For a monograph they might just include the year. In these cases the API selects the earliest possible date given the information provided. So, for instance, if the publisher only provided 2013-02 as the published date, then the date would be treated as 2013-02-01. Similarly, if the publisher only provided the year 2013 as the date, it would be treated at 2013-01-01. 
 
 ## Result controls
 
-### Examples
+You can control the delivery and selection  reuslts using the `rows`, `offset` and `sample` parameters. 
+
+### Rows 
+
+Normally, results are returned 20 at a time. You can control the number of results returns by using the `rows` parameter. To limit results to 5, for example, you could do the following:
+
+    http://fundref.crossref.org/works?query=allen+renear&rows=5
+
+If you would just like to get the `summary` of the results, you can set the rows to 0 (zero).
+
+    http://fundref.crossref.org/works?query=allen+renear&rows=0
+    
+The maximum number rows you can ask for in one query is `1000`.
+
+### Offset
+
+The number of returned items is controlled by the `rows` parameter, but you can select the `Nth` set of `rows` by using the `offset` parameter.  So, for example, to select the second set of 5 results (i.e. results 6 through 10), you would do the following:
+
+    http://fundref.crossref.org/works?query=allen+renear&rows=5&offset=2
+    
+### Sample
+
+Being able to select random results is useful for both testing and sampling. You can use the `sample` paremeter to retreive random results. So, for example, the following select 10 random works:
+
+    http://fundref.crossref.org/works?sample=10
+    
+Note that when you use the `sample` parameter, the `rows` and `offset` parameters are ignored.
+
+
+### Example Queries
 
 **All works funded by funder_id that have a CC-BY license**
 
@@ -178,21 +216,13 @@ Filters allow you to narrow queries. All filter results are lists. Note that dat
 
 **All works funded by X where license = CC-BY and license start date - published_date < Y**
 
-## Result controls
-
-You can control the size, quantity and selection criteria using the parameters:
-
-
+**All works funded by X where the archive partner listed = 'LOCKSS'**
 
 ## Versioning
-There are two ways in which versioning effects the API. 
 
-1. The syntax of the requests can change
-2. The representation of the responses can change
+In theory, the syntax of the API can vary independently of the result representations. In practice, major version changes in either will require changes to API clients and so versioning of the API will apply to both the API syntax and the result representation.
 
-Versions of the request syntax and response representation can vary independently. That is- the syntax of a request can change without necessarily changing the response representation and the response representation can change without the request syntax necessarily changing. 
-
-In both cases, the API will use a semantic versioning scheme whereby the version number is divided into three parts delimited by periods. The first number represents the "major" release number. The second represents a "minor" release number and the third represents an "internal" release number.  
+The API uses a semantic versioning scheme whereby the version number is divided into three parts delimited by periods. The first number represents the "major" release number. The second represents a "minor" release number and the third represents an "internal" release number.  
       
     Version 1.20.31
             ^  ^  ^
@@ -209,27 +239,15 @@ In both cases, the API will use a semantic versioning scheme whereby the version
 
 Adding syntax options or metadata to representations will normally be backwards compatible and will thus normally only trigger minor version changes. Renaming or restructuring syntax options of metadata tends not to be backward compatible and will thus typically trigger major version changes
 
-### How to manage versions of the request syntax
+### How to manage API versions
 
-If you need to tie your implementation to a specific major version of the API, you can do so by prepending your URI paths with the major version number. So, for example, the following is bound to **latest** version of the API:
+If you need to tie your implementation to a specific major version of the API, you can do so by using content-negotiation and specifying the version of the API in the `ACCEPT` header as follows:
 
-    http://fundref.crossref.org/funders/100000015/works?query=electron+pairs
+     application/vnd.crossref-api-message+json; version=1.0
 
-And the following is bound to **version 1** of the API
+Minor version numbers will be ignored in `ACCEPT` headers as they are by definition backwards compatible.
 
-    http://fundref.crossref.org/v1/funders/100000015/works?query=electron+pairs
-
-### How to manage versions of the response representation
-
-If you need to tie your implementation to a specific major version of the response representation, you can do so by using content negotiation. The following will return the latest response representation:
-
-And the following is bound to **version 1** of the response representation:
-
-
-
-
-
-
+If you omit a specific version in your `ACCEPT` header, the system will default to using the latest version of the API. 
 
 ## Error messages
 
