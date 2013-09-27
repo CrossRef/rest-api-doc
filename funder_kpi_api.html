@@ -173,6 +173,7 @@ pre .tex .formula {
 <ul>
 <li>V1: 2013&#8211;09&#8211;08, first draft.</li>
 <li>V2: 2013&#8211;09&#8211;24, reference platform deployed</li>
+<li>v3: 2013&#8211;09&#8211;25, reworked filters. Added API versioning doc</li>
 </ul>
 
 <h2 id="background">Background</h2>
@@ -214,6 +215,8 @@ pre .tex .formula {
 <li>Lists</li>
 </ul>
 
+<p>The mime-type for API results is <code>application/vnd.crossref-api-message+json</code> </p>
+
 <h3 id="singletons">Singletons</h3>
 
 <p>Singletons are single results. Retrieving metadata for a specific identifier (e.g. DOI, ISSN, funder_identifier) typically returns in a singleton result.</p>
@@ -234,10 +237,6 @@ pre .tex .formula {
 </ul>
 
 <p>Normally, and API list result will return both the summary and the items. If you want to just retrieve the summary, you can do so by specifying that the number of rows returned should be zero. </p>
-
-<h2 id="httpheaders">HTTP Headers</h2>
-
-<p>What do we say about mime types? </p>
 
 <h2 id="resourcecomponents">Resource Components</h2>
 
@@ -279,44 +278,6 @@ pre .tex .formula {
 </tr>
 </tbody>
 </table>
-<h3 id="selectingrandomresults">Selecting random results</h3>
-
-<p>Being able to select random results is useful for both testing and sampling. You can specify that you want random results by appending &#8216;/random&#8217; to any resource component. You can also specify the number of random results you want returned.</p>
-
-<table>
-<colgroup>
-<col style="text-align:left;"/>
-<col style="text-align:left;"/>
-</colgroup>
-
-<thead>
-<tr>
-	<th style="text-align:left;">resource</th>
-	<th style="text-align:left;">description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-	<td style="text-align:left;"><code>/works/random</code></td>
-	<td style="text-align:left;">returns metadata for 20 (default) random CrossRef DOI records</td>
-</tr>
-<tr>
-	<td style="text-align:left;"><code>/works/random/500</code></td>
-	<td style="text-align:left;">returns metadata for 500 random CrossRef DOI records</td>
-</tr>
-<tr>
-	<td style="text-align:left;"><code>/funders/random/10</code></td>
-	<td style="text-align:left;">returns metadata for 10 random FundRef funders</td>
-</tr>
-<tr>
-	<td style="text-align:left;"><code>/publishers/random/5</code></td>
-	<td style="text-align:left;">returns metadata for 5 random CrossRef publishers</td>
-</tr>
-</tbody>
-</table>
-<p>TBD How random is random?</p>
-
 <h3 id="resourcecomponentsandidentifiers">Resource components and identifiers</h3>
 
 <p>Resource components can be used in conjunction with identifiers to retrieve the metadata for that identifier.</p>
@@ -421,18 +382,18 @@ pre .tex .formula {
 </tr>
 <tr>
 	<td style="text-align:left;"><code>sample={#}</code></td>
-	<td style="text-align:left;">return random <a href="#fn:1" id="fnref:1" title="see footnote" class="footnote">[1]</a> N results</td>
+	<td style="text-align:left;">return random N results</td>
 </tr>
 </tbody>
 </table>
 <h3 id="examplequeryusinguriparameters">Example query using URI parameters</h3>
 
-<pre><code>http://fundref.crossref.org/v1/funders/100000015/works?query=electron+pairs&amp;filter=has-orcid:true&amp;rows=1
+<pre><code>http://fundref.crossref.org/funders/100000015/works?query=electron+pairs&amp;filter=has-orcid:true&amp;rows=1
 </code></pre>
 
 <h3 id="examplequeryusingjsoninbodyofgetrequest">Example query using JSON in body of GET request</h3>
 
-<p>Note that, if you include a body in your get request, and URI parameters will be ignored. In short, you cannot mix URI parameters and JSON queries.</p>
+<p>Note that if you include a body in your <code>GET</code> request, any URI parameters will be ignored. In short, you cannot mix URI parameters and JSON queries.</p>
 
 <p>To use the API using JSON, pass the JSON in the body of the HTTP GET request like this:</p>
 
@@ -443,14 +404,19 @@ pre .tex .formula {
 
 <p>Queries support a subset of <a href="https://wiki.apache.org/solr/DisMax">DisMax</a>, so, for example you can refine queries as follows.</p>
 
-<p>Works that include &#8220;Renear&#8221; but not &#8220;Ontologies&#8221;</p>
+<p><strong>Works that include &#8220;renear&#8221; but not &#8220;ontologies&#8221;</strong></p>
 
-<pre><code>http://fundref.crossref.org/v1/funders/100000015/works?query=electron+pairs
+<pre><code>http://fundref.crossref.org/works?query=renear+-ontologies
+</code></pre>
+
+<p>or using JSON</p>
+
+<pre><code>curl -X GET -H &quot;Content-Type: application/json&quot; -d '{&quot;query&quot;: &quot;renear -ontologies&quot;}'  http://fundref.crossref.org/works
 </code></pre>
 
 <h2 id="filternames">Filter Names</h2>
 
-<p>Filters allow you to narrow queries. All filter results are lists. Note that dates in filters should always be of the form <code>YYYY-MM--DD</code>. The following filters are supported:</p>
+<p>Filters allow you to narrow queries. All filter results are lists. The following filters are supported:</p>
 
 <table>
 <colgroup>
@@ -469,80 +435,140 @@ pre .tex .formula {
 
 <tbody>
 <tr>
-	<td style="text-align:left;">from-update-date</td>
-	<td style="text-align:left;">date</td>
-	<td style="text-align:left;">earliest date metadata was last updated</td>
+	<td style="text-align:left;"><code>funder</code></td>
+	<td style="text-align:left;"><code>{funder_id}</code></td>
+	<td style="text-align:left;">metadata which include the <code>{funder_id}</code> in FundRef data</td>
 </tr>
 <tr>
-	<td style="text-align:left;">until-update-date</td>
-	<td style="text-align:left;">date</td>
-	<td style="text-align:left;">latest date metadata was last updated</td>
+	<td style="text-align:left;"><code>publisher</code></td>
+	<td style="text-align:left;"><code>{owner_prefix}</code></td>
+	<td style="text-align:left;">metadata belongs to published identified by <code>{owner_prefix}</code> (e.g. <code>10.1016</code> )</td>
 </tr>
 <tr>
-	<td style="text-align:left;">from-pub-date</td>
-	<td style="text-align:left;">date</td>
-	<td style="text-align:left;">earliest published date</td>
+	<td style="text-align:left;"><code>from-update-date</code></td>
+	<td style="text-align:left;"><code>{date}</code></td>
+	<td style="text-align:left;">metadata updated since (inclusive) <code>{date}</code></td>
 </tr>
 <tr>
-	<td style="text-align:left;">until-pub-date</td>
-	<td style="text-align:left;">date</td>
-	<td style="text-align:left;">latest published date</td>
+	<td style="text-align:left;"><code>until-update-date</code></td>
+	<td style="text-align:left;"><code>{date}</code></td>
+	<td style="text-align:left;">metadata updated before (inclusive) <code>{date}</code></td>
 </tr>
 <tr>
-	<td style="text-align:left;">has-full-text</td>
-	<td style="text-align:left;">[content type]</td>
-	<td style="text-align:left;">does metadata include link to full text resource [of content type]</td>
+	<td style="text-align:left;"><code>from-pub-date</code></td>
+	<td style="text-align:left;"><code>{date}</code></td>
+	<td style="text-align:left;">metadata where published date is since (inclusive) <code>{date}</code></td>
 </tr>
 <tr>
-	<td style="text-align:left;">has-license</td>
-	<td style="text-align:left;">[content type]</td>
-	<td style="text-align:left;">does metadata include license URI [for content type]</td>
+	<td style="text-align:left;"><code>until-pub-date</code></td>
+	<td style="text-align:left;"><code>{date}</code></td>
+	<td style="text-align:left;">metadata where published date is before (inclusive) <code>{date}</code></td>
 </tr>
 <tr>
-	<td style="text-align:left;">has-references</td>
+	<td style="text-align:left;"><code>has-license</code></td>
 	<td style="text-align:left;"></td>
-	<td style="text-align:left;">is distribute_references set?</td>
+	<td style="text-align:left;">metadata that includes any <code>&lt;license_ref&gt;</code> elements.</td>
 </tr>
 <tr>
-	<td style="text-align:left;">has-archive</td>
+	<td style="text-align:left;"><code>license.uri</code></td>
+	<td style="text-align:left;"><code>{uri}</code></td>
+	<td style="text-align:left;">metadata where <code>&lt;license_ref&gt;</code> value equals <code>{uri}</code></td>
+</tr>
+<tr>
+	<td style="text-align:left;"><code>license.content-version</code></td>
+	<td style="text-align:left;"><code>{string}</code></td>
+	<td style="text-align:left;">metadata where the <code>&lt;license_ref&gt;</code>&#8217;s <code>applies_to</code> attribute is <code>{string}</code></td>
+</tr>
+<tr>
+	<td style="text-align:left;"><code>license.max-embargo-days</code></td>
+	<td style="text-align:left;"><code>{integer}</code></td>
+	<td style="text-align:left;">metadata where difference between publication date and the <code>&lt;license_ref&gt;</code>&#8217;s <code>start_date</code> attribute is &lt;= <code>{integer}</code></td>
+</tr>
+<tr>
+	<td style="text-align:left;"><code>has-full-text</code></td>
 	<td style="text-align:left;"></td>
-	<td style="text-align:left;">does metadata include name of archive partner(s)</td>
+	<td style="text-align:left;">metadata that includes any full text <code>&lt;resource&gt;</code> elements.</td>
 </tr>
 <tr>
-	<td style="text-align:left;">has-orcid</td>
+	<td style="text-align:left;"><code>fulltext.content-version</code></td>
+	<td style="text-align:left;"><code>{string}</code></td>
+	<td style="text-align:left;">metadata where <code>&lt;resource&gt;</code> element&#8217;s <code>content_version</code> attribute is <code>{string}</code>.</td>
+</tr>
+<tr>
+	<td style="text-align:left;"><code>fulltext.content-type</code></td>
+	<td style="text-align:left;"><code>{mime_type}</code></td>
+	<td style="text-align:left;">metadata where <code>&lt;resource&gt;</code> element&#8217;s <code>content_type</code> attribute is <code>{mime_type}</code> (e.g. <code>application/pdf</code>).</td>
+</tr>
+<tr>
+	<td style="text-align:left;"><code>public-references</code></td>
 	<td style="text-align:left;"></td>
-	<td style="text-align:left;">metadata includes one or more ORCIDs</td>
+	<td style="text-align:left;">metadata where publishers allow references to be distributed publically.</td>
 </tr>
 <tr>
-	<td style="text-align:left;">orcid</td>
-	<td style="text-align:left;">orcid</td>
-	<td style="text-align:left;">contains matching ORCID</td>
+	<td style="text-align:left;"><code>has-archive</code></td>
+	<td style="text-align:left;"></td>
+	<td style="text-align:left;">metadata which include name of archive partner<a href="#fn:1" id="fnref:1" title="see footnote" class="footnote">[1]</a></td>
 </tr>
 <tr>
-	<td style="text-align:left;">has-representation</td>
-	<td style="text-align:left;">mime type</td>
-	<td style="text-align:left;">metadata includes URI to representation of mime type</td>
+	<td style="text-align:left;"><code>archive</code></td>
+	<td style="text-align:left;"><code>{string}</code></td>
+	<td style="text-align:left;">metadata which where value of archive partner is <code>{string}</code><a href="#fn:1" title="see footnote" class="footnote">[1]</a></td>
 </tr>
 <tr>
-	<td style="text-align:left;">license</td>
-	<td style="text-align:left;">URI</td>
-	<td style="text-align:left;">metadata includes license identified by URI</td>
+	<td style="text-align:left;"><code>has-orcid</code></td>
+	<td style="text-align:left;"></td>
+	<td style="text-align:left;">metadata which includes one or more ORCIDs</td>
 </tr>
 <tr>
-	<td style="text-align:left;">publisher</td>
-	<td style="text-align:left;">owner prefix</td>
-	<td style="text-align:left;">metadata belongs to published identified by owner prefix</td>
-</tr>
-<tr>
-	<td style="text-align:left;">funder</td>
-	<td style="text-align:left;">funder DOI</td>
-	<td style="text-align:left;">metadata include funder_doi in FndRef data</td>
+	<td style="text-align:left;"><code>orcid</code></td>
+	<td style="text-align:left;"><code>{orcid}</code></td>
+	<td style="text-align:left;">metadata where <code>&lt;orcid&gt;</code> element&#8217;s value = <code>{orcid}</code></td>
 </tr>
 </tbody>
 </table>
+<h3 id="notesonownerprefixes">Notes on owner prefixes</h3>
+
+<p>The prefix of a CrossRef DOI does <strong>NOT</strong> indicate who currently owns the DOI. It only reflects who originally registered the DOI. CrossRef metadata has a separate <strong>owner prefix</strong> element that record the current owner of the CrossRef DOI in question.</p>
+
+<h3 id="notesondates">Notes on dates</h3>
+
+<p>Note that dates in filters should always be of the form <code>YYYY-MM--DD</code>. Also not that date information in CrossRef metadata can often be incomplete. So, for example, a publisher may only include the year and month of publication for a journal article. For a monograph they might just include the year. In these cases the API selects the earliest possible date given the information provided. So, for instance, if the publisher only provided 2013&#8211;02 as the published date, then the date would be treated as 2013&#8211;02&#8211;01. Similarly, if the publisher only provided the year 2013 as the date, it would be treated at 2013&#8211;01&#8211;01. </p>
+
 <h2 id="resultcontrols">Result controls</h2>
 
-<h3 id="examples">Examples</h3>
+<p>You can control the delivery and selection reuslts using the <code>rows</code>, <code>offset</code> and <code>sample</code> parameters. </p>
+
+<h3 id="rows">Rows</h3>
+
+<p>Normally, results are returned 20 at a time. You can control the number of results returns by using the <code>rows</code> parameter. To limit results to 5, for example, you could do the following:</p>
+
+<pre><code>http://fundref.crossref.org/works?query=allen+renear&amp;rows=5
+</code></pre>
+
+<p>If you would just like to get the <code>summary</code> of the results, you can set the rows to 0 (zero).</p>
+
+<pre><code>http://fundref.crossref.org/works?query=allen+renear&amp;rows=0
+</code></pre>
+
+<p>The maximum number rows you can ask for in one query is <code>1000</code>.</p>
+
+<h3 id="offset">Offset</h3>
+
+<p>The number of returned items is controlled by the <code>rows</code> parameter, but you can select the <code>Nth</code> set of <code>rows</code> by using the <code>offset</code> parameter. So, for example, to select the second set of 5 results (i.e. results 6 through 10), you would do the following:</p>
+
+<pre><code>http://fundref.crossref.org/works?query=allen+renear&amp;rows=5&amp;offset=2
+</code></pre>
+
+<h3 id="sample">Sample</h3>
+
+<p>Being able to select random results is useful for both testing and sampling. You can use the <code>sample</code> paremeter to retreive random results. So, for example, the following select 10 random works:</p>
+
+<pre><code>http://fundref.crossref.org/works?sample=10
+</code></pre>
+
+<p>Note that when you use the <code>sample</code> parameter, the <code>rows</code> and <code>offset</code> parameters are ignored.</p>
+
+<h3 id="examplequeries">Example Queries</h3>
 
 <p><strong>All works funded by funder_id that have a CC-BY license</strong></p>
 
@@ -550,22 +576,13 @@ pre .tex .formula {
 
 <p><strong>All works funded by X where license = CC-BY and license start date - published_date &lt; Y</strong></p>
 
-<h2 id="resultcontrols">Result controls</h2>
-
-<p>You can control the size, quantity and selection criteria using the parameters:</p>
+<p><strong>All works funded by X where the archive partner listed = &#8216;LOCKSS&#8217;</strong></p>
 
 <h2 id="versioning">Versioning</h2>
 
-<p>There are two ways in which versioning effects the API. </p>
+<p>In theory, the syntax of the API can vary independently of the result representations. In practice, major version changes in either will require changes to API clients and so versioning of the API will apply to both the API syntax and the result representation.</p>
 
-<ol>
-<li>The syntax of the requests can change</li>
-<li>The representation of the responses can change</li>
-</ol>
-
-<p>Versions of the request syntax and response representation can vary independently. That is- the syntax of a request can change without necessarily changing the response representation and the response representation can change without the request syntax necessarily changing. </p>
-
-<p>In both cases, the API will use a semantic versioning scheme whereby the version number is divided into three parts delimited by periods. The first number represents the &#8220;major&#8221; release number. The second represents a &#8220;minor&#8221; release number and the third represents an &#8220;internal&#8221; release number. </p>
+<p>The API uses a semantic versioning scheme whereby the version number is divided into three parts delimited by periods. The first number represents the &#8220;major&#8221; release number. The second represents a &#8220;minor&#8221; release number and the third represents an &#8220;internal&#8221; release number. </p>
 
 <pre><code>Version 1.20.31
         ^  ^  ^
@@ -583,23 +600,16 @@ pre .tex .formula {
 
 <p>Adding syntax options or metadata to representations will normally be backwards compatible and will thus normally only trigger minor version changes. Renaming or restructuring syntax options of metadata tends not to be backward compatible and will thus typically trigger major version changes</p>
 
-<h3 id="howtomanageversionsoftherequestsyntax">How to manage versions of the request syntax</h3>
+<h3 id="howtomanageapiversions">How to manage API versions</h3>
 
-<p>If you need to tie your implementation to a specific major version of the API, you can do so by prepending your URI paths with the major version number. So, for example, the following is bound to <strong>latest</strong> version of the API:</p>
+<p>If you need to tie your implementation to a specific major version of the API, you can do so by using content-negotiation and specifying the version of the API in the <code>ACCEPT</code> header as follows:</p>
 
-<pre><code>http://fundref.crossref.org/funders/100000015/works?query=electron+pairs
+<pre><code> application/vnd.crossref-api-message+json; version=1.0
 </code></pre>
 
-<p>And the following is bound to <strong>version 1</strong> of the API</p>
+<p>Minor version numbers will be ignored in <code>ACCEPT</code> headers as they are by definition backwards compatible.</p>
 
-<pre><code>http://fundref.crossref.org/v1/funders/100000015/works?query=electron+pairs
-</code></pre>
-
-<h3 id="howtomanageversionsoftheresponserepresentation">How to manage versions of the response representation</h3>
-
-<p>If you need to tie your implementation to a specific major version of the response representation, you can do so by using content negotiation. The following will return the latest response representation:</p>
-
-<p>And the following is bound to <strong>version 1</strong> of the response representation:</p>
+<p>If you omit a specific version in your <code>ACCEPT</code> header, the system will default to using the latest version of the API. </p>
 
 <h2 id="errormessages">Error messages</h2>
 
@@ -614,7 +624,7 @@ pre .tex .formula {
 <ol>
 
 <li id="fn:1">
-<p>Being able to select random results is useful for both testing and sampling.  <a href="#fnref:1" title="return to article" class="reversefootnote">&#160;&#8617;</a></p>
+<p>Not implemented yet. <a href="#fnref:1" title="return to article" class="reversefootnote">&#160;&#8617;</a></p>
 </li>
 
 </ol>
