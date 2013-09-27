@@ -174,13 +174,20 @@ pre .tex .formula {
 <li>V1: 2013&#8211;09&#8211;08, first draft.</li>
 <li>V2: 2013&#8211;09&#8211;24, reference platform deployed</li>
 <li>v3: 2013&#8211;09&#8211;25, reworked filters. Added API versioning doc</li>
+<li>v4: 2013&#8211;09&#8211;25, more filter changes.</li>
 </ul>
 
 <h2 id="background">Background</h2>
 
-<p>See the document, <a href="http://fundref.crossref.org/docs/funder_kpi_metadata_best_practice.html">CrossRef metadata best practice to support key performance indicators (KPIs) for funding agencies</a>, for background.</p>
+<p>See the document, <a href="http://api.crossref.org/docs/funder_kpi_metadata_best_practice.html">CrossRef metadata best practice to support key performance indicators (KPIs) for funding agencies</a>, for background.</p>
 
 <h2 id="warning">Warning</h2>
+
+<p>The API described here has not been deployed yet (2014&#8211;09&#8211;27). This documentation is provided just for information, not for testing. This document will be updated as the API is released and the specifications are finalised.</p>
+
+<h2 id="overview">Overview</h2>
+
+<p>The API is generally RESTFUL and returns results in JSON.</p>
 
 <p>The API will only work for CrossRef DOIs. You can test the registration agency for a DOI using the following convention:</p>
 
@@ -201,10 +208,6 @@ pre .tex .formula {
 </code></pre>
 
 <p>If you use any of the API calls listed below with a non-CrossRef DOI, you will get a <code>404</code> HTTP status response with the message &#8220;non-CrossRef DOI.&#8221;</p>
-
-<h2 id="overview">Overview</h2>
-
-<p>The API is generally RESTFUL and returns results in JSON.</p>
 
 <h2 id="resultsoverview">Results Overview</h2>
 
@@ -388,7 +391,7 @@ pre .tex .formula {
 </table>
 <h3 id="examplequeryusinguriparameters">Example query using URI parameters</h3>
 
-<pre><code>http://fundref.crossref.org/funders/100000015/works?query=electron+pairs&amp;filter=has-orcid:true&amp;rows=1
+<pre><code>http://api.crossref.org/funders/100000015/works?query=electron+pairs&amp;filter=has-orcid:true&amp;rows=1
 </code></pre>
 
 <h3 id="examplequeryusingjsoninbodyofgetrequest">Example query using JSON in body of GET request</h3>
@@ -397,7 +400,7 @@ pre .tex .formula {
 
 <p>To use the API using JSON, pass the JSON in the body of the HTTP GET request like this:</p>
 
-<pre><code>curl -X GET -H &quot;Content-Type: application/json&quot; -d '{&quot;query&quot;: &quot;psychoceramics&quot;, &quot;offset&quot;: 40, &quot;rows&quot;: 20, &quot;filter&quot;: {&quot;has-orcid&quot;: true, &quot;publisher&quot;: &quot;10.5555&quot;}}'  http://fundref.crossref.org/works
+<pre><code>curl -X GET -H &quot;Content-Type: application/json&quot; -d '{&quot;query&quot;: &quot;psychoceramics&quot;, &quot;offset&quot;: 40, &quot;rows&quot;: 20, &quot;filter&quot;: {&quot;has-orcid&quot;: true, &quot;publisher&quot;: &quot;10.5555&quot;}}'  http://api.crossref.org/works
 </code></pre>
 
 <h2 id="queries">Queries</h2>
@@ -406,12 +409,12 @@ pre .tex .formula {
 
 <p><strong>Works that include &#8220;renear&#8221; but not &#8220;ontologies&#8221;</strong></p>
 
-<pre><code>http://fundref.crossref.org/works?query=renear+-ontologies
+<pre><code>http://api.crossref.org/works?query=renear+-ontologies
 </code></pre>
 
 <p>or using JSON</p>
 
-<pre><code>curl -X GET -H &quot;Content-Type: application/json&quot; -d '{&quot;query&quot;: &quot;renear -ontologies&quot;}'  http://fundref.crossref.org/works
+<pre><code>curl -X GET -H &quot;Content-Type: application/json&quot; -d '{&quot;query&quot;: &quot;renear -ontologies&quot;}'  http://api.crossref.org/works
 </code></pre>
 
 <h2 id="filternames">Filter Names</h2>
@@ -542,12 +545,12 @@ pre .tex .formula {
 
 <p>Normally, results are returned 20 at a time. You can control the number of results returns by using the <code>rows</code> parameter. To limit results to 5, for example, you could do the following:</p>
 
-<pre><code>http://fundref.crossref.org/works?query=allen+renear&amp;rows=5
+<pre><code>http://api.crossref.org/works?query=allen+renear&amp;rows=5
 </code></pre>
 
 <p>If you would just like to get the <code>summary</code> of the results, you can set the rows to 0 (zero).</p>
 
-<pre><code>http://fundref.crossref.org/works?query=allen+renear&amp;rows=0
+<pre><code>http://api.crossref.org/works?query=allen+renear&amp;rows=0
 </code></pre>
 
 <p>The maximum number rows you can ask for in one query is <code>1000</code>.</p>
@@ -556,14 +559,14 @@ pre .tex .formula {
 
 <p>The number of returned items is controlled by the <code>rows</code> parameter, but you can select the <code>Nth</code> set of <code>rows</code> by using the <code>offset</code> parameter. So, for example, to select the second set of 5 results (i.e. results 6 through 10), you would do the following:</p>
 
-<pre><code>http://fundref.crossref.org/works?query=allen+renear&amp;rows=5&amp;offset=2
+<pre><code>http://api.crossref.org/works?query=allen+renear&amp;rows=5&amp;offset=2
 </code></pre>
 
 <h3 id="sample">Sample</h3>
 
 <p>Being able to select random results is useful for both testing and sampling. You can use the <code>sample</code> paremeter to retreive random results. So, for example, the following select 10 random works:</p>
 
-<pre><code>http://fundref.crossref.org/works?sample=10
+<pre><code>http://api.crossref.org/works?sample=10
 </code></pre>
 
 <p>Note that when you use the <code>sample</code> parameter, the <code>rows</code> and <code>offset</code> parameters are ignored.</p>
