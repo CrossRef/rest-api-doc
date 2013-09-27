@@ -5,12 +5,19 @@
 - V1: 2013-09-08, first draft.
 - V2: 2013-09-24, reference platform deployed
 - v3: 2013-09-25, reworked filters. Added API versioning doc 
+- v4: 2013-09-25, more filter changes.
 
 ## Background
 
-See the document, [CrossRef metadata best practice to support key performance indicators (KPIs) for funding agencies](http://fundref.crossref.org/docs/funder_kpi_metadata_best_practice.html), for background.
+See the document, [CrossRef metadata best practice to support key performance indicators (KPIs) for funding agencies](http://api.crossref.org/docs/funder_kpi_metadata_best_practice.html), for background.
 
 ## Warning
+
+The API described here has not been deployed yet (2014-09-27). This documentation is provided just for information, not for testing. This document will be updated as the API is released and the specifications are finalised.
+
+## Overview
+
+The API is generally RESTFUL and returns results in JSON.
 
 The API will only work for CrossRef DOIs. You can test the registration agency for a DOI using the following convention:
 
@@ -31,10 +38,6 @@ Will return the following result:
 
 
 If you use any of the API calls listed below with a non-CrossRef DOI, you will get a `404` HTTP status response with the message "non-CrossRef DOI."
-
-## Overview
-
-The API is generally RESTFUL and returns results in JSON.
 
 ## Results Overview
 
@@ -117,7 +120,7 @@ Parameters can be used to query, filter and control the results returned by the 
 
 ### Example query using URI parameters
 
-    http://fundref.crossref.org/funders/100000015/works?query=electron+pairs&filter=has-orcid:true&rows=1
+    http://api.crossref.org/funders/100000015/works?query=electron+pairs&filter=has-orcid:true&rows=1
 
 ### Example query using JSON in body of GET request
 
@@ -125,7 +128,7 @@ Note that if you include a body in your `GET` request, any URI parameters will b
 
 To use the API using JSON, pass the JSON in the body of the HTTP GET request like this:
 
-    curl -X GET -H "Content-Type: application/json" -d '{"query": "psychoceramics", "offset": 40, "rows": 20, "filter": {"has-orcid": true, "publisher": "10.5555"}}'  http://fundref.crossref.org/works
+    curl -X GET -H "Content-Type: application/json" -d '{"query": "psychoceramics", "offset": 40, "rows": 20, "filter": {"has-orcid": true, "publisher": "10.5555"}}'  http://api.crossref.org/works
 
 ## Queries
 
@@ -133,11 +136,11 @@ Queries support a subset of [DisMax](https://wiki.apache.org/solr/DisMax), so, f
 
 **Works that include "renear" but not "ontologies"**
 
-    http://fundref.crossref.org/works?query=renear+-ontologies
+    http://api.crossref.org/works?query=renear+-ontologies
     
 or using JSON
 
-    curl -X GET -H "Content-Type: application/json" -d '{"query": "renear -ontologies"}'  http://fundref.crossref.org/works
+    curl -X GET -H "Content-Type: application/json" -d '{"query": "renear -ontologies"}'  http://api.crossref.org/works
     
 
 
@@ -185,11 +188,11 @@ You can control the delivery and selection  reuslts using the `rows`, `offset` a
 
 Normally, results are returned 20 at a time. You can control the number of results returns by using the `rows` parameter. To limit results to 5, for example, you could do the following:
 
-    http://fundref.crossref.org/works?query=allen+renear&rows=5
+    http://api.crossref.org/works?query=allen+renear&rows=5
 
 If you would just like to get the `summary` of the results, you can set the rows to 0 (zero).
 
-    http://fundref.crossref.org/works?query=allen+renear&rows=0
+    http://api.crossref.org/works?query=allen+renear&rows=0
     
 The maximum number rows you can ask for in one query is `1000`.
 
@@ -197,13 +200,13 @@ The maximum number rows you can ask for in one query is `1000`.
 
 The number of returned items is controlled by the `rows` parameter, but you can select the `Nth` set of `rows` by using the `offset` parameter.  So, for example, to select the second set of 5 results (i.e. results 6 through 10), you would do the following:
 
-    http://fundref.crossref.org/works?query=allen+renear&rows=5&offset=2
+    http://api.crossref.org/works?query=allen+renear&rows=5&offset=2
     
 ### Sample
 
 Being able to select random results is useful for both testing and sampling. You can use the `sample` paremeter to retreive random results. So, for example, the following select 10 random works:
 
-    http://fundref.crossref.org/works?sample=10
+    http://api.crossref.org/works?sample=10
     
 Note that when you use the `sample` parameter, the `rows` and `offset` parameters are ignored.
 
