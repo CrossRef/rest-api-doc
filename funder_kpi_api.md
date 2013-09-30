@@ -6,6 +6,7 @@
 - V2: 2013-09-24, reference platform deployed
 - v3: 2013-09-25, reworked filters. Added API versioning doc 
 - v4: 2013-09-25, more filter changes.
+- v5: 2013-09-27, doc mime-type and message-type relationship
 
 ## Background
 
@@ -13,7 +14,7 @@ See the document, [CrossRef metadata best practice to support key performance in
 
 ## Warning
 
-The API described here has not been deployed yet (2014-09-27). This documentation is provided just for information, not for testing. This document will be updated as the API is released and the specifications are finalised.
+The API described here has not been deployed yet (2014-09-27). This documentation is provided just for information and feeback, not for testing. This document will be updated as the API is released and the specifications are finalised based on feedback.
 
 ## Overview
 
@@ -58,11 +59,25 @@ Lists results can contain multiple entries. Searching or filtering typically ret
 
 - Summary, which include the following information:
     - status (e.g. "ok", error)
-    - message-type (e.g. "funder-work-result-list" )
+    - message-type (e.g. "work-list" )
     - message-version (e.g. 1.0.0 )
--Items, which will will contain the items matching the query. 
+- Items, which will will contain the items matching the query or filter. 
+
+
+Note that the "message-type" returned will differ from the mime-type. There are three message-types:
+
+- funder (singlton)
+- publisher (singleton)
+- work (singleton)
+- work-result-list (list)
+- funder-result-list (list)
+- publisher-result-list (list) 
+
 
 Normally, and API list result will return both the summary and the items. If you want to just retrieve the summary, you can do so by specifying that the number of rows returned should be zero. 
+### Sort order
+
+If the API call includes a query, then the sort order will be by the relevance score. If no query is included, then the sort order will be by DOI update date.
 
 
 ## Resource Components
@@ -76,9 +91,9 @@ These can be used alone like this
 
 | resource      | description                       |
 |:--------------|:----------------------------------|
-| `/works`      | returns a list of all works (journal articles, conference proceedings, books, components, etc), 20 per page, sorted by XXX |
-| `/funders`    |returns a list of all funders (??? all in registry or all that have works in index) |
-| `/publishers` |returns a list of all publishers|
+| `/works`      | returns a list of all works (journal articles, conference proceedings, books, components, etc), 20 per page.
+| `/funders`    | returns a list of all funders in the [FundRef Registry](http://www.crossref.org/fundref/fundref_registry.html)
+| `/publishers` |r eturns a list of all publishers.|
 
 
 ### Resource components and identifiers
@@ -86,9 +101,9 @@ Resource components can be used in conjunction with identifiers to retrieve the 
 
 | resource                    | description                       |
 |:----------------------------|:----------------------------------|
-| `/works/{doi}`              | returns metadata for the specified CrossRef DOI |
-| `/funders/{funder_id}`      | returns metadata for specified funder |
-| `/publishers/{owner_prefix}` | returns metadata for the specified publisher |
+| `/works/{doi}`              | returns metadata for the specified CrossRef DOI. |
+| `/funders/{funder_id}`      | returns metadata for specified funder **and** its suborganizations |
+| `/publishers/{owner_prefix}` | returns metadata for the specified publisher. |
 
 ### Combining resource components
 
