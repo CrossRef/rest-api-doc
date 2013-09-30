@@ -175,6 +175,7 @@ pre .tex .formula {
 <li>V2: 2013&#8211;09&#8211;24, reference platform deployed</li>
 <li>v3: 2013&#8211;09&#8211;25, reworked filters. Added API versioning doc</li>
 <li>v4: 2013&#8211;09&#8211;25, more filter changes.</li>
+<li>v5: 2013&#8211;09&#8211;27, doc mime-type and message-type relationship</li>
 </ul>
 
 <h2 id="background">Background</h2>
@@ -183,7 +184,7 @@ pre .tex .formula {
 
 <h2 id="warning">Warning</h2>
 
-<p>The API described here has not been deployed yet (2014&#8211;09&#8211;27). This documentation is provided just for information, not for testing. This document will be updated as the API is released and the specifications are finalised.</p>
+<p>The API described here has not been deployed yet (2014&#8211;09&#8211;27). This documentation is provided just for information and feeback, not for testing. This document will be updated as the API is released and the specifications are finalised based on feedback.</p>
 
 <h2 id="overview">Overview</h2>
 
@@ -233,13 +234,28 @@ pre .tex .formula {
 
 <ul>
 <li>status (e.g. &#8220;ok&#8221;, error)</li>
-<li>message-type (e.g. &#8220;funder-work-result-list&#8221; )</li>
-<li>message-version (e.g. 1.0.0 )
--Items, which will will contain the items matching the query.</li>
+<li>message-type (e.g. &#8220;work-list&#8221; )</li>
+<li>message-version (e.g. 1.0.0 )</li>
 </ul></li>
+<li>Items, which will will contain the items matching the query or filter.</li>
+</ul>
+
+<p>Note that the &#8220;message-type&#8221; returned will differ from the mime-type. There are three message-types:</p>
+
+<ul>
+<li>funder (singlton)</li>
+<li>publisher (singleton)</li>
+<li>work (singleton)</li>
+<li>work-result-list (list)</li>
+<li>funder-result-list (list)</li>
+<li>publisher-result-list (list)</li>
 </ul>
 
 <p>Normally, and API list result will return both the summary and the items. If you want to just retrieve the summary, you can do so by specifying that the number of rows returned should be zero. </p>
+
+<h3 id="sortorder">Sort order</h3>
+
+<p>If the API call includes a query, then the sort order will be by the relevance score. If no query is included, then the sort order will be by DOI update date.</p>
 
 <h2 id="resourcecomponents">Resource Components</h2>
 
@@ -269,15 +285,15 @@ pre .tex .formula {
 <tbody>
 <tr>
 	<td style="text-align:left;"><code>/works</code></td>
-	<td style="text-align:left;">returns a list of all works (journal articles, conference proceedings, books, components, etc), 20 per page, sorted by XXX</td>
+	<td style="text-align:left;">returns a list of all works (journal articles, conference proceedings, books, components, etc), 20 per page.</td>
 </tr>
 <tr>
 	<td style="text-align:left;"><code>/funders</code></td>
-	<td style="text-align:left;">returns a list of all funders (??? all in registry or all that have works in index)</td>
+	<td style="text-align:left;">returns a list of all funders in the <a href="http://www.crossref.org/fundref/fundref_registry.html">FundRef Registry</a></td>
 </tr>
 <tr>
 	<td style="text-align:left;"><code>/publishers</code></td>
-	<td style="text-align:left;">returns a list of all publishers</td>
+	<td style="text-align:left;">r eturns a list of all publishers.</td>
 </tr>
 </tbody>
 </table>
@@ -301,15 +317,15 @@ pre .tex .formula {
 <tbody>
 <tr>
 	<td style="text-align:left;"><code>/works/{doi}</code></td>
-	<td style="text-align:left;">returns metadata for the specified CrossRef DOI</td>
+	<td style="text-align:left;">returns metadata for the specified CrossRef DOI.</td>
 </tr>
 <tr>
 	<td style="text-align:left;"><code>/funders/{funder_id}</code></td>
-	<td style="text-align:left;">returns metadata for specified funder</td>
+	<td style="text-align:left;">returns metadata for specified funder <strong>and</strong> its suborganizations</td>
 </tr>
 <tr>
 	<td style="text-align:left;"><code>/publishers/{owner_prefix}</code></td>
-	<td style="text-align:left;">returns metadata for the specified publisher</td>
+	<td style="text-align:left;">returns metadata for the specified publisher.</td>
 </tr>
 </tbody>
 </table>
