@@ -8,6 +8,7 @@
 - v4: 2013-09-25, more filter changes.
 - v5: 2013-09-27, doc mime-type and message-type relationship
 - v6: 2013-10-01, updated `sample` & added examples with filters
+- v6: 2013-10-01, corrected warning date
 
 ## Background
 
@@ -15,7 +16,7 @@ See the document, [CrossRef metadata best practice to support key performance in
 
 ## Warning
 
-The API described here has not been deployed yet (2014-10-01). This documentation is provided just for information and feedback, not for testing. This document will be updated as the API is released and the specifications are finalized based on feedback.
+The API described here has not been deployed yet (2013-10-01). This documentation is provided just for information and feedback, not for testing. This document will be updated as the API is released and the specifications are finalized based on feedback.
 
 ## Overview
 
