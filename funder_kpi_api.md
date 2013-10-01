@@ -7,6 +7,7 @@
 - v3: 2013-09-25, reworked filters. Added API versioning doc 
 - v4: 2013-09-25, more filter changes.
 - v5: 2013-09-27, doc mime-type and message-type relationship
+- v6: 2013-10-01, updated `sample` & added examples with filters
 
 ## Background
 
@@ -14,7 +15,7 @@ See the document, [CrossRef metadata best practice to support key performance in
 
 ## Warning
 
-The API described here has not been deployed yet (2014-09-27). This documentation is provided just for information and feeback, not for testing. This document will be updated as the API is released and the specifications are finalised based on feedback.
+The API described here has not been deployed yet (2014-10-01). This documentation is provided just for information and feedback, not for testing. This document will be updated as the API is released and the specifications are finalized based on feedback.
 
 ## Overview
 
@@ -114,7 +115,6 @@ Resource components can be combined to narrow down selections.
 | `/works/{doi}/funders`      | returns list of funders associated with the specified CrossRef `DOI` |
 | `/funders/{funder_id}/works`| returns list of works associated with the specified `funder_id` |
 | `/publishers/{owner_prefix}/works` | returns list of works associated with specified `owner_prefix` |
-| `/publishers/{owner_prefix}/works/random/5` | returns 5 random works associated with the specified `owner_prefix` |
 
 
 ## Parameters
@@ -197,7 +197,7 @@ Note that dates in filters should always be of the form `YYYY-MM--DD`. Also not 
 
 ## Result controls
 
-You can control the delivery and selection  reuslts using the `rows`, `offset` and `sample` parameters. 
+You can control the delivery and selection  results using the `rows`, `offset` and `sample` parameters. 
 
 ### Rows 
 
@@ -219,7 +219,7 @@ The number of returned items is controlled by the `rows` parameter, but you can 
     
 ### Sample
 
-Being able to select random results is useful for both testing and sampling. You can use the `sample` paremeter to retreive random results. So, for example, the following select 10 random works:
+Being able to select random results is useful for both testing and sampling. You can use the `sample` parameter to retrieve random results. So, for example, the following select 10 random works:
 
     http://api.crossref.org/works?sample=10
     
@@ -228,13 +228,28 @@ Note that when you use the `sample` parameter, the `rows` and `offset` parameter
 
 ### Example Queries
 
+**All works published by owner prefix `10.1016` in January 2010**
+
+    http://api.crossref.org/publishers/10.5555/works?filter=from-pub-date:2010-01,until-pub-date:2010-01
+
 **All works funded by funder_id that have a CC-BY license**
+
+    http://api.crossref.org/publishers/10.5555/works?filter=license.uri:http://creativecommons.org/licenses/by/3.0/deed.en_US
 
 **All works published by owner prefix 10.5555 in February 2015 that have a CC-BY license**
 
-**All works funded by X where license = CC-BY and license start date - published_date < Y**
+    http://api.crossref.org/publishers/10.5555/works?filter=license.uri:http://creativecommons.org/licenses/by/3.0/deed.en_US,from-pub-date:2015-02,until-pub-date:2015-02
+
+**All works funded by `10.13039/100005235` where license = CC-BY and embargo <= 365 days**
+
+    http://api.crossref.org/funders/10.13039/100005235/works?filter=license.uri:http://creativecommons.org/licenses/by/3.0/deed.en_US,license.max-embargo-days:365
+
 
 **All works funded by X where the archive partner listed = 'LOCKSS'**
+
+Coming soon.
+
+
 
 ## Versioning
 
