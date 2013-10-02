@@ -9,6 +9,7 @@
 - v5: 2013-09-27, doc mime-type and message-type relationship
 - v6: 2013-10-01, updated `sample` & added examples with filters
 - v6: 2013-10-01, corrected warning date
+- v7: 2013-10-02, fixed typos
 
 ## Background
 
@@ -66,9 +67,9 @@ Lists results can contain multiple entries. Searching or filtering typically ret
 - Items, which will will contain the items matching the query or filter. 
 
 
-Note that the "message-type" returned will differ from the mime-type. There are three message-types:
+Note that the "message-type" returned will differ from the mime-type. There are six message-types:
 
-- funder (singlton)
+- funder (singleton)
 - publisher (singleton)
 - work (singleton)
 - work-result-list (list)
@@ -190,11 +191,11 @@ Filters allow you to narrow queries. All filter results are lists.  The followin
 
 ### Notes on owner prefixes
 
-The prefix of a CrossRef DOI does **NOT** indicate who currently owns the DOI. It only reflects who originally registered the DOI. CrossRef metadata has a separate **owner prefix** element that record the current owner of the CrossRef DOI in question.
+The prefix of a CrossRef DOI does **NOT** indicate who currently owns the DOI. It only reflects who originally registered the DOI. CrossRef metadata has a separate **owner prefix** element that record the current owner of the CrossRef DOI in question. 
 
 ### Notes on dates
 
-Note that dates in filters should always be of the form `YYYY-MM--DD`. Also not that date information in CrossRef metadata can often be incomplete. So, for example, a publisher may only include the year and month of publication for a journal article. For a monograph they might just include the year. In these cases the API selects the earliest possible date given the information provided. So, for instance, if the publisher only provided 2013-02 as the published date, then the date would be treated as 2013-02-01. Similarly, if the publisher only provided the year 2013 as the date, it would be treated at 2013-01-01. 
+Note that dates in filters should always be of the form `YYYY-MM-DD`. Also not that date information in CrossRef metadata can often be incomplete. So, for example, a publisher may only include the year and month of publication for a journal article. For a monograph they might just include the year. In these cases the API selects the earliest possible date given the information provided. So, for instance, if the publisher only provided 2013-02 as the published date, then the date would be treated as 2013-02-01. Similarly, if the publisher only provided the year 2013 as the date, it would be treated at 2013-01-01. 
 
 ## Result controls
 
