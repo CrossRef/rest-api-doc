@@ -167,6 +167,7 @@ pre .chunk {
 <li>v5: 2013&#8211;09&#8211;27, doc mime-type and message-type relationship</li>
 <li>v6: 2013&#8211;10&#8211;01, updated <code>sample</code> &amp; added examples with filters</li>
 <li>v6: 2013&#8211;10&#8211;01, corrected warning date</li>
+<li>v7: 2013&#8211;10&#8211;02, fixed typos</li>
 </ul>
 
 <h2 id="background">Background</h2>
@@ -231,10 +232,10 @@ pre .chunk {
 <li>Items, which will will contain the items matching the query or filter.</li>
 </ul>
 
-<p>Note that the &#8220;message-type&#8221; returned will differ from the mime-type. There are three message-types: </p>
+<p>Note that the &#8220;message-type&#8221; returned will differ from the mime-type. There are six message-types: </p>
 
 <ul>
-<li>funder (singlton)</li>
+<li>funder (singleton)</li>
 <li>publisher (singleton)</li>
 <li>work (singleton)</li>
 <li>work-result-list (list)</li>
@@ -543,7 +544,7 @@ pre .chunk {
 
 <h3 id="notesondates">Notes on dates</h3>
 
-<p>Note that dates in filters should always be of the form <code>YYYY-MM--DD</code>. Also not that date information in CrossRef metadata can often be incomplete. So, for example, a publisher may only include the year and month of publication for a journal article. For a monograph they might just include the year. In these cases the API selects the earliest possible date given the information provided. So, for instance, if the publisher only provided 2013&#8211;02 as the published date, then the date would be treated as 2013&#8211;02&#8211;01. Similarly, if the publisher only provided the year 2013 as the date, it would be treated at 2013&#8211;01&#8211;01. </p>
+<p>Note that dates in filters should always be of the form <code>YYYY-MM-DD</code>. Also not that date information in CrossRef metadata can often be incomplete. So, for example, a publisher may only include the year and month of publication for a journal article. For a monograph they might just include the year. In these cases the API selects the earliest possible date given the information provided. So, for instance, if the publisher only provided 2013&#8211;02 as the published date, then the date would be treated as 2013&#8211;02&#8211;01. Similarly, if the publisher only provided the year 2013 as the date, it would be treated at 2013&#8211;01&#8211;01. </p>
 
 <h2 id="resultcontrols">Result controls</h2>
 
