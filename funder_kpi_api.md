@@ -10,6 +10,7 @@
 - v6: 2013-10-01, updated `sample` & added examples with filters
 - v6: 2013-10-01, corrected warning date
 - v7: 2013-10-02, fixed typos
+- v8: 2013-10-17, updated warning. Added email address
 
 ## Background
 
