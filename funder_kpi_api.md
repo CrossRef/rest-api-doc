@@ -17,7 +17,11 @@ See the document, [CrossRef metadata best practice to support key performance in
 
 ## Warning
 
-The API described here has not been deployed yet (2013-10-01). This documentation is provided just for information and feedback, not for testing. This document will be updated as the API is released and the specifications are finalized based on feedback.
+The API described here is in alpha. If you encounter problems with the API or the documentation, please report them to:
+
+![image](http://labs.crossref.org/wp-content/uploads/2013/01/labs_email.png)
+
+
 
 ## Overview
 
@@ -191,7 +195,7 @@ Filters allow you to narrow queries. All filter results are lists.  The followin
 
 ### Notes on owner prefixes
 
-The prefix of a CrossRef DOI does **NOT** indicate who currently owns the DOI. It only reflects who originally registered the DOI. CrossRef metadata has a separate **owner prefix** element that record the current owner of the CrossRef DOI in question. 
+The prefix of a CrossRef DOI does **NOT** indicate who currently owns the DOI. It only reflects who originally registered the DOI. CrossRef metadata has an **owner_prefix** element that records the current owner of the CrossRef DOI in question. 
 
 ### Notes on dates
 
