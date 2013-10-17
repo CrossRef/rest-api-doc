@@ -20,8 +20,7 @@ See the document, [CrossRef metadata best practice to support key performance in
 
 The API described here is in alpha. If you encounter problems with the API or the documentation, please report them to:
 
-![image](http://labs.crossref.org/wp-content/uploads/2013/01/labs_email.png)
-
+![](http://labs.crossref.org/wp-content/uploads/2013/01/labs_email.png)
 
 
 ## Overview
