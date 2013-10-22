@@ -179,7 +179,7 @@ Filters allow you to narrow queries. All filter results are lists.  The followin
 | `from-pub-date` | `{date}` | metadata where published date is since (inclusive) `{date}` |
 | `until-pub-date` | `{date}` | metadata where published date is before (inclusive)  `{date}` |
 | `has-license` | | metadata that includes any `<license_ref>` elements. |
-| `license.uri` | `{uri}` | metadata where `<license_ref>` value equals `{uri}` |
+| `license.url` | `{url}` | metadata where `<license_ref>` value equals `{url}` |
 | `license.version` | `{string}` | metadata where the `<license_ref>`'s `applies_to` attribute  is `{string}`|
 | `license.delay` | `{integer}` | metadata where difference between publication date and the `<license_ref>`'s `start_date` attribute is <= `{integer}` (in days)|
 | `has-full-text` |  | metadata that includes any full text `<resource>` elements. |
