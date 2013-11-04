@@ -240,6 +240,27 @@ CrossRef supports the deposit of abstracts conforming to the [JATS](http://jats.
 
 [ORCID](http://www.orcid.org/)s are unique identifiers for researchers. CrossRef supports the deposit of ORCIDs for authors. The presence of ORCIDs in CrossRef metadata will, in turn, allow agencies to tie agency funded research publications directly to researchers. Widespread use of ORCIDs in CrossRef deposits could even let agencies start to develop publication KPIs for researchers that they fund. Further details on CrossRef's ORCID support can be found in the [CrossRef Schema Documentation of the `<ORCID>` element](http://www.crossref.org/schema/documentation/4.3.3/4_3_3.html#ORCID)
 
+## Frequently Asked Questions
+
+**Q:** What does it mean if a `<license_ref>` element has no `start_date` attribute?
+<br />
+**A:** This should be interpreted to mean that the `<license_ref>` applies from the earliest publication date.
+
+
+**Q:** What does is mean if there is no `applies_to` attribute for the `<license_ref>` element?
+<br />
+**A:** This should be interpreted to mean that the `license_ref` applies to **all** the `<resource>` elements in the record.
+
+
+**Q:** What does it mean if the `<resource>` element doesn't have a `content_version` attribute?
+<br />
+**A:** This should be interpreted to mean that any `<resource>` elements point to the version of record ('vor')
+
+**Q:** What does it mean if there is no correspondence between existing `<license_ref>` `applies_to` attributes and existing `<resource>` `content_version` attributes?
+<br />
+**A:** This probably means the publisher made a mistake depositing the metadata.  
+
+
   
 
 
