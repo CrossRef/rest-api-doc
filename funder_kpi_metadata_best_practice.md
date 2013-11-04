@@ -9,7 +9,8 @@
 - V4: 2013-09-12, changed AAM to AM.
 - V5: 2013-09-18, incorporated corrections, suggestions from D. Shotton.
 - V6: 2013-09-23, added `<free-to-read>` element info. Updated warning.
-- V7: 2013-09-24, emphasise that publishers __must__ deposit funder identifiers, when they exist in the FundRef Registry.
+- V7: 2013-09-24, emphasize that publishers __must__ deposit funder identifiers, when they exist in the FundRef Registry.
+- V8: 2013-11-04, Added FAQ about schema interpretation and usage
 
 ## Warning
 As of 2013–09–23 the `<free-to-read>` element has not yet been incorporated into the CrossRef deposit schema.
