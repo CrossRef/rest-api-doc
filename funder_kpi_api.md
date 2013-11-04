@@ -179,12 +179,12 @@ Filters allow you to narrow queries. All filter results are lists.  The followin
 | `from-pub-date` | `{date}` | metadata where published date is since (inclusive) `{date}` |
 | `until-pub-date` | `{date}` | metadata where published date is before (inclusive)  `{date}` |
 | `has-license` | | metadata that includes any `<license_ref>` elements. |
-| `license.uri` | `{uri}` | metadata where `<license_ref>` value equals `{uri}` |
-| `license.content-version` | `{string}` | metadata where the `<license_ref>`'s `applies_to` attribute  is `{string}`|
-| `license.max-embargo-days` | `{integer}` | metadata where difference between publication date and the `<license_ref>`'s `start_date` attribute is <= `{integer}`|
+| `license.url` | `{url}` | metadata where `<license_ref>` value equals `{url}` |
+| `license.version` | `{string}` | metadata where the `<license_ref>`'s `applies_to` attribute  is `{string}`|
+| `license.delay` | `{integer}` | metadata where difference between publication date and the `<license_ref>`'s `start_date` attribute is <= `{integer}` (in days)|
 | `has-full-text` |  | metadata that includes any full text `<resource>` elements. |
-| `fulltext.content-version` | `{string}`  | metadata where `<resource>` element's `content_version` attribute is `{string}`. |
-| `fulltext.content-type` | `{mime_type}`  | metadata where `<resource>` element's `content_type` attribute is `{mime_type}` (e.g. `application/pdf`). |
+| `full-text.version` | `{string}`  | metadata where `<resource>` element's `content_version` attribute is `{string}`. |
+| `full-text.type` | `{mime_type}`  | metadata where `<resource>` element's `content_type` attribute is `{mime_type}` (e.g. `application/pdf`). |
 | `public-references` | | metadata where publishers allow references to be distributed publically. |
 | `has-archive` | | metadata which include name of archive partner[^*] |
 | `archive` | `{string}` | metadata which where value of archive partner is `{string}`[^*] |
