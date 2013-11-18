@@ -132,7 +132,7 @@ Parameters can be used to query, filter and control the results returned by the 
 | `query`                      | limited [DisMax](https://wiki.apache.org/solr/DisMax) query terms |
 | `filter={filter_name}:{value}`| filter results by specific fields |
 | `rows={#}`                   | results per per page | 
-| `offset={#}`                 | page offset |                         
+| `offset={#}`                 | result offset |                         
 | `sample={#}`                 | return random N results |
 
 
