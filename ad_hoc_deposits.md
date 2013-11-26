@@ -14,7 +14,7 @@ working with CrossRef, may be asked to deposit pieces of metadata that are not h
 publishing systems which interact with the CrossRef deposit system. This may leave a member without any
 ready means of depositing new pieces of metadata and meeting their responsibility as participants of a pilot project.
 
-An alternative deposit process exists that allows a member to deposit XML with CrossRef in an ad hoc manor, outside
+An alternative deposit process exists that allows a member to deposit XML with CrossRef in an ad hoc way, outside
 of members' normal processes of XML deposit. This alternative involves three steps:
 
 1. Optionally retrieve deposit XML via [CrossRef My Deposits](http://mydeposits.labs.crossref.org).
