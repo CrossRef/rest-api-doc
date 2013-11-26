@@ -27,14 +27,14 @@ A member may wish to deposit additional metadata against DOI records that have a
 However they may find it difficult to locate existing XML deposits within their own systems because:
 
 - XML deposits can be incremental, requiring that a member understand a series of XML deposits for any given
-  DOI and then stitch this series of deposits together into a single deposit.
+  DOI and then stitch the series of deposits together into a single deposit.
 - A member's systems that automatically interact with CrossRef may not record XML deposits.
 
 CrossRef provides a tool that allows a member to download the most recent XML deposit for a given set of DOIs. This
 XML accounts for incremental and replacement updates to DOI records, and can be retrieved as a single XML file for
 multiple DOIs.
 
-A member may use the [CrossRef My Deposits](http://mydeposits.labs.crossref.org) to download existing deposit XML.
+A member may use the [CrossRef My Deposits](http://mydeposits.labs.crossref.org) tool to download existing deposit XML.
 A list of DOIs must be prepared, where each DOI is presented on its own line:
 
     10.5555/12345678
