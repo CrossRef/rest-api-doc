@@ -11,6 +11,7 @@
 - V6: 2013-09-23, added `<free-to-read>` element info. Updated warning.
 - V7: 2013-09-24, emphasize that publishers __must__ deposit funder identifiers, when they exist in the FundRef Registry.
 - V8: 2013-11-04, Added FAQ about schema interpretation and usage
+- V9: 2013-12-02, Added XML deposit examples
 
 ## Warning
 As of 2013–09–23 the `<free-to-read>` element has not yet been incorporated into the CrossRef deposit schema.
@@ -274,7 +275,7 @@ Full deposits use the [standard deposit schema](http://www.crossref.org/schema/d
 
 Partial deposits use the [resource deposit schema](http://doi.crossref.org/schemas/doi_resources4.3.2.xsd).
 
-Partial deposits update only a part of a DOI's metadata. In the CrossRef help system
+Partial deposits update only part of a DOI's metadata. In the CrossRef help system
 they are referred to as **resource deposits**, but it is not just resources that can
 be provided as a partial deposit. Licenses, funding information and CrossMarks can also
 be provided as partial deposits.
