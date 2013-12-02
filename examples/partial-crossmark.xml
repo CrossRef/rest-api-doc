@@ -8,12 +8,10 @@
 			       http://www.crossref.org/schema/deposit/doi_resources4.3.2.xsd">
   <head>
     <doi_batch_id>123456</doi_batch_id>
-    <timestamp>1385985547</timestamp>
     <depositor>
       <name>Karl Ward</name>
       <email_address>kward@crossref.org</email_address>
     </depositor>
-    <registrant>creftest</registrant>
   </head>
   <body>
     <crossmark_data>
