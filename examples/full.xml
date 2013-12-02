@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<doi_batch version="4.3.3"
+	   xmlns="http://www.crossref.org/schema/4.3.3"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:ai="http://www.crossref.org/AccessIndicators.xsd"
+	   xmlns:fr="http://www.crossref.org/fundref.xsd"
+	   xsi:schemaLocation="http://www.crossref.org/schema/4.3.3 
+			       http://www.crossref.org/schema/deposit/crossref4.3.3.xsd">
+  <head>
+    <doi_batch_id>123456</doi_batch_id>
+    <timestamp>1385985547</timestamp>
+    <depositor>
+      <name>Karl Ward</name>
+      <email_address>kward@crossref.org</email_address>
+    </depositor>
+    <registrant>creftest</registrant>
+  </head>
+  <body>
+    <journal>
+      <journal_metadata language="en">
+        <full_title>Journal of Psychoceramics</full_title>
+        <abbrev_title>Journal of Psychoceramics</abbrev_title>
+        <issn media_type="electronic">0264-3561</issn>
+      </journal_metadata>
+      <journal_issue>
+        <publication_date media_type="online">
+          <month>08</month>
+          <day>13</day>
+          <year>2008</year>
+        </publication_date>
+        <publication_date media_type="print">
+          <month>08</month>
+          <day>14</day>
+          <year>2008</year>
+        </publication_date>
+        <journal_volume>
+          <volume>5</volume>
+        </journal_volume>
+        <issue>11</issue>
+      </journal_issue>
+      <journal_article publication_type="full_text">
+        <titles>
+          <title>Toward a Unified Theory of High-Energy Metaphysics: Silly String Theory</title>
+        </titles>
+        <contributors>
+          <person_name sequence="first" contributor_role="author">
+            <given_name>Josiah</given_name>
+            <surname>Carberry</surname>
+            <ORCID authenticated="true">https://orcid.org/0000-0002-1825-0097</ORCID>
+          </person_name>
+        </contributors>
+        <publication_date media_type="online">
+          <month>08</month>
+          <day>13</day>
+          <year>2008</year>
+        </publication_date>
+        <publication_date media_type="print">
+          <month>08</month>
+          <day>14</day>
+          <year>2008</year>
+        </publication_date>
+        <pages>
+          <first_page>1</first_page>
+          <last_page>3</last_page>
+        </pages>
+        <publisher_item>
+          <item_number item_number_type="sequence-number">1</item_number>
+        </publisher_item>
+        <doi_data>
+          <doi>10.5555/12345678</doi>
+          <resource>http://psychoceramics.labs.crossref.org/10.5555-12345678.html</resource>
+	  <collection property="text-mining">
+	    <resource content_version="vor" mime_type="application/pdf">
+              http://publisher.com/vor/12345678.pdf
+	    </resource>
+	    <resource content_version="am">http://publisher.com/am/12345678</resource>
+	    <resource content_version="tdm" mime_type="application/pdf">
+              http://publisher.com/tdm/12345678.pdf
+	    </resource>
+	  </collection>
+        </doi_data>
+	<ai:program name="AccessIndicators">
+	  <ai:license_ref applies_to="vor" start_date="2014-05-02">
+	    http://publisher.com/licenses/license_v1.html
+	  </ai:license_ref>
+	  <ai:license_ref applies_to="am">
+	    http://publisher.com/licenses/open_license_v1.html
+	  </ai:license_ref>
+	  <ai:license_ref applies_to="tdm" start_date="2014-12-02">
+	    http://publisher.com/licenses/tdm_license_v1.html
+	  </ai:license_ref>
+	</ai:program>
+	<fr:program name="fundref">
+	  <fr:assertion name="fundgroup">
+            <fr:assertion name="funder_name">
+              National Science Foundation
+              <fr:assertion name="funder_identifier">
+		100000001
+              </fr:assertion>
+            </fr:assertion>
+            <fr:assertion name="funding_identifier">
+              CHE-1152342
+            </fr:assertion>
+          </fr:assertion>
+          <fr:assertion name="fundgroup">
+            <fr:assertion name="funder_name">
+              Basic Energy Sciences, Office of Science, U.S. Department of Energy
+              <fr:assertion name="funder_identifier">
+		100006151
+              </fr:assertion>
+            </fr:assertion>
+            <fr:assertion name="funding_identifier">
+              DE-SC0001091
+            </fr:assertion>
+          </fr:assertion>
+	</fr:program>
+      </journal_article>
+    </journal>
+  </body>
+</doi_batch>

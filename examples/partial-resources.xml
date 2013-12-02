@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<doi_batch version="4.3.2"
+	   xmlns="http://www.crossref.org/doi_resources_schema/4.3.2"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.crossref.org/doi_resources_schema/4.3.2 
+			       http://www.crossref.org/schema/deposit/doi_resources4.3.2.xsd">
+  <head>
+    <doi_batch_id>123456</doi_batch_id>
+    <timestamp>1385985547</timestamp>
+    <depositor>
+      <name>Karl Ward</name>
+      <email_address>kward@crossref.org</email_address>
+    </depositor>
+    <registrant>creftest</registrant>
+  </head>
+  <body>
+    <doi_resources>
+      <doi>10.5555/12345678</doi>
+      <collection property="text-mining">
+	<resource content_version="vor" mime_type="application/pdf">
+          http://publisher.com/vor/12345678.pdf
+	</resource>
+	<resource content_version="am">http://publisher.com/am/12345678</resource>
+	<resource content_version="tdm" mime_type="application/pdf">
+          http://publisher.com/tdm/12345678.pdf
+	</resource>
+      </collection>
+    </doi_resources>
+  </body>
+</doi_batch>

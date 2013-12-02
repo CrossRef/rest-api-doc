@@ -261,12 +261,31 @@ CrossRef supports the deposit of abstracts conforming to the [JATS](http://jats.
 <br />
 **A:** This probably means the publisher made a mistake depositing the metadata.  
 
+## XML Deposit Examples
 
-  
+### Full Deposits
 
+Full deposits use the [standard deposit schema](http://www.crossref.org/schema/deposit/crossref4.3.3.xsd).
 
+- [Full deposit](examples/full.xml)
+- [Full deposit with CrossMark](examples/full-crossmark.xml)
 
+### Partial Deposits
 
- 
+Partial deposits use the [resource deposit schema](http://doi.crossref.org/schemas/doi_resources4.3.2.xsd).
 
+Partial deposits update only a part of a DOI's metadata. In the CrossRef help system
+they are referred to as **resource deposits**, but it is not just resources that can
+be provided as a partial deposit. Licenses, funding information and CrossMarks can also
+be provided as partial deposits.
+
+Many partial deposits can be provided in a single batch deposit. The `<body>` element can
+contain any number of partial deposits of any type, some of which may be partial deposits for
+the same DOI. For example, two partial deposits could be provided for the same DOI,
+one updating funding information, the other updating license information.
+
+- [Partial deposit of additional resource links](examples/partial-resources.xml)
+- [Partial deposit of funding information without CrossMark](examples/partial-funders.xml)
+- [Partial deposit of license information without CrossMark](examples/partial-licenses.xml)
+- [Partial deposit of a CrossMark with license and funding information](examples/partial-crossmark.xml)
  

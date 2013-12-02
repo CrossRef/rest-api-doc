@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<doi_batch version="4.3.2"
+	   xmlns="http://www.crossref.org/doi_resources_schema/4.3.2"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:ai="http://www.crossref.org/AccessIndicators.xsd"
+	   xmlns:fr="http://www.crossref.org/fundref.xsd"
+	   xsi:schemaLocation="http://www.crossref.org/doi_resources_schema/4.3.2 
+			       http://www.crossref.org/schema/deposit/doi_resources4.3.2.xsd">
+  <head>
+    <doi_batch_id>123456</doi_batch_id>
+    <timestamp>1385985547</timestamp>
+    <depositor>
+      <name>Karl Ward</name>
+      <email_address>kward@crossref.org</email_address>
+    </depositor>
+    <registrant>creftest</registrant>
+  </head>
+  <body>
+    <crossmark_data>
+      <doi>10.5555/12345678</doi>
+      <crossmark>
+	<crossmark_version>1</crossmark_version>
+        <crossmark_policy>10.5555/crossmark_policy</crossmark_policy>
+        <crossmark_domains>
+          <crossmark_domain>
+            <domain>publisher.com</domain>
+          </crossmark_domain>
+        </crossmark_domains>
+        <crossmark_domain_exclusive>true</crossmark_domain_exclusive>
+ 	<custom_metadata>
+	  <ai:program name="AccessIndicators">
+	    <ai:license_ref applies_to="vor" start_date="2014-05-02">
+	      http://publisher.com/licenses/license_v1.html
+	    </ai:license_ref>
+	    <ai:license_ref applies_to="am">
+	      http://publisher.com/licenses/open_license_v1.html
+	    </ai:license_ref>
+	    <ai:license_ref applies_to="tdm" start_date="2014-12-02">
+	      http://publisher.com/licenses/tdm_license_v1.html
+	    </ai:license_ref>
+	  </ai:program>
+	  <fr:program name="fundref">
+	    <fr:assertion name="fundgroup">
+              <fr:assertion name="funder_name">
+		National Science Foundation
+		<fr:assertion name="funder_identifier">
+		  100000001
+		</fr:assertion>
+              </fr:assertion>
+              <fr:assertion name="funding_identifier">
+		CHE-1152342
+              </fr:assertion>
+            </fr:assertion>
+            <fr:assertion name="fundgroup">
+              <fr:assertion name="funder_name">
+		Basic Energy Sciences, Office of Science, U.S. Department of Energy
+		<fr:assertion name="funder_identifier">
+		  100006151
+		</fr:assertion>
+              </fr:assertion>
+              <fr:assertion name="funding_identifier">
+		DE-SC0001091
+              </fr:assertion>
+            </fr:assertion>
+	  </fr:program>
+	</custom_metadata>
+      </crossmark>
+    </crossmark_data>
+  </body>
+</doi_batch>
