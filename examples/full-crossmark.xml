@@ -46,7 +46,7 @@
           <person_name sequence="first" contributor_role="author">
             <given_name>Josiah</given_name>
             <surname>Carberry</surname>
-            <ORCID authenticated="true">https://orcid.org/0000-0002-1825-0097</ORCID>
+            <ORCID authenticated="true">http://orcid.org/0000-0002-1825-0097</ORCID>
           </person_name>
         </contributors>
         <publication_date media_type="online">
@@ -66,20 +66,7 @@
         <publisher_item>
           <item_number item_number_type="sequence-number">1</item_number>
         </publisher_item>
-        <doi_data>
-          <doi>10.5555/12345678</doi>
-          <resource>http://psychoceramics.labs.crossref.org/10.5555-12345678.html</resource>
-	  <collection property="text-mining">
-	    <resource content_version="vor" mime_type="application/pdf">
-              http://publisher.com/vor/12345678.pdf
-	    </resource>
-	    <resource content_version="am">http://publisher.com/am/12345678</resource>
-	    <resource content_version="tdm" mime_type="application/pdf">
-              http://publisher.com/tdm/12345678.pdf
-	    </resource>
-	  </collection>
-        </doi_data>
-	<crossmark>
+       	<crossmark>
 	  <crossmark_version>1</crossmark_version>
           <crossmark_policy>10.5555/crossmark_policy</crossmark_policy>
           <crossmark_domains>
@@ -89,6 +76,30 @@
           </crossmark_domains>
           <crossmark_domain_exclusive>true</crossmark_domain_exclusive>
  	  <custom_metadata>
+	    <fr:program name="fundref">
+	      <fr:assertion name="fundgroup">
+		<fr:assertion name="funder_name">
+		  National Science Foundation
+		  <fr:assertion name="funder_identifier">
+		    100000001
+		  </fr:assertion>
+		</fr:assertion>
+		<fr:assertion name="award_number">
+		  CHE-1152342
+		</fr:assertion>
+              </fr:assertion>
+              <fr:assertion name="fundgroup">
+		<fr:assertion name="funder_name">
+		  Basic Energy Sciences, Office of Science, U.S. Department of Energy
+		  <fr:assertion name="funder_identifier">
+		    100006151
+		  </fr:assertion>
+		</fr:assertion>
+		<fr:assertion name="award_number">
+		  DE-SC0001091
+		</fr:assertion>
+              </fr:assertion>
+	    </fr:program>
 	    <ai:program name="AccessIndicators">
 	      <ai:license_ref applies_to="vor" start_date="2014-05-02">
 		http://publisher.com/licenses/license_v1.html
@@ -100,32 +111,27 @@
 		http://publisher.com/licenses/tdm_license_v1.html
 	      </ai:license_ref>
 	    </ai:program>
-	    <fr:program name="fundref">
-	      <fr:assertion name="fundgroup">
-		<fr:assertion name="funder_name">
-		  National Science Foundation
-		  <fr:assertion name="funder_identifier">
-		    100000001
-		  </fr:assertion>
-		</fr:assertion>
-		<fr:assertion name="funding_identifier">
-		  CHE-1152342
-		</fr:assertion>
-              </fr:assertion>
-              <fr:assertion name="fundgroup">
-		<fr:assertion name="funder_name">
-		  Basic Energy Sciences, Office of Science, U.S. Department of Energy
-		  <fr:assertion name="funder_identifier">
-		    100006151
-		  </fr:assertion>
-		</fr:assertion>
-		<fr:assertion name="funding_identifier">
-		  DE-SC0001091
-		</fr:assertion>
-              </fr:assertion>
-	    </fr:program>
 	  </custom_metadata>
 	</crossmark>
+	<doi_data>
+          <doi>10.5555/12345678</doi>
+          <resource>http://psychoceramics.labs.crossref.org/10.5555-12345678.html</resource>
+	  <collection property="text-mining">
+	    <item>
+	      <resource content_version="vor" mime_type="application/pdf">
+		http://publisher.com/vor/12345678.pdf
+	      </resource>
+	    </item>
+	    <item>
+	      <resource content_version="am">http://publisher.com/am/12345678</resource>
+	    </item>
+	    <item>
+	      <resource content_version="tdm" mime_type="application/pdf">
+		http://publisher.com/tdm/12345678.pdf
+	      </resource>
+	    </item>
+	  </collection>
+        </doi_data>
       </journal_article>
     </journal>
   </body>

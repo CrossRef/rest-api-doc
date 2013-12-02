@@ -25,7 +25,7 @@
               100000001
             </fr:assertion>
           </fr:assertion>
-          <fr:assertion name="funding_identifier">
+          <fr:assertion name="award_number">
             CHE-1152342
           </fr:assertion>
         </fr:assertion>
@@ -36,7 +36,7 @@
               100006151
             </fr:assertion>
           </fr:assertion>
-          <fr:assertion name="funding_identifier">
+          <fr:assertion name="award_number">
             DE-SC0001091
           </fr:assertion>
         </fr:assertion>

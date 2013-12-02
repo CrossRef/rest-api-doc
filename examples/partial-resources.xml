@@ -17,13 +17,19 @@
     <doi_resources>
       <doi>10.5555/12345678</doi>
       <collection property="text-mining">
-	<resource content_version="vor" mime_type="application/pdf">
-          http://publisher.com/vor/12345678.pdf
-	</resource>
-	<resource content_version="am">http://publisher.com/am/12345678</resource>
-	<resource content_version="tdm" mime_type="application/pdf">
-          http://publisher.com/tdm/12345678.pdf
-	</resource>
+	<item>
+	  <resource content_version="vor" mime_type="application/pdf">
+            http://publisher.com/vor/12345678.pdf
+	  </resource>
+	</item>
+	<item>
+	  <resource content_version="am">http://publisher.com/am/12345678</resource>
+	</item>
+	<item>
+	  <resource content_version="tdm" mime_type="application/pdf">
+            http://publisher.com/tdm/12345678.pdf
+	  </resource>
+	</item>
       </collection>
     </doi_resources>
   </body>
