@@ -3,18 +3,23 @@
 
 ## Version History
 
-- V1: 2013-09-08, first draft.
-- V2: 2013-09-09, add examples + links.
-- V3: 2013-09-10, adjust title. Correct typos.
-- V4: 2013-09-12, changed AAM to AM.
-- V5: 2013-09-18, incorporated corrections, suggestions from D. Shotton.
-- V6: 2013-09-23, added `<free-to-read>` element info. Updated warning.
-- V7: 2013-09-24, emphasize that publishers __must__ deposit funder identifiers, when they exist in the FundRef Registry.
-- V8: 2013-11-04, Added FAQ about schema interpretation and usage
-- V9: 2013-12-02, Added XML deposit examples
+- V01: 2013-09-08, first draft.
+- V02: 2013-09-09, add examples + links.
+- V03: 2013-09-10, adjust title. Correct typos.
+- V04: 2013-09-12, changed AAM to AM.
+- V05: 2013-09-18, incorporated corrections, suggestions from D. Shotton.
+- V06: 2013-09-23, added `<free-to-read>` element info. Updated warning.
+- V07: 2013-09-24, emphasize that publishers __must__ deposit funder identifiers, when they exist in the FundRef Registry.
+- V08: 2013-11-04, Added FAQ about schema interpretation and usage
+- V09: 2013-12-02, Added XML deposit examples
+- v10: 2013-12-03, Updated `<free-to-read/>` element documentation to reflect latest NISO work. Added information about licensing CrossRef metadata to FAQ (hint, no license required for free APIs). Added labs email address. Changed formatting.
 
 ## Warning
-As of 2013–09–23 the `<free-to-read>` element has not yet been incorporated into the CrossRef deposit schema.
+As of 2013–12–03 the `<free-to-read>` element has not yet been incorporated into the CrossRef deposit schema.
+
+If you encounter problems with the API or the documentation, please report them to:
+
+![](http://labs.crossref.org/wp-content/uploads/2013/01/labs_email.png)
 
 ## Background
 Funding agencies and publishers are interested in being able to measure Key Performance Indicators (KPIs) related to mandates such the February 22nd OSTP memo on *[Public Access to the Results of Federally Funded Research](http://www.whitehouse.gov/blog/2013/02/22/expanding-public-access-results-federally-funded-research)*.
@@ -24,6 +29,7 @@ CrossRef is extending its FundRef Application Programming Interfaces (APIs) to e
 2. The licenses under which said publications have been released.
 3. The location of the full text of the Best Available Version (BAV) for said publications for both reading and Text & Data Mining (TDM) applications.
 4. The long-term preservation arrangements that have been made for the VOR of said publications.
+
 The CrossRef extended APIs, of course, will only work if publishers supply the appropriate metadata. This document outlines the metadata that publishers will need to provide in order to support such KPI reporting.
 
 ## Conventions
@@ -51,6 +57,7 @@ In order to support basic agency and publisher KPIs:
 - Publishers __should__ record full text links to archived versions of the document identified by the CrossRef DOI.
 
 In order to enhance the utility of CrossRef metadata to agencies and in order to enable more sophisticated agency/publisher KPIs:
+
 - Publishers __should__ consider participating in CrossMark in order to record updates, errata, corrigenda,retractions and withdrawals. 
 - Publishers __should__ consider depositing abstracts using CrossRef's JATS abstract element support.
 - Publishers __should__ consider collecting and depositing ORCIDs for publication authors.
@@ -187,30 +194,35 @@ Detailed information on recording licensing information in CrossRef metadata can
 
 ## "Libre" vs "Gratis"
 
-The license information recorded by "licence_ref" can tell you what you are allowed to do with the resources the licenses point to, but they do not say anything about whether or not there is a monetary charge involved. 
-In order to allow a publisher to record whether access to the content requires payment, CrossRef supports a new `<free-to-read>` element. When the `<free-to-read>` element is combined with the `<license_ref>` element, the publisher can record sophisticated information about the availability and reusability of content. For example:
- 
-**restrictive licenses and a payment**
+The license information recorded in the `<licence_ref>` element can tell you what you are allowed to do with the resources the licenses point to, but they do not say anything about whether or not there is a monetary charge involved. 
+In order to allow a publisher to record whether access to the content requires payment, CrossRef supports a new `<free-to-read/>` element. The `<free-to-read/>` element is an empty element. It can include two attributes, a `start_date` and an `end_date`. The `<free-to-read/>` elements works as follows:
 
-    <free-to-read>false</free-to-read>
-    <!-- … -->
+ - The presence of a <free-to-read/> element in CrossRef metadata __should_ be interpreted to mean that the full text content pointed to by the  DOI resource is available "gratis" during the time period specified by the start_date and end_date attributes.
+ - If the <free-to-read/> element only includes a `start_date` attribute, then the element __should__ be interpreted to mean that the content pointed to by the DOI resource will be made gratis from `start_date` on. 
+ - If the <free-to-read/> element only includes a `end_date` attribute, then the element __should__ be interpreted to mean that the content pointed to by the DOI resource will be made gratis from the publication date to and including the `end_date`.
+ - If the <free-to-read/> element has __no__ `start_date` __or__ `end_date` attributes, then the element __should__ be interpreted to mean that the content pointed to by the DOI resource is available "gratis" from the date of publication on.
+ - If the <free-to-read/> element is not present in the DOI record, one __should not__ assume that the resource pointed at by the DOI is available to read "gratis".
+
+
+ When the `<free-to-read>` element is combined with the `<license_ref>` element, the publisher can record sophisticated information about the availability and reusability of content. For example:
+ 
+**restrictive licenses and possibly a payment**
+
     <license_ref>http://tinypublisher.org/licenses/proprietary.html</license_ref>
 
 **restrictive licenses and no payment (e.g free copy of an article from a subscription journal)**
 
-    <free-to-read>true</free-to-read>
+    <free-to-read/>
     <!-- … -->
     <license_ref>http://tinypublisher.org/licenses/proprietary.html</license_ref>
 
-**have unrestrictive licenses AND a payment (e.g. a CC-BY licensed novel for sale on Amazon)**
+**have unrestrictive licenses and a possibly a payment (e.g. a CC-BY licensed novel for sale on Amazon)**
 
-    <free-to-read>false</free-to-read>
-    <!-- … -->
     <license_ref>http://creativecommons.org/licenses/by/3.0/deed.en_US</license_ref>
 
 **have unrestricted licenses and NO payment**
 
-    <free-to-read>true</free-to-read>
+    <free-to-read/>
     <!-- … -->
     <license_ref>http://creativecommons.org/licenses/by/3.0/deed.en_US</license_ref>
 
@@ -243,6 +255,10 @@ CrossRef supports the deposit of abstracts conforming to the [JATS](http://jats.
 [ORCID](http://www.orcid.org/)s are unique identifiers for researchers. CrossRef supports the deposit of ORCIDs for authors. The presence of ORCIDs in CrossRef metadata will, in turn, allow agencies to tie agency funded research publications directly to researchers. Widespread use of ORCIDs in CrossRef deposits could even let agencies start to develop publication KPIs for researchers that they fund. Further details on CrossRef's ORCID support can be found in the [CrossRef Schema Documentation of the `<ORCID>` element](http://www.crossref.org/schema/documentation/4.3.3/4_3_3.html#ORCID)
 
 ## Frequently Asked Questions
+
+**Q:** What license applies to the metadata retrieved by the [CrossRef APIs to support key performance indicators (KPIs) for funding agencies](funder_kpi_api.html)?
+<br />
+**A:** CrossRef asserts no claims of ownership to individual items of bibliographic metadata and associated Digital Object Identifiers (DOIs) acquired through the use of the CrossRef Free Services. Individual items of bibliographic metadata and associated DOIs may be cached and incorporated into the user's content and systems. More information can be found [on our web site](http://www.crossref.org/requestaccount/). 
 
 **Q:** What does it mean if a `<license_ref>` element has no `start_date` attribute?
 <br />
