@@ -282,7 +282,7 @@ CrossRef supports the deposit of abstracts conforming to the [JATS](http://jats.
 
 ### Full Deposits
 
-Full deposits use the [standard deposit schema](http://www.crossref.org/schema/deposit/crossref4.3.3.xsd).
+Full deposits use the [standard deposit schema](http://www.crossref.org/schema/deposit/crossref4.3.4.xsd).
 
 - [Full deposit](examples/full.xml)
 - [Full deposit with CrossMark](examples/full-crossmark.xml)
