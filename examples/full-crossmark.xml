@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<doi_batch version="4.3.3"
-	   xmlns="http://www.crossref.org/schema/4.3.3"
+<doi_batch version="4.3.4"
+	   xmlns="http://www.crossref.org/schema/4.3.4"
 	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	   xmlns:ai="http://www.crossref.org/AccessIndicators.xsd"
 	   xmlns:fr="http://www.crossref.org/fundref.xsd"
-	   xsi:schemaLocation="http://www.crossref.org/schema/4.3.3 
-			       http://www.crossref.org/schema/deposit/crossref4.3.3.xsd">
+	   xsi:schemaLocation="http://www.crossref.org/schema/4.3.4 
+			       http://www.crossref.org/schema/deposit/crossref4.3.4.xsd">
   <head>
     <doi_batch_id>123456</doi_batch_id>
     <timestamp>1385985547</timestamp>
