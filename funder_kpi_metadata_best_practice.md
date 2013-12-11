@@ -55,6 +55,7 @@ In order to support basic agency and publisher KPIs:
 - Publishers __should__ record full text links to representations of the document that are made available for TDM. These may be the same or different to the "readable" versions of the document pointed to above.
 - Where they are recording multiple versions of the document (e.g. AM & VOR), the publisher __should__ map licensing information to the specific resource versions.
 - Publishers __should__ record full text links to archived versions of the document identified by the CrossRef DOI.
+- Publishers __should__ record archive arrangements made with third party archiving organizations where the document identified by the CrossRef DOI is archived with the third party.
 
 In order to enhance the utility of CrossRef metadata to agencies and in order to enable more sophisticated agency/publisher KPIs:
 
@@ -147,6 +148,19 @@ Note that, by recording a `<resource>` that points to the full text, you are not
 Note also that the publisher could theoretically choose only to deposit `<resource>` elements for full text representations once an embargo has ended. However, this approach may prove fraught, as any mistakes or delays in the redeposit process might lead the funding agency to believe that the publisher has not made the relevant content accessible at the end of the embargo period.
 
 Further detail on using the `<resource>` element for recording links to full text can be found on the [Prospect support site](http://prospectsupport.labs.crossref.org/full-text-uris-technical-details/) and in the CrossRef deposit schema documentation for the [ `<collection>` ](http://www.crossref.org/schema/documentation/4.3.3/4_3_3.html#collection) and [ `<resource>` ](http://www.crossref.org/schema/documentation/4.3.3/4_3_3.html#resource) elements.
+
+## Recording third party archive arrangements
+
+Funders may be concerned that publisher links to full-text content will become unavailable in exceptional circumstances. They may stipulate that content is archived with a third party archiving organization, and may even suggest a list of acceptable archive organizations with which documents should be archived.
+
+Publishers can record the archive arrangement or archive intention of a document using the `<archive_locations>` element in CrossRef deposit metadata. Any number of archive locations can be specified, for example a document may be archived with both `Portico` and `CLOCKSS`:
+
+    <archive_locations>
+	  <archive_location>CLOCKSS</archive_location>
+	  <archive_location>PORTICO</archive_location>
+    </archive_locations>
+
+CrossRef maintains a vocabulary of archive locations within the CrossRef deposit schema. The latest list of possible archive location values can be found in the documentation for the [ `<archive_location>` element ](http://www.crossref.org/schema/documentation/4.3.4/4_3_3.html#archive_location).
 
 ## Different licenses for different versions of the content
 
