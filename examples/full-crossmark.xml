@@ -113,6 +113,9 @@
 	    </ai:program>
 	  </custom_metadata>
 	</crossmark>
+        <archive_locations>
+          <archive name="CLOCKSS"/>
+        </archive_locations>
 	<doi_data>
           <doi>10.5555/12345678</doi>
           <resource>http://psychoceramics.labs.crossref.org/10.5555-12345678.html</resource>
