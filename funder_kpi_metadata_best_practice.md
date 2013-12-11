@@ -150,19 +150,6 @@ Note also that the publisher could theoretically choose only to deposit `<resour
 
 Further detail on using the `<resource>` element for recording links to full text can be found on the [Prospect support site](http://prospectsupport.labs.crossref.org/full-text-uris-technical-details/) and in the CrossRef deposit schema documentation for the [ `<collection>` ](http://www.crossref.org/schema/documentation/4.3.4/4.3.4.html#collection) and [ `<resource>` ](http://www.crossref.org/schema/documentation/4.3.4/4.3.4.html#resource) elements.
 
-## Recording third party archive arrangements
-
-Funders may be concerned that publisher links to full-text content will become unavailable in exceptional circumstances. They may stipulate that content is archived with a third party archiving organization, and may even suggest a list of acceptable archive organizations with which documents should be archived.
-
-Publishers can record the archive arrangement or archive intention of a document using the `<archive_locations>` element in CrossRef deposit metadata. Any number of archive locations can be specified, for example a document may be archived with both `Portico` and `CLOCKSS`:
-
-    <archive_locations>
-	  <archive name="CLOCKSS"/>
-	  <archive name="Portico"/>
-    </archive_locations>
-
-CrossRef maintains a vocabulary of archive locations within the CrossRef deposit schema. The latest list of possible archive location values can be found in the documentation for the [ `<archive>` element ](http://www.crossref.org/schema/documentation/4.3.4/4.3.4.html#archive).
-
 ## Different licenses for different versions of the content
 
 Some publishers may want to record different licenses for different versions of the `<resource>` element recorded in CrossRef metadata. For example, one `<resource>` element may point to a URI intended for subscribed readers, while another `<resource>` element may point to a version of the document intended for Text and Data Mining (TDM) applications. Similarly, a publisher may choose to apply one license to the "Author Accepted Manuscript" (AM) and another to the "Version of Record" (VOR).
@@ -240,6 +227,19 @@ In order to allow a publisher to record whether access to the content requires p
     <free-to-read/>
     <!-- … -->
     <license_ref>http://creativecommons.org/licenses/by/3.0/deed.en_US</license_ref>
+
+## Recording third party archive arrangements
+
+Funders may be concerned that publisher links to full-text content will become unavailable in exceptional circumstances. They may stipulate that content is archived with a third party archiving organization, and may even suggest a list of acceptable archive organizations with which documents should be archived.
+
+Publishers can record the archive arrangement or archive intention of a document using the `<archive_locations>` element in CrossRef deposit metadata. Any number of archive locations can be specified, for example a document may be archived with both `Portico` and `CLOCKSS`:
+
+    <archive_locations>
+	  <archive name="CLOCKSS"/>
+	  <archive name="Portico"/>
+    </archive_locations>
+
+CrossRef maintains a vocabulary of archive locations within the CrossRef deposit schema. The latest list of possible archive location values can be found in the documentation for the [ `<archive>` element ](http://www.crossref.org/schema/documentation/4.3.4/4.3.4.html#archive).
 
 ## Bonus points
 
