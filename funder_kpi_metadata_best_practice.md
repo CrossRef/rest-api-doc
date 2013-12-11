@@ -13,6 +13,7 @@
 - V08: 2013-11-04, Added FAQ about schema interpretation and usage
 - V09: 2013-12-02, Added XML deposit examples
 - v10: 2013-12-03, Updated `<free-to-read/>` element documentation to reflect latest NISO work. Added information about licensing CrossRef metadata to FAQ (hint, no license required for free APIs). Added labs email address. Changed formatting.
+- v11: 2013-12-11, Added third party archive arrangements section. Updated examples to include archive locations.
 
 ## Warning
 As of 2013–12–03 the `<free-to-read>` element has not yet been incorporated into the CrossRef deposit schema.
