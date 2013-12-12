@@ -402,7 +402,7 @@ pre .tex .formula {
 </tr>
 <tr>
 	<td style="text-align:left;"><code>offset={#}</code></td>
-	<td style="text-align:left;">page offset</td>
+	<td style="text-align:left;">result offset</td>
 </tr>
 <tr>
 	<td style="text-align:left;"><code>sample={#}</code></td>
@@ -494,19 +494,19 @@ pre .tex .formula {
 	<td style="text-align:left;">metadata that includes any <code>&lt;license_ref&gt;</code> elements.</td>
 </tr>
 <tr>
-	<td style="text-align:left;"><code>license.uri</code></td>
-	<td style="text-align:left;"><code>{uri}</code></td>
-	<td style="text-align:left;">metadata where <code>&lt;license_ref&gt;</code> value equals <code>{uri}</code></td>
+	<td style="text-align:left;"><code>license.url</code></td>
+	<td style="text-align:left;"><code>{url}</code></td>
+	<td style="text-align:left;">metadata where <code>&lt;license_ref&gt;</code> value equals <code>{url}</code></td>
 </tr>
 <tr>
-	<td style="text-align:left;"><code>license.content-version</code></td>
+	<td style="text-align:left;"><code>license.version</code></td>
 	<td style="text-align:left;"><code>{string}</code></td>
 	<td style="text-align:left;">metadata where the <code>&lt;license_ref&gt;</code>&#8217;s <code>applies_to</code> attribute is <code>{string}</code></td>
 </tr>
 <tr>
-	<td style="text-align:left;"><code>license.max-embargo-days</code></td>
+	<td style="text-align:left;"><code>license.delay</code></td>
 	<td style="text-align:left;"><code>{integer}</code></td>
-	<td style="text-align:left;">metadata where difference between publication date and the <code>&lt;license_ref&gt;</code>&#8217;s <code>start_date</code> attribute is &lt;= <code>{integer}</code></td>
+	<td style="text-align:left;">metadata where difference between publication date and the <code>&lt;license_ref&gt;</code>&#8217;s <code>start_date</code> attribute is &lt;= <code>{integer}</code> (in days)</td>
 </tr>
 <tr>
 	<td style="text-align:left;"><code>has-full-text</code></td>
@@ -514,12 +514,12 @@ pre .tex .formula {
 	<td style="text-align:left;">metadata that includes any full text <code>&lt;resource&gt;</code> elements.</td>
 </tr>
 <tr>
-	<td style="text-align:left;"><code>fulltext.content-version</code></td>
+	<td style="text-align:left;"><code>full-text.version</code></td>
 	<td style="text-align:left;"><code>{string}</code></td>
 	<td style="text-align:left;">metadata where <code>&lt;resource&gt;</code> element&#8217;s <code>content_version</code> attribute is <code>{string}</code>.</td>
 </tr>
 <tr>
-	<td style="text-align:left;"><code>fulltext.content-type</code></td>
+	<td style="text-align:left;"><code>full-text.type</code></td>
 	<td style="text-align:left;"><code>{mime_type}</code></td>
 	<td style="text-align:left;">metadata where <code>&lt;resource&gt;</code> element&#8217;s <code>content_type</code> attribute is <code>{mime_type}</code> (e.g. <code>application/pdf</code>).</td>
 </tr>

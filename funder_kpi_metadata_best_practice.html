@@ -181,6 +181,7 @@ pre .tex .formula {
 <li>V08: 2013&#8211;11&#8211;04, Added FAQ about schema interpretation and usage</li>
 <li>V09: 2013&#8211;12&#8211;02, Added XML deposit examples</li>
 <li>v10: 2013&#8211;12&#8211;03, Updated <code>&lt;free-to-read/&gt;</code> element documentation to reflect latest NISO work. Added information about licensing CrossRef metadata to FAQ (hint, no license required for free APIs). Added labs email address. Changed formatting.</li>
+<li>v11: 2013&#8211;12&#8211;11, Added third party archive arrangements section. Updated examples to include archive locations.</li>
 </ul>
 
 <h2 id="warning">Warning</h2>
@@ -234,6 +235,7 @@ CrossRef is extending its FundRef Application Programming Interfaces (APIs) to e
 <li>Publishers <strong>should</strong> record full text links to representations of the document that are made available for TDM. These may be the same or different to the &#8220;readable&#8221; versions of the document pointed to above.</li>
 <li>Where they are recording multiple versions of the document (e.g. AM &amp; VOR), the publisher <strong>should</strong> map licensing information to the specific resource versions.</li>
 <li>Publishers <strong>should</strong> record full text links to archived versions of the document identified by the CrossRef DOI.</li>
+<li>Publishers <strong>should</strong> record archive arrangements made with third party archiving organizations where the document identified by the CrossRef DOI is archived with the third party.</li>
 </ul>
 
 <p>In order to enhance the utility of CrossRef metadata to agencies and in order to enable more sophisticated agency/publisher KPIs:</p>
@@ -337,7 +339,7 @@ The <code>start_date</code> attribute can be combined with multiple <code>&lt;li
 
 <p>Note also that the publisher could theoretically choose only to deposit <code>&lt;resource&gt;</code> elements for full text representations once an embargo has ended. However, this approach may prove fraught, as any mistakes or delays in the redeposit process might lead the funding agency to believe that the publisher has not made the relevant content accessible at the end of the embargo period.</p>
 
-<p>Further detail on using the <code>&lt;resource&gt;</code> element for recording links to full text can be found on the <a href="http://prospectsupport.labs.crossref.org/full-text-uris-technical-details/">Prospect support site</a> and in the CrossRef deposit schema documentation for the <a href="http://www.crossref.org/schema/documentation/4.3.3/4_3_3.html#collection"> <code>&lt;collection&gt;</code> </a> and <a href="http://www.crossref.org/schema/documentation/4.3.3/4_3_3.html#resource"> <code>&lt;resource&gt;</code> </a> elements.</p>
+<p>Further detail on using the <code>&lt;resource&gt;</code> element for recording links to full text can be found on the <a href="http://prospectsupport.labs.crossref.org/full-text-uris-technical-details/">Prospect support site</a> and in the CrossRef deposit schema documentation for the <a href="http://www.crossref.org/schema/documentation/4.3.4/4.3.4.html#collection"> <code>&lt;collection&gt;</code> </a> and <a href="http://www.crossref.org/schema/documentation/4.3.4/4.3.4.html#resource"> <code>&lt;resource&gt;</code> </a> elements.</p>
 
 <h2 id="differentlicensesfordifferentversionsofthecontent">Different licenses for different versions of the content</h2>
 
@@ -383,7 +385,7 @@ The <code>start_date</code> attribute can be combined with multiple <code>&lt;li
 &lt;resource content_version=&quot;tdm&quot;&gt;http://www.psychoceramics.org/fulltext/tdm/10.5555/12345678.xml&lt;/resource&gt;
 </code></pre>
 
-<p>Detailed information on recording licensing information in CrossRef metadata can be found in the CrossRef schema documentation for the <a href="http://www.crossref.org/schema/documentation/4.3.3/AccessIndicators_xsd.html#license_ref"> <code>&lt;license_ref&gt;</code> </a> element.</p>
+<p>Detailed information on recording licensing information in CrossRef metadata can be found in the CrossRef schema documentation for the <a href="http://www.crossref.org/schema/documentation/4.3.4/AccessIndicators_xsd.html#license_ref"> <code>&lt;license_ref&gt;</code> </a> element.</p>
 
 <h2 id="librevsgratis">&#8220;Libre&#8221; vs &#8220;Gratis&#8221;</h2>
 
@@ -424,17 +426,31 @@ In order to allow a publisher to record whether access to the content requires p
 &lt;license_ref&gt;http://creativecommons.org/licenses/by/3.0/deed.en_US&lt;/license_ref&gt;
 </code></pre>
 
+<h2 id="recordingthirdpartyarchivearrangements">Recording third party archive arrangements</h2>
+
+<p>Funders may be concerned that publisher links to full-text content will become unavailable in exceptional circumstances. They may stipulate that content is archived with a third party archiving organization, and may even suggest a list of acceptable archive organizations with which documents should be archived.</p>
+
+<p>Publishers can record the archive arrangement or archive intention of a document using the <code>&lt;archive_locations&gt;</code> element in CrossRef deposit metadata. Any number of archive locations can be specified, for example a document may be archived with both <code>Portico</code> and <code>CLOCKSS</code>:</p>
+
+<pre><code>&lt;archive_locations&gt;
+  &lt;archive name=&quot;CLOCKSS&quot;/&gt;
+  &lt;archive name=&quot;Portico&quot;/&gt;
+&lt;/archive_locations&gt;
+</code></pre>
+
+<p>CrossRef maintains a vocabulary of archive locations within the CrossRef deposit schema. The latest list of possible archive location values can be found in the documentation for the <a href="http://www.crossref.org/schema/documentation/4.3.4/4.3.4.html#archive"> <code>&lt;archive&gt;</code> element </a>.</p>
+
 <h2 id="bonuspoints">Bonus points</h2>
 
 <p>The more metadata that publishers record for publications arising from agency funded research, the more useful that metadata will be to said agencies and the more value they will see from publishers. Where as the above sections details metadata elements that agencies will <strong>expect</strong> in order to be able to compile basic KPIs and offer portal services, additional metadata will allow agencies to create even more sophisticated KPIs and services. As such, publishers should seriously consider depositing the following additional metadata elements in their CrossRef deposits.</p>
 
 <h4 id="distributingstandardbibliographicmetadata">Distributing standard bibliographic metadata</h4>
 
-<p>Metadata deposited to CrossRef is made available freely via numerous CrossRef query APIs. However all deposited metadata is subject to opt-outs in the case of bulk distribution APIs and data dumps. In order to make sure that bibliographic metadata for publications arising from agency funding is maximally available, publishers <strong>should</strong> consider setting the value of the <code>&lt;metadata_distribution_opts&gt;</code> element for DOIs to <code>any</code>. Further details can be found in <a href="http://www.crossref.org/schema/documentation/4.3.3/NO_NAMESPACE.html#metadata_distribution_opts.att_metadata_distribution_opts">CrossRef&#8217;s schema documentation for the <code>&lt;metadata_distribution_opts&gt;</code> element.</a></p>
+<p>Metadata deposited to CrossRef is made available freely via numerous CrossRef query APIs. However all deposited metadata is subject to opt-outs in the case of bulk distribution APIs and data dumps. In order to make sure that bibliographic metadata for publications arising from agency funding is maximally available, publishers <strong>should</strong> consider setting the value of the <code>&lt;metadata_distribution_opts&gt;</code> element for DOIs to <code>any</code>. Further details can be found in <a href="http://www.crossref.org/schema/documentation/4.3.4/NO_NAMESPACE.html#metadata_distribution_opts.att_metadata_distribution_opts">CrossRef&#8217;s schema documentation for the <code>&lt;metadata_distribution_opts&gt;</code> element.</a></p>
 
 <h4 id="distributingreferences">Distributing references</h4>
 
-<p>References made in publications arising from agency funding can provide agencies with an overview of what literature is considered important in the fields that they fund. Many publishers deposit references to CrossRef as part of their participation CrossRef&#8217;s <a href="http://www.crossref.org/citedby/index.html">CitedBy</a> service. However, participation in CitedBy does not automatically make references available via CrossRef&#8217;s standard APIs. In order for publishers to distribute references along with standard bibliographic metadata, publishers need to set the <code>&lt;reference_distribution_opt&gt;</code> element to <code>any</code> for each DOI deposit where they want to make references openly available. By setting this element, references for the DOI will be distributed without restriction through all of CrossRefs APIs and bulk metadata dumps. Further details can be found in <a href="http://www.crossref.org/schema/documentation/4.3.3/4_3_3.html#reference_distribution_opts.att">CrossRef&#8217;s schema documentation for the <code>&lt;reference_distribution_opt&gt;</code> element.</a></p>
+<p>References made in publications arising from agency funding can provide agencies with an overview of what literature is considered important in the fields that they fund. Many publishers deposit references to CrossRef as part of their participation CrossRef&#8217;s <a href="http://www.crossref.org/citedby/index.html">CitedBy</a> service. However, participation in CitedBy does not automatically make references available via CrossRef&#8217;s standard APIs. In order for publishers to distribute references along with standard bibliographic metadata, publishers need to set the <code>&lt;reference_distribution_opt&gt;</code> element to <code>any</code> for each DOI deposit where they want to make references openly available. By setting this element, references for the DOI will be distributed without restriction through all of CrossRefs APIs and bulk metadata dumps. Further details can be found in <a href="http://www.crossref.org/schema/documentation/4.3.4/4.3.4.html#reference_distribution_opts.att">CrossRef&#8217;s schema documentation for the <code>&lt;reference_distribution_opt&gt;</code> element.</a></p>
 
 <h4 id="crossmark">CrossMark</h4>
 
@@ -446,11 +462,11 @@ In order to allow a publisher to record whether access to the content requires p
 
 <p>Many funding agencies are interested in building custom portals that highlight agency-funded research. In order to provide users of these portals with the best experience, agencies will want, where possible, to display abstracts of publications along with their standard bibliographic metadata.</p>
 
-<p>CrossRef supports the deposit of abstracts conforming to the <a href="http://jats.nlm.nih.gov/">JATS</a> abstract element. Further details can be found in the <a href="http://www.crossref.org/schema/documentation/4.3.3/JATS1.html#abstract">CrossRef Schema Documentation of the <code>&lt;abstract&gt;</code> element</a>.</p>
+<p>CrossRef supports the deposit of abstracts conforming to the <a href="http://jats.nlm.nih.gov/">JATS</a> abstract element. Further details can be found in the <a href="http://www.crossref.org/schema/documentation/4.3.4/JATS1.html#abstract">CrossRef Schema Documentation of the <code>&lt;abstract&gt;</code> element</a>.</p>
 
 <h4 id="orcids">ORCIDs</h4>
 
-<p><a href="http://www.orcid.org/">ORCID</a>s are unique identifiers for researchers. CrossRef supports the deposit of ORCIDs for authors. The presence of ORCIDs in CrossRef metadata will, in turn, allow agencies to tie agency funded research publications directly to researchers. Widespread use of ORCIDs in CrossRef deposits could even let agencies start to develop publication KPIs for researchers that they fund. Further details on CrossRef&#8217;s ORCID support can be found in the <a href="http://www.crossref.org/schema/documentation/4.3.3/4_3_3.html#ORCID">CrossRef Schema Documentation of the <code>&lt;ORCID&gt;</code> element</a></p>
+<p><a href="http://www.orcid.org/">ORCID</a>s are unique identifiers for researchers. CrossRef supports the deposit of ORCIDs for authors. The presence of ORCIDs in CrossRef metadata will, in turn, allow agencies to tie agency funded research publications directly to researchers. Widespread use of ORCIDs in CrossRef deposits could even let agencies start to develop publication KPIs for researchers that they fund. Further details on CrossRef&#8217;s ORCID support can be found in the <a href="http://www.crossref.org/schema/documentation/4.3.4/4.3.4.html#ORCID">CrossRef Schema Documentation of the <code>&lt;ORCID&gt;</code> element</a></p>
 
 <h2 id="frequentlyaskedquestions">Frequently Asked Questions</h2>
 
@@ -478,7 +494,7 @@ In order to allow a publisher to record whether access to the content requires p
 
 <h3 id="fulldeposits">Full Deposits</h3>
 
-<p>Full deposits use the <a href="http://www.crossref.org/schema/deposit/crossref4.3.3.xsd">standard deposit schema</a>.</p>
+<p>Full deposits use the <a href="http://www.crossref.org/schema/deposit/crossref4.3.4.xsd">standard deposit schema</a>.</p>
 
 <ul>
 <li><a href="examples/full.xml">Full deposit</a></li>
