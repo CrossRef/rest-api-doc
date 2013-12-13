@@ -11,6 +11,7 @@
 - v6: 2013-10-01, corrected warning date
 - v7: 2013-10-02, fixed typos
 - v8: 2013-10-17, updated warning. Added email address
+- v9: 2013-12-13, update example urls
 
 ## Background
 
@@ -111,9 +112,6 @@ Resource components can be used in conjunction with identifiers to retrieve the 
 | `/works/{doi}`              | returns metadata for the specified CrossRef DOI. |
 | `/funders/{funder_id}`      | returns metadata for specified funder **and** its suborganizations |
 | `/publishers/{owner_prefix}` | returns metadata for the specified publisher. |
-
-Note that search queries on /publishers is not yet supported, however seach queries on /works and /funders
-are fully supported.
 
 ### Combining resource components
 
