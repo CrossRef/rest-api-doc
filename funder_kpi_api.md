@@ -12,6 +12,7 @@
 - v7: 2013-10-02, fixed typos
 - v8: 2013-10-17, updated warning. Added email address
 - v9: 2013-12-13, update example urls
+- v10: 2013-12-13, /types routes, type filter, issn filter
 
 ## Background
 
@@ -99,9 +100,10 @@ These can be used alone like this
 
 | resource      | description                       |
 |:--------------|:----------------------------------|
-| `/works`      | returns a list of all works (journal articles, conference proceedings, books, components, etc), 20 per page.
+| `/works`      | returns a list of all works (journal articles, conference proceedings, books, components, etc), 20 per page
 | `/funders`    | returns a list of all funders in the [FundRef Registry](http://www.crossref.org/fundref/fundref_registry.html)
-| `/publishers` |r eturns a list of all publishers.|
+| `/publishers` | returns a list of all publishers|
+| `/types`      | returns a list of valid work types | 
 
 
 ### Resource components and identifiers
@@ -111,7 +113,8 @@ Resource components can be used in conjunction with identifiers to retrieve the 
 |:----------------------------|:----------------------------------|
 | `/works/{doi}`              | returns metadata for the specified CrossRef DOI. |
 | `/funders/{funder_id}`      | returns metadata for specified funder **and** its suborganizations |
-| `/publishers/{owner_prefix}` | returns metadata for the specified publisher. |
+| `/publishers/{owner_prefix}` | returns metadata for the specified publisher |
+| `/types/{type_id}` | returns information about a metadata work type |
 
 ### Combining resource components
 
@@ -121,6 +124,7 @@ The works component can be appended to other resources.
 |:----------------------------|:----------------------------------|
 | `/works/{doi}`      | returns information about the specified CrossRef `DOI` |
 | `/funders/{funder_id}/works`| returns list of works associated with the specified `funder_id` |
+| `/types/{type}/works` | returns list of works of type `type` |
 | `/publishers/{owner_prefix}/works` | returns list of works associated with specified `owner_prefix` |
 
 
@@ -191,6 +195,8 @@ Filters allow you to narrow queries. All filter results are lists.  The followin
 | `archive` | `{string}` | metadata which where value of archive partner is `{string}`[^*] |
 | `has-orcid` | | metadata which includes one or more ORCIDs |
 | `orcid` | `{orcid}` | metadata where `<orcid>` element's value = `{orcid}` |
+| `issn` | `{issn}` | metadata where record has an ISSN = `{issn}`. Format is `xxxx-xxxx`. |
+| `type` | `{type}` | metadata records whose type = `{type}`. Type must be an ID value from the list of types returned by the `/types` resource |
 
 [^*]: Not implemented yet.
 
