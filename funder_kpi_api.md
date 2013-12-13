@@ -112,13 +112,16 @@ Resource components can be used in conjunction with identifiers to retrieve the 
 | `/funders/{funder_id}`      | returns metadata for specified funder **and** its suborganizations |
 | `/publishers/{owner_prefix}` | returns metadata for the specified publisher. |
 
+Note that search queries on /publishers is not yet supported, however seach queries on /works and /funders
+are fully supported.
+
 ### Combining resource components
 
-Resource components can be combined to narrow down selections.
+The works component can be appended to other resources.
 
 | resource                    | description                       |
 |:----------------------------|:----------------------------------|
-| `/works/{doi}/funders`      | returns list of funders associated with the specified CrossRef `DOI` |
+| `/works/{doi}`      | returns information about the specified CrossRef `DOI` |
 | `/funders/{funder_id}/works`| returns list of works associated with the specified `funder_id` |
 | `/publishers/{owner_prefix}/works` | returns list of works associated with specified `owner_prefix` |
 
@@ -135,13 +138,13 @@ Parameters can be used to query, filter and control the results returned by the 
 | `offset={#}`                 | result offset |                         
 | `sample={#}`                 | return random N results |
 
+Multiple filters can be specified by separating name:value pairs with a comma:
 
-
-
+    http://api.crossref.org/works?filter=has-orcid:true,from-pub-date:2004-04-04
 
 ### Example query using URI parameters
 
-    http://api.crossref.org/funders/100000015/works?query=electron+pairs&filter=has-orcid:true&rows=1
+    http://api.crossref.org/funders/100000015/works?query=global+state&filter=has-orcid:true&rows=1
 
 ### Example query using JSON in body of GET request
 
@@ -185,7 +188,7 @@ Filters allow you to narrow queries. All filter results are lists.  The followin
 | `has-full-text` |  | metadata that includes any full text `<resource>` elements. |
 | `full-text.version` | `{string}`  | metadata where `<resource>` element's `content_version` attribute is `{string}`. |
 | `full-text.type` | `{mime_type}`  | metadata where `<resource>` element's `content_type` attribute is `{mime_type}` (e.g. `application/pdf`). |
-| `public-references` | | metadata where publishers allow references to be distributed publically. |
+| `public-references` | | metadata where publishers allow references to be distributed publically. [^*] |
 | `has-archive` | | metadata which include name of archive partner[^*] |
 | `archive` | `{string}` | metadata which where value of archive partner is `{string}`[^*] |
 | `has-orcid` | | metadata which includes one or more ORCIDs |
@@ -219,9 +222,9 @@ The maximum number rows you can ask for in one query is `1000`.
 
 ### Offset
 
-The number of returned items is controlled by the `rows` parameter, but you can select the `Nth` set of `rows` by using the `offset` parameter.  So, for example, to select the second set of 5 results (i.e. results 6 through 10), you would do the following:
+The number of returned items is controlled by the `rows` parameter, but you can select the offset into the result list by using the `offset` parameter.  So, for example, to select the second set of 5 results (i.e. results 6 through 10), you would do the following:
 
-    http://api.crossref.org/works?query=allen+renear&rows=5&offset=2
+    http://api.crossref.org/works?query=allen+renear&rows=5&offset=5
     
 ### Sample
 
@@ -236,25 +239,25 @@ Note that when you use the `sample` parameter, the `rows` and `offset` parameter
 
 **All works published by owner prefix `10.1016` in January 2010**
 
-    http://api.crossref.org/publishers/10.5555/works?filter=from-pub-date:2010-01,until-pub-date:2010-01
+    http://api.crossref.org/publishers/10.1016/works?filter=from-pub-date:2010-01,until-pub-date:2010-01
 
 **All works funded by funder_id that have a CC-BY license**
 
-    http://api.crossref.org/publishers/10.5555/works?filter=license.uri:http://creativecommons.org/licenses/by/3.0/deed.en_US
+    http://api.crossref.org/publishers/10.5555/works?filter=license.url:http://creativecommons.org/licenses/by/3.0/deed.en_US
 
-**All works published by owner prefix 10.5555 in February 2015 that have a CC-BY license**
+**All works published by owner prefix 10.5555 from February 2010 to February 2013 that have a CC-BY license**
 
-    http://api.crossref.org/publishers/10.5555/works?filter=license.uri:http://creativecommons.org/licenses/by/3.0/deed.en_US,from-pub-date:2015-02,until-pub-date:2015-02
+    http://api.crossref.org/publishers/10.5555/works?filter=license.url:http://creativecommons.org/licenses/by/3.0/deed.en_US,from-pub-date:2010-02,until-pub-date:2013-02
 
-**All works funded by `10.13039/100005235` where license = CC-BY and embargo <= 365 days**
+**All works funded by `10.13039/100000015` where license = CC-BY and embargo <= 365 days**
 
-    http://api.crossref.org/funders/10.13039/100005235/works?filter=license.uri:http://creativecommons.org/licenses/by/3.0/deed.en_US,license.max-embargo-days:365
+    http://api.crossref.org/funders/10.13039/100000015/works?filter=license.url:http://creativecommons.org/licenses/by/3.0/deed.en_US,license.delay:365
 
+Note that the filters for license URL and maximum license embargo period (license.url and license.delay) combine to filter each document's metadata for a license with both of these properties.
 
 **All works funded by X where the archive partner listed = 'LOCKSS'**
 
 Coming soon.
-
 
 
 ## Versioning
@@ -287,6 +290,8 @@ If you need to tie your implementation to a specific major version of the API, y
 Minor version numbers will be ignored in `ACCEPT` headers as they are by definition backwards compatible.
 
 If you omit a specific version in your `ACCEPT` header, the system will default to using the latest version of the API. 
+
+Note that requesting a version of the API via content type is not yet supported.
 
 ## Error messages
 
