@@ -180,6 +180,7 @@ pre .tex .formula {
 <li>v6: 2013&#8211;10&#8211;01, corrected warning date</li>
 <li>v7: 2013&#8211;10&#8211;02, fixed typos</li>
 <li>v8: 2013&#8211;10&#8211;17, updated warning. Added email address</li>
+<li>v9: 2013&#8211;12&#8211;13, update example urls</li>
 </ul>
 
 <h2 id="background">Background</h2>
@@ -340,7 +341,7 @@ pre .tex .formula {
 </table>
 <h3 id="combiningresourcecomponents">Combining resource components</h3>
 
-<p>Resource components can be combined to narrow down selections.</p>
+<p>The works component can be appended to other resources.</p>
 
 <table>
 <colgroup>
@@ -357,8 +358,8 @@ pre .tex .formula {
 
 <tbody>
 <tr>
-	<td style="text-align:left;"><code>/works/{doi}/funders</code></td>
-	<td style="text-align:left;">returns list of funders associated with the specified CrossRef <code>DOI</code></td>
+	<td style="text-align:left;"><code>/works/{doi}</code></td>
+	<td style="text-align:left;">returns information about the specified CrossRef <code>DOI</code></td>
 </tr>
 <tr>
 	<td style="text-align:left;"><code>/funders/{funder_id}/works</code></td>
@@ -410,9 +411,14 @@ pre .tex .formula {
 </tr>
 </tbody>
 </table>
+<p>Multiple filters can be specified by separating name:value pairs with a comma:</p>
+
+<pre><code>http://api.crossref.org/works?filter=has-orcid:true,from-pub-date:2004-04-04
+</code></pre>
+
 <h3 id="examplequeryusinguriparameters">Example query using URI parameters</h3>
 
-<pre><code>http://api.crossref.org/funders/100000015/works?query=electron+pairs&amp;filter=has-orcid:true&amp;rows=1
+<pre><code>http://api.crossref.org/funders/100000015/works?query=global+state&amp;filter=has-orcid:true&amp;rows=1
 </code></pre>
 
 <h3 id="examplequeryusingjsoninbodyofgetrequest">Example query using JSON in body of GET request</h3>
@@ -526,12 +532,12 @@ pre .tex .formula {
 <tr>
 	<td style="text-align:left;"><code>public-references</code></td>
 	<td style="text-align:left;"></td>
-	<td style="text-align:left;">metadata where publishers allow references to be distributed publically.</td>
+	<td style="text-align:left;">metadata where publishers allow references to be distributed publically. <a href="#fn:1" id="fnref:1" title="see footnote" class="footnote">[1]</a></td>
 </tr>
 <tr>
 	<td style="text-align:left;"><code>has-archive</code></td>
 	<td style="text-align:left;"></td>
-	<td style="text-align:left;">metadata which include name of archive partner<a href="#fn:1" id="fnref:1" title="see footnote" class="footnote">[1]</a></td>
+	<td style="text-align:left;">metadata which include name of archive partner<a href="#fn:1" title="see footnote" class="footnote">[1]</a></td>
 </tr>
 <tr>
 	<td style="text-align:left;"><code>archive</code></td>
@@ -578,9 +584,9 @@ pre .tex .formula {
 
 <h3 id="offset">Offset</h3>
 
-<p>The number of returned items is controlled by the <code>rows</code> parameter, but you can select the <code>Nth</code> set of <code>rows</code> by using the <code>offset</code> parameter. So, for example, to select the second set of 5 results (i.e. results 6 through 10), you would do the following:</p>
+<p>The number of returned items is controlled by the <code>rows</code> parameter, but you can select the offset into the result list by using the <code>offset</code> parameter. So, for example, to select the second set of 5 results (i.e. results 6 through 10), you would do the following:</p>
 
-<pre><code>http://api.crossref.org/works?query=allen+renear&amp;rows=5&amp;offset=2
+<pre><code>http://api.crossref.org/works?query=allen+renear&amp;rows=5&amp;offset=5
 </code></pre>
 
 <h3 id="sample">Sample</h3>
@@ -596,23 +602,25 @@ pre .tex .formula {
 
 <p><strong>All works published by owner prefix <code>10.1016</code> in January 2010</strong></p>
 
-<pre><code>http://api.crossref.org/publishers/10.5555/works?filter=from-pub-date:2010-01,until-pub-date:2010-01
+<pre><code>http://api.crossref.org/publishers/10.1016/works?filter=from-pub-date:2010-01,until-pub-date:2010-01
 </code></pre>
 
 <p><strong>All works funded by funder_id that have a CC-BY license</strong></p>
 
-<pre><code>http://api.crossref.org/publishers/10.5555/works?filter=license.uri:http://creativecommons.org/licenses/by/3.0/deed.en_US
+<pre><code>http://api.crossref.org/publishers/10.5555/works?filter=license.url:http://creativecommons.org/licenses/by/3.0/deed.en_US
 </code></pre>
 
-<p><strong>All works published by owner prefix 10.5555 in February 2015 that have a CC-BY license</strong></p>
+<p><strong>All works published by owner prefix 10.5555 from February 2010 to February 2013 that have a CC-BY license</strong></p>
 
-<pre><code>http://api.crossref.org/publishers/10.5555/works?filter=license.uri:http://creativecommons.org/licenses/by/3.0/deed.en_US,from-pub-date:2015-02,until-pub-date:2015-02
+<pre><code>http://api.crossref.org/publishers/10.5555/works?filter=license.url:http://creativecommons.org/licenses/by/3.0/deed.en_US,from-pub-date:2010-02,until-pub-date:2013-02
 </code></pre>
 
-<p><strong>All works funded by <code>10.13039/100005235</code> where license = CC-BY and embargo &lt;= 365 days</strong></p>
+<p><strong>All works funded by <code>10.13039/100000015</code> where license = CC-BY and embargo &lt;= 365 days</strong></p>
 
-<pre><code>http://api.crossref.org/funders/10.13039/100005235/works?filter=license.uri:http://creativecommons.org/licenses/by/3.0/deed.en_US,license.max-embargo-days:365
+<pre><code>http://api.crossref.org/funders/10.13039/100000015/works?filter=license.url:http://creativecommons.org/licenses/by/3.0/deed.en_US,license.delay:365
 </code></pre>
+
+<p>Note that the filters for license URL and maximum license embargo period (license.url and license.delay) combine to filter each document&#8217;s metadata for a license with both of these properties.</p>
 
 <p><strong>All works funded by X where the archive partner listed = &#8216;LOCKSS&#8217;</strong></p>
 
@@ -650,6 +658,8 @@ pre .tex .formula {
 <p>Minor version numbers will be ignored in <code>ACCEPT</code> headers as they are by definition backwards compatible.</p>
 
 <p>If you omit a specific version in your <code>ACCEPT</code> header, the system will default to using the latest version of the API. </p>
+
+<p>Note that requesting a version of the API via content type is not yet supported.</p>
 
 <h2 id="errormessages">Error messages</h2>
 
