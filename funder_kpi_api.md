@@ -182,8 +182,12 @@ Filters allow you to narrow queries. All filter results are lists.  The followin
 | `publisher` | `{owner_prefix}` | metadata belongs to published identified by `{owner_prefix}` (e.g. `10.1016` ) |
 | `from-index-date` | `{date}` | metadata indexed since (inclusive) `{date}` |
 | `until-index-date` | `{date}` | metadata indexed before (inclusive) `{date}` |
-| `from-update-date` | `{date}` | metadata updated since (inclusive) `{date}` |
-| `until-update-date` | `{date}` | metadata updated before (inclusive) `{date}` |
+| `from-deposit-date` | `{date}` | metadata last (re)deposited since (inclusive) `{date}` |
+| `until-deposit-date` | `{date}` | metadata last (re)deposited before (inclusive) `{date}` |
+| `from-update-date` | `{date}` | Metadata updated since (inclusive) `{date}`. Currently the same as `from-deposit-date`. |
+| `until-update-date` | `{date}` | Metadata updated before (inclusive) `{date}`. Currently the same as `until-deposit-date`. |
+| `from-first-deposit-date` | `{date}` | metadata first deposited since (inclusive) `{date}` [^*] |
+| `until-first-deposit-date` | `{date}` | metadata first deposited before (inclusive) `{date}` [^*] |
 | `from-pub-date` | `{date}` | metadata where published date is since (inclusive) `{date}` |
 | `until-pub-date` | `{date}` | metadata where published date is before (inclusive)  `{date}` |
 | `has-license` | | metadata that includes any `<license_ref>` elements. |
