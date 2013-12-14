@@ -13,6 +13,7 @@
 - v8: 2013-10-17, updated warning. Added email address
 - v9: 2013-12-13, update example urls
 - v10: 2013-12-13, /types routes, type filter, issn filter
+- v11: 2013-12-14, indexed timestamps, has-archive and archive implemented
 
 ## Background
 
@@ -179,6 +180,8 @@ Filters allow you to narrow queries. All filter results are lists.  The followin
 |:-----------|:----------------|:-----------|
 | `funder` | `{funder_id}` | metadata which include the `{funder_id}` in FundRef data |
 | `publisher` | `{owner_prefix}` | metadata belongs to published identified by `{owner_prefix}` (e.g. `10.1016` ) |
+| `from-index-date` | `{date}` | metadata indexed since (inclusive) `{date}` |
+| `until-index-date` | `{date}` | metadata indexed before (inclusive) `{date}` |
 | `from-update-date` | `{date}` | metadata updated since (inclusive) `{date}` |
 | `until-update-date` | `{date}` | metadata updated before (inclusive) `{date}` |
 | `from-pub-date` | `{date}` | metadata where published date is since (inclusive) `{date}` |
@@ -191,8 +194,8 @@ Filters allow you to narrow queries. All filter results are lists.  The followin
 | `full-text.version` | `{string}`  | metadata where `<resource>` element's `content_version` attribute is `{string}`. |
 | `full-text.type` | `{mime_type}`  | metadata where `<resource>` element's `content_type` attribute is `{mime_type}` (e.g. `application/pdf`). |
 | `public-references` | | metadata where publishers allow references to be distributed publically. [^*] |
-| `has-archive` | | metadata which include name of archive partner[^*] |
-| `archive` | `{string}` | metadata which where value of archive partner is `{string}`[^*] |
+| `has-archive` | | metadata which include name of archive partner |
+| `archive` | `{string}` | metadata which where value of archive partner is `{string}` |
 | `has-orcid` | | metadata which includes one or more ORCIDs |
 | `orcid` | `{orcid}` | metadata where `<orcid>` element's value = `{orcid}` |
 | `issn` | `{issn}` | metadata where record has an ISSN = `{issn}`. Format is `xxxx-xxxx`. |
@@ -207,6 +210,14 @@ The prefix of a CrossRef DOI does **NOT** indicate who currently owns the DOI. I
 ### Notes on dates
 
 Note that dates in filters should always be of the form `YYYY-MM-DD`. Also not that date information in CrossRef metadata can often be incomplete. So, for example, a publisher may only include the year and month of publication for a journal article. For a monograph they might just include the year. In these cases the API selects the earliest possible date given the information provided. So, for instance, if the publisher only provided 2013-02 as the published date, then the date would be treated as 2013-02-01. Similarly, if the publisher only provided the year 2013 as the date, it would be treated at 2013-01-01. 
+
+### Notes on incremental metadata updates
+
+When using time filters to retrieve periodic, incremental metadata updates,
+the `from-index-date` filter should be used over `from-update-date`,
+`from-deposit-date`, `from-first-deposit-date` and `from-pub-date`. The
+timestamp that `from-index-date` filters on is guaranteed to be updated
+every time there is a change to metadata requiring a reindex.
 
 ## Result controls
 
