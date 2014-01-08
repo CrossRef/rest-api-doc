@@ -2,6 +2,10 @@
 
 # Content Syndication Through CrossRef Metadata
 
+## Version History
+
+- V1 2014-01-08, Initial draft
+
 ## The Problem
 
 There is concern that the CrossRef schema does not give enough information to users about which resources are appropriate for different user classes and/or applications. For example, a publisher might want to be able to provide different lists of resources for the following use cases:
