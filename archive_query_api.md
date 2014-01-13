@@ -40,13 +40,9 @@ by a DOI.
 ## DOI Query Path
 
 A query API implementor must provide a publicly-accessible DOI query path. The path must
-either accept a DOI as a query parameter named `doi`:
+either accept a DOI as a query parameter named `doi` to a HTTP path `/doi/status`:
 
-    http://anarchive.org/status?doi={DOI}
-
-or, alternatively, accept a DOI as part of a HTTP path:
-
-    http://anarchive.org/status/{DOI}
+    http://anarchive.org/doi/status?doi={DOI}
 
 ### DOI Syntax
 
@@ -64,29 +60,29 @@ client's `Accept` header is always ignored, and the only valid `Content-Type` re
 is `application/json`, or `application/json; charset=UTF-8`, where the charset value may
 be set to any value appropriate for the response body.
 
-A valid JSON response contains a `message-type` and the `message` itself. Two message types
-are specified:
-
-| Type | Meaining |
-|------|----------|
-| archive | Response to a successful DOI query |
-| error | Response to a failed DOI query |
-
-### Archive
-
-An archive message represents the archive state of the content associated with a given
-DOI. It can comprise of these properties:
+A valid JSON response contains a `status`, `message` and `doi`:
 
 | Name | Optional? | Value | Description |
 |------|-----------|-------|-------------|
+| status | No | HTTP status code | Must match the HTTP response status code. |
+| message | No | Any string | A human readable error or status message. May be empty. |
 | doi | No | A DOI without any adornment (`doi:` etc.) e.g. `10.5555/12345678` | The query DOI an archive response refers to. |
-| archived_at | Yes | A valid [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) date or date and time string | Date or date and time at which a copy of content was received for archiving. Omission of this element indicates that no archive copy has been received for the query DOI. |
-| archived_state | Yes | `dark` or `light` | Whether an archive copy is light or dark. Only valid if `archived_at` is present. |
-| archived_location | Yes | Any URL | Publicly accessible download location for the archive copy. Onlu valid if `archived_at` is present. |
 
-### Error
+### Archived Copies
 
-An error response contains a message with two required properties: `error_message` and `error_code`. `error_message` may contain a human readable explanation for any error (or, if that is not available, any additional information about the error). `error_code` must be set to the same value as the HTTP response code, which itself must be an HTTP error code in the 4xx or 5xx range.
+A JSON response may also contain archive information about one or more archived copies. No
+`copies` element, or an empty `copies` element, indicates that no archive copy has been
+received for the query DOI.
+
+Each `copies` entry may contain:
+
+| Name | Optional? | Value | Description |
+|------|-----------|-------|-------------|
+| received_at | No | A valid [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) date or date and time string | Date or date and time at which a copy of content was received for archiving. |
+| state | No | `dark` or `light` | Whether an archive copy is light or dark. |
+| location | Yes | Any URL | Publicly accessible download location for the archive copy. |
+| content_version | Yes | `am` or `vor` | Indicates that the archive copy is specifically a copy of the author accepted manuscript (`am`) or publisher version of record (`vor`). |
+| content_type | Yes | Any valid MIME type | The content type of the archive copy. |
 
 ### Response Headers
 
@@ -98,44 +94,64 @@ header, and in the case of a redirect must include a `Location` header.
 Response for a DOI whose content has been received by the archive, but is currently dark:
 
     {
-	  "message-type": "archive",
-	  "message": {
-	    "doi": "10.5555/12345678"
-	    "archived_at": "2014-01-13T12:24Z",
-		"archived_state": "dark"
-      }
+      "status": 200,
+	  "message": "",
+      "doi": "10.5555/12345678",
+	  "copies": [
+	    {
+	      "received_at": "2014-01-13T12:24Z",
+		  "state": "dark",
+		  "content_version": "am",
+		  "content_type": "application/pdf"
+	    },
+		{
+		  "received_at": "2014-01-13T12:24Z",
+		  "state": "dark",
+		  "content_version": "vor",
+		  "content_type": "text/xml"
+	    }
+	  ]
 	}
 
 Response for a DOI whose content has not been received by the archive:
 
     {
-      "message-type": "archive",
-	  "message": {
-	    "doi": "10.5555/12345678"
-	  }
+      "status": 200,
+	  "message": ""
+	  "doi": "10.5555/12345678",
+	  "copies": []
 	}
 
 Response for a DOI whose content has been received by the archive and for which there
 has been a trigger event, making the content become light:
 
     {
-	  "message-type": "archive",
-	  "message": {
-        "doi": "10.5555/12345678",
-		"archived_at": "2014-01-13T12:24Z",
-		"archived_state": "light",
-		"archived_location": "http://anarchive.org/archive/10.5555/12345678"
-	  }
-	}
+      "status": 200,
+	  "message": "",
+      "doi": "10.5555/12345678",
+	  "copies": [
+	    {
+	      "received_at": "2014-01-13T12:24Z",
+		  "state": "dark",
+		  "content_version": "am",
+		  "content_type": "application/pdf",
+		  "location": "http://anarchive.org/content/am/10.5555/12345678.pdf"
+	    },
+		{
+		  "received_at": "2014-01-13T12:24Z",
+		  "state": "dark",
+		  "content_version": "vor",
+		  "content_type": "text/xml",
+          "location": "http://anarchive.org/content/vor/10.5555/12345678.xml"
+	    }
+	  ]
+  }
 
 An error response:
 
     {
-	  "message-type": "error",
-	  "message": {
-	    "error_message": "Upstream service is currently unavailable.",
-		"error_code": 506
-	  }
+	  "status": 506,
+	  "message": "Upstream service is currently unavailable."
 	}
 
 ### Response Codes
