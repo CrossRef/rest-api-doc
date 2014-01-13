@@ -82,7 +82,7 @@ Each `copies` entry may contain:
 | state | No | `dark` or `light` | Whether an archive copy is light or dark. |
 | location | Yes | Any URL | Publicly accessible download location for the archive copy. |
 | content_version | Yes | `am` or `vor` | Indicates that the archive copy is specifically a copy of the author accepted manuscript (`am`) or publisher version of record (`vor`). |
-| content_type | Yes | Any valid MIME type | The content type of the archive copy. |
+| content_type | Yes | Any valid [media type](http://en.wikipedia.org/wiki/Internet_media_type) | The content type of the archive copy. |
 
 ### Response Headers
 
@@ -132,14 +132,14 @@ has been a trigger event, making the content become light:
 	  "copies": [
 	    {
 	      "received_at": "2014-01-13T12:24Z",
-		  "state": "dark",
+		  "state": "light",
 		  "content_version": "am",
 		  "content_type": "application/pdf",
 		  "location": "http://anarchive.org/content/am/10.5555/12345678.pdf"
 	    },
 		{
 		  "received_at": "2014-01-13T12:24Z",
-		  "state": "dark",
+		  "state": "light",
 		  "content_version": "vor",
 		  "content_type": "text/xml",
           "location": "http://anarchive.org/content/vor/10.5555/12345678.xml"
