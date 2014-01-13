@@ -70,7 +70,7 @@ A valid JSON response contains a `status`, `message` and `doi`:
 
 ### Archived Copies
 
-A JSON response may also contain archive information about one or more archived copies. No
+A JSON response may also contain the archive state one or more archive copies. No
 `copies` element, or an empty `copies` element, indicates that no archive copy has been
 received for the query DOI.
 
