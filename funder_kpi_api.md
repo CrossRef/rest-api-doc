@@ -14,6 +14,7 @@
 - v9: 2013-12-13, update example urls
 - v10: 2013-12-13, /types routes, type filter, issn filter
 - v11: 2013-12-14, indexed timestamps, has-archive and archive implemented
+- v12: 2014-01-06, directory filter
 
 ## Background
 
@@ -204,6 +205,7 @@ Filters allow you to narrow queries. All filter results are lists.  The followin
 | `orcid` | `{orcid}` | metadata where `<orcid>` element's value = `{orcid}` |
 | `issn` | `{issn}` | metadata where record has an ISSN = `{issn}`. Format is `xxxx-xxxx`. |
 | `type` | `{type}` | metadata records whose type = `{type}`. Type must be an ID value from the list of types returned by the `/types` resource |
+| `directory` | `{directory}` | metadata records whose article or serial are mentioned in the given `{directory}`. Currently the only supported value is `doaj`. |
 
 [^*]: Not implemented yet.
 
