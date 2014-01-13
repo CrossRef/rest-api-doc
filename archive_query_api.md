@@ -1,13 +1,13 @@
 Archive Arrangement Query API
 =============================
 
-# Change History
+## Change History
 
 | Date | Changes |
 |------|---------|
 | 2014-01-13 | Initial version |
 
-# Background
+## Background
 
 CrossRef metadata can record the archive arrangement for a piece of content. For example,
 a publisher may deposit copies of their published content with an archive organisation
@@ -37,7 +37,7 @@ To faciliate archive arrangement verification, a common query API is proposed th
 allows any third party to look up the archive state of a piece of content identified
 by a DOI.
 
-# DOI Query Path
+## DOI Query Path
 
 A query API implementor must provide a publicly-accessible DOI query path. The path must
 either accept a DOI as a query parameter named `doi`:
@@ -48,7 +48,7 @@ or, alternatively, accept a DOI as part of a HTTP path:
 
     http://anarchive.org/status/{DOI}
 
-## DOI Syntax
+### DOI Syntax
 
 The implementor must handle the issues of embedding DOIs within HTTP paths and query strings.
 Refer to the `Numbering` section of the [DOI Handbook](http://www.doi.org/doi_handbook/2_Numbering.html) for a detailed discussion of the syntax of DOIs. However, the important points are:
@@ -56,7 +56,7 @@ Refer to the `Numbering` section of the [DOI Handbook](http://www.doi.org/doi_ha
 - DOIs are case insensitive
 - DOIs can contain characters that are normally reserved characters within the HTTP specification
 
-# JSON Response
+## JSON Response
 
 The response to requests to the DOI query path should always be in the JSON representation
 mentioned below, regardless of the representation requested by the client. Therefore, the
@@ -72,7 +72,7 @@ are specified:
 | archive | Response to a successful DOI query |
 | error | Response to a failed DOI query |
 
-## Archive
+### Archive
 
 An archive message represents the archive state of the content associated with a given
 DOI. It can comprise of these properties:
@@ -84,16 +84,16 @@ DOI. It can comprise of these properties:
 | archived_state | Yes | `dark` or `light` | Whether an archive copy is light or dark. Only valid if `archived_at` is present. |
 | archived_location | Yes | Any URL | Publicly accessible download location for the archive copy. Onlu valid if `archived_at` is present. |
 
-## Error
+### Error
 
 An error response contains a message with two required properties: `error_message` and `error_code`. `error_message` may contain a human readable explanation for any error (or, if that is not available, any additional information about the error). `error_code` must be set to the same value as the HTTP response code, which itself must be an HTTP error code in the 4xx or 5xx range.
 
-## Response Headers
+### Response Headers
 
 A HTTP response to the DOI query path may contain any headers, but must include a `Content-Type`
 header, and in the case of a redirect must include a `Location` header.
 
-## Response Examples
+### Response Examples
 
 Response for a DOI whose content has been received by the archive, but is currently dark:
 
@@ -138,7 +138,7 @@ An error response:
 	  }
 	}
 
-# Response Codes
+### Response Codes
 
 Responses to the DOI query path should incorporate all appropriate HTTP error codes.
 Clients should expect to receive any valid HTTP response code, including redirects
