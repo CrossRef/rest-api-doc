@@ -150,7 +150,7 @@ has been a trigger event, making the content become light:
 An error response:
 
     {
-	  "status": 506,
+	  "status": 504,
 	  "message": "Upstream service is currently unavailable."
 	}
 
