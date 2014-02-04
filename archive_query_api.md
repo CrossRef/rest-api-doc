@@ -6,6 +6,7 @@ Archive Arrangement Query API
 | Date | Changes |
 |------|---------|
 | 2014-01-13 | Initial version |
+| 2014-02-04 | Fix some typos |
 
 ## Background
 
@@ -39,8 +40,7 @@ by a DOI.
 
 ## DOI Query Path
 
-A query API implementor must provide a publicly-accessible DOI query path. The path must
-either accept a DOI as a query parameter named `doi` to a HTTP path `/doi/status`:
+A query API implementor must provide a publicly-accessible DOI query path. The path must accept a DOI as a query parameter named `doi` to a HTTP path `/doi/status`:
 
     http://anarchive.org/doi/status?doi={DOI}
 
@@ -110,8 +110,8 @@ Response for a DOI whose content has been received by the archive, but is curren
 		  "content_version": "vor",
 		  "content_type": "text/xml"
 	    }
-	  ]
-	}
+      ]
+    }
 
 Response for a DOI whose content has not been received by the archive:
 
@@ -151,8 +151,9 @@ An error response:
 
     {
 	  "status": 504,
-	  "message": "Upstream service is currently unavailable."
-	}
+	  "message": "Upstream service is currently unavailable.",
+	  "doi": "10.5555/12345678"
+    }
 
 ### Response Codes
 
