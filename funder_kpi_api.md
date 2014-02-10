@@ -97,7 +97,8 @@ Major resource components supported by the CrossRef API are:
 
 - works
 - funders
-- publishers
+- members
+- prefixes
 
 These can be used alone like this
 
