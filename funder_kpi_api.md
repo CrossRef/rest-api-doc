@@ -105,7 +105,7 @@ These can be used alone like this
 |:--------------|:----------------------------------|
 | `/works`      | returns a list of all works (journal articles, conference proceedings, books, components, etc), 20 per page
 | `/funders`    | returns a list of all funders in the [FundRef Registry](http://www.crossref.org/fundref/fundref_registry.html)
-| `/publishers` | returns a list of all publishers|
+| `/members` | returns a list of all CrossRef members (mostly publishers) |
 | `/types`      | returns a list of valid work types | 
 
 
@@ -116,7 +116,8 @@ Resource components can be used in conjunction with identifiers to retrieve the 
 |:----------------------------|:----------------------------------|
 | `/works/{doi}`              | returns metadata for the specified CrossRef DOI. |
 | `/funders/{funder_id}`      | returns metadata for specified funder **and** its suborganizations |
-| `/publishers/{owner_prefix}` | returns metadata for the specified publisher |
+| `/prefixes/{owner_prefix}` | returns metadata for the DOI owner prefix |
+| `/members/{member_id}` | returns metadata for a CrossRef member |
 | `/types/{type_id}` | returns information about a metadata work type |
 
 ### Combining resource components
@@ -128,7 +129,8 @@ The works component can be appended to other resources.
 | `/works/{doi}`      | returns information about the specified CrossRef `DOI` |
 | `/funders/{funder_id}/works`| returns list of works associated with the specified `funder_id` |
 | `/types/{type}/works` | returns list of works of type `type` |
-| `/publishers/{owner_prefix}/works` | returns list of works associated with specified `owner_prefix` |
+| `/prefixes/{owner_prefix}/works` | returns list of works associated with specified `owner_prefix` |
+| `/members/{member_id}/works` | returns list of works associated with a CrossRef member (deposited by a CrossRef member) |
 
 
 ## Parameters
@@ -181,7 +183,8 @@ Filters allow you to narrow queries. All filter results are lists.  The followin
 | filter     | possible values | description|
 |:-----------|:----------------|:-----------|
 | `funder` | `{funder_id}` | metadata which include the `{funder_id}` in FundRef data |
-| `publisher` | `{owner_prefix}` | metadata belongs to published identified by `{owner_prefix}` (e.g. `10.1016` ) |
+| `prefix` | `{owner_prefix}` | metadata belonging to a DOI owner prefix `{owner_prefix}` (e.g. `10.1016` ) |
+| `member` | `{member_id}` | metadata belonging to a CrossRef member |
 | `from-index-date` | `{date}` | metadata indexed since (inclusive) `{date}` |
 | `until-index-date` | `{date}` | metadata indexed before (inclusive) `{date}` |
 | `from-deposit-date` | `{date}` | metadata last (re)deposited since (inclusive) `{date}` |
@@ -213,6 +216,8 @@ Filters allow you to narrow queries. All filter results are lists.  The followin
 ### Notes on owner prefixes
 
 The prefix of a CrossRef DOI does **NOT** indicate who currently owns the DOI. It only reflects who originally registered the DOI. CrossRef metadata has an **owner_prefix** element that records the current owner of the CrossRef DOI in question. 
+
+CrossRef also has member IDs for depositing organisations. A single member may control multiple owner prefixes, which in turn may control a number of DOIs. When looking at works published by a certain organisaton, member IDs and the member routes should be used.
 
 ### Notes on dates
 
