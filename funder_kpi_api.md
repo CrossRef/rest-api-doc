@@ -15,6 +15,7 @@
 - v10: 2013-12-13, /types routes, type filter, issn filter
 - v11: 2013-12-14, indexed timestamps, has-archive and archive implemented
 - v12: 2014-01-06, directory filter
+- v13: 2014-02-10, new `/members`, `/publishers` becomes `/prefixes`, new `member` filter, `publisher` filter becomes `prefix`
 
 ## Background
 
