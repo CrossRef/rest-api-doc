@@ -16,6 +16,7 @@
 - v11: 2013-12-14, indexed timestamps, has-archive and archive implemented
 - v12: 2014-01-06, directory filter
 - v13: 2014-02-10, new `/members`, `/publishers` becomes `/prefixes`, new `member` filter, `publisher` filter becomes `prefix`
+- v14: 2014-02-14, new `has-funder` filter.
 
 ## Background
 
@@ -76,14 +77,16 @@ Lists results can contain multiple entries. Searching or filtering typically ret
 - Items, which will will contain the items matching the query or filter. 
 
 
-Note that the "message-type" returned will differ from the mime-type. There are six message-types:
+Note that the "message-type" returned will differ from the mime-type:
 
 - funder (singleton)
-- publisher (singleton)
+- prefix (singleton)
+- member (singleton)
 - work (singleton)
-- work-result-list (list)
-- funder-result-list (list)
-- publisher-result-list (list) 
+- work-list (list)
+- funder-list (list)
+- prefix-list (list)
+- member-list (list)
 
 
 Normally, and API list result will return both the summary and the items. If you want to just retrieve the summary, you can do so by specifying that the number of rows returned should be zero. 
@@ -183,6 +186,7 @@ Filters allow you to narrow queries. All filter results are lists.  The followin
 
 | filter     | possible values | description|
 |:-----------|:----------------|:-----------|
+| `has-funder` | | metadata which includes one or more funder entry |
 | `funder` | `{funder_id}` | metadata which include the `{funder_id}` in FundRef data |
 | `prefix` | `{owner_prefix}` | metadata belonging to a DOI owner prefix `{owner_prefix}` (e.g. `10.1016` ) |
 | `member` | `{member_id}` | metadata belonging to a CrossRef member |
