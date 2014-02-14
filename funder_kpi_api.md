@@ -271,15 +271,15 @@ Note that when you use the `sample` parameter, the `rows` and `offset` parameter
 
 **All works published by owner prefix `10.1016` in January 2010**
 
-    http://api.crossref.org/publishers/10.1016/works?filter=from-pub-date:2010-01,until-pub-date:2010-01
+    http://api.crossref.org/prefixes/10.1016/works?filter=from-pub-date:2010-01,until-pub-date:2010-01
 
-**All works funded by funder_id that have a CC-BY license**
+**All works funded by `10.13039/100000001` that have a CC-BY license**
 
-    http://api.crossref.org/publishers/10.5555/works?filter=license.url:http://creativecommons.org/licenses/by/3.0/deed.en_US
+    http://api.crossref.org/funders/10.13039/100000001/works?filter=license.url:http://creativecommons.org/licenses/by/3.0/deed.en_US
 
 **All works published by owner prefix 10.5555 from February 2010 to February 2013 that have a CC-BY license**
 
-    http://api.crossref.org/publishers/10.5555/works?filter=license.url:http://creativecommons.org/licenses/by/3.0/deed.en_US,from-pub-date:2010-02,until-pub-date:2013-02
+    http://api.crossref.org/prefixes/10.5555/works?filter=license.url:http://creativecommons.org/licenses/by/3.0/deed.en_US,from-pub-date:2010-02,until-pub-date:2013-02
 
 **All works funded by `10.13039/100000015` where license = CC-BY and embargo <= 365 days**
 
@@ -287,9 +287,9 @@ Note that when you use the `sample` parameter, the `rows` and `offset` parameter
 
 Note that the filters for license URL and maximum license embargo period (license.url and license.delay) combine to filter each document's metadata for a license with both of these properties.
 
-**All works funded by X where the archive partner listed = 'LOCKSS'**
+**All works where the archive partner listed = 'LOCKSS'**
 
-Coming soon.
+    http://api.crossref.org/works?filter?archive=LOCKSS
 
 
 ## Versioning
