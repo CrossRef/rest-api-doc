@@ -17,6 +17,7 @@
 - v12: 2014-01-06, directory filter
 - v13: 2014-02-10, new `/members`, `/publishers` becomes `/prefixes`, new `member` filter, `publisher` filter becomes `prefix`
 - v14: 2014-02-14, new `has-funder` filter.
+- v15: 2014-02-27, new `/licenses` route
 
 ## Background
 
@@ -111,6 +112,7 @@ These can be used alone like this
 | `/funders`    | returns a list of all funders in the [FundRef Registry](http://www.crossref.org/fundref/fundref_registry.html)
 | `/members` | returns a list of all CrossRef members (mostly publishers) |
 | `/types`      | returns a list of valid work types | 
+| `/licenses`  | return a list of licenses applied to works in CrossRef metadata |
 
 
 ### Resource components and identifiers
@@ -290,7 +292,18 @@ Note that the filters for license URL and maximum license embargo period (licens
 **All works where the archive partner listed = 'LOCKSS'**
 
     http://api.crossref.org/works?filter?archive=LOCKSS
+    
+**All members with `hind` in their name (e.g. Hindawi)**
 
+    http://api.crossref.org/members?query=hind
+    
+**All licenses linked to works published by Elsevier**
+
+    http://api.crossref.org/licenses?filter=member:78
+    
+**All licenses applied to works published in the journal `Pathology Research International`**
+
+    http://api.crossref.org/licenses?filter=issn:2090-8091
 
 ## Versioning
 
