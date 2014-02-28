@@ -13,6 +13,10 @@ The following short examples show how the CrossRef REST API can be used to issue
 
     http://api.crossref.org/works?rows=0
 
+## What content types does CrossRef have?
+
+    http://api.crossref.org/types
+
 ## How many journal article DOIs does CrossRef have?
 
     http://api.crossref.org/types/journal-article/works?rows=0
