@@ -1,5 +1,14 @@
 # CrossRef API Koans
 
+## Version History
+
+- V1: 2014-02-26, first draft.
+- V2: 2014-02-28, added license examples
+
+## Overview
+
+The following short examples show how the CrossRef REST API can be used to issue sophisticated queries against the CrossRef system.
+
 ## How many DOI records does CrossRef have?
 
     http://api.crossref.org/works?rows=0
@@ -88,10 +97,41 @@
 
     http://api.crossref.org/members/78/works?filter=has-full-text:true&rows=0
     
-## What license types does Elssvier support?
+## What license types does Elsevier support?
 
     http://api.crossref.org/licenses?filter=member:78
 
+## Overview of Hindawi's particpation in CrossRef
+
+    http://api.crossref.org/members?query=hindawi
+
+### same as:
+
+    http://api.crossref.org/members/98
+    
+## How many works does Hindawi have?
+
+    http://api.crossref.org/members/98/works?rows=0
+
+## How many Hindawi works have license links?
+
+    http://api.crossref.org/members/98/works?filter=has-license:true&rows=0
+
+## How many Hindawi works have full text links
+
+    http://api.crossref.org/members/98/works?filter=has-full-text:true&rows=0
+    
+## What license types does Hindawi support?
+
+    http://api.crossref.org/licenses?filter=member:98
+    
+## What license type does the journal with a particular ISSN support
+
+    http://api.crossref.org/licenses?filter=issn:2090-8091
+
+## What licenses does a reasearcher with a particular ORCID publish under
+
+    http://api.crossref.org/licenses?filter=orcid:0000-0003-1340-5202
 
 
 
