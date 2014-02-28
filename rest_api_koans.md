@@ -85,7 +85,17 @@ Interesting. There is licnese information in there and full text links.
 
     http://api.crossref.org/works?filter=has-funder:true&rows=0
     
-It would be inetersting to drill-down and see specifics for CrossRef members
+## See how many Hindawi works have funder information
+
+    http://api.crossref.org/members/98/works?filter=has-funder:true&rows=0
+    
+  or
+    
+    http://api.crossref.org/works?filter=member:98,has-funder:true&rows=0
+    
+## See how many Elsevier works have funder information
+
+    http://api.crossref.org/member/78/works?filter=has-funder:true&rows=0
 
 ## How many member publishers CrossRef has
 
