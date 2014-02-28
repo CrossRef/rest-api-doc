@@ -33,9 +33,13 @@ But eventually you will probably want to start looking at metadata records
 
 ### Example 1
 
-### Example 2 
+    TBD
 
-And then you will want to start looking at metadata records that contain specific terms
+### Example 2
+
+    TBD
+
+And then you will want to start looking for metadata records that contain specific terms
 
 ### Example 1
 
