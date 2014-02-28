@@ -9,21 +9,53 @@
 
 The following short examples show how the CrossRef REST API can be used to issue sophisticated queries against the CrossRef system.
 
-## How many DOI records does CrossRef have?
+## Finding out what is in the CrossRef system
+
+You might start by wondering how much and what kinds of data exist in the CrossRef system.
+
+### How many DOI records does CrossRef have?
 
     http://api.crossref.org/works?rows=0
 
-## What content types does CrossRef have?
+### What content types does CrossRef have?
 
     http://api.crossref.org/types
 
-## How many journal article DOIs does CrossRef have?
+### How many journal article DOIs does CrossRef have?
 
     http://api.crossref.org/types/journal-article/works?rows=0
 
-## How many report DOIs does CrossRef have?
+### How many report DOIs does CrossRef have?
 
     http://api.crossref.org/types/journal-article/works?rows=0
+
+But eventually you will probably want to start looking at metadata records
+
+### Example 1
+
+### Example 2 
+
+And then you will want to start looking at metadata records that contain specific terms
+
+### Example 1
+
+    TDB
+   
+### Example 2
+
+    TBD
+
+So let's look at specific records
+
+### Example 1
+
+    TBD
+
+### Example 2
+
+    TBD
+
+Interesting. There is licnese information in there and full text links.
 
 ## How many works have license information?
 
@@ -41,17 +73,15 @@ The following short examples show how the CrossRef REST API can be used to issue
 
     http://api.crossref.org/licenses?rows=0
     
-## Show first 25 licneses (FIXME)
-
-    http://api.crossref.org/licenses?rows=25&offset=0
-
 ## How many works have a CC-BY license?
 
     http://api.crossref.org/works?rows=0&filter=license.url:http://creativecommons.org/licenses/by/3.0/
 
-## See how many works have funder information (coming soon)
+## See how many works have funder information
 
     http://api.crossref.org/works?filter=has-funder:true&rows=0
+    
+It would be inetersting to drill-down and see specifics for CrossRef members
 
 ## How many member publishers CrossRef has
 
@@ -69,7 +99,7 @@ The following short examples show how the CrossRef REST API can be used to issue
 
     http://api.crossref.org/members?query=hindawi
 
-### same as:
+though once you have a member ID ('98', in this case), you should use that instead. So above is the same as:
 
     http://api.crossref.org/members/98
 
