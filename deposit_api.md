@@ -33,7 +33,13 @@ However, the routes described in this documentation must be accessed over HTTPS:
 All routes described in this document require authentication using CrossRef member
 credentials. These must be supplied on each requests using the HTTP basic authentication
 scheme. Member credentials are provided in a HTTP header as described in
-[RFC2617](https://www.ietf.org/rfc/rfc2617.txt).
+[RFC2617](https://www.ietf.org/rfc/rfc2617.txt). To create an `Authorization` header:
+
+1. Create a string, "username:password"
+2. Base64 encode the username, password string
+3. Insert this bas64 string into an `Authorization` header:
+
+        Authorization: Basic {base64 encoded user:password pair}
 
 ## Making a Deposit
 
@@ -63,17 +69,23 @@ one of:
 
     POST /deposits?pingback={url_encoded_url}
 
-The deposit API can return information on completed or failed deposits to a user by making
-a HTTP request to a per-deposit defined URL. Use the `pingback` parameter to specify
-a URL encoded ping back URL. The user must specify a URL that will return
-a `200` HTTP status response on successfully accepting ping back information. If the deposit
-API receives any other HTTP status, or if the URL is unaccessible for any reason, the API will
-make repeated requests to the URL, following a pattern of exponential back off. The maximum number
-of request attempts the API will make is undefined.
+The deposit API can return information on completed or failed deposits to a
+user by making a HTTP request to a per-deposit defined URL. Use the `pingback`
+parameter to specify a URL encoded ping back URL. The user must specify a URL
+that will return a `200` HTTP status response on successfully accepting ping
+back information. If the deposit API receives any other HTTP status, or if the
+URL is unaccessible for any reason, the API will make repeated requests to the
+URL, following a pattern of exponential back off. The maximum number of request
+attempts the API will make is undefined.
 
 ## Listing Previous Deposits
 
     GET /deposits
+
+Requests to `/deposits` must be authenticated and made over HTTPS.
+
+List previous deposists. The list of deposits can be paged with the `rows` and
+`offset` query parameters (see the [CrossRef REST API documentation]()).
 
 ## Querying the Status of a Deposit
 
@@ -90,6 +102,8 @@ errors by making a GET request to the redirect URL returned when making a deposi
 
 Requests to `/deposits/{id}/data` must be authenticated and made over HTTPS.
 
-
+The original deposit XML may be retrieved using the `/deposits/{id}/data` route.
+The response `Content-Type` will match the content type specified when depositing
+the XML.
 
 
