@@ -8,12 +8,18 @@
 
 ## Background
 
-CrossRef provides two deposit mechanisms for our members and manuscript system vendors.
-The first is an API that can accept automated deposits of CrossRef metadata. This API
-has some deficiencies, including an inability to programatically track the status of
-a deposit, and an outdated system for
+CrossRef provides a deposit mechanisms for our members and manuscript system vendors.
+The current deposit mechanism provides a URL end-point that can accept deposits of
+CrossRef metadata. However, this mechanisn has some deficiencies, including:
 
-This API attempts to address deficiencies within the current CrossRef XML deposit API.
+- an inability to programatically track the status of a deposit
+- an outdated method of returning deposit results to a user (e-mail responses containing
+  success or failure notices)
+- no way of programatically querying for a historic list of deposits
+- no way of programatically retrieveing previously deposited XML.
+
+This docuemnt proposes a RESTful deposit API that attempts to address deficiencies
+within the current CrossRef XML deposit mechanism.
 
 ## Extension to the CrossRef REST API
 
@@ -85,7 +91,8 @@ attempts the API will make is undefined.
 Requests to `/deposits` must be authenticated and made over HTTPS.
 
 List previous deposists. The list of deposits can be paged with the `rows` and
-`offset` query parameters (see the [CrossRef REST API documentation]()).
+`offset` query parameters (see the
+[CrossRef REST API documentation](https://github.com/CrossRef/rest-api-doc/blob/master/funder_kpi_api.md)).
 
 ## Querying the Status of a Deposit
 
