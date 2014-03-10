@@ -178,8 +178,6 @@ Queries support a subset of [DisMax](https://wiki.apache.org/solr/DisMax), so, f
 or using JSON
 
     curl -X GET -H "Content-Type: application/json" -d '{"query": "renear -ontologies"}'  http://api.crossref.org/works
-    
-
 
 ## Filter Names
 
@@ -228,7 +226,7 @@ CrossRef also has member IDs for depositing organisations. A single member may c
 
 ### Notes on dates
 
-Note that dates in filters should always be of the form `YYYY-MM-DD`. Also not that date information in CrossRef metadata can often be incomplete. So, for example, a publisher may only include the year and month of publication for a journal article. For a monograph they might just include the year. In these cases the API selects the earliest possible date given the information provided. So, for instance, if the publisher only provided 2013-02 as the published date, then the date would be treated as 2013-02-01. Similarly, if the publisher only provided the year 2013 as the date, it would be treated at 2013-01-01. 
+Note that dates in filters should always be of the form `YYYY-MM-DD`, `YYYY-MM` or `YYYY`. Also not that date information in CrossRef metadata can often be incomplete. So, for example, a publisher may only include the year and month of publication for a journal article. For a monograph they might just include the year. In these cases the API selects the earliest possible date given the information provided. So, for instance, if the publisher only provided 2013-02 as the published date, then the date would be treated as 2013-02-01. Similarly, if the publisher only provided the year 2013 as the date, it would be treated at 2013-01-01. 
 
 ### Notes on incremental metadata updates
 

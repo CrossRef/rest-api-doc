@@ -34,7 +34,7 @@ However, the routes described in this documentation must be accessed over HTTPS:
 
     https://api.crossref.org
 
-## Authentication
+## Authorization
 
 All routes described in this document require authentication using CrossRef member
 credentials. These must be supplied on each requests using the HTTP basic authentication
@@ -93,6 +93,19 @@ Requests to `/deposits` must be authenticated and made over HTTPS.
 List previous deposists. The list of deposits can be paged with the `rows` and
 `offset` query parameters (see the
 [CrossRef REST API documentation](https://github.com/CrossRef/rest-api-doc/blob/master/funder_kpi_api.md)).
+
+The `/deposits` route also specifies some filters:
+
+| Filter | Possible Values | Description |
+|--------|-----------------|-------------|
+| status | One of `submitted`, `failed` or `completed` | Return only those deposits with given status |
+| from-submitted-date | Date | Return only those deposits that were deposited on or after the given date |
+| until-submitted-date | Date | Return only those deposits that were deposited on or before the given date |
+
+Dates should be of the form `YYYY-MM-DD`, `YYYY-MM` or `YYYY`.
+
+For more information on filters, including how to specify them, see the filters section
+in the [CrossRef REST API documentation](https://github.com/CrossRef/rest-api-doc/blob/master/funder_kpi_api.md).
 
 ## Querying the Status of a Deposit
 
