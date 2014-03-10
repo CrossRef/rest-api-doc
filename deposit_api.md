@@ -63,6 +63,18 @@ one of:
 
     POST /deposits?pingback={url_encoded_url}
 
+The deposit API can return information on completed or failed deposits to a user by making
+a HTTP request to a per-deposit defined URL. Use the `pingback` parameter to specify
+a URL encoded ping back URL. The user must specify a URL that will return
+a `200` HTTP status response on successfully accepting ping back information. If the deposit
+API receives any other HTTP status, or if the URL is unaccessible for any reason, the API will
+make repeated requests to the URL, following a pattern of exponential back off. The maximum number
+of request attempts the API will make is undefined.
+
+## Listing Previous Deposits
+
+    GET /deposits
+
 ## Querying the Status of a Deposit
 
     GET /deposits/{id}
