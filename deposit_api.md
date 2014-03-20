@@ -107,6 +107,10 @@ Dates should be of the form `YYYY-MM-DD`, `YYYY-MM` or `YYYY`.
 For more information on filters, including how to specify them, see the filters section
 in the [CrossRef REST API documentation](https://github.com/CrossRef/rest-api-doc/blob/master/funder_kpi_api.md).
 
+## Listing Previously Deposited DOIs
+
+    GET /deposits/dois
+
 ## Querying the Status of a Deposit
 
     GET /deposits/{id}
@@ -115,6 +119,35 @@ Requests to `/deposits/{id}` must be authenticated and made over HTTPS.
 
 Retrieve the status of a deposit, including submission status and details of any
 errors by making a GET request to the redirect URL returned when making a deposit.
+
+### Error Types
+
+| Major Type | Minor Type |
+|------------|------------|
+| submission | added-with-conflict |
+|            | version-older-than-last |
+|            | title-deleted-by-crossref-admin |
+|            | npe |
+|            | unique-doi |
+| permission | not-your-handle |
+|            | not-your-prefix |
+|            | not-your-title |
+|            | not-your-issn |
+| xml-syntax | malformed |
+|            | schema-validation-fail |
+|            | bad-character-data |
+|            | content-in-prolog |
+|            | bad-character-encoding |
+| xml-content | differing-prefixes |
+|             | invalid-year |
+|             | submission-version-is-null |
+
+## Querying the Deposit Status of a DOI
+
+    GET /deposits/dois/{url_encoded_doi}
+
+Get the deposit history of a DOI. Lists all successful or outstanding deposits
+for a DOI. Also provides a summary indicating whether or not 
 
 ## Retrieving Original Deposit Objects
 
@@ -125,5 +158,4 @@ Requests to `/deposits/{id}/data` must be authenticated and made over HTTPS.
 The original deposit XML may be retrieved using the `/deposits/{id}/data` route.
 The response `Content-Type` will match the content type specified when depositing
 the XML.
-
 
