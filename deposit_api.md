@@ -10,7 +10,7 @@
 
 CrossRef provides a deposit mechanisms for our members and manuscript system vendors.
 The current deposit mechanism provides a URL end-point that can accept deposits of
-CrossRef metadata. However, this mechanisn has some deficiencies, including:
+CrossRef metadata. However, this mechanism has some deficiencies, including:
 
 - an inability to programatically track the status of a deposit
 - an outdated method of returning deposit results to a user (e-mail responses containing
@@ -18,7 +18,7 @@ CrossRef metadata. However, this mechanisn has some deficiencies, including:
 - no way of programatically querying for a historic list of deposits
 - no way of programatically retrieveing previously deposited XML.
 
-This docuemnt proposes a RESTful deposit API that attempts to address deficiencies
+This document proposes a RESTful deposit API that attempts to address deficiencies
 within the current CrossRef XML deposit mechanism.
 
 ## Extension to the CrossRef REST API
@@ -58,7 +58,7 @@ checks against the deposit (for example, XML validation) succeed, a `303` redire
 will be returned with a `Location` header defining the deposit status query link:
 
     HTTP/1.1 303 See Other
-	Location: /deposits/1234-5678-1234-5678
+    Location: /deposits/1234-5678-1234-5678
 
 ### Specifying a Deposit Content Type
 
