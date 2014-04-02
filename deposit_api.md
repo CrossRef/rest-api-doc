@@ -115,6 +115,7 @@ The `/deposits` route also specifies some filters:
 | until-submitted-date | Date | Return only those deposits that were deposited on or before the given date |
 | doi | DOI | Return only those deposits that deposited against the given DOI |
 | test | One of `true`, `t`, `1`, `false`, `f`, `0` | Return only those deposits that are or are not test deposits. By default all deposits, both test and live, are returned. |
+| type| Content Type | Return only those deposits with the given content type (mime type) |
 
 Dates should be of the form `YYYY-MM-DD`, `YYYY-MM` or `YYYY`.
 
