@@ -105,15 +105,12 @@ The `/deposits` route also specifies some filters:
 | status | One of `submitted`, `failed` or `completed` | Return only those deposits with given status |
 | from-submitted-date | Date | Return only those deposits that were deposited on or after the given date |
 | until-submitted-date | Date | Return only those deposits that were deposited on or before the given date |
+| doi | DOI | Return only those deposits that deposited against the given DOI |
 
 Dates should be of the form `YYYY-MM-DD`, `YYYY-MM` or `YYYY`.
 
 For more information on filters, including how to specify them, see the filters section
 in the [CrossRef REST API documentation](https://github.com/CrossRef/rest-api-doc/blob/master/funder_kpi_api.md).
-
-## Listing Previously Deposited DOIs
-
-    GET /deposits/dois
 
 ## Querying the Status of a Deposit
 
@@ -148,10 +145,13 @@ errors by making a GET request to the redirect URL returned when making a deposi
 
 ## Querying the Deposit Status of a DOI
 
-    GET /deposits/dois/{url_encoded_doi}
+    GET /deposits?filter=doi:{url_encoded_doi}
 
-Get the deposit history of a DOI. Lists all successful or outstanding deposits
-for a DOI. Also provides a summary indicating whether or not 
+Get the deposit history of a DOI. Lists all deposits for a DOI. Useful to combile with
+other filters, such as status. For example, check if a given DOI has had a successful
+deposit. If it has, those deposits will be returned, if not, no results will return:
+
+    GET /deposits?filter=doi:{url_encoded_doi},status:completed
 
 ## Retrieving Original Deposit Objects
 
