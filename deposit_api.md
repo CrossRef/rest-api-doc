@@ -88,6 +88,14 @@ URL is unaccessible for any reason, the API will make repeated requests to the
 URL, following a pattern of exponential back off. The maximum number of request
 attempts the API will make is undefined.
 
+### Depositing a Test Deposit
+
+    POST /deposits?test=true
+
+Set the `test` paramter to `true`, `t` or `1` (any other value is considered false)
+to make a test deposit. Such a deposit will go through the normal deposit process
+but its contents will not be made live. By default, `test` is false.
+
 ## Listing Previous Deposits
 
     GET /deposits
@@ -106,6 +114,7 @@ The `/deposits` route also specifies some filters:
 | from-submitted-date | Date | Return only those deposits that were deposited on or after the given date |
 | until-submitted-date | Date | Return only those deposits that were deposited on or before the given date |
 | doi | DOI | Return only those deposits that deposited against the given DOI |
+| test | One of `true`, `t`, `1`, `false`, `f`, `0` | Return only those deposits that are or are not test deposits. By default all deposits, both test and live, are returned. |
 
 Dates should be of the form `YYYY-MM-DD`, `YYYY-MM` or `YYYY`.
 
