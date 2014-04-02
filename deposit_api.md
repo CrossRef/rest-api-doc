@@ -60,6 +60,10 @@ will be returned with a `Location` header defining the deposit status query link
     HTTP/1.1 303 See Other
     Location: /deposits/1234-5678-1234-5678
 
+Making a deposit with cURL:
+
+    $ curl -i -H "Content-Type: application/vnd.crossref.deposit+xml" -u username:password --data-binary @my-deposit.xml https://api.crossref.org/deposits
+
 ### Specifying a Deposit Content Type
 
 Deposits POSTed to `/deposits` _must_ specify a deposit content type. This is done
