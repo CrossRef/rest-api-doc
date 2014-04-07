@@ -64,6 +64,19 @@ Making a deposit with cURL:
 
     $ curl -i -H "Content-Type: application/vnd.crossref.deposit+xml" -u username:password --data-binary @my-deposit.xml https://api.crossref.org/deposits
 
+Deposits are modified slightly from the submitted form. This is to faciliate
+some of the features of this API. Deposit e-mail addresses are changed to an
+e-mail address where deposit notifications can be intercepted by this API.
+Deposit `batch ID`s are changed to match the deposit ID given out by the API.
+
+Deposits may be made where the e-mail and `batch ID` are left blank. However, the
+elements themselves must be present to pass schema validation.
+
+| XPath | Content change |
+|-------|----------------|
+| //head/doi_batch_id | Changed to match deposit resource ID (as in `/deposits/{ID}`) |
+| //head/email_address | Changed to `labs-notifications@crossref.org` |
+
 ### Specifying a Deposit Content Type
 
 Deposits POSTed to `/deposits` _must_ specify a deposit content type. This is done
