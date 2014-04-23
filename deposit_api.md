@@ -10,7 +10,7 @@
 
 CrossRef provides a deposit mechanisms for our members and manuscript system vendors.
 The current deposit mechanism provides a URL end-point that can accept deposits of
-CrossRef metadata. However, this mechanisn has some deficiencies, including:
+CrossRef metadata. However, this mechanism has some deficiencies, including:
 
 - an inability to programatically track the status of a deposit
 - an outdated method of returning deposit results to a user (e-mail responses containing
@@ -18,13 +18,13 @@ CrossRef metadata. However, this mechanisn has some deficiencies, including:
 - no way of programatically querying for a historic list of deposits
 - no way of programatically retrieveing previously deposited XML.
 
-This docuemnt proposes a RESTful deposit API that attempts to address deficiencies
+This document proposes a RESTful deposit API that attempts to address deficiencies
 within the current CrossRef XML deposit mechanism.
 
 ## Extension to the CrossRef REST API
 
 This document provides an extension to the CrossRef REST API, described
-[here](http://github.com/CrossRef/rest-api-doc/funder_api_doc.md). It uses the same
+[here](http://github.com/CrossRef/rest-api-doc/funder_kpi_api.md). It uses the same
 API versioning scheme, JSON response format and concepts of singular and listy
 responses. The base URI for this API is:
 
@@ -58,7 +58,24 @@ checks against the deposit (for example, XML validation) succeed, a `303` redire
 will be returned with a `Location` header defining the deposit status query link:
 
     HTTP/1.1 303 See Other
-	Location: /deposits/1234-5678-1234-5678
+    Location: /deposits/1234-5678-1234-5678
+
+Making a deposit with cURL:
+
+    $ curl -i -H "Content-Type: application/vnd.crossref.deposit+xml" -u username:password --data-binary @my-deposit.xml https://api.crossref.org/deposits
+
+Deposits are modified slightly from the submitted form. This is to faciliate
+some of the features of this API. Deposit e-mail addresses are changed to an
+e-mail address where deposit notifications can be intercepted by this API.
+Deposit `batch ID`s are changed to match the deposit ID given out by the API.
+
+Deposits may be made where the e-mail and `batch ID` are left blank. However, the
+elements themselves must be present to pass schema validation.
+
+| XPath | Content change |
+|-------|----------------|
+| //head/doi_batch_id | Changed to match deposit resource ID (as in `/deposits/{ID}`) |
+| //head/email_address | Changed to `labs-notifications@crossref.org` |
 
 ### Specifying a Deposit Content Type
 
@@ -84,6 +101,14 @@ URL is unaccessible for any reason, the API will make repeated requests to the
 URL, following a pattern of exponential back off. The maximum number of request
 attempts the API will make is undefined.
 
+### Depositing a Test Deposit
+
+    POST /deposits?test=true
+
+Set the `test` paramter to `true`, `t` or `1` (any other value is considered false)
+to make a test deposit. Such a deposit will go through the normal deposit process
+but its contents will not be made live. By default, `test` is false.
+
 ## Listing Previous Deposits
 
     GET /deposits
@@ -101,6 +126,9 @@ The `/deposits` route also specifies some filters:
 | status | One of `submitted`, `failed` or `completed` | Return only those deposits with given status |
 | from-submitted-date | Date | Return only those deposits that were deposited on or after the given date |
 | until-submitted-date | Date | Return only those deposits that were deposited on or before the given date |
+| doi | DOI | Return only those deposits that deposited against the given DOI |
+| test | One of `true`, `t`, `1`, `false`, `f`, `0` | Return only those deposits that are or are not test deposits. By default all deposits, both test and live, are returned. |
+| type| Content Type | Return only those deposits with the given content type (mime type) |
 
 Dates should be of the form `YYYY-MM-DD`, `YYYY-MM` or `YYYY`.
 
@@ -116,6 +144,38 @@ Requests to `/deposits/{id}` must be authenticated and made over HTTPS.
 Retrieve the status of a deposit, including submission status and details of any
 errors by making a GET request to the redirect URL returned when making a deposit.
 
+### Error Types
+
+| Major Type | Minor Type |
+|------------|------------|
+| submission | added-with-conflict |
+|            | version-older-than-last |
+|            | title-deleted-by-crossref-admin |
+|            | npe |
+|            | unique-doi |
+| permission | not-your-handle |
+|            | not-your-prefix |
+|            | not-your-title |
+|            | not-your-issn |
+| xml-syntax | malformed |
+|            | schema-validation-fail |
+|            | bad-character-data |
+|            | content-in-prolog |
+|            | bad-character-encoding |
+| xml-content | differing-prefixes |
+|             | invalid-year |
+|             | submission-version-is-null |
+
+## Querying the Deposit Status of a DOI
+
+    GET /deposits?filter=doi:{url_encoded_doi}
+
+Get the deposit history of a DOI. Lists all deposits for a DOI. Useful to combile with
+other filters, such as status. For example, check if a given DOI has had a successful
+deposit. If it has, those deposits will be returned, if not, no results will return:
+
+    GET /deposits?filter=doi:{url_encoded_doi},status:completed
+
 ## Retrieving Original Deposit Objects
 
     GET /deposits/{id}/data
@@ -125,5 +185,4 @@ Requests to `/deposits/{id}/data` must be authenticated and made over HTTPS.
 The original deposit XML may be retrieved using the `/deposits/{id}/data` route.
 The response `Content-Type` will match the content type specified when depositing
 the XML.
-
 
