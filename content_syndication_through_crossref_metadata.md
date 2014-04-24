@@ -1,5 +1,4 @@
 
-
 # Content Syndication Through CrossRef Metadata
 
 ## Version History
@@ -119,9 +118,9 @@ But this still leaves us with the question of how to provide the publisher to pr
     </doi_data>
 
     <!-- … -->
-    <license_ref applies_to="VOR" start_date="2014-02-03">http://www.psychoceramics.org/license_v1.html</license_ref>
-    <license_ref applies_to="VOR" start_date="2015-02-03">http://creativecommons.org/licenses/by/3.0/deed.en_US</license_ref>
-    <license_ref applies_to="AAM" start_date="2014-02-03">http://creativecommons.org/licenses/by/3.0/deed.en_US</license_ref>
+    <license_ref applies_to="vor" start_date="2014-02-03">http://www.psychoceramics.org/license_v1.html</license_ref>
+    <license_ref applies_to="vor" start_date="2015-02-03">http://creativecommons.org/licenses/by/3.0/deed.en_US</license_ref>
+    <license_ref applies_to="am" start_date="2014-02-03">http://creativecommons.org/licenses/by/3.0/deed.en_US</license_ref>
 
     <collection property="text-mining">
       <resource content_version="vor">
