@@ -43,7 +43,7 @@ Selecting the appropriate resource would seem to hinge on three criteria:
 - What is the desired application? Viewing, indexing, syndication, tdm?
 
 
-We have used the term "BAV" to describe the "Best Available Version."- where "version" refers to the [JAV](http://www.niso.org/publications/rp/RP-8-2008.pdf‎) version of a document (i.e. AAM, VOR). The idea is that some versions of the document (e.g. VOR) may be under restricted access (e.g. under embargo, require a subscription) and are thus "unavailable" to certain classes of user, while other versions of the document (e.g. AAM) are not under restrictions and are thus "available" to the respective class of user.
+We have used the term "BAV" to describe the "Best Available Version."- where "version" refers to the [JAV](http://www.niso.org/publications/rp/RP-8-2008.pdf) version of a document (i.e. AAM, VOR). The idea is that some versions of the document (e.g. VOR) may be under restricted access (e.g. under embargo, require a subscription) and are thus "unavailable" to certain classes of user, while other versions of the document (e.g. AAM) are not under restrictions and are thus "available" to the respective class of user.
 
 But the above use-cases introduce another facet that may need to be considered when selecting a resource- the "Appropriate Application Resource" (AAR). That is, the use-cases above imply that publishers might want to direct users at resources pointing to systems that are optimised to support a particular application. For example, a publisher might have a server that is reserved for search engines, another for syndication partners, etc.
 
