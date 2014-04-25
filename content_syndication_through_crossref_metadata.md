@@ -1,5 +1,5 @@
 
-# Intended Use Hints Through CrossRef Metadata
+# Resource Intended Use Hints Through CrossRef Metadata
 
 ## Version History
 
