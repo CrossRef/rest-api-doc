@@ -6,6 +6,7 @@
 - V1 2014-01-08, Initial draft
 - V2 2014-04-23, Add examples
 - V3 2014-04-24, Add 'any' collection property type
+- V4 2014-04-25, Incorporate suggestions from Evan Owens
 
 ## The Problem
 
@@ -19,9 +20,9 @@ The CrossRef schema does not give enough information to users about which resour
 - A bot run by a non-subscriber accessing the content to TDM
 - A bot run by an entitled funding agency accessing the content to TDM
 
-- A bot run by a subscriber accessing the content to syndicate
-- A bot run by a non-subscriber accessing the content to syndicate
-- A bot run by an entitled funding agency accessing the content to syndicate
+- A bot run by a subscriber accessing the content under a syndication agreement
+- A bot run by a non-subscriber accessing the content under a syndication agreement
+- A bot run by an entitled funding agency accessing the content under a syndication agreement
 
 In the above cases, the content in question might or be either "restricted" (e.g.  requiring a subscription to access) or "unrestricted" (open access, free). Furthermore, any restrictions may be time-boxed via embargoes. This effectively means that their are sub-cases where the desired behavior might change depending on when the user (bot or human) tries to access the content.
 
@@ -46,7 +47,7 @@ Selecting the appropriate resource would seem to hinge on three criteria:
 - What is the desired application? Viewing, indexing, syndication, tdm?
 
 
-We have used the term "BAV" to describe the "Best Available Version."- where "version" refers to the JATS version of a document (i.e. AAM, VOR). The idea is that some versions of the document (e.g. VOR) may be under restricted access (e.g. under embargo, require a subscription) and are thus "unavailable" to certain classes of user, while other versions of the document (e.g. AAM) are not under restrictions and are thus "available" to the respective class of user.
+We have used the term "BAV" to describe the "Best Available Version."- where "version" refers to the [JAV](www.niso.org/publications/rp/RP-8-2008.pdf‎) version of a document (i.e. AAM, VOR). The idea is that some versions of the document (e.g. VOR) may be under restricted access (e.g. under embargo, require a subscription) and are thus "unavailable" to certain classes of user, while other versions of the document (e.g. AAM) are not under restrictions and are thus "available" to the respective class of user.
 
 But the above use-cases introduce another facet that may need to be considered when selecting a resource- the "Appropriate Application Resource" (AAR). That is, the use-cases above imply that publishers might want to direct users at resources pointing to systems that are optimised to support a particular application. For example, a publisher might have a server that is reserved for search engines, another for syndication partners, etc.
 
@@ -122,11 +123,11 @@ But this still leaves us with the question of how to provide the publisher to pr
     <license_ref applies_to="am" start_date="2014-02-03">http://creativecommons.org/licenses/by/3.0/deed.en_US</license_ref>
 
     <collection property="text-mining">
-      <resource content_version="vor" content_type="application/pdf">
+      <resource content_version="vor" content_type="text/xml">
           http://marklogic.psychoceramics.org/fulltext/vor/10.5555/12345678.xml
       </resource>
       <resource content_version="am" content_type="application/pdf">
-          http://marklogic.psychoceramics.org/fulltext/am/10.5555/12345678.xml
+          http://docstore.psychoceramics.org/fulltext/am/10.5555/12345678.pdf
       </resource>
     </collection>
 
@@ -173,9 +174,6 @@ altogether by using the 'any' collection property:
     <collection property="any">
       <resource content_version="vor" content_type="text/xml">
           http://docstore.psychoceramics.org/fulltext/vor/10.5555/12345678.xml
-      </resource>
-      <resource content_version="am" content_type="text/xml">
-          http://docstore.psychoceramics.org/fulltext/am/10.5555/12345678.xml
       </resource>
 	  <resource content_version="vor" content_type="application/pdf">
         http://docstore.psychoceramics.org/fulltext/vor/10.5555/12345678.pdf
