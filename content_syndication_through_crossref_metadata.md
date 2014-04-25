@@ -1,10 +1,11 @@
 
-# Content Syndication Through CrossRef Metadata
+# Intended Use Hints Through CrossRef Metadata
 
 ## Version History
 
 - V1 2014-01-08, Initial draft
-  V2 2014-04-23, Add examples
+- V2 2014-04-23, Add examples
+- V3 2014-04-24, Add 'any' collection property type
 
 ## The Problem
 
@@ -91,7 +92,7 @@ But this still leaves us with the question of how to provide the publisher to pr
 
  The second two are encoded in the the `property` attribute of the `<collection>` container element. We currently support several values for this property, including `crawler-based` which was intended to be used to identify resources for search engines (i.e. indexing) and `text-mining` which has been introduced for resources designed for TDM bots. What seems to be missing is a value for "syndication." If we were to add a `syndication` attribute value then publishers would be able to record `/collection/resource` elements that meet all the use-cases identified above.  
 
- ## Putting it all together
+## Putting It All Together
 
  If we combine the concept of the BAV and the AAR, we can meet all of the requirements outlined at the start of this document.
 
@@ -105,9 +106,7 @@ But this still leaves us with the question of how to provide the publisher to pr
 6. That robots requesting the content for syndication (AAM or VOR) should look for the PDF on the server `docstore.psychoceramics.org`. Access will be restricted as per the publisher's access control system.
 7. That robots requesting the content for text and data mining (AAM or VOR) should look for the XML on the server `marklogic.psychoceramics.org`. Access will be restricted as per the publisher's access control system.
 
-
-
-### example
+### XML Example
 
     <doi_data>
         <doi>10.5555/12345678</doi>
@@ -123,39 +122,68 @@ But this still leaves us with the question of how to provide the publisher to pr
     <license_ref applies_to="am" start_date="2014-02-03">http://creativecommons.org/licenses/by/3.0/deed.en_US</license_ref>
 
     <collection property="text-mining">
-      <resource content_version="vor">
+      <resource content_version="vor" content_type="application/pdf">
           http://marklogic.psychoceramics.org/fulltext/vor/10.5555/12345678.xml
       </resource>
-      <resource content_version="am">
+      <resource content_version="am" content_type="application/pdf">
           http://marklogic.psychoceramics.org/fulltext/am/10.5555/12345678.xml
       </resource>
     </collection>
 
     <collection property="syndication">
-      <resource content_version="vor">
+      <resource content_version="vor" content_type="application/pdf">
         http://docstore.psychoceramics.org/fulltext/vor/10.5555/12345678.pdf
       </resource>
-      <resource content_version="am">
+      <resource content_version="am" content_type="application/pdf">
         http://docstore.psychoceramics.org/fulltext/am/10.5555/12345678.pdf
       </resource>
     </collection>
 
     <collection property="crawler-based">
         <item crawler="google">
-            <resource content_version="vor">
+            <resource content_version="vor" content_type="application/pdf">
                 http://docstore.psychoceramics.org/fulltext/vor/10.5555/12345678.pdf
             </resource>
         </item>
         <item crawler="scirus">
-            <resource content_version="vor">
+            <resource content_version="vor" content_type="application/pdf">
                 http://docstore.psychoceramics.org/fulltext/vor/10.5555/12345678.pdf
             </resource>
         </item>
     </collection>
 
+## An 'any' Use Type
 
+Some members will not want to provide intended use hints. These members can avoid repetition, and ignore intended use hints
+altogether by using the 'any' collection property:
 
+    <doi_data>
+		<doi>10.5555/12345678</doi>
+        <timestamp>20121025161509</timestamp>
+        <resource>
+          http://psychoceramics.labs.crossref.org/10.5555-12345678.html
+        </resource>
+    </doi_data>
 
+    <!-- … -->
+    <license_ref applies_to="vor" start_date="2014-02-03">http://www.psychoceramics.org/license_v1.html</license_ref>
+    <license_ref applies_to="vor" start_date="2015-02-03">http://creativecommons.org/licenses/by/3.0/deed.en_US</license_ref>
+    <license_ref applies_to="am" start_date="2014-02-03">http://creativecommons.org/licenses/by/3.0/deed.en_US</license_ref>
+
+    <collection property="any">
+      <resource content_version="vor" content_type="text/xml">
+          http://docstore.psychoceramics.org/fulltext/vor/10.5555/12345678.xml
+      </resource>
+      <resource content_version="am" content_type="text/xml">
+          http://docstore.psychoceramics.org/fulltext/am/10.5555/12345678.xml
+      </resource>
+	  <resource content_version="vor" content_type="application/pdf">
+        http://docstore.psychoceramics.org/fulltext/vor/10.5555/12345678.pdf
+      </resource>
+      <resource content_version="am" content_type="application/pdf">
+        http://docstore.psychoceramics.org/fulltext/am/10.5555/12345678.pdf
+      </resource>
+    </collection>
 
 ## Open Questions
 
@@ -164,12 +192,21 @@ We have suggested that the following values be used for AAR
 - crawler-based (search engines)
 - text-mining
 - syndication
+- any
 
 Are they enough?
 
-
- ## Limitations of proposed system
+## Limitations of Proposed System
 
 The hints provided in CrossRef metadata are just that, hints. There is nothing that CrossRef can do to force users to select an particular resource appropriate to their application. Thus, it is still going to be the responsibility of the publisher to check requests and to route them appropriately.
 
 We have made a tradeoff in implementation. We have not normalized the element/attribute combinations and, therefor therefor the suytem is quite verbose- particularly for the simplest case where a publisher wants to record the same resources for each AAR.
+
+## Access Control
+
+Intended use hints do not imply the existence or lack of access control. A publisher may choose to, or choose not to incorporate access control into links intended for text and data mining or content syndication. This follows the same situation for DOI resolution URLs, where some publishers place access control on some article landing pages. The decision to use or not use access control is left to the publisher, and will most likely be made after consideration of content licensing, collection of APCs, journal business model, government policy and participation in various industry-wide initiatives.
+
+## Removal of 'tdm' content_version
+
+This proposed system negates the need for a 'tdm' content version. An implementation of this proposal will also remove the 'tdm' option from
+the content_version resource attribute.
