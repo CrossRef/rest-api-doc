@@ -9,7 +9,7 @@
 
 ## The Problem
 
-There is concern that the CrossRef schema does not give enough information to users about which resources are appropriate for different user classes and/or applications. For example, a publisher might want to be able to provide different lists of resources for the following use cases:
+The CrossRef schema does not give enough information to users about which resources are appropriate for different user classes and/or applications. For example, a publisher might want to be able to provide different lists of resources for the following use cases:
 
 - A human subscriber accessing the content to read
 - A human non-subscriber accessing the content to read
@@ -199,8 +199,6 @@ Are they enough?
 ## Limitations of Proposed System
 
 The hints provided in CrossRef metadata are just that, hints. There is nothing that CrossRef can do to force users to select an particular resource appropriate to their application. Thus, it is still going to be the responsibility of the publisher to check requests and to route them appropriately.
-
-We have made a tradeoff in implementation. We have not normalized the element/attribute combinations and, therefor therefor the suytem is quite verbose- particularly for the simplest case where a publisher wants to record the same resources for each AAR.
 
 ## Access Control
 
