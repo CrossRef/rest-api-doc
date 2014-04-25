@@ -15,11 +15,9 @@ The CrossRef schema does not give enough information to users about which resour
 - A human subscriber accessing the content to read
 - A human non-subscriber accessing the content to read
 - A human from an entitled funding agency accessing the content to read
-
 - A bot run by a subscriber accessing the content to TDM
 - A bot run by a non-subscriber accessing the content to TDM
 - A bot run by an entitled funding agency accessing the content to TDM
-
 - A bot run by a subscriber accessing the content under a syndication agreement
 - A bot run by a non-subscriber accessing the content under a syndication agreement
 - A bot run by an entitled funding agency accessing the content under a syndication agreement
@@ -31,10 +29,8 @@ In the above cases, the content in question might or be either "restricted" (e.g
 - A human readable landing page on the publisher's main website.
 - A human readable representation of the VOR (e.g. PDF, HTML, etc.) on the publisher's main website.
 - A human readable representation of the AAM (e.g. PDF, HTML, etc.) on the publisher's main website.
-
 - A machine readable representation of the VOR (e.g. XML, Plain Text) on the publisher's TDM server
 - A machine readable representation of the AAM (e.g. XML, Plain Text) on the publisher's TDM server
-
 - A human readable representation of the VOR (e.g. PDF, HTML, etc.) on the publisher's syndication server.
 - A human readable representation of the AAM (e.g. PDF, HTML, etc.) on the publisher's syndication server.
 
