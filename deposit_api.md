@@ -24,7 +24,7 @@ within the current CrossRef XML deposit mechanism.
 ## Extension to the CrossRef REST API
 
 This document provides an extension to the CrossRef REST API, described
-[here](http://github.com/CrossRef/rest-api-doc/funder_kpi_api.md). It uses the same
+[here](https://github.com/CrossRef/rest-api-doc/blob/master/funder_kpi_api.md). It uses the same
 API versioning scheme, JSON response format and concepts of singular and listy
 responses. The base URI for this API is:
 
