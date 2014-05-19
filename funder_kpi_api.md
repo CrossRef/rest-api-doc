@@ -19,6 +19,7 @@
 - v14: 2014-02-14, new `has-funder` filter.
 - v15: 2014-02-27, new `/licenses` route
 - v16: 2014-05-19, new `/journals` route, new CrossMark (updates and update policy) filters, new `sort` and `order` parameters
+- v17: 2014-05-19, new `facet` query parameter
 
 ## Background
 
@@ -155,6 +156,7 @@ Parameters can be used to query, filter and control the results returned by the 
 | `sample={#}`                 | return random N results |
 | `sort={#}`                   | sort results by a certain field |
 | `order={#}`                  | set the sort order to `asc` or `desc` |
+| `facet=t`                    | enable facet information in responses |
 
 Multiple filters can be specified by separating name:value pairs with a comma:
 
@@ -201,6 +203,11 @@ sorted. Possible values are:
 An example that sorts results in order of publication, beginning with the least recent:
 
     http://api.crossref.org/works?query=josiah+carberry&sort=published&order=asc
+
+## Facet Counts
+
+Facet counts can be retrieved by enabling faceting; `facet=t` (or `1`, `true`). Facet counts
+give counts per field value for an entire result set.
 
 ## Filter Names
 
