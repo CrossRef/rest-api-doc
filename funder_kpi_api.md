@@ -18,6 +18,7 @@
 - v13: 2014-02-10, new `/members`, `/publishers` becomes `/prefixes`, new `member` filter, `publisher` filter becomes `prefix`
 - v14: 2014-02-14, new `has-funder` filter.
 - v15: 2014-02-27, new `/licenses` route
+- v16: 2014-05-19, new `/journals` route, new CrossMark (updates and update policy) filters, new `sort` and `order` parameters
 
 ## Background
 
@@ -77,7 +78,6 @@ Lists results can contain multiple entries. Searching or filtering typically ret
     - message-version (e.g. 1.0.0 )
 - Items, which will will contain the items matching the query or filter. 
 
-
 Note that the "message-type" returned will differ from the mime-type:
 
 - funder (singleton)
@@ -88,7 +88,6 @@ Note that the "message-type" returned will differ from the mime-type:
 - funder-list (list)
 - prefix-list (list)
 - member-list (list)
-
 
 Normally, an API list result will return both the summary and the items. If you want to just retrieve the summary, you can do so by specifying that the number of rows returned should be zero. 
 ### Sort order
@@ -103,6 +102,8 @@ Major resource components supported by the CrossRef API are:
 - funders
 - members
 - prefixes
+- types
+- journals
 
 These can be used alone like this
 
@@ -113,6 +114,7 @@ These can be used alone like this
 | `/members` | returns a list of all CrossRef members (mostly publishers) |
 | `/types`      | returns a list of valid work types | 
 | `/licenses`  | return a list of licenses applied to works in CrossRef metadata |
+| `/journals` | return a list of journals in the CrossRef database |
 
 
 ### Resource components and identifiers
@@ -125,6 +127,7 @@ Resource components can be used in conjunction with identifiers to retrieve the 
 | `/prefixes/{owner_prefix}` | returns metadata for the DOI owner prefix |
 | `/members/{member_id}` | returns metadata for a CrossRef member |
 | `/types/{type_id}` | returns information about a metadata work type |
+| `/journals/{issn}` | returns information about a journal with the given ISSN |
 
 ### Combining resource components
 
@@ -134,10 +137,10 @@ The works component can be appended to other resources.
 |:----------------------------|:----------------------------------|
 | `/works/{doi}`      | returns information about the specified CrossRef `DOI` |
 | `/funders/{funder_id}/works`| returns list of works associated with the specified `funder_id` |
-| `/types/{type}/works` | returns list of works of type `type` |
+| `/types/{type_id}/works` | returns list of works of type `type` |
 | `/prefixes/{owner_prefix}/works` | returns list of works associated with specified `owner_prefix` |
 | `/members/{member_id}/works` | returns list of works associated with a CrossRef member (deposited by a CrossRef member) |
-
+| `/journals/{issn}/works` | returns a list of works in the given journal |
 
 ## Parameters
 
@@ -150,6 +153,8 @@ Parameters can be used to query, filter and control the results returned by the 
 | `rows={#}`                   | results per per page | 
 | `offset={#}`                 | result offset |                         
 | `sample={#}`                 | return random N results |
+| `sort={#}`                   | sort results by a certain field |
+| `order={#}`                  | set the sort order to `asc` or `desc` |
 
 Multiple filters can be specified by separating name:value pairs with a comma:
 
@@ -178,6 +183,23 @@ Queries support a subset of [DisMax](https://wiki.apache.org/solr/DisMax), so, f
 or using JSON
 
     curl -X GET -H "Content-Type: application/json" -d '{"query": "renear -ontologies"}'  http://api.crossref.org/works
+
+## Sorting
+
+Results from a listy response can be sorted by applying the `sort` and `order` parameters. Order
+sets the result ordering, either `asc` or `desc`. Sort sets the field by which results will be
+sorted. Possible values are:
+
+| Sort value | Description |
+| `score` or `relevance` | Sort by relevance score |
+| `updated` | Sort by date of most recent change to metadata. Currently the same as `deposited`. |
+| `deposited` | Sort by time of most recent deposit |
+| `indexed` | Sort by time of most recent index |
+| `published` | Sort by publication date |
+
+An example that sorts results in order of publication, beginning with the least recent:
+
+    http://api.crossref.org/works?query=josiah+carberry&sort=published&order=asc
 
 ## Filter Names
 
@@ -208,6 +230,7 @@ Filters allow you to narrow queries. All filter results are lists.  The followin
 | `full-text.version` | `{string}`  | metadata where `<resource>` element's `content_version` attribute is `{string}`. |
 | `full-text.type` | `{mime_type}`  | metadata where `<resource>` element's `content_type` attribute is `{mime_type}` (e.g. `application/pdf`). |
 | `public-references` | | metadata where publishers allow references to be distributed publically. [^*] |
+| `has-references` | | metadata for works that have a list of references |
 | `has-archive` | | metadata which include name of archive partner |
 | `archive` | `{string}` | metadata which where value of archive partner is `{string}` |
 | `has-orcid` | | metadata which includes one or more ORCIDs |
@@ -215,6 +238,10 @@ Filters allow you to narrow queries. All filter results are lists.  The followin
 | `issn` | `{issn}` | metadata where record has an ISSN = `{issn}`. Format is `xxxx-xxxx`. |
 | `type` | `{type}` | metadata records whose type = `{type}`. Type must be an ID value from the list of types returned by the `/types` resource |
 | `directory` | `{directory}` | metadata records whose article or serial are mentioned in the given `{directory}`. Currently the only supported value is `doaj`. |
+| `doi` | `{doi}` | metadata describing the DOI `{doi}` |
+| `updates` | `{doi}` | metadata for records that represent editorial updates to the DOI `{doi}` |
+| `is-update` | | metadata for records that represent editorial updates |
+| `has-update-policy` | | metadata for records that include a link to an editorial update policy |
 
 [^*]: Not implemented yet.
 
