@@ -191,6 +191,7 @@ sets the result ordering, either `asc` or `desc`. Sort sets the field by which r
 sorted. Possible values are:
 
 | Sort value | Description |
+|------------|-------------|
 | `score` or `relevance` | Sort by relevance score |
 | `updated` | Sort by date of most recent change to metadata. Currently the same as `deposited`. |
 | `deposited` | Sort by time of most recent deposit |
