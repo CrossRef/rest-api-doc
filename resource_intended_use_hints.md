@@ -7,6 +7,7 @@
 - V2 2014-04-23, Add examples
 - V3 2014-04-24, Add 'any' collection property type
 - V4 2014-04-25, Incorporate suggestions from Evan Owens
+- V5 2014-05-27, Rename 'any' to 'unspecified'
 
 ## The Problem
 
@@ -149,10 +150,10 @@ But this still leaves us with the question of how to provide the publisher to pr
         </item>
     </collection>
 
-## An 'any' Use Type
+## An 'unspecified' Use Type
 
 Some members will not want to provide intended use hints. These members can avoid repetition, and ignore intended use hints
-altogether by using the 'any' collection property:
+altogether by using the 'unspecified' collection property:
 
     <doi_data>
 		<doi>10.5555/12345678</doi>
@@ -167,7 +168,7 @@ altogether by using the 'any' collection property:
     <license_ref applies_to="vor" start_date="2015-02-03">http://creativecommons.org/licenses/by/3.0/deed.en_US</license_ref>
     <license_ref applies_to="am" start_date="2014-02-03">http://creativecommons.org/licenses/by/3.0/deed.en_US</license_ref>
 
-    <collection property="any">
+    <collection property="unspecified">
       <resource content_version="vor" content_type="text/xml">
           http://docstore.psychoceramics.org/fulltext/vor/10.5555/12345678.xml
       </resource>
@@ -186,7 +187,7 @@ We have suggested that the following values be used for AAR
 - crawler-based (search engines)
 - text-mining
 - syndication
-- any
+- unspecified
 
 Are they enough?
 
