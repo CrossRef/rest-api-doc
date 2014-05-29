@@ -20,6 +20,7 @@
 - v15: 2014-02-27, new `/licenses` route
 - v16: 2014-05-19, new `/journals` route, new CrossMark (updates and update policy) filters, new `sort` and `order` parameters
 - v17: 2014-05-19, new `facet` query parameter
+- v18: 2014-05-29, new `/works/{doi}/agency` route
 
 ## Background
 
@@ -36,25 +37,34 @@ The API described here is in alpha. If you encounter problems with the API or th
 
 The API is generally RESTFUL and returns results in JSON.
 
-The API will only work for CrossRef DOIs. You can test the registration agency for a DOI using the following convention:
+The API will only work for CrossRef DOIs. You can test the registration agency for a DOI using the following route:
 
-`http://doi.crossref.org/doiRA/{doi}`
+`http://api.crossref.org/works/{doi}/agency`
 
-So testing the following CrossRef DOI:
+Testing the following CrossRef DOI:
 
 `10.1037/0003-066X.59.1.29`
 
+Using the URL:
+
+`http://api.crossref.org/works/10.1037/0003-066X.59.1.29/agency`
+
 Will return the following result:
 
-    [
-        {
-             DOI: "10.1037/0003-066X.59.1.29",
-             RA: "CrossRef"
+    {
+      status: "ok",
+      message-type: "work-agency",
+      message-version: "1.0.0",
+      message: {
+        DOI: "10.1037/0003-066x.59.1.29",
+        agency: {
+          id: "crossref",
+          label: "CrossRef"
         }
-    ]
+      }
+    }
 
-
-If you use any of the API calls listed below with a non-CrossRef DOI, you will get a `404` HTTP status response with the message "non-CrossRef DOI."
+If you use any of the API calls listed below with a non-CrossRef DOI, you will get a `404` HTTP status response. Typical agency IDs include `crossref`, `datacite`, `medra` and also `public` for test DOIs.
 
 ## Results Overview
 
@@ -212,7 +222,6 @@ give counts per field value for an entire result set.
 ## Filter Names
 
 Filters allow you to narrow queries. All filter results are lists.  The following filters are supported:
-
 
 | filter     | possible values | description|
 |:-----------|:----------------|:-----------|
