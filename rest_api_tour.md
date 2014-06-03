@@ -92,7 +92,7 @@ Ok, lets see how many records with the word "blood" in the metadata have license
 
 Let's download the results and download the content locally to TDM
 
-    http://api.crossref.org/works?filter=has-license:true,has-full-text:true&query=blood&rows=0
+    http://api.crossref.org/works?filter=has-license:true,has-full-text:true&query=blood&rows=884
 
 
 
