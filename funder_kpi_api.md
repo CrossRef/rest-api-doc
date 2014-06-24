@@ -261,10 +261,10 @@ Filters allow you to narrow queries. All filter results are lists.  The followin
 | `updates` | `{doi}` | metadata for records that represent editorial updates to the DOI `{doi}` |
 | `is-update` | | metadata for records that represent editorial updates |
 | `has-update-policy` | | metadata for records that include a link to an editorial update policy |
-| `container-title` | metadata for records with a publication title exactly with an exact match |
-| `publisher-name` | metadata for records with an exact matching publisher name |
-| `category-name` | metadata for records with an exact matching category label |
-| `type-name` | metadata for records with an exacty matching type label |
+| `container-title` | | metadata for records with a publication title exactly with an exact match |
+| `publisher-name` | | metadata for records with an exact matching publisher name |
+| `category-name` | | metadata for records with an exact matching category label |
+| `type-name` | | metadata for records with an exacty matching type label |
 
 [^*]: Not implemented yet.
 
