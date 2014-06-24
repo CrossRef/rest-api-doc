@@ -22,7 +22,7 @@
 - v17: 2014-05-19, new `facet` query parameter
 - v18: 2014-05-29, new `/works/{doi}/agency` route
 - v19: 2014-06-23, new textual filters - `container-title`, `publisher-name`, `category-name`.
-- v20: 2014-06-34, OR filter queries, `type-name` filter.
+- v20: 2014-06-24, OR filter queries, `type-name` filter.
 
 ## Background
 
