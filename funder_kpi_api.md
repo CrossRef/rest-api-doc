@@ -22,6 +22,7 @@
 - v17: 2014-05-19, new `facet` query parameter
 - v18: 2014-05-29, new `/works/{doi}/agency` route
 - v19: 2014-06-23, new textual filters - `container-title`, `publisher-name`, `category-name`.
+- v20: 2014-06-34, OR filter queries, `type-name` filter.
 
 ## Background
 
@@ -263,6 +264,7 @@ Filters allow you to narrow queries. All filter results are lists.  The followin
 | `container-title` | metadata for records with a publication title exactly with an exact match |
 | `publisher-name` | metadata for records with an exact matching publisher name |
 | `category-name` | metadata for records with an exact matching category label |
+| `type-name` | metadata for records with an exacty matching type label |
 
 [^*]: Not implemented yet.
 
