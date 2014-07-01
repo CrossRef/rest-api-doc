@@ -23,6 +23,7 @@
 - v18: 2014-05-29, new `/works/{doi}/agency` route
 - v19: 2014-06-23, new textual filters - `container-title`, `publisher-name`, `category-name`.
 - v20: 2014-06-24, OR filter queries, `type-name` filter.
+- v21: 2014-07-01, new `award.number` and `award.funder` relational filters.
 
 ## Background
 
@@ -265,6 +266,8 @@ Filters allow you to narrow queries. All filter results are lists.  The followin
 | `publisher-name` | | metadata for records with an exact matching publisher name |
 | `category-name` | | metadata for records with an exact matching category label |
 | `type-name` | | metadata for records with an exacty matching type label |
+| `award.number` | `{award_number}` | metadata for records with a matching award nunber. Optionally combine with `award.funder` |
+| `award.funder` | `{funder doi or id}` | metadata for records with an award with matching funder. Optionally combine with `award.number` |
 
 [^*]: Not implemented yet.
 
@@ -352,6 +355,10 @@ Note that the filters for license URL and maximum license embargo period (licens
 **All licenses applied to works published in the journal `Pathology Research International`**
 
     http://api.crossref.org/licenses?filter=issn:2090-8091
+    
+**All works with an award numbered roughly `1 F31 MH11745` also awarded by funder with ID `10.13039/100000025`:
+
+    http://api.crossref.org/works?filter=award.number:1F31MH11745,award.funder:10.13039/100000025
 
 ## Versioning
 
