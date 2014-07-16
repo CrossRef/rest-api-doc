@@ -1,4 +1,4 @@
-# CrossRef APIs to support key performance indicators (KPIs) for funding agencies
+# CrossRef REST API
 
 ## Version History
 
@@ -24,6 +24,7 @@
 - v19: 2014-06-23, new textual filters - `container-title`, `publisher-name`, `category-name`.
 - v20: 2014-06-24, OR filter queries, `type-name` filter.
 - v21: 2014-07-01, new `award.number` and `award.funder` relational filters.
+- v22: 2014-07-16, changed title to more accurately reflect scope of API. 
 
 ## Background
 
