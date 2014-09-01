@@ -279,12 +279,12 @@ Multiple filters can be specified in a single query. In such a case, different f
 
 - `is-update:true`
 - `from-pub-date:2014-03-03`
-- `award.funder:10.13039/100000001`
-- `award.funder:10.13039/100000050`
+- `funder:10.13039/100000001`
+- `funder:10.13039/100000050`
 
 would locate documents that are updates, were published on or after 3rd March 2014 and were funded by either the National Science Foundation (`10.13039/100000001`) or the National Heart, Lung, and Blood Institute (`10.13039/100000050`). These filters would be specified by joining each filter together with a comma:
 
-    /works?filter=is-update:true,from-pub-date:2014-03-03,award.funder:10.13039/100000001,award.funder:10.13039/100000050
+    /works?filter=is-update:true,from-pub-date:2014-03-03,funder:10.13039/100000001,funder:10.13039/100000050
     
 ### Dot filters
 
