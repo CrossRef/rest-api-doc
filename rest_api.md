@@ -25,6 +25,7 @@
 - v20: 2014-06-24, OR filter queries, `type-name` filter.
 - v21: 2014-07-01, new `award.number` and `award.funder` relational filters.
 - v22: 2014-07-16, changed title to more accurately reflect scope of API. 
+- v23, 2014=09-01, semantics of mutliple filters, dot filters
 
 ## Background
 
@@ -271,6 +272,27 @@ Filters allow you to narrow queries. All filter results are lists.  The followin
 | `award.funder` | `{funder doi or id}` | metadata for records with an award with matching funder. Optionally combine with `award.number` |
 
 [^*]: Not implemented yet.
+
+### Multiple filters
+
+Multiple filters can be specified in a single query. In such a case, different filters will be applied with AND semantics, while specifying the same filter multiple times will result in OR semantics - that is, specifying the filters:
+
+- `is-update:true`
+- `from-pub-date:2014-03-03`
+- `award.funder:10.13039/100000001`
+- `award.funder:10.13039/100000050`
+
+would locate documents that are updates, were published on or after 3rd March 2014 and were funded by either the National Science Foundation (`10.13039/100000001`) or the National Heart, Lung, and Blood Institute (`10.13039/100000050`). These filters would be specified by joining each filter together with a comma:
+
+    /works?filter=is-update:true,from-pub-date:2014-03-03,award.funder:10.13039/100000001,award.funder:10.13039/100000050
+    
+### Dot filters
+
+A filter with a dot in its name is special. The dot signifies that the filter will be applied to some other record type that is related to primary resource record type. For example, with work queries, one can filter on works that have an award, where the same award has a particular award number and award-gving funding agency:
+
+    /works?filter=award.number:CBET-0756451,award.doi:10.13039/100000001
+    
+Here we filter on works that have an award by the National Science Foundation that also has the award number `CBET-0756451`.
 
 ### Notes on owner prefixes
 
