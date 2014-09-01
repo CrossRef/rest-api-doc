@@ -25,7 +25,7 @@
 - v20: 2014-06-24, OR filter queries, `type-name` filter.
 - v21: 2014-07-01, new `award.number` and `award.funder` relational filters.
 - v22: 2014-07-16, changed title to more accurately reflect scope of API. 
-- v23, 2014=09-01, semantics of mutliple filters, dot filters
+- v23, 2014-09-01, semantics of mutliple filters, dot filters
 
 ## Background
 
