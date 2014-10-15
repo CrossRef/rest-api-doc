@@ -26,6 +26,7 @@
 - v21: 2014-07-01, new `award.number` and `award.funder` relational filters.
 - v22: 2014-07-16, changed title to more accurately reflect scope of API. 
 - v23, 2014-09-01, semantics of mutliple filters, dot filters
+- v24, 2014-10-15, Added info on license of CrossRef metadata itself. Doh.
 
 ## Background
 
@@ -37,6 +38,9 @@ The API described here is in alpha. If you encounter problems with the API or th
 
 ![](http://labs.crossref.org/wp-content/uploads/2013/01/labs_email.png)
 
+## License
+
+CrossRef asserts no claims of ownership to individual items of bibliographic metadata and associated Digital Object Identifiers (DOIs) acquired through the use of the CrossRef Free Services. Individual items of bibliographic metadata and associated DOIs may be cached and incorporated into the user's content and systems. More information can be found [on our web site](http://www.crossref.org/requestaccount/).
 
 ## Overview
 
