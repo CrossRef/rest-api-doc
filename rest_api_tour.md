@@ -3,6 +3,7 @@
 ## Version History
 
 - V1: 2014-04-18, first draft.
+- V2:2014-11-10, edits for CR workshop 
 
 ## Overview
 
@@ -12,10 +13,8 @@ The following short examples show how the CrossRef REST APIs can be used to prov
 
 In many cases, you can simply paste the example URIs into a browser's URL box, but if you want to see the resulting JSON formatted correctly, then we recommend that you install one of the following plugins:
 
-- Firefox Users:
-- Chrome Users:
-
-Some of the demonstrations here require the use of content negotiation. This is difficult to demonstrate in a browser unless you use a special plugin. Accordingly, the URIs for this demo have also been included as a project for the XXXX plugin available for Chrome.
+- Firefox Users: [JSONView](http://jsonview.com/)
+- Chrome Users: [JSONView](https://chrome.google.com/webstore/detail/jsonview/chklaanhfefbnpoihckbnefhakgolnmc)
 
 ## A fake problem
 
