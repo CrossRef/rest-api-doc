@@ -92,7 +92,31 @@ Ok, lets see how many records with the word "blood" in the metadata have license
 
 Let's download the results and download the content locally to TDM
 
+We could just get them all:
+
     http://api.crossref.org/works?filter=has-license:true,has-full-text:true&query=blood&rows=884
+
+But for the purposes of this demo, let's subdivide them by publisher.
+
+
+First let's get a sample of Elsevier titles:
+
+What is Elsevier's CrossRef member id number? 
+
+    http://api.crossref.org/members?query=elsevier
+
+Now what DOIs do  Elsevier have that match our criteria?
+
+    http://api.crossref.org/members/78/works?filter=has-license:true,has-full-text:true&query=blood&rows=50
+
+Now what is Hindawi's CrossRef member id number?
+
+    http://api.crossref.org/members?query=elsevier
+
+Now lets get some Hindawi articles that match the criteria:
+
+    http://api.crossref.org/members/98/works?filter=has-license:true,has-full-text:true&query=blood&rows=50
+
 
 
 
