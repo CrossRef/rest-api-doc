@@ -3,7 +3,7 @@
 ## Version History
 
 - V1: 2014-04-18, first draft.
-- V2:2014-11-10, edits for CR workshop 
+- V2: 2014-11-10, edits for CR workshop 
 
 ## Overview
 
