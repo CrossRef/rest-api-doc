@@ -87,6 +87,7 @@ one of:
 |--------------|-------------|
 | application/vnd.crossref.deposit+xml | [Full deposit](http://doi.crossref.org/schemas/crossref4.3.4.xsd) |
 | application/vnd.crossref.partial+xml | [Partial (resource) deposit](http://doi.crossref.org/schemas/doi_resources4.3.2.xsd) |
+| application/pdf | PDF deposit for citation extraction |
 
 ### Specifying a Ping Back URL
 
