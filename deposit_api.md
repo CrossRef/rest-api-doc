@@ -5,6 +5,7 @@
 | Date | Version | Changes |
 |------|---------|---------|
 | 2014-03-10 | v1 | Initial version |
+| 2015-01-15 | v2 | Mention PDF deposits |
 
 ## Background
 
