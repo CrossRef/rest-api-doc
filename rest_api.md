@@ -27,14 +27,17 @@
 - v22: 2014-07-16, changed title to more accurately reflect scope of API. 
 - v23, 2014-09-01, semantics of mutliple filters, dot filters
 - v24, 2014-10-15, Added info on license of CrossRef metadata itself. Doh.
+- v25, 2015-05-06, Added link to issue tracker. Removed Warning section.
 
 ## Background
 
 See the document, [CrossRef metadata best practice to support key performance indicators (KPIs) for funding agencies](http://api.crossref.org/docs/funder_kpi_metadata_best_practice.html), for background.
 
-## Warning
+## Reporting issues
 
-The API described here is in alpha. If you encounter problems with the API or the documentation, please report them to:
+If you have suggestions or encounter problems with the API or the documentation, please report them on our [issue tracker](https://github.com/CrossRef/rest-api-doc/issues).
+ 
+If you have other queries, please contact us at:
 
 ![](http://labs.crossref.org/wp-content/uploads/2013/01/labs_email.png)
 
