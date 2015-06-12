@@ -188,14 +188,6 @@ Multiple filters can be specified by separating name:value pairs with a comma:
 
     http://api.crossref.org/funders/100000015/works?query=global+state&filter=has-orcid:true&rows=1
 
-### Example query using JSON in body of GET request
-
-Note that if you include a body in your `GET` request, any URI parameters will be ignored. In short, you cannot mix URI parameters and JSON queries.
-
-To use the API using JSON, pass the JSON in the body of the HTTP GET request like this:
-
-    curl -X GET -H "Content-Type: application/json" -d '{"query": "psychoceramics", "offset": 40, "rows": 20, "filter": {"has-orcid": true, "publisher": "10.5555"}}'  http://api.crossref.org/works
-
 ## Queries
 
 Queries support a subset of [DisMax](https://wiki.apache.org/solr/DisMax), so, for example you can refine queries as follows.
@@ -204,10 +196,6 @@ Queries support a subset of [DisMax](https://wiki.apache.org/solr/DisMax), so, f
 
     http://api.crossref.org/works?query=renear+-ontologies
     
-or using JSON
-
-    curl -X GET -H "Content-Type: application/json" -d '{"query": "renear -ontologies"}'  http://api.crossref.org/works
-
 ## Sorting
 
 Results from a listy response can be sorted by applying the `sort` and `order` parameters. Order
