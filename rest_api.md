@@ -29,6 +29,7 @@
 - v24, 2014-10-15, Added info on license of CrossRef metadata itself. Doh.
 - v25, 2015-05-06, Added link to issue tracker. Removed Warning section.
 - v26, 2015-10-20, Added new filters - `from-created-date`, `until-created-date`, `affiliation`, `has-affiliation`, `assertion-group`, `assertion`, `article-number`, `alternative-id`
+
 ## Background
 
 See the document, [CrossRef metadata best practice to support key performance indicators (KPIs) for funding agencies](http://api.crossref.org/docs/funder_kpi_metadata_best_practice.html), for background.
