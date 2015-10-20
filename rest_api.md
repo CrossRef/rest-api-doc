@@ -28,7 +28,7 @@
 - v23, 2014-09-01, semantics of mutliple filters, dot filters
 - v24, 2014-10-15, Added info on license of CrossRef metadata itself. Doh.
 - v25, 2015-05-06, Added link to issue tracker. Removed Warning section.
-
+- v26, 2015-10-20, Added new filters - `from-created-date`, `until-created-date`, `affiliation`, `has-affiliation`, `assertion-group`, `assertion`, `article-number`, `alternative-id`
 ## Background
 
 See the document, [CrossRef metadata best practice to support key performance indicators (KPIs) for funding agencies](http://api.crossref.org/docs/funder_kpi_metadata_best_practice.html), for background.
@@ -235,8 +235,8 @@ Filters allow you to narrow queries. All filter results are lists.  The followin
 | `until-deposit-date` | `{date}` | metadata last (re)deposited before (inclusive) `{date}` |
 | `from-update-date` | `{date}` | Metadata updated since (inclusive) `{date}`. Currently the same as `from-deposit-date`. |
 | `until-update-date` | `{date}` | Metadata updated before (inclusive) `{date}`. Currently the same as `until-deposit-date`. |
-| `from-first-deposit-date` | `{date}` | metadata first deposited since (inclusive) `{date}` [^*] |
-| `until-first-deposit-date` | `{date}` | metadata first deposited before (inclusive) `{date}` [^*] |
+| `from-created-date` | `{date}` | metadata first deposited since (inclusive) `{date}` |
+| `until-created-date` | `{date}` | metadata first deposited before (inclusive) `{date}` |
 | `from-pub-date` | `{date}` | metadata where published date is since (inclusive) `{date}` |
 | `until-pub-date` | `{date}` | metadata where published date is before (inclusive)  `{date}` |
 | `has-license` | | metadata that includes any `<license_ref>` elements. |
@@ -265,8 +265,12 @@ Filters allow you to narrow queries. All filter results are lists.  The followin
 | `type-name` | | metadata for records with an exacty matching type label |
 | `award.number` | `{award_number}` | metadata for records with a matching award nunber. Optionally combine with `award.funder` |
 | `award.funder` | `{funder doi or id}` | metadata for records with an award with matching funder. Optionally combine with `award.number` |
-
-[^*]: Not implemented yet.
+| `assertion-group` | | metadata for records with an assertion in a particular group |
+| `assertion` | | metadata for records with a particular named assertion |
+| `affiliation` | | metadata for records with at least one contributor with the given affiliation |
+| `has-affiliation` | | metadata for records that have any affiliation information |
+| `alternative-id` | | metadata for records with the given alternative ID, which may be a publisher-specific ID, or any other identifier a publisher may have provided |
+| `article-number` | | metadata for records with a given article number |
 
 ### Multiple filters
 
