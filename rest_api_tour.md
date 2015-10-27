@@ -110,7 +110,7 @@ Now what DOIs do  Elsevier have that match our criteria?
 
 Now what is Hindawi's CrossRef member id number?
 
-    http://api.crossref.org/members?query=elsevier
+    http://api.crossref.org/members?query=hindawi
 
 Now lets get some Hindawi articles that match the criteria:
 
