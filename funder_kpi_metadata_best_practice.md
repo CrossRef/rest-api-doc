@@ -261,9 +261,9 @@ CrossRef maintains a vocabulary of archive locations within the CrossRef deposit
 
 ## Assigning and registering DOIs at acceptance
 
-Funders and institutions would like to be notified of impending publications as early as possible. Some mandates, like that issued by HEFCE, even require that institutional repositories be notified of an impending relevant publication as soon as the manuscript is accepted- Even if said manuscript has not yet been made available.
+Funders and institutions would like to be notified of impending publications as early as possible. Some mandates, like the [one issued by HEFCE](http://www.hefce.ac.uk/pubs/year/2015/CL,202015/), even require that institutional repositories be notified of an impending relevant publication as soon as the manuscript is accepted- even if said manuscript has not yet been made available online.
 
-### Assigning and registering DOIs for manuscripts that the publisher has made avaialble online
+### Assigning and registering DOIs for manuscripts that the publisher *has* made avaialble online
 
 Crossref has always supported the deposit of DOIs for accepted manuscripts __if__ said manuscripts have also been made available online. This is a common practice that goes under various names including “publish ahead of print,” “article in progress,” “article in press,” “online ahead of print,” “online first”, etc. Crossref rules state that in this situation, Crossref members:
 
@@ -273,7 +273,7 @@ Crossref has always supported the deposit of DOIs for accepted manuscripts __if_
 
  These rules reflect that, though there may be significant value added by he publisher between acceptance and final publication,  the accepted and the final published version are interchangeable from a citation point of view. This is because the transition from acceptance to the final published version should not introduce any changes that are likely to effect the interpretation of crediting of the work.  
 
-### Assigning and registering DOIs for manuscripts that the publisher has not yet made available online
+### Assigning and registering DOIs for manuscripts that the publisher *has not yet* made available online
 
 *(Please note that this section includes a draft recommendation which have not yet been ratified by our members or implemented. We are soliciting feedback on this section of the  document.)*
 
@@ -319,7 +319,7 @@ Registered content DOI records:
 - __may__ include the publication title
 - __may__ include the item title (e.g. article title)
 
-The "registered content" type is specifically designed for publishers who want to be able to inform funders and institutions that an article has been accepted for publication, even when the publisher is for some reason unable to make the accepted manuscript publicly available. The landing page and metadata for the "registered content" type allow the publisher to provide as much data as is needed to notify interested parties, yet not reveal commercially or promotionally sensitive information about their upcoming publications. When the publisher is ready to make the content available, they simply have to replace the temporary "registered content" record with a permanent DOI record. 
+The "registered content" type is specifically designed for publishers who want to be able to inform funders and institutions that an article has been accepted for publication, even when the publisher is for some reason unable to make the accepted manuscript publicly available. The landing page and metadata for the "registered content" type allow the publisher to provide as much data as is needed to notify interested parties, yet not reveal commercially or promotionally sensitive information about their upcoming publications. When the publisher is ready to make the content available, they simply have to replace the temporary "registered content" record with a permanent DOI record.
 
 ## Bonus points
 
