@@ -2,6 +2,37 @@
 
 ## Table of Contents
 
+<!-- TOC depth:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+
+- [Using Crossref metadata to enable auditing of conformance to funder mandates: A Guide for publishers](#using-crossref-metadata-to-enable-auditing-of-conformance-to-funder-mandates-a-guide-for-publishers)
+	- [Table of Contents](#table-of-contents)
+	- [Version History](#version-history)
+	- [Contact info](#contact-info)
+	- [Background](#background)
+	- [Conventions](#conventions)
+	- [Summary](#summary)
+	- [Funding information](#funding-information)
+	- [License information](#license-information)
+		- [Embargoes](#embargoes)
+	- [Recording links to full text and/or archived versions of documents, etc.](#recording-links-to-full-text-andor-archived-versions-of-documents-etc)
+	- [Different licenses for different versions of the content](#different-licenses-for-different-versions-of-the-content)
+	- ["Libre" vs "Gratis"](#libre-vs-gratis)
+	- [Recording third party archive arrangements](#recording-third-party-archive-arrangements)
+	- [Assigning and registering DOIs at acceptance](#assigning-and-registering-dois-at-acceptance)
+		- [Assigning and registering DOIs for manuscripts that the publisher *has* made avaialble online](#assigning-and-registering-dois-for-manuscripts-that-the-publisher-has-made-avaialble-online)
+		- [Assigning and registering DOIs for manuscripts that the publisher *has not yet* made available online](#assigning-and-registering-dois-for-manuscripts-that-the-publisher-has-not-yet-made-available-online)
+	- [Bonus points](#bonus-points)
+			- [Distributing standard bibliographic metadata](#distributing-standard-bibliographic-metadata)
+			- [Distributing references](#distributing-references)
+			- [CrossMark](#crossmark)
+			- [Abstracts](#abstracts)
+			- [ORCIDs](#orcids)
+	- [Frequently Asked Questions](#frequently-asked-questions)
+	- [XML Deposit Examples](#xml-deposit-examples)
+		- [Full Deposits](#full-deposits)
+		- [Partial Deposits](#partial-deposits)
+		- [Registerd Content Deposits](#registerd-content-deposits)
+<!-- /TOC -->
 
 
 ## Version History
@@ -401,3 +432,7 @@ one updating funding information, the other updating license information.
 - [Partial deposit of funding information without CrossMark](examples/partial-funders.xml)
 - [Partial deposit of license information without CrossMark](examples/partial-licenses.xml)
 - [Partial deposit of a CrossMark with license and funding information](examples/partial-crossmark.xml)
+
+### Registerd Content Deposits
+
+*coming soon*
