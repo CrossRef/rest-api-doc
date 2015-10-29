@@ -31,7 +31,7 @@
 	- [XML Deposit Examples](#xml-deposit-examples)
 		- [Full Deposits](#full-deposits)
 		- [Partial Deposits](#partial-deposits)
-		- [Registerd Content Deposits](#registerd-content-deposits)
+		- [Registered Content Deposits](#registered-content-deposits)
 <!-- /TOC -->
 
 
@@ -433,6 +433,6 @@ one updating funding information, the other updating license information.
 - [Partial deposit of license information without CrossMark](examples/partial-licenses.xml)
 - [Partial deposit of a CrossMark with license and funding information](examples/partial-crossmark.xml)
 
-### Registerd Content Deposits
+### Registered Content Deposits
 
 *coming soon*
