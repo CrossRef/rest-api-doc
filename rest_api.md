@@ -347,8 +347,6 @@ A `next-cursor` field will be provided in the JSON response. To get the next pag
  
 Clients should check the number of returned items. If the number of returned items is fewer than the number of expected rows then the end of the result set has been reached. Using `next-cursor` beyond this point will result in responses with an empty items list.
 
-In the response a `next-cursor` field will be provided if there are further 
-
 The `cursor` parameter is available on all `/works` resources.
 
 ### Sample
