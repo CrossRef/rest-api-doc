@@ -29,6 +29,7 @@
 - v24, 2014-10-15, Added info on license of CrossRef metadata itself. Doh.
 - v25, 2015-05-06, Added link to issue tracker. Removed Warning section.
 - v26, 2015-10-20, Added new filters - `from-created-date`, `until-created-date`, `affiliation`, `has-affiliation`, `assertion-group`, `assertion`, `article-number`, `alternative-id`
+- v27, 2015-10-30, Added `cursor` parameter to `/works` resources
 
 ## Background
 
@@ -333,7 +334,23 @@ The maximum number rows you can ask for in one query is `1000`.
 The number of returned items is controlled by the `rows` parameter, but you can select the offset into the result list by using the `offset` parameter.  So, for example, to select the second set of 5 results (i.e. results 6 through 10), you would do the following:
 
     http://api.crossref.org/works?query=allen+renear&rows=5&offset=5
-    
+
+### Deep Paging with Cursors
+
+Using large `offset` values can result in extremely long response times. Offsets in the 100,000s and beyond will likely cause a timeout before the API is able to respond. An alternative to paging through very large result sets (even the whole corpus of DOIs) it to use the API's exposure of Solr's deep paging cursors. Any combination of query, filters and facets may be used with deep paging cursors. While `rows` may be specified along with `cursor`, `offset` and `sample` cannot be used. To use deep paging make a query as normal, but include the `cursor` parameter with a value of `*`. In this example we will page through all `journal-article` works from member `311`:
+
+    http://api.crossref.org/members/311/works?filter=type:journal-article&cursor=*
+
+A `next-cursor` field will be provided in the JSON response. To get the next page of results, pass the value of `next-cursor` as the `cursor` parameter:
+
+    http://api.crossref.org/members/311/works?filter=type:journal-article&cursor=AoE/CGh0dHA6Ly9keC5kb2kub3JnLzEwLjEwMDIvdGRtX2xpY2Vuc2VfMQ==
+ 
+Clients should check the number of returned items. If the number of returned items is fewer than the number of expected rows then the end of the result set has been reached. Using `next-cursor` beyond this point will result in responses with an empty items list.
+
+In the response a `next-cursor` field will be provided if there are further 
+
+The `cursor` parameter is available on all `/works` resources.
+
 ### Sample
 
 Being able to select random results is useful for both testing and sampling. You can use the `sample` parameter to retrieve random results. So, for example, the following select 10 random works:
