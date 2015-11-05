@@ -294,7 +294,7 @@ CrossRef maintains a vocabulary of archive locations within the CrossRef deposit
 
 Funders and institutions would like to be notified of impending publications as early as possible. Some mandates, like the [one issued by HEFCE](http://www.hefce.ac.uk/pubs/year/2015/CL,202015/), even require that institutional repositories be notified of an impending relevant publication as soon as the manuscript is accepted- even if said manuscript has not yet been made available online.
 
-### Assigning and registering DOIs for manuscripts that the publisher *has* made avaialble online
+### Assigning and registering DOIs for manuscripts that the publisher *has* made available online
 
 Crossref has always supported the deposit of DOIs for accepted manuscripts __if__ said manuscripts have also been made available online. This is a common practice that goes under various names including “publish ahead of print,” “article in progress,” “article in press,” “online ahead of print,” “online first”, etc. Crossref rules state that in this situation, Crossref members:
 
