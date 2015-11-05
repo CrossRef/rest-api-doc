@@ -338,7 +338,7 @@ Registered content DOI records:
 - __must__ include a DOI
 - __must__ include a date of acceptance
 - __must__ include the publisher name
-- __must__ must be replaced with appropriate full metadata using an appropriate schmea for the content type when the publisher makes the content publically available
+- __must__ must be replaced with appropriate full metadata using an appropriate schema for the content type when the publisher makes the content publically available
 - __should__ include an "intent to publish statement." If the publisher does not provide an "intent to publish statement" of their own, then Crossref will provide a default statement.
 - __may__ include a logo to diplay at the top of the landing page
 - __may__ include a custom "intent to publish statement."
