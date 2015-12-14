@@ -378,9 +378,9 @@ Note that when you use the `sample` parameter, the `rows` and `offset` parameter
 
 Note that the filters for license URL and maximum license embargo period (license.url and license.delay) combine to filter each document's metadata for a license with both of these properties.
 
-**All works where the archive partner listed = 'LOCKSS'**
+**All works where the archive partner listed = 'CLOCKSS'**
 
-    http://api.crossref.org/works?filter?archive=LOCKSS
+    http://api.crossref.org/works?filter=archive:CLOCKSS
     
 **All members with `hind` in their name (e.g. Hindawi)**
 
