@@ -30,6 +30,7 @@
 - v25, 2015-05-06, Added link to issue tracker. Removed Warning section.
 - v26, 2015-10-20, Added new filters - `from-created-date`, `until-created-date`, `affiliation`, `has-affiliation`, `assertion-group`, `assertion`, `article-number`, `alternative-id`
 - v27, 2015-10-30, Added `cursor` parameter to `/works` resources
+- v28, 2016-05-09, Added link to source of category lables
 
 ## Background
 
@@ -263,7 +264,7 @@ Filters allow you to narrow queries. All filter results are lists.  The followin
 | `has-update-policy` | | metadata for records that include a link to an editorial update policy |
 | `container-title` | | metadata for records with a publication title exactly with an exact match |
 | `publisher-name` | | metadata for records with an exact matching publisher name |
-| `category-name` | | metadata for records with an exact matching category label |
+| `category-name` | | metadata for records with an exact matching category label. Category labels come from [this list](https://www.elsevier.com/solutions/scopus/content) published by Scopus |
 | `type-name` | | metadata for records with an exacty matching type label |
 | `award.number` | `{award_number}` | metadata for records with a matching award nunber. Optionally combine with `award.funder` |
 | `award.funder` | `{funder doi or id}` | metadata for records with an award with matching funder. Optionally combine with `award.number` |
