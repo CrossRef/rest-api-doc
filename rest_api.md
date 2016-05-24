@@ -31,6 +31,7 @@
 - v26, 2015-10-20, Added new filters - `from-created-date`, `until-created-date`, `affiliation`, `has-affiliation`, `assertion-group`, `assertion`, `article-number`, `alternative-id`
 - v27, 2015-10-30, Added `cursor` parameter to `/works` resources
 - v28, 2016-05-09, Added link to source of category lables
+- v29, 2016-05-24, Added field queries
 
 ## Background
 
@@ -193,12 +194,40 @@ Multiple filters can be specified by separating name:value pairs with a comma:
 
 ## Queries
 
-Queries support a subset of [DisMax](https://wiki.apache.org/solr/DisMax), so, for example you can refine queries as follows.
+Queries support a subset of [DisMax](https://wiki.apache.org/solr/DisMax), so, for example you 
+can refine queries as follows.
 
-**Works that include "renear" but not "ontologies"**
+Works that include "renear" but not "ontologies":
 
     http://api.crossref.org/works?query=renear+-ontologies
-    
+	
+## Field Queries
+
+Field queries are available on some routes and allow for queries that match only particular fields
+of metadata. For example, this query matches records that contain the tokens `richard` or `feynman` (or both)
+in any author field:
+
+    http://api.crossref.org/works?query.author=richard+feynman
+	
+Field queries can be combined with the general `query` paramter and each other. Each query parameter
+is `ANDed` with the others:
+
+    http://api.crossref.org/works?query.title=room+at+the+bottom&query.author=richard+feynman
+	
+### `/works` Field Queries
+
+These field queries are available on the `/works` route:
+
+| Field query parameter | Description |
+|-|-|
+| `query.title` | Query `title` and `subtitle` |
+| `query.container-title` | Query `container-title` aka. publication name |
+| `query.author` | Query author first and given names |
+| `query.editor` | Query editor first and given names |
+| `query.chair` | Query chair first and given names |
+| `query.translator` | Query translator first and given names |
+| `query.contributor` | Query author, editor, chair and translator first and given names |
+
 ## Sorting
 
 Results from a listy response can be sorted by applying the `sort` and `order` parameters. Order
