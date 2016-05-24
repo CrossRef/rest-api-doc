@@ -210,7 +210,7 @@ in any author field:
     http://api.crossref.org/works?query.author=richard+feynman
 	
 Field queries can be combined with the general `query` paramter and each other. Each query parameter
-is `ANDed` with the others:
+is ANDed with the others:
 
     http://api.crossref.org/works?query.title=room+at+the+bottom&query.author=richard+feynman
 	
@@ -219,7 +219,7 @@ is `ANDed` with the others:
 These field queries are available on the `/works` route:
 
 | Field query parameter | Description |
-|-|-|
+|-----------------------|-------------|
 | `query.title` | Query `title` and `subtitle` |
 | `query.container-title` | Query `container-title` aka. publication name |
 | `query.author` | Query author first and given names |
