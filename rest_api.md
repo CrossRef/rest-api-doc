@@ -35,7 +35,7 @@
 
 ## Background
 
-See the document, [CrossRef metadata best practice to support key performance indicators (KPIs) for funding agencies](https://github.com/CrossRef/rest-api-doc/blob/master/rest_api.md), for background.
+See the document, [CrossRef metadata best practice to support key performance indicators (KPIs) for funding agencies](https://github.com/CrossRef/rest-api-doc/blob/master/funder_kpi_metadata_best_practice.md), for background.
 
 ## Reporting issues
 
