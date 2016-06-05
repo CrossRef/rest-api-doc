@@ -319,7 +319,7 @@ would locate documents that are updates, were published on or after 3rd March 20
     
 ### Dot filters
 
-A filter with a dot in its name is special. The dot signifies that the filter will be applied to some other record type that is related to primary resource record type. For example, with work queries, one can filter on works that have an award, where the same award has a particular award number and award-gving funding agency:
+A filter with a dot in its name is special. The dot signifies that the filter will be applied to some other record type that is related to primary resource record type. For example, with work queries, one can filter on works that have an award, where the same award has a particular award number and award-giving funding agency:
 
     /works?filter=award.number:CBET-0756451,award.funder:10.13039/100000001
     
