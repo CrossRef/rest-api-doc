@@ -1,4 +1,4 @@
-# CrossRef REST API
+# Crossref Metadata API
 
 ## Version History
 
@@ -26,7 +26,7 @@
 - v21: 2014-07-01, new `award.number` and `award.funder` relational filters.
 - v22: 2014-07-16, changed title to more accurately reflect scope of API. 
 - v23, 2014-09-01, semantics of mutliple filters, dot filters
-- v24, 2014-10-15, Added info on license of CrossRef metadata itself. Doh.
+- v24, 2014-10-15, Added info on license of Crossref metadata itself. Doh.
 - v25, 2015-05-06, Added link to issue tracker. Removed Warning section.
 - v26, 2015-10-20, Added new filters - `from-created-date`, `until-created-date`, `affiliation`, `has-affiliation`, `assertion-group`, `assertion`, `article-number`, `alternative-id`
 - v27, 2015-10-30, Added `cursor` parameter to `/works` resources
@@ -35,11 +35,11 @@
 
 ## Background
 
-See the document, [CrossRef metadata best practice to support key performance indicators (KPIs) for funding agencies](https://github.com/CrossRef/rest-api-doc/blob/master/funder_kpi_metadata_best_practice.md), for background.
+See the document, [Crossref metadata best practice to support key performance indicators (KPIs)](https://github.com/Crossref/rest-api-doc/blob/master/funder_kpi_metadata_best_practice.md), for background.
 
 ## Reporting issues
 
-If you have suggestions or encounter problems with the API or the documentation, please report them on our [issue tracker](https://github.com/CrossRef/rest-api-doc/issues).
+If you have suggestions or encounter problems with the API or the documentation, please report them on our [issue tracker](https://github.com/Crossref/rest-api-doc/issues).
  
 If you have other queries, please contact us at:
 
@@ -47,17 +47,17 @@ If you have other queries, please contact us at:
 
 ## License
 
-CrossRef asserts no claims of ownership to individual items of bibliographic metadata and associated Digital Object Identifiers (DOIs) acquired through the use of the CrossRef Free Services. Individual items of bibliographic metadata and associated DOIs may be cached and incorporated into the user's content and systems. More information can be found [on our web site](http://www.crossref.org/requestaccount/).
+Crossref asserts no claims of ownership to individual items of bibliographic metadata and associated Digital Object Identifiers (DOIs) acquired through the use of the Crossref Free Services. Individual items of bibliographic metadata and associated DOIs may be cached and incorporated into the user's content and systems. More information can be found [on our web site](http://www.crossref.org/requestaccount/).
 
 ## Overview
 
 The API is generally RESTFUL and returns results in JSON.
 
-The API will only work for CrossRef DOIs. You can test the registration agency for a DOI using the following route:
+The API will only work for Crossref DOIs. You can test the registration agency for a DOI using the following route:
 
 `http://api.crossref.org/works/{doi}/agency`
 
-Testing the following CrossRef DOI:
+Testing the following Crossref DOI:
 
 `10.1037/0003-066X.59.1.29`
 
@@ -75,12 +75,12 @@ Will return the following result:
         DOI: "10.1037/0003-066x.59.1.29",
         agency: {
           id: "crossref",
-          label: "CrossRef"
+          label: "Crossref"
         }
       }
     }
 
-If you use any of the API calls listed below with a non-CrossRef DOI, you will get a `404` HTTP status response. Typical agency IDs include `crossref`, `datacite`, `medra` and also `public` for test DOIs.
+If you use any of the API calls listed below with a non-Crossref DOI, you will get a `404` HTTP status response. Typical agency IDs include `crossref`, `datacite`, `medra` and also `public` for test DOIs.
 
 ## Results Overview
 
@@ -123,7 +123,7 @@ If the API call includes a query, then the sort order will be by the relevance s
 
 
 ## Resource Components
-Major resource components supported by the CrossRef API are:
+Major resource components supported by the Crossref API are:
 
 - works
 - funders
@@ -138,10 +138,10 @@ These can be used alone like this
 |:--------------|:----------------------------------|
 | `/works`      | returns a list of all works (journal articles, conference proceedings, books, components, etc), 20 per page
 | `/funders`    | returns a list of all funders in the [FundRef Registry](http://www.crossref.org/fundref/fundref_registry.html)
-| `/members` | returns a list of all CrossRef members (mostly publishers) |
+| `/members` | returns a list of all Crossref members (mostly publishers) |
 | `/types`      | returns a list of valid work types | 
-| `/licenses`  | return a list of licenses applied to works in CrossRef metadata |
-| `/journals` | return a list of journals in the CrossRef database |
+| `/licenses`  | return a list of licenses applied to works in Crossref metadata |
+| `/journals` | return a list of journals in the Crossref database |
 
 
 ### Resource components and identifiers
@@ -149,10 +149,10 @@ Resource components can be used in conjunction with identifiers to retrieve the 
 
 | resource                    | description                       |
 |:----------------------------|:----------------------------------|
-| `/works/{doi}`              | returns metadata for the specified CrossRef DOI. |
+| `/works/{doi}`              | returns metadata for the specified Crossref DOI. |
 | `/funders/{funder_id}`      | returns metadata for specified funder **and** its suborganizations |
 | `/prefixes/{owner_prefix}` | returns metadata for the DOI owner prefix |
-| `/members/{member_id}` | returns metadata for a CrossRef member |
+| `/members/{member_id}` | returns metadata for a Crossref member |
 | `/types/{type_id}` | returns information about a metadata work type |
 | `/journals/{issn}` | returns information about a journal with the given ISSN |
 
@@ -162,16 +162,16 @@ The works component can be appended to other resources.
 
 | resource                    | description                       |
 |:----------------------------|:----------------------------------|
-| `/works/{doi}`      | returns information about the specified CrossRef `DOI` |
+| `/works/{doi}`      | returns information about the specified Crossref `DOI` |
 | `/funders/{funder_id}/works`| returns list of works associated with the specified `funder_id` |
 | `/types/{type_id}/works` | returns list of works of type `type` |
 | `/prefixes/{owner_prefix}/works` | returns list of works associated with specified `owner_prefix` |
-| `/members/{member_id}/works` | returns list of works associated with a CrossRef member (deposited by a CrossRef member) |
+| `/members/{member_id}/works` | returns list of works associated with a Crossref member (deposited by a Crossref member) |
 | `/journals/{issn}/works` | returns a list of works in the given journal |
 
 ## Parameters
 
-Parameters can be used to query, filter and control the results returned by the CrossRef API. They can be passed as normal URI parameters or as JSON in the body of the request.
+Parameters can be used to query, filter and control the results returned by the Crossref API. They can be passed as normal URI parameters or as JSON in the body of the request.
 
 | parameter                    | description                 |
 |:-----------------------------|:----------------------------|
@@ -260,7 +260,7 @@ Filters allow you to narrow queries. All filter results are lists.  The followin
 | `has-funder` | | metadata which includes one or more funder entry |
 | `funder` | `{funder_id}` | metadata which include the `{funder_id}` in FundRef data |
 | `prefix` | `{owner_prefix}` | metadata belonging to a DOI owner prefix `{owner_prefix}` (e.g. `10.1016` ) |
-| `member` | `{member_id}` | metadata belonging to a CrossRef member |
+| `member` | `{member_id}` | metadata belonging to a Crossref member |
 | `from-index-date` | `{date}` | metadata indexed since (inclusive) `{date}` |
 | `until-index-date` | `{date}` | metadata indexed before (inclusive) `{date}` |
 | `from-deposit-date` | `{date}` | metadata last (re)deposited since (inclusive) `{date}` |
@@ -327,13 +327,13 @@ Here we filter on works that have an award by the National Science Foundation th
 
 ### Notes on owner prefixes
 
-The prefix of a CrossRef DOI does **NOT** indicate who currently owns the DOI. It only reflects who originally registered the DOI. CrossRef metadata has an **owner_prefix** element that records the current owner of the CrossRef DOI in question. 
+The prefix of a Crossref DOI does **NOT** indicate who currently owns the DOI. It only reflects who originally registered the DOI. Crossref metadata has an **owner_prefix** element that records the current owner of the Crossref DOI in question. 
 
-CrossRef also has member IDs for depositing organisations. A single member may control multiple owner prefixes, which in turn may control a number of DOIs. When looking at works published by a certain organisaton, member IDs and the member routes should be used.
+Crossref also has member IDs for depositing organisations. A single member may control multiple owner prefixes, which in turn may control a number of DOIs. When looking at works published by a certain organisaton, member IDs and the member routes should be used.
 
 ### Notes on dates
 
-Note that dates in filters should always be of the form `YYYY-MM-DD`, `YYYY-MM` or `YYYY`. Also note that date information in CrossRef metadata can often be incomplete. So, for example, a publisher may only include the year and month of publication for a journal article. For a monograph they might just include the year. In these cases the API selects the earliest possible date given the information provided. So, for instance, if the publisher only provided 2013-02 as the published date, then the date would be treated as 2013-02-01. Similarly, if the publisher only provided the year 2013 as the date, it would be treated at 2013-01-01. 
+Note that dates in filters should always be of the form `YYYY-MM-DD`, `YYYY-MM` or `YYYY`. Also note that date information in Crossref metadata can often be incomplete. So, for example, a publisher may only include the year and month of publication for a journal article. For a monograph they might just include the year. In these cases the API selects the earliest possible date given the information provided. So, for instance, if the publisher only provided 2013-02 as the published date, then the date would be treated as 2013-02-01. Similarly, if the publisher only provided the year 2013 as the date, it would be treated at 2013-01-01. 
 
 ### Notes on incremental metadata updates
 
@@ -441,9 +441,9 @@ The API uses a semantic versioning scheme whereby the version number is divided 
            minor  |
            internal
 
- **Major** version increments will are defined as releases that can break backwards compatibility. CrossRef will only commit to supporting the latest two major releases simultaneously and legacy major releases will be supported for no more than nine months. Exceptions to these rules may be made when major releases are required to ensure the security or stability of the system. 
+ **Major** version increments will are defined as releases that can break backwards compatibility. Crossref will only commit to supporting the latest two major releases simultaneously and legacy major releases will be supported for no more than nine months. Exceptions to these rules may be made when major releases are required to ensure the security or stability of the system. 
 
-**Minor** version increments are defined as backwards compatible. There is no limit on the number of minor versions that can CrossRef can roll out. Note that client applications should not have dependencies on minor versions.
+**Minor** version increments are defined as backwards compatible. There is no limit on the number of minor versions that can Crossref can roll out. Note that client applications should not have dependencies on minor versions.
 
 **Internal** version increments are simply used to keep track of development versions of the API. They should never have any effect on client applications.
 
