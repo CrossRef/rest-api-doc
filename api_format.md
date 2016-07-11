@@ -13,23 +13,23 @@
 | publisher | String | Yes | Name of work's publisher |
 | title | Array of String | Yes | Work titles, including original language title and translated titles |
 | subtitle | Array of String | No | Work subtitles, including original language and translated |
-| container-title | Array of String | No |
+| container-title | Array of String | No | Titles (full and abbreviated) of the containing work (usually a book or journal.) |
 | reference-count | Number | Yes | Count of outbound references deposited with Crossref |
 | issue | String | No | Issue number of an article's journal |
 | volume | String | No | Volume number of an article's journal |
 | page | String | No | Pages numbers of an article within its journal |
 | source | String | Yes | Currently always `crossref` |
-| prefix | String | Yes | |
-| DOI | String | Yes | |
-| member | String | Yes | |
+| prefix | URL | Yes | DOI prefix identifier of the form `http://id.crossref.org/prefix/DOI_PREFIX` |
+| DOI | String | Yes | DOI of the work |
+| member | URL | Yes | Member identifier of the form `http://id.crossref.org/member/MEMBER_ID` |
 | type | String | Yes | Enumeration, one of the type ids from `https://api.crossref.org/v1/types` |
-| created | [Date](#date) | Yes | |
-| deposited | [Date](#date) | Yes | |
-| indexed | [Date](#date) | Yes | |
-| published-print | [Date](#date) | No | |
-| published-online | [Date](#date) | No | |
-| issued | Date | Yes | Eariest of published-print and published-online |
-| subject | Array of String | No | |
+| created | [Date](#date) | Yes | Date on which the DOI was first registered |
+| deposited | [Date](#date) | Yes | Date on which the work metadata was most recently updated |
+| indexed | [Date](#date) | Yes | Date on which the work metadata was most recently indexed. Re-indexing does not imply a metadata change, see `deposited` for the most recent metadata change date |
+| published-print | [Date](#date) | No | Date on which the work was published in print |
+| published-online | [Date](#date) | No | Date on which the work was published online |
+| issued | Date | Yes | Eariest of `published-print` and `published-online` |
+| subject | Array of String | No | Subject category names, a controlled vocabulary from Sci-Val. Available for most journal articles |
 | ISSN | Array of String | No | |
 | ISBN | Array of String | No | |
 | archive | Array of String | No | |
