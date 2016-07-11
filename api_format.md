@@ -36,10 +36,10 @@
 | license | Array of License | No | |
 | funder | Array of Funder | No | |
 | assertion | Array of Assertion | No | |
-| author | Array of Author | No | |
-| editor | Array of Editor | No | |
-| chair | Array of Chair | No | |
-| translator | Array of Translator | No | |
+| author | Array of Contributor | No | |
+| editor | Array of Contributor | No | |
+| chair | Array of Contributor | No | |
+| translator | Array of Contributor | No | |
 | update-to | Array of Update | No | |
 | update-policy | URL | No | |
 
