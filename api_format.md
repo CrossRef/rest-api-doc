@@ -13,7 +13,7 @@
 | publisher | String | Yes | Name of work's publisher |
 | title | Array of String | Yes | Work titles, including original language title and translated titles |
 | reference-count | Number | Yes | Count of outbound references deposited with Crossref |
-| source | String | Yes | Currently always `crossref` |
+| source | String | Yes | Currently always `CrossRef` |
 | prefix | URL | Yes | DOI prefix identifier of the form `http://id.crossref.org/prefix/DOI_PREFIX` |
 | DOI | String | Yes | DOI of the work |
 | member | URL | Yes | Member identifier of the form `http://id.crossref.org/member/MEMBER_ID` |
@@ -27,6 +27,7 @@
 | issue | String | No | Issue number of an article's journal |
 | volume | String | No | Volume number of an article's journal |
 | page | String | No | Pages numbers of an article within its journal |
+| article-number | String | No | |
 | published-print | [Date](#date) | No | Date on which the work was published in print |
 | published-online | [Date](#date) | No | Date on which the work was published online |
 | subject | Array of String | No | Subject category names, a controlled vocabulary from Sci-Val. Available for most journal articles |
@@ -43,6 +44,7 @@
 | update-to | Array of [Update](#update) | No | |
 | update-policy | URL | No | Link to an update policy covering Crossmark updates for this work |
 | link | Array of [Resource Link](#resource-link) | No | URLs to full-text locations |
+| clinical-trial-number | Array of [Clinical Trial Number](#clinical-trial-number) | No | |
 | alternative-id | String | No | Other identifiers for the work provided by the depositing member |
 
 ## Work Nested Types
@@ -55,6 +57,14 @@
 | DOI | String | No | Optional [Open Funder Registry](http://www.crossref.org/fundingdata/registry.html) DOI uniquely identifing the funding body |
 | award | Array of String | No | Award number(s) for awards given by the funding body |
 | doi-asserted-by | String | No | Either `crossref` or `publisher` |
+
+### Clinical Trial Number
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| clinical-trial-number | String | Yes | |
+| registry | String | Yes | |
+| type | String | No | |
 
 ### Contributor
 
@@ -94,6 +104,8 @@
 |-------|------|----------|-------------|
 | name | String | Yes | |
 | value | String | Yes | |
+| URL | URL | No | |
+| explanation | URL | No | |
 | label | String | No | |
 | order | Number | No | |
 | group | [Assertion Group](#assertion-group) | No | |
