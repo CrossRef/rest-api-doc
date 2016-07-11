@@ -43,6 +43,7 @@
 | update-to | Array of [Update](#update) | No | |
 | update-policy | URL | No | Link to an update policy covering Crossmark updates for this work |
 | link | Array of [Resource Link](#resource-link) | No | URLs to full-text locations |
+| alternative-id | String | No | Other identifiers for the work provided by the depositing member |
 
 ## Work Nested Types
 
