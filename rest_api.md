@@ -51,7 +51,7 @@ CrossRef asserts no claims of ownership to individual items of bibliographic met
 
 ## Overview
 
-The API is generally RESTFUL and returns results in JSON.
+The API is generally RESTFUL and returns results in JSON. JSON formats returned by the API are documented [here](https://github.com/CrossRef/rest-api-doc/blob/master/api_format.md).
 
 The API will only work for CrossRef DOIs. You can test the registration agency for a DOI using the following route:
 
