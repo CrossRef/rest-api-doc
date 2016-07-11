@@ -50,10 +50,10 @@
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| name | String | Yes | |
-| DOI | String | No | |
-| award | Array of String | No | |
-| doi-asserted-by | String | No | |
+| name | String | Yes | Funding body primary name |
+| DOI | String | No | Optional [Open Funder Registry](http://www.crossref.org/fundingdata/registry.html) DOI uniquely identifing the funding body |
+| award | Array of String | No | Award number(s) for awards given by the funding body |
+| doi-asserted-by | String | No | Either `crossref` or `publisher` |
 
 ### Contributor
 
@@ -61,7 +61,7 @@
 |-------|------|----------|-------------|
 | family-name | String | Yes | |
 | given-name | String | No | |
-| ORCID | String | No | |
+| ORCID | URL | No | URL-form of an [ORCID](http://orcid.org) identifier |
 | affiliation | Array of [Affiliation](#affiliation) | No | |
 
 ### Affiliation
@@ -74,18 +74,18 @@
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| date-parts | Array of Number | Yes | |
-| timestamp | Number | No | |
-| date-time | String | No | |
+| date-parts | Array of Number | Yes | Ordered array of `year`, `month`, `day of month`. Only `year` is required |
+| timestamp | Number | No | Seconds since UNIX epoch |
+| date-time | String | No | ISO 8601 date time |
 
 ### Update
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| updated | Date | Yes | |
-| DOI | String | Yes | |
-| type | String | Yes | |
-| label | String | No | |
+| updated | Date | Yes | Date on which the update was published |
+| DOI | String | Yes | DOI of the updated work |
+| type | String | Yes | The type of update, for example `retraction` or `correction` |
+| label | String | No | A display-friendly label for the update type |
 
 ### Assertion
 
@@ -108,16 +108,16 @@
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| content-version | String | Yes | |
-| delay-in-days | Number | Yes | |
-| start | Date | Yes | |
-| URL | URL | Yes | |
+| content-version | String | Yes | Either `vor` (version of record,) `am` (accepted manuscript,) `tdm` (text and data mining) or `unspecified` |
+| delay-in-days | Number | Yes | Number of days between the publication date of the work and the start date of this license |
+| start | Date | Yes | Date on which this license begins to take effect |
+| URL | URL | Yes | Link to a web page describing this license |
 
 ### Resource Link
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| intended-application | String | Yes | |
-| content-version | String | Yes | |
-| URL | URL | Yes | |
-| content-type | String | No | |
+| intended-application | String | Yes | Either `text-mining` or `unspecified` |
+| content-version | String | Yes | Either `vor` (version of record,) `am` (accepted manuscript) or `unspecified` |
+| URL | URL | Yes | Direct link to a full-text download location |
+| content-type | String | No | Content type (or MIME type) of the full-text object |
