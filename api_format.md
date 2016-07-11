@@ -85,7 +85,7 @@
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| date-parts | Array of Number | Yes | Ordered array of `year`, `month`, `day of month`. Only `year` is required |
+| date-parts | Array of Number | Yes | Contains an ordered array of `year`, `month`, `day of month`. Only `year` is required. Note that the field contains a nested array, e.g. `[ [ 2006, 5, 19 ] ]` to conform to citeproc JSON dates |
 | timestamp | Number | No | Seconds since UNIX epoch |
 | date-time | String | No | ISO 8601 date time |
 
