@@ -62,9 +62,9 @@
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| clinical-trial-number | String | Yes | |
-| registry | String | Yes | |
-| type | String | No | |
+| clinical-trial-number | String | Yes | Identifier of the clinical trial |
+| registry | String | Yes | DOI of the clinical trial regsitry that assigned the trial number |
+| type | String | No | One of `preResults`, `results` or `postResults` |
 
 ### Contributor
 
