@@ -21,15 +21,15 @@
 | created | [Date](#date) | Yes | Date on which the DOI was first registered |
 | deposited | [Date](#date) | Yes | Date on which the work metadata was most recently updated |
 | indexed | [Date](#date) | Yes | Date on which the work metadata was most recently indexed. Re-indexing does not imply a metadata change, see `deposited` for the most recent metadata change date |
-| issued | Date | Yes | Eariest of `published-print` and `published-online` |
+| issued | [Partial Date](#partial-date) | Yes | Eariest of `published-print` and `published-online` |
 | subtitle | Array of String | No | Work subtitles, including original language and translated |
 | container-title | Array of String | No | Titles (full and abbreviated) of the containing work (usually a book or journal.) |
 | issue | String | No | Issue number of an article's journal |
 | volume | String | No | Volume number of an article's journal |
 | page | String | No | Pages numbers of an article within its journal |
 | article-number | String | No | |
-| published-print | [Date](#date) | No | Date on which the work was published in print |
-| published-online | [Date](#date) | No | Date on which the work was published online |
+| published-print | [Partial Date](#partial-date) | No | Date on which the work was published in print |
+| published-online | [Partial Date](#partial-date) | No | Date on which the work was published online |
 | subject | Array of String | No | Subject category names, a controlled vocabulary from Sci-Val. Available for most journal articles |
 | ISSN | Array of String | No | |
 | ISBN | Array of String | No | |
@@ -85,15 +85,21 @@
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
+| date-parts | Array of Number | Yes | Contains an ordered array of `year`, `month`, `day of month`. Note that the field contains a nested array, e.g. `[ [ 2006, 5, 19 ] ]` to conform to citeproc JSON dates |
+| timestamp | Number | Yes | Seconds since UNIX epoch |
+| date-time | String | Yes | ISO 8601 date time |
+
+### Partial Date
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
 | date-parts | Array of Number | Yes | Contains an ordered array of `year`, `month`, `day of month`. Only `year` is required. Note that the field contains a nested array, e.g. `[ [ 2006, 5, 19 ] ]` to conform to citeproc JSON dates |
-| timestamp | Number | No | Seconds since UNIX epoch |
-| date-time | String | No | ISO 8601 date time |
 
 ### Update
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| updated | Date | Yes | Date on which the update was published |
+| updated | [Partial Date](#partial-date) | Yes | Date on which the update was published |
 | DOI | String | Yes | DOI of the updated work |
 | type | String | Yes | The type of update, for example `retraction` or `correction` |
 | label | String | No | A display-friendly label for the update type |
@@ -123,7 +129,7 @@
 |-------|------|----------|-------------|
 | content-version | String | Yes | Either `vor` (version of record,) `am` (accepted manuscript,) `tdm` (text and data mining) or `unspecified` |
 | delay-in-days | Number | Yes | Number of days between the publication date of the work and the start date of this license |
-| start | Date | Yes | Date on which this license begins to take effect |
+| start | [Partial Date](#partial-date) | Yes | Date on which this license begins to take effect |
 | URL | URL | Yes | Link to a web page describing this license |
 
 ### Resource Link
