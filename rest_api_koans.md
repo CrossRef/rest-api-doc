@@ -27,7 +27,7 @@ You might start by wondering how much and what kinds of data exist in the CrossR
 
 ### How many report DOIs does CrossRef have?
 
-    http://api.crossref.org/types/journal-article/works?rows=0
+    http://api.crossref.org/types/report/works?rows=0
 
 But eventually you will probably want to start looking at metadata records
 
@@ -59,7 +59,7 @@ So let's look at specific records
 
     TBD
 
-Interesting. There is licnese information in there and full text links.
+Interesting. There is license information in there and full text links.
 
 ## How many works have license information?
 
