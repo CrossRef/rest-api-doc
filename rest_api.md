@@ -32,18 +32,16 @@
 - v27, 2015-10-30, Added `cursor` parameter to `/works` resources
 - v28, 2016-05-09, Added link to source of category lables
 - v29, 2016-05-24, Added field queries
+- v30, 2016-09-26, Highlight issue tracker
 
 ## Background
 
 See the document, [CrossRef metadata best practice to support key performance indicators (KPIs) for funding agencies](https://github.com/CrossRef/rest-api-doc/blob/master/funder_kpi_metadata_best_practice.md), for background.
 
-## Reporting issues
+## Reporting issues, requesting features
 
-If you have suggestions or encounter problems with the API or the documentation, please report them on our [issue tracker](https://github.com/CrossRef/rest-api-doc/issues).
+Please report problems with the API or the documentation on our [issue tracker](https://github.com/CrossRef/rest-api-doc/issues).
  
-If you have other queries, please contact us at:
-
-![](http://labs.crossref.org/wp-content/uploads/2013/01/labs_email.png)
 
 ## License
 
