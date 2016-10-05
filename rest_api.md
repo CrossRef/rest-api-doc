@@ -33,6 +33,7 @@
 - v28, 2016-05-09, Added link to source of category lables
 - v29, 2016-05-24, Added field queries
 - v30, 2016-09-26, Highlight issue tracker
+- v31, 2016-10-05, document `has-clinical-trial-number` and `has-abstract` filters
 
 ## Background
 
@@ -301,6 +302,8 @@ Filters allow you to narrow queries. All filter results are lists.  The followin
 | `has-affiliation` | | metadata for records that have any affiliation information |
 | `alternative-id` | | metadata for records with the given alternative ID, which may be a publisher-specific ID, or any other identifier a publisher may have provided |
 | `article-number` | | metadata for records with a given article number |
+| `has-abstract` | | metadata for records which include an abstract |
+| `has-clinical-trial-number` | | metadata for records which include a clinical trial number |
 
 ### Multiple filters
 
