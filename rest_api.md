@@ -51,7 +51,7 @@ CrossRef asserts no claims of ownership to individual items of bibliographic met
 
 ## Rate limits
 
-From time to time Crossref needs to empose rate limits to ensure that the free API is usable by all. Any rate limits that are in effect will be advertised in the `X-Rate-Limit-Limit` and `X-Rate-Limit-Interval` HTTP headers.
+From time to time Crossref needs to impose rate limits to ensure that the free API is usable by all. Any rate limits that are in effect will be advertised in the `X-Rate-Limit-Limit` and `X-Rate-Limit-Interval` HTTP headers.
 
 ## Overview
 
