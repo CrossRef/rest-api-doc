@@ -1,4 +1,4 @@
-# CrossRef REST API
+# Crossref REST API
 
 ## Version History
 
