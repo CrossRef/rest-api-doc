@@ -34,6 +34,7 @@
 - v29, 2016-05-24, Added field queries
 - v30, 2016-09-26, Highlight issue tracker
 - v31, 2016-10-05, document `has-clinical-trial-number` and `has-abstract` filters
+- v32, 2016-10-27, document rate limit headers
 
 ## Background
 
@@ -47,6 +48,10 @@ Please report problems with the API or the documentation on our [issue tracker](
 ## License
 
 CrossRef asserts no claims of ownership to individual items of bibliographic metadata and associated Digital Object Identifiers (DOIs) acquired through the use of the CrossRef Free Services. Individual items of bibliographic metadata and associated DOIs may be cached and incorporated into the user's content and systems. More information can be found [on our web site](http://www.crossref.org/requestaccount/).
+
+## Rate limits
+
+From time to time Crossref needs to empose rate limits to ensure that the free API is usable by all. Any rate limits that are in effect will be advertised in the `X-Rate-Limit-Limit` and `X-Rate-Limit-Interval` HTTP headers.
 
 ## Overview
 
