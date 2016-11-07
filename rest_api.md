@@ -35,6 +35,7 @@
 - v30, 2016-09-26, Highlight issue tracker
 - v31, 2016-10-05, document `has-clinical-trial-number` and `has-abstract` filters
 - v32, 2016-10-27, document rate limit headers
+- v33, 2016-11-07, guidance on when to use `offset` vs `cursor`
 
 ## Background
 
@@ -182,11 +183,12 @@ Parameters can be used to query, filter and control the results returned by the 
 | `query`                      | limited [DisMax](https://wiki.apache.org/solr/DisMax) query terms |
 | `filter={filter_name}:{value}`| filter results by specific fields |
 | `rows={#}`                   | results per per page | 
-| `offset={#}`                 | result offset |                         
+| `offset={#}` (mak 10k)               | result offset (user `cursor` for larger `/works` result sets)  |                         
 | `sample={#}`                 | return random N results |
 | `sort={#}`                   | sort results by a certain field |
 | `order={#}`                  | set the sort order to `asc` or `desc` |
 | `facet=t`                    | enable facet information in responses |
+| `cursor={#}`		       | deep page through `/works` result sets |
 
 Multiple filters can be specified by separating name:value pairs with a comma:
 
@@ -351,7 +353,7 @@ every time there is a change to metadata requiring a reindex.
 
 ## Result controls
 
-You can control the delivery and selection  results using the `rows`, `offset` and `sample` parameters. 
+You can control the delivery and selection results using the `rows`, `offset` and `sample` parameters. If you are expecting results beyond 10K, then use a `cursor` to deep page through the results. 
 
 ### Rows 
 
@@ -370,6 +372,8 @@ The maximum number rows you can ask for in one query is `1000`.
 The number of returned items is controlled by the `rows` parameter, but you can select the offset into the result list by using the `offset` parameter.  So, for example, to select the second set of 5 results (i.e. results 6 through 10), you would do the following:
 
     http://api.crossref.org/works?query=allen+renear&rows=5&offset=5
+
+Offsets for `/works` are limited to 10K. Use `cursor` (see below) for larger `/works` results sets.
 
 ### Deep Paging with Cursors
 
