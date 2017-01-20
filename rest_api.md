@@ -26,7 +26,7 @@
 - v21: 2014-07-01, new `award.number` and `award.funder` relational filters.
 - v22: 2014-07-16, changed title to more accurately reflect scope of API. 
 - v23, 2014-09-01, semantics of mutliple filters, dot filters
-- v24, 2014-10-15, Added info on license of CrossRef metadata itself. Doh.
+- v24, 2014-10-15, Added info on license of Crossref metadata itself. Doh.
 - v25, 2015-05-06, Added link to issue tracker. Removed Warning section.
 - v26, 2015-10-20, Added new filters - `from-created-date`, `until-created-date`, `affiliation`, `has-affiliation`, `assertion-group`, `assertion`, `article-number`, `alternative-id`
 - v27, 2015-10-30, Added `cursor` parameter to `/works` resources
@@ -39,7 +39,7 @@
 
 ## Background
 
-See the document, [CrossRef metadata best practice to support key performance indicators (KPIs) for funding agencies](https://github.com/CrossRef/rest-api-doc/blob/master/funder_kpi_metadata_best_practice.md), for background.
+See the document, [Crossref metadata best practice to support key performance indicators (KPIs) for funding agencies](https://github.com/CrossRef/rest-api-doc/blob/master/funder_kpi_metadata_best_practice.md), for background.
 
 ## Reporting issues, requesting features
 
@@ -48,7 +48,7 @@ Please report problems with the API or the documentation on our [issue tracker](
 
 ## License
 
-CrossRef asserts no claims of ownership to individual items of bibliographic metadata and associated Digital Object Identifiers (DOIs) acquired through the use of the CrossRef Free Services. Individual items of bibliographic metadata and associated DOIs may be cached and incorporated into the user's content and systems. More information can be found [on our web site](http://www.crossref.org/requestaccount/).
+Crossref asserts no claims of ownership to individual items of bibliographic metadata and associated Digital Object Identifiers (DOIs) acquired through the use of the Crossref Free Services. Individual items of bibliographic metadata and associated DOIs may be cached and incorporated into the user's content and systems. More information can be found [on our web site](http://www.crossref.org/requestaccount/).
 
 ## Rate limits
 
@@ -58,11 +58,11 @@ From time to time Crossref needs to impose rate limits to ensure that the free A
 
 The API is generally RESTFUL and returns results in JSON. JSON formats returned by the API are documented [here](https://github.com/CrossRef/rest-api-doc/blob/master/api_format.md).
 
-The API will only work for CrossRef DOIs. You can test the registration agency for a DOI using the following route:
+The API will only work for Crossref DOIs. You can test the registration agency for a DOI using the following route:
 
 `http://api.crossref.org/works/{doi}/agency`
 
-Testing the following CrossRef DOI:
+Testing the following Crossref DOI:
 
 `10.1037/0003-066X.59.1.29`
 
@@ -85,7 +85,7 @@ Will return the following result:
       }
     }
 
-If you use any of the API calls listed below with a non-CrossRef DOI, you will get a `404` HTTP status response. Typical agency IDs include `crossref`, `datacite`, `medra` and also `public` for test DOIs.
+If you use any of the API calls listed below with a non-Crossref DOI, you will get a `404` HTTP status response. Typical agency IDs include `crossref`, `datacite`, `medra` and also `public` for test DOIs.
 
 ## Results Overview
 
