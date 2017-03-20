@@ -48,7 +48,7 @@ Please report problems with the API or the documentation on our [issue tracker](
 
 ## License
 
-Crossref asserts no claims of ownership to individual items of bibliographic metadata and associated Digital Object Identifiers (DOIs) acquired through the use of the Crossref Free Services. Individual items of bibliographic metadata and associated DOIs may be cached and incorporated into the user's content and systems. More information can be found [on our web site](http://www.crossref.org/requestaccount/).
+Crossref asserts no claims of ownership to individual items of bibliographic metadata and associated Digital Object Identifiers (DOIs) acquired through the use of the Crossref Free Services. Individual items of bibliographic metadata and associated DOIs may be cached and incorporated into the user's content and systems. More information can be found [on our web site](https://www.crossref.org/privacy/).
 
 ## Rate limits
 
