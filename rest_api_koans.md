@@ -177,7 +177,7 @@ though once you have a member ID ('98', in this case), you should use that inste
 
     http://api.crossref.org/licenses?filter=issn:2090-8091
 
-## What licenses does a reasearcher with a particular ORCID publish under
+## What licenses does a researcher with a particular ORCID publish under
 
     http://api.crossref.org/licenses?filter=orcid:0000-0003-1340-5202
 
