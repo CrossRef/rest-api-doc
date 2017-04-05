@@ -59,7 +59,7 @@ So let's look at specific records
 
     TBD
 
-Interesting. There is licnese information in there and full text links.
+Interesting. There is license information in there and full text links.
 
 ## How many works have license information?
 
