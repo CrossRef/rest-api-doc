@@ -36,6 +36,7 @@
 - v31, 2016-10-05, document `has-clinical-trial-number` and `has-abstract` filters
 - v32, 2016-10-27, document rate limit headers
 - v33, 2016-11-07, guidance on when to use `offset` vs `cursor`
+- v34, 2017-04-26, document support for HTTPS. Update examples to use HTTPS.
 
 ## Background
 
@@ -60,7 +61,7 @@ The API is generally RESTFUL and returns results in JSON. JSON formats returned 
 
 The API will only work for Crossref DOIs. You can test the registration agency for a DOI using the following route:
 
-`http://api.crossref.org/works/{doi}/agency`
+`https://api.crossref.org/works/{doi}/agency`
 
 Testing the following Crossref DOI:
 
@@ -68,7 +69,7 @@ Testing the following Crossref DOI:
 
 Using the URL:
 
-`http://api.crossref.org/works/10.1037/0003-066X.59.1.29/agency`
+`https://api.crossref.org/works/10.1037/0003-066X.59.1.29/agency`
 
 Will return the following result:
 
@@ -142,7 +143,7 @@ These can be used alone like this
 | resource      | description                       |
 |:--------------|:----------------------------------|
 | `/works`      | returns a list of all works (journal articles, conference proceedings, books, components, etc), 20 per page
-| `/funders`    | returns a list of all funders in the [FundRef Registry](http://www.crossref.org/fundref/fundref_registry.html)
+| `/funders`    | returns a list of all funders in the [FundRef Registry](https://www.crossref.org/fundref/fundref_registry.html)
 | `/members` | returns a list of all CrossRef members (mostly publishers) |
 | `/types`      | returns a list of valid work types | 
 | `/licenses`  | return a list of licenses applied to works in CrossRef metadata |
@@ -192,11 +193,11 @@ Parameters can be used to query, filter and control the results returned by the 
 
 Multiple filters can be specified by separating name:value pairs with a comma:
 
-    http://api.crossref.org/works?filter=has-orcid:true,from-pub-date:2004-04-04
+    https://api.crossref.org/works?filter=has-orcid:true,from-pub-date:2004-04-04
 
 ### Example query using URI parameters
 
-    http://api.crossref.org/funders/100000015/works?query=global+state&filter=has-orcid:true&rows=1
+    https://api.crossref.org/funders/100000015/works?query=global+state&filter=has-orcid:true&rows=1
 
 ## Queries
 
@@ -205,7 +206,7 @@ can refine queries as follows.
 
 Works that include "renear" but not "ontologies":
 
-    http://api.crossref.org/works?query=renear+-ontologies
+    https://api.crossref.org/works?query=renear+-ontologies
 	
 ## Field Queries
 
@@ -213,12 +214,12 @@ Field queries are available on some routes and allow for queries that match only
 of metadata. For example, this query matches records that contain the tokens `richard` or `feynman` (or both)
 in any author field:
 
-    http://api.crossref.org/works?query.author=richard+feynman
+    https://api.crossref.org/works?query.author=richard+feynman
 	
 Field queries can be combined with the general `query` paramter and each other. Each query parameter
 is ANDed with the others:
 
-    http://api.crossref.org/works?query.title=room+at+the+bottom&query.author=richard+feynman
+    https://api.crossref.org/works?query.title=room+at+the+bottom&query.author=richard+feynman
 	
 ### `/works` Field Queries
 
@@ -250,7 +251,7 @@ sorted. Possible values are:
 
 An example that sorts results in order of publication, beginning with the least recent:
 
-    http://api.crossref.org/works?query=josiah+carberry&sort=published&order=asc
+    https://api.crossref.org/works?query=josiah+carberry&sort=published&order=asc
 
 ## Facet Counts
 
@@ -359,11 +360,11 @@ You can control the delivery and selection results using the `rows`, `offset` an
 
 Normally, results are returned 20 at a time. You can control the number of results returns by using the `rows` parameter. To limit results to 5, for example, you could do the following:
 
-    http://api.crossref.org/works?query=allen+renear&rows=5
+    https://api.crossref.org/works?query=allen+renear&rows=5
 
 If you would just like to get the `summary` of the results, you can set the rows to 0 (zero).
 
-    http://api.crossref.org/works?query=allen+renear&rows=0
+    https://api.crossref.org/works?query=allen+renear&rows=0
     
 The maximum number rows you can ask for in one query is `1000`.
 
@@ -371,7 +372,7 @@ The maximum number rows you can ask for in one query is `1000`.
 
 The number of returned items is controlled by the `rows` parameter, but you can select the offset into the result list by using the `offset` parameter.  So, for example, to select the second set of 5 results (i.e. results 6 through 10), you would do the following:
 
-    http://api.crossref.org/works?query=allen+renear&rows=5&offset=5
+    https://api.crossref.org/works?query=allen+renear&rows=5&offset=5
 
 Offsets for `/works` are limited to 10K. Use `cursor` (see below) for larger `/works` results sets.
 
@@ -379,11 +380,11 @@ Offsets for `/works` are limited to 10K. Use `cursor` (see below) for larger `/w
 
 Using large `offset` values can result in extremely long response times. Offsets in the 100,000s and beyond will likely cause a timeout before the API is able to respond. An alternative to paging through very large result sets (like a corpus used for text and data mining) it to use the API's exposure of Solr's deep paging cursors. Any combination of query, filters and facets may be used with deep paging cursors. While `rows` may be specified along with `cursor`, `offset` and `sample` cannot be used. To use deep paging make a query as normal, but include the `cursor` parameter with a value of `*`. In this example we will page through all `journal-article` works from member `311`:
 
-    http://api.crossref.org/members/311/works?filter=type:journal-article&cursor=*
+    https://api.crossref.org/members/311/works?filter=type:journal-article&cursor=*
 
 A `next-cursor` field will be provided in the JSON response. To get the next page of results, pass the value of `next-cursor` as the `cursor` parameter:
 
-    http://api.crossref.org/members/311/works?filter=type:journal-article&cursor=AoE/CGh0dHA6Ly9keC5kb2kub3JnLzEwLjEwMDIvdGRtX2xpY2Vuc2VfMQ==
+    https://api.crossref.org/members/311/works?filter=type:journal-article&cursor=AoE/CGh0dHA6Ly9keC5kb2kub3JnLzEwLjEwMDIvdGRtX2xpY2Vuc2VfMQ==
  
 Clients should check the number of returned items. If the number of returned items is fewer than the number of expected rows then the end of the result set has been reached. Using `next-cursor` beyond this point will result in responses with an empty items list.
 
@@ -393,7 +394,7 @@ The `cursor` parameter is available on all `/works` resources.
 
 Being able to select random results is useful for both testing and sampling. You can use the `sample` parameter to retrieve random results. So, for example, the following select 10 random works:
 
-    http://api.crossref.org/works?sample=10
+    https://api.crossref.org/works?sample=10
     
 Note that when you use the `sample` parameter, the `rows` and `offset` parameters are ignored.
 
@@ -402,41 +403,41 @@ Note that when you use the `sample` parameter, the `rows` and `offset` parameter
 
 **All works published by owner prefix `10.1016` in January 2010**
 
-    http://api.crossref.org/prefixes/10.1016/works?filter=from-pub-date:2010-01,until-pub-date:2010-01
+    https://api.crossref.org/prefixes/10.1016/works?filter=from-pub-date:2010-01,until-pub-date:2010-01
 
 **All works funded by `10.13039/100000001` that have a CC-BY license**
 
-    http://api.crossref.org/funders/10.13039/100000001/works?filter=license.url:http://creativecommons.org/licenses/by/3.0/deed.en_US
+    https://api.crossref.org/funders/10.13039/100000001/works?filter=license.url:https://creativecommons.org/licenses/by/3.0/deed.en_US
 
 **All works published by owner prefix 10.5555 from February 2010 to February 2013 that have a CC-BY license**
 
-    http://api.crossref.org/prefixes/10.5555/works?filter=license.url:http://creativecommons.org/licenses/by/3.0/deed.en_US,from-pub-date:2010-02,until-pub-date:2013-02
+    https://api.crossref.org/prefixes/10.5555/works?filter=license.url:https://creativecommons.org/licenses/by/3.0/deed.en_US,from-pub-date:2010-02,until-pub-date:2013-02
 
 **All works funded by `10.13039/100000015` where license = CC-BY and embargo <= 365 days**
 
-    http://api.crossref.org/funders/10.13039/100000015/works?filter=license.url:http://creativecommons.org/licenses/by/3.0/deed.en_US,license.delay:365
+    https://api.crossref.org/funders/10.13039/100000015/works?filter=license.url:https://creativecommons.org/licenses/by/3.0/deed.en_US,license.delay:365
 
 Note that the filters for license URL and maximum license embargo period (license.url and license.delay) combine to filter each document's metadata for a license with both of these properties.
 
 **All works where the archive partner listed = 'CLOCKSS'**
 
-    http://api.crossref.org/works?filter=archive:CLOCKSS
+    https://api.crossref.org/works?filter=archive:CLOCKSS
     
 **All members with `hind` in their name (e.g. Hindawi)**
 
-    http://api.crossref.org/members?query=hind
+    https://api.crossref.org/members?query=hind
     
 **All licenses linked to works published by Elsevier**
 
-    http://api.crossref.org/licenses?filter=member:78
+    https://api.crossref.org/licenses?filter=member:78
     
 **All licenses applied to works published in the journal `Pathology Research International`**
 
-    http://api.crossref.org/licenses?filter=issn:2090-8091
+    https://api.crossref.org/licenses?filter=issn:2090-8091
     
 **All works with an award numbered roughly `1 F31 MH11745` also awarded by funder with ID `10.13039/100000025`:
 
-    http://api.crossref.org/works?filter=award.number:1F31MH11745,award.funder:10.13039/100000025
+    https://api.crossref.org/works?filter=award.number:1F31MH11745,award.funder:10.13039/100000025
 
 ## Versioning
 
