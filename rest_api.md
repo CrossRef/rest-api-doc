@@ -59,6 +59,8 @@ From time to time Crossref needs to impose rate limits to ensure that the free A
 
 The API is generally RESTFUL and returns results in JSON. JSON formats returned by the API are documented [here](https://github.com/CrossRef/rest-api-doc/blob/master/api_format.md).
 
+The API supports HTTP and HTTPS. Examples here are provided using HTTPS.
+
 The API will only work for Crossref DOIs. You can test the registration agency for a DOI using the following route:
 
 `https://api.crossref.org/works/{doi}/agency`
