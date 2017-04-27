@@ -40,6 +40,7 @@
 - v35, 2017-04-26, document use of head reqeusts to determine `existence`
 - v36, 2017-04-27, fixed license route examples to use facet/filter instead
 - v37, 2017-04-27, `query.bibliographic`
+- v38, 2017-04-27, Add v1.1 filters and sort fields
 
 ## Background
 
@@ -268,6 +269,11 @@ sorted. Possible values are:
 | `deposited` | Sort by time of most recent deposit |
 | `indexed` | Sort by time of most recent index |
 | `published` | Sort by publication date |
+| `published-print` | Sort by print publication date |
+| `published-online` | Sort by online publication date |
+| `issued` | Sort by issued date (earliest known publication date) |
+| `is-referenced-by-count` | Sort by number of references to documents |
+| `references-count` | Sort by number of references made by documents |
 
 An example that sorts results in order of publication, beginning with the least recent:
 
@@ -298,6 +304,14 @@ Filters allow you to narrow queries. All filter results are lists.  The followin
 | `until-created-date` | `{date}` | metadata first deposited before (inclusive) `{date}` |
 | `from-pub-date` | `{date}` | metadata where published date is since (inclusive) `{date}` |
 | `until-pub-date` | `{date}` | metadata where published date is before (inclusive)  `{date}` |
+| `from-online-pub-date` | `{date}` | metadata where online published date is since (inclusive) `{date}` |
+| `until-online-pub-date` | `{date}` | metadata where online published date is before (inclusive)  `{date}` |
+| `from-print-pub-date` | `{date}` | metadata where print published date is since (inclusive) `{date}` |
+| `until-print-pub-date` | `{date}` | metadata where print published date is before (inclusive)  `{date}` |
+| `from-posted-date` | `{date}` | metadata where posted date is since (inclusive) `{date}` |
+| `until-posted-date` | `{date}` | metadata where posted date is before (inclusive)  `{date}` |
+| `from-accepted-date` | `{date}` | metadata where accepted date is since (inclusive) `{date}` |
+| `until-accepted-date` | `{date}` | metadata where accepted date is before (inclusive)  `{date}` |
 | `has-license` | | metadata that includes any `<license_ref>` elements. |
 | `license.url` | `{url}` | metadata where `<license_ref>` value equals `{url}` |
 | `license.version` | `{string}` | metadata where the `<license_ref>`'s `applies_to` attribute  is `{string}`|
@@ -305,11 +319,11 @@ Filters allow you to narrow queries. All filter results are lists.  The followin
 | `has-full-text` |  | metadata that includes any full text `<resource>` elements. |
 | `full-text.version` | `{string}`  | metadata where `<resource>` element's `content_version` attribute is `{string}`. |
 | `full-text.type` | `{mime_type}`  | metadata where `<resource>` element's `content_type` attribute is `{mime_type}` (e.g. `application/pdf`). |
-| `public-references` | | metadata where publishers allow references to be distributed publically. [^*] |
 | `has-references` | | metadata for works that have a list of references |
 | `has-archive` | | metadata which include name of archive partner |
 | `archive` | `{string}` | metadata which where value of archive partner is `{string}` |
 | `has-orcid` | | metadata which includes one or more ORCIDs |
+| `has-authenticated-orcid` | | metadata which includes one or more ORCIDs where the depositing publisher claims to have witness the ORCID owner authenticate with ORCID |
 | `orcid` | `{orcid}` | metadata where `<orcid>` element's value = `{orcid}` |
 | `issn` | `{issn}` | metadata where record has an ISSN = `{issn}`. Format is `xxxx-xxxx`. |
 | `type` | `{type}` | metadata records whose type = `{type}`. Type must be an ID value from the list of types returned by the `/types` resource |
@@ -321,9 +335,11 @@ Filters allow you to narrow queries. All filter results are lists.  The followin
 | `container-title` | | metadata for records with a publication title exactly with an exact match |
 | `publisher-name` | | metadata for records with an exact matching publisher name |
 | `category-name` | | metadata for records with an exact matching category label. Category labels come from [this list](https://www.elsevier.com/solutions/scopus/content) published by Scopus |
+| `type` | | metadata for records with type matching a type identifier (e.g. `journal-article`) |
 | `type-name` | | metadata for records with an exacty matching type label |
 | `award.number` | `{award_number}` | metadata for records with a matching award nunber. Optionally combine with `award.funder` |
 | `award.funder` | `{funder doi or id}` | metadata for records with an award with matching funder. Optionally combine with `award.number` |
+| `has-assertion` | | metadata for records with any assertions |
 | `assertion-group` | | metadata for records with an assertion in a particular group |
 | `assertion` | | metadata for records with a particular named assertion |
 | `affiliation` | | metadata for records with at least one contributor with the given affiliation |
@@ -332,6 +348,13 @@ Filters allow you to narrow queries. All filter results are lists.  The followin
 | `article-number` | | metadata for records with a given article number |
 | `has-abstract` | | metadata for records which include an abstract |
 | `has-clinical-trial-number` | | metadata for records which include a clinical trial number |
+| `content-domain` | | metadata where the publisher records a particular domain name as the location Crossmark content will appear |
+| `has-content-domain` | | metadata where the publisher records a domain name location for Crossmark content |
+| `has-crossmark-restriction` | | metadata where the publisher restricts Crossmark usage to content domains |
+| `has-relation` | | metadata for records that either assert or are the object of a relation |
+| `relation.type` | | One of the relation types from the Crossref relations schema (e.g. `is-referenced-by`, `is-parent-of`, `is-preprint-of`) |
+| `relation.object` | | Relations where the object identifier matches the identifier provided |
+| `relation.object-type` | | One of the identifier types from the Crossref relations schema (e.g. `doi`, `issn`) |
 
 ### Multiple filters
 
