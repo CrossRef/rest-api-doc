@@ -42,6 +42,7 @@
 - v37, 2017-04-27, `query.bibliographic`
 - v38, 2017-04-27, Add v1.1 filters and sort fields
 - v39, 2017-04-27, Remove mention of dismax
+- v40, 2017-04-27, Clarify faceting feature
 
 ## Reporting issues, requesting features
 
@@ -104,7 +105,7 @@ The mime-type for API results is `application/vnd.crossref-api-message+json`
 
 Singletons are single results. Retrieving metadata for a specific identifier (e.g. DOI, ISSN, funder_identifier) typically returns in a singleton result.
 
-### Headers-only
+### Headers Only
 
 You can use HTTP HEAD requests to quickly determine "existence" of a singleton. The advantage of this technique is that it is very fast because it does not return any metadata- it only retruns headers and an HTTP status code (200=exists, 404=does not exist).
 
@@ -198,14 +199,14 @@ Parameters can be used to query, filter and control the results returned by the 
 
 | parameter                    | description                 |
 |:-----------------------------|:----------------------------|
-| `query`                      | limited [DisMax](https://wiki.apache.org/solr/DisMax) query terms |
+| `query`                      | query terms |
 | `filter={filter_name}:{value}`| filter results by specific fields |
 | `rows={#}`                   | results per per page | 
 | `offset={#}` (mak 10k)               | result offset (user `cursor` for larger `/works` result sets)  |                         
 | `sample={#}`                 | return random N results |
 | `sort={#}`                   | sort results by a certain field |
 | `order={#}`                  | set the sort order to `asc` or `desc` |
-| `facet=t`                    | enable facet information in responses |
+| `facet={#}`                    | enable facet information in responses |
 | `cursor={#}`		       | deep page through `/works` result sets |
 
 Multiple filters can be specified by separating name:value pairs with a comma:
@@ -275,8 +276,31 @@ An example that sorts results in order of publication, beginning with the least 
 
 ## Facet Counts
 
-Facet counts can be retrieved by enabling faceting; `facet=t` (or `1`, `true`). Facet counts
-give counts per field value for an entire result set.
+Facet counts can be retrieved by enabling faceting. Facets are enabled by providing facet field names along with a maximum number of returned term values. The larger the number of returned values, the longer the query will take. Some facet fields
+can accept a `*` as their maximum, which indicates that all values should be returned.
+
+Facets are specified with the `facet` parameter:
+
+    https://api.crossref.org/works?rows=0&facet=type-name:*
+    
+| Facet name |
+|:-----------|
+| affiliation |
+| funder-name |
+| funder-doi |
+| orcid |
+| container-title |
+| assertion |
+| archive |
+| update-type |
+| issn |
+| published |
+| type-name |
+| publisher-name |
+| license |
+| category-name |
+| relation-type |
+| assertion-group |
 
 ## Filter Names
 
