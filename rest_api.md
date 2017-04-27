@@ -38,6 +38,7 @@
 - v33, 2016-11-07, guidance on when to use `offset` vs `cursor`
 - v34, 2017-04-26, document support for HTTPS. Update examples to use HTTPS.
 - v35, 2017-04-26, document use of head reqeusts to determine `existence`
+- v36, 2017-04-27, fixed license route examples to use facet/filter instead
 
 ## Background
 
@@ -424,15 +425,15 @@ Note that when you use the `sample` parameter, the `rows` and `offset` parameter
 
 **All works funded by `10.13039/100000001` that have a CC-BY license**
 
-    https://api.crossref.org/funders/10.13039/100000001/works?filter=license.url:https://creativecommons.org/licenses/by/3.0/deed.en_US
+    https://api.crossref.org/funders/10.13039/100000001/works?filter=license.url:http://creativecommons.org/licenses/by/3.0/
 
-**All works published by owner prefix 10.5555 from February 2010 to February 2013 that have a CC-BY license**
+**All works published by owner prefix 10.6064 from February 2010 to February 2013 that have a CC-BY license**
 
-    https://api.crossref.org/prefixes/10.5555/works?filter=license.url:https://creativecommons.org/licenses/by/3.0/deed.en_US,from-pub-date:2010-02,until-pub-date:2013-02
+    https://api.crossref.org/prefixes/10.6064/works?filter=license.url:http://creativecommons.org/licenses/by/3.0/,from-pub-date:2010-02,until-pub-date:2013-02
 
 **All works funded by `10.13039/100000015` where license = CC-BY and embargo <= 365 days**
 
-    https://api.crossref.org/funders/10.13039/100000015/works?filter=license.url:https://creativecommons.org/licenses/by/3.0/deed.en_US,license.delay:365
+    https://api.crossref.org/funders/10.13039/100000015/works?filter=license.url:http://creativecommons.org/licenses/by/3.0/,license.delay:365
 
 Note that the filters for license URL and maximum license embargo period (license.url and license.delay) combine to filter each document's metadata for a license with both of these properties.
 
@@ -446,11 +447,11 @@ Note that the filters for license URL and maximum license embargo period (licens
     
 **All licenses linked to works published by Elsevier**
 
-    https://api.crossref.org/licenses?filter=member:78
+    http://api.crossref.org/v1/works?facet=license:*&filter=member:78&rows=0
     
 **All licenses applied to works published in the journal `Pathology Research International`**
 
-    https://api.crossref.org/licenses?filter=issn:2090-8091
+    https://api.crossref.org/works?facet=license:*&filter=issn:2090-8091
     
 **All works with an award numbered roughly `1 F31 MH11745` also awarded by funder with ID `10.13039/100000025`:
 

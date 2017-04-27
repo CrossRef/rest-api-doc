@@ -4,6 +4,7 @@
 
 - V1: 2014-04-18, first draft.
 - V2: 2014-11-10, edits for CR workshop 
+- v3: 2017-04-27, fix license examples
 
 ## Overview
 
@@ -169,16 +170,16 @@ How many Elsevier works have full text links
 
 What license types does Elsevier support?
 
-    http://api.crossref.org/licenses?filter=member:78
+    http://api.crossref.org/works?facet=license:*&filter=member:78
 
 What license types does Hindawi support?
 
-    http://api.crossref.org/licenses?filter=member:98
+    http://api.crossref.org/works?facet=license:*&filter=member:98
 
 What license type does the journal with a particular ISSN support
 
-    http://api.crossref.org/licenses?filter=issn:2090-8091
+    http://api.crossref.org/works?facet=license:*&filter=issn:2090-8091
 
 What licenses does a reasearcher with a particular ORCID publish under
 
-    http://api.crossref.org/licenses?filter=orcid:0000-0003-1340-5202
+    http://api.crossref.org/works?facet=license:*&filter=orcid:0000-0003-1340-5202

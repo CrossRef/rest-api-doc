@@ -4,6 +4,7 @@
 
 - V1: 2014-02-26, first draft.
 - V2: 2014-02-28, added license examples
+- V3: 2017-04-27, replace license route examples with facet/filter examples
 
 ## Overview
 
@@ -147,7 +148,7 @@ though once you have a member ID ('98', in this case), you should use that inste
     
 ## What license types does Elsevier support?
 
-    http://api.crossref.org/licenses?filter=member:78
+    http://api.crossref.org/works?facet=license:*&filter=member:78&rows=0
 
 ## Overview of Hindawi's particpation in CrossRef
 
@@ -171,16 +172,15 @@ though once you have a member ID ('98', in this case), you should use that inste
     
 ## What license types does Hindawi support?
 
-    http://api.crossref.org/licenses?filter=member:98
+    http://api.crossref.org/works?facet=license:*&filter=member:98&rows=0
     
 ## What license type does the journal with a particular ISSN support
 
-    http://api.crossref.org/licenses?filter=issn:2090-8091
+    http://api.crossref.org/works?facet=license:*&filter=issn:2090-8091
 
 ## What licenses does a researcher with a particular ORCID publish under
 
-    http://api.crossref.org/licenses?filter=orcid:0000-0003-1340-5202
-
+    http://api.crossref.org/works?facet=license:*&filter=orcid:0000-0003-1340-5202
 
 
 
