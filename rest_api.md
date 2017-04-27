@@ -37,6 +37,7 @@
 - v32, 2016-10-27, document rate limit headers
 - v33, 2016-11-07, guidance on when to use `offset` vs `cursor`
 - v34, 2017-04-26, document support for HTTPS. Update examples to use HTTPS.
+- v35, 2017-04-26, document use of head reqeusts to determine `existence`
 
 ## Background
 
@@ -45,7 +46,6 @@ See the document, [Crossref metadata best practice to support key performance in
 ## Reporting issues, requesting features
 
 Please report problems with the API or the documentation on our [issue tracker](https://github.com/CrossRef/rest-api-doc/issues).
- 
 
 ## License
 
@@ -92,10 +92,13 @@ If you use any of the API calls listed below with a non-Crossref DOI, you will g
 
 ## Results Overview
 
-All results are returned in JSON. There are two general types of results:
+All results are returned in JSON. There are three general types of results:
+
 
 - Singletons
+- Headers-only
 - Lists
+
 
 The mime-type for API results is `application/vnd.crossref-api-message+json` 
 
@@ -103,6 +106,18 @@ The mime-type for API results is `application/vnd.crossref-api-message+json`
 ### Singletons
 
 Singletons are single results. Retrieving metadata for a specific identifier (e.g. DOI, ISSN, funder_identifier) typically returns in a singleton result.
+
+### Headers-only
+
+You can use HTTP HEAD requests to quickly determine "existence" of a singleton. The advantage of this technique is that it is very fast because it does not return any metadata- it only retruns headers and an HTTP status code (200=exists, 404=does not exist).
+
+To determine if member ID `98` exists:
+
+`curl --head "http://api.crossref.org/members/98"`
+
+To determine if a journal with ISSN `1549-7712` exists:
+
+`curl --head "http://api.crossref.org/journals/1549-7712"`
 
 ### Lists
 Lists results can contain multiple entries. Searching or filtering typically returns a list result. A list has two parts:
