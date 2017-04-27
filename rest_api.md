@@ -505,20 +505,17 @@ Note that the filters for license URL and maximum license embargo period (licens
 
 In theory, the syntax of the API can vary independently of the result representations. In practice, major version changes in either will require changes to API clients and so versioning of the API will apply to both the API syntax and the result representation.
 
-The API uses a semantic versioning scheme whereby the version number is divided into three parts delimited by periods. The first number represents the "major" release number. The second represents a "minor" release number and the third represents an "internal" release number.  
+The API uses a semantic versioning scheme whereby the version number is divided into three parts delimited by periods. The first number represents the "major" release number. The second represents a "minor" release number.
       
-    Version 1.20.31
-            ^  ^  ^
-            |  |  |
-        major  |  |
-           minor  |
-           internal
+    Version 1.20
+            ^  ^
+            |  |
+        major  |
+           minor
 
- **Major** version increments will are defined as releases that can break backwards compatibility. CrossRef will only commit to supporting the latest two major releases simultaneously and legacy major releases will be supported for no more than nine months. Exceptions to these rules may be made when major releases are required to ensure the security or stability of the system. 
+ **Major** version increments will are defined as releases that can break backwards compatibility. Crossref will only commit to supporting the latest two major releases simultaneously and legacy major releases will be supported for no more than nine months. Exceptions to these rules may be made when major releases are required to ensure the security or stability of the system. 
 
-**Minor** version increments are defined as backwards compatible. There is no limit on the number of minor versions that can CrossRef can roll out. Note that client applications should not have dependencies on minor versions.
-
-**Internal** version increments are simply used to keep track of development versions of the API. They should never have any effect on client applications.
+**Minor** version increments are defined as backwards compatible. There is no limit on the number of minor versions that can CrossRef can roll out. Note that client applications should not have dependencies on minor versions, and Crossref will only maintain the latest minor version for the two most recent major versions.
 
 Adding syntax options or metadata to representations will normally be backwards compatible and will thus normally only trigger minor version changes. Renaming or restructuring syntax options of metadata tends not to be backward compatible and will thus typically trigger major version changes
 
