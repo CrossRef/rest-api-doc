@@ -41,6 +41,7 @@
 - v36, 2017-04-27, fixed license route examples to use facet/filter instead
 - v37, 2017-04-27, `query.bibliographic`
 - v38, 2017-04-27, Add v1.1 filters and sort fields
+- v39, 2017-04-27, Remove mention of dismax
 
 ## Background
 
@@ -97,14 +98,11 @@ If you use any of the API calls listed below with a non-Crossref DOI, you will g
 
 All results are returned in JSON. There are three general types of results:
 
-
 - Singletons
 - Headers-only
 - Lists
 
-
 The mime-type for API results is `application/vnd.crossref-api-message+json` 
-
 
 ### Singletons
 
@@ -126,9 +124,11 @@ To determine if a journal with ISSN `1549-7712` exists:
 Lists results can contain multiple entries. Searching or filtering typically returns a list result. A list has two parts:
 
 - Summary, which include the following information:
+
     - status (e.g. "ok", error)
     - message-type (e.g. "work-list" )
     - message-version (e.g. 1.0.0 )
+    
 - Items, which will will contain the items matching the query or filter. 
 
 Note that the "message-type" returned will differ from the mime-type:
@@ -143,6 +143,7 @@ Note that the "message-type" returned will differ from the mime-type:
 - member-list (list)
 
 Normally, an API list result will return both the summary and the items. If you want to just retrieve the summary, you can do so by specifying that the number of rows returned should be zero. 
+
 ### Sort order
 
 If the API call includes a query, then the sort order will be by the relevance score. If no query is included, then the sort order will be by DOI update date.
@@ -221,12 +222,9 @@ Multiple filters can be specified by separating name:value pairs with a comma:
 
 ## Queries
 
-Queries support a subset of [DisMax](https://wiki.apache.org/solr/DisMax), so, for example you 
-can refine queries as follows.
+Free form search queries can be made, for example, works that include `renear` and `ontologies`:
 
-Works that include "renear" but not "ontologies":
-
-    https://api.crossref.org/works?query=renear+-ontologies
+    https://api.crossref.org/works?query=renear+ontologies
 	
 ## Field Queries
 
