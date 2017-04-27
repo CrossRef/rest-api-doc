@@ -293,7 +293,7 @@ Facets are specified with the `facet` parameter:
 | `container-title` | 100 |
 | `assertion` | `*` |
 | `archive` | `*` |
-| `update-type` |
+| `update-type` | `*` |
 | `issn` | 100 |
 | `published` | `*` |
 | `type-name` | `*` |
@@ -524,16 +524,8 @@ Adding syntax options or metadata to representations will normally be backwards 
 
 ### How to manage API versions
 
-If you need to tie your implementation to a specific major version of the API, you can do so by using content-negotiation and specifying the version of the API in the `ACCEPT` header as follows:
+If you need to tie your implementation to a specific major version of the API, you can do so by using version-specific routes. The default route redirects to the most recent version of the API. Some older major versions may be available using a version prefix. For example, to access version `v1` of the API:
 
-     application/vnd.crossref-api-message+json; version=1.0
-
-Minor version numbers will be ignored in `ACCEPT` headers as they are by definition backwards compatible.
-
-If you omit a specific version in your `ACCEPT` header, the system will default to using the latest version of the API. 
-
-Note that requesting a version of the API via content type is not yet supported.
-
-## Error messages
-
-There will be no errors, and therefor error messages will be unnecessary. But seriously… coming soon.
+    https://api.crossref.orv/v1/works
+    
+Each major version has no backwards incompatible changes within its public interface.
