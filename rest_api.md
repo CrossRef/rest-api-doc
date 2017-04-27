@@ -39,6 +39,7 @@
 - v34, 2017-04-26, document support for HTTPS. Update examples to use HTTPS.
 - v35, 2017-04-26, document use of head reqeusts to determine `existence`
 - v36, 2017-04-27, fixed license route examples to use facet/filter instead
+- v37, 2017-04-27, `query.bibliographic`
 
 ## Background
 
@@ -252,6 +253,7 @@ These field queries are available on the `/works` route:
 | `query.chair` | Query chair first and given names |
 | `query.translator` | Query translator first and given names |
 | `query.contributor` | Query author, editor, chair and translator first and given names |
+| `query.bibliographic` | Query bibliographic infomration, useful for citation look up. Includes titles, authors, ISSNs and publication years |
 
 ## Sorting
 
