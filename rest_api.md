@@ -43,10 +43,6 @@
 - v38, 2017-04-27, Add v1.1 filters and sort fields
 - v39, 2017-04-27, Remove mention of dismax
 
-## Background
-
-See the document, [Crossref metadata best practice to support key performance indicators (KPIs) for funding agencies](https://github.com/CrossRef/rest-api-doc/blob/master/funder_kpi_metadata_best_practice.md), for background.
-
 ## Reporting issues, requesting features
 
 Please report problems with the API or the documentation on our [issue tracker](https://github.com/CrossRef/rest-api-doc/issues).
