@@ -26,13 +26,13 @@
 - v21: 2014-07-01, new `award.number` and `award.funder` relational filters.
 - v22: 2014-07-16, changed title to more accurately reflect scope of API. 
 - v23, 2014-09-01, semantics of mutliple filters, dot filters
-- v24, 2014-10-15, Added info on license of Crossref metadata itself. Doh.
-- v25, 2015-05-06, Added link to issue tracker. Removed Warning section.
-- v26, 2015-10-20, Added new filters - `from-created-date`, `until-created-date`, `affiliation`, `has-affiliation`, `assertion-group`, `assertion`, `article-number`, `alternative-id`
-- v27, 2015-10-30, Added `cursor` parameter to `/works` resources
-- v28, 2016-05-09, Added link to source of category lables
-- v29, 2016-05-24, Added field queries
-- v30, 2016-09-26, Highlight issue tracker
+- v24, 2014-10-15, added info on license of Crossref metadata itself. Doh.
+- v25, 2015-05-06, added link to issue tracker. Removed Warning section.
+- v26, 2015-10-20, added new filters - `from-created-date`, `until-created-date`, `affiliation`, `has-affiliation`, `assertion-group`, `assertion`, `article-number`, `alternative-id`
+- v27, 2015-10-30, added `cursor` parameter to `/works` resources
+- v28, 2016-05-09, added link to source of category lables
+- v29, 2016-05-24, added field queries
+- v30, 2016-09-26, highlight issue tracker
 - v31, 2016-10-05, document `has-clinical-trial-number` and `has-abstract` filters
 - v32, 2016-10-27, document rate limit headers
 - v33, 2016-11-07, guidance on when to use `offset` vs `cursor`
@@ -40,9 +40,10 @@
 - v35, 2017-04-26, document use of head reqeusts to determine `existence`
 - v36, 2017-04-27, fixed license route examples to use facet/filter instead
 - v37, 2017-04-27, `query.bibliographic`
-- v38, 2017-04-27, Add v1.1 filters and sort fields
-- v39, 2017-04-27, Remove mention of dismax
-- v40, 2017-04-27, Clarify faceting feature
+- v38, 2017-04-27, add v1.1 filters and sort fields
+- v39, 2017-04-27, remove mention of dismax
+- v40, 2017-04-27, clarify faceting feature
+- v41, 2017-04028, document `sample` max = 100, clarify cursors only work on some routes 
 
 ## Reporting issues, requesting features
 
@@ -203,7 +204,7 @@ Parameters can be used to query, filter and control the results returned by the 
 | `filter={filter_name}:{value}`| filter results by specific fields |
 | `rows={#}`                   | results per per page | 
 | `offset={#}` (mak 10k)               | result offset (user `cursor` for larger `/works` result sets)  |                         
-| `sample={#}`                 | return random N results |
+| `sample={#}` (max 100)                | return random N results |
 | `sort={#}`                   | sort results by a certain field |
 | `order={#}`                  | set the sort order to `asc` or `desc` |
 | `facet={#}`                    | enable facet information in responses |
@@ -416,7 +417,9 @@ every time there is a change to metadata requiring a reindex.
 
 ## Result controls
 
-You can control the delivery and selection results using the `rows`, `offset` and `sample` parameters. If you are expecting results beyond 10K, then use a `cursor` to deep page through the results. 
+You can control the delivery and selection results using the `rows`, `offset` and `sample` parameters.
+
+ If you are expecting results beyond 10K, then use a `cursor` to deep page through the results. Note that not all routes support cursors.
 
 ### Rows 
 
