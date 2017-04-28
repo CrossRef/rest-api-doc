@@ -44,7 +44,7 @@
 - v39, 2017-04-27, remove mention of dismax
 - v40, 2017-04-27, clarify faceting feature
 - v41, 2017-04-28, document `sample` max = 100, clarify cursors only work on some routes
-- v42, 2017-04-28, life the universe and everything
+- v42, 2017-04-28, life, the universe, and everything
 - v43, 2017-04-28, reminder on the wisdom of url-encoding
 
 ## Reporting issues, requesting features
