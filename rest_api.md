@@ -320,7 +320,7 @@ Filters allow you to narrow queries. All filter results are lists.  The followin
 |:-----------|:----------------|:-----------|
 | `has-funder` | | metadata which includes one or more funder entry |
 | `funder` | `{funder_id}` | metadata which include the `{funder_id}` in FundRef data |
-| `location` |`{country name}` | funder records where location = `{country name}`. Only works on `/funders` route |
+| `location` |`{country_name}` | funder records where location = `{country name}`. Only works on `/funders` route |
 | `prefix` | `{owner_prefix}` | metadata belonging to a DOI owner prefix `{owner_prefix}` (e.g. `10.1016` ) |
 | `member` | `{member_id}` | metadata belonging to a CrossRef member |
 | `from-index-date` | `{date}` | metadata indexed since (inclusive) `{date}` |
