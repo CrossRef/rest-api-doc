@@ -43,7 +43,9 @@
 - v38, 2017-04-27, add v1.1 filters and sort fields
 - v39, 2017-04-27, remove mention of dismax
 - v40, 2017-04-27, clarify faceting feature
-- v41, 2017-04028, document `sample` max = 100, clarify cursors only work on some routes 
+- v41, 2017-04-28, document `sample` max = 100, clarify cursors only work on some routes
+- v42, 2017-04-28, life the universe and everything
+- v43, 2017-04-28, reminder on the wisdom of url-encoding
 
 ## Reporting issues, requesting features
 
@@ -62,6 +64,10 @@ From time to time Crossref needs to impose rate limits to ensure that the free A
 The API is generally RESTFUL and returns results in JSON. JSON formats returned by the API are documented [here](https://github.com/CrossRef/rest-api-doc/blob/master/api_format.md).
 
 The API supports HTTP and HTTPS. Examples here are provided using HTTPS.
+
+You should always url-encode DOIs and parameter values when using the API. DOIs are notorious for including characters that break URLs (e.g. semicolons, hashes, slashes, ampersands, question marks, etc.).
+
+Note that, for the sake of clarity, the examples in this document do *not* url-encode DOIs or parameter values. 
 
 The API will only work for Crossref DOIs. You can test the registration agency for a DOI using the following route:
 
