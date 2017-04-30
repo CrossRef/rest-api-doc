@@ -292,25 +292,25 @@ Facets are specified with the `facet` parameter:
 
     https://api.crossref.org/works?rows=0&facet=type-name:*
     
-| Facet name | Maximum values |
-|:-----------|:---------------|
-| `affiliation` | `*` |
-| `year` | `*` |
-| `funder-name` | `*` |
-| `funder-doi` | `*` |
-| `orcid` | 100 |
-| `container-title` | 100 |
-| `assertion` | `*` |
-| `archive` | `*` |
-| `update-type` | `*` |
-| `issn` | 100 |
-| `published` | `*` |
-| `type-name` | `*` |
-| `publisher-name` | 100 |
-| `license` | `*` |
-| `category-name` | `*` |
-| `relation-type` | `*` |
-| `assertion-group` | `*` |
+| Facet name | Maximum values | Description |
+|:-----------|:---------------|-------------|
+| `affiliation` | `*` | Author affiliation | 
+| `year` | `*` | Earliest year of publication, synonym for `published` |
+| `funder-name` | `*` | Funder literal name as deposited alongside DOIs |
+| `funder-doi` | `*` | Funder DOI |
+| `orcid` | 100 | Contributor ORCID | 
+| `container-title` | 100 | Work container title, such as journal title, or book title |
+| `assertion` | `*` | Custom Crossmark assertion name |
+| `archive` | `*` | Archive location |
+| `update-type` | `*` | Significant update type |
+| `issn` | 100 | Journal ISSN (any - print, electronic, link) |
+| `published` | `*` | Earliest year of publication |
+| `type-name` | `*` | Work type name, such as `journal-article` or `book-chapter` |
+| `publisher-name` | 100 | Publisher of work |
+| `license` | `*` | License URI of work |
+| `category-name` | `*` | Category name of work |
+| `relation-type` | `*` | Relation type described by work or described by another work with work as object |
+| `assertion-group` | `*` | Custom Crossmark assertion group name |
 
 ## Filter Names
 
