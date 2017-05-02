@@ -126,8 +126,8 @@ The `/deposits` route also specifies some filters:
 | Filter | Possible Values | Description |
 |--------|-----------------|-------------|
 | status | One of `submitted`, `failed` or `completed` | Return only those deposits with given status |
-| from-submitted-date | Date | Return only those deposits that were deposited on or after the given date |
-| until-submitted-date | Date | Return only those deposits that were deposited on or before the given date |
+| from-submitted-time | Date | Return only those deposits that were deposited on or after the given date |
+| until-submitted-time | Date | Return only those deposits that were deposited on or before the given date |
 | doi | DOI | Return only those deposits that deposited against the given DOI |
 | test | One of `true`, `t`, `1`, `false`, `f`, `0` | Return only those deposits that are or are not test deposits. By default all deposits, both test and live, are returned. |
 | type| Content Type | Return only those deposits with the given content type (mime type) |
