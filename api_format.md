@@ -21,7 +21,7 @@
 | created | [Date](#date) | Yes | Date on which the DOI was first registered |
 | deposited | [Date](#date) | Yes | Date on which the work metadata was most recently updated |
 | indexed | [Date](#date) | Yes | Date on which the work metadata was most recently indexed. Re-indexing does not imply a metadata change, see `deposited` for the most recent metadata change date |
-| issued | [Partial Date](#partial-date) | Yes | Eariest of `published-print` and `published-online` |
+| issued | [Partial Date](#partial-date) | Yes | Earliest of `published-print` and `published-online` |
 | subtitle | Array of String | No | Work subtitles, including original language and translated |
 | container-title | Array of String | No | Titles (full and abbreviated) of the containing work (usually a book or journal.) |
 | issue | String | No | Issue number of an article's journal |
