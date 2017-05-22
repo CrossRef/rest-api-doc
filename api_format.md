@@ -70,8 +70,8 @@
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| family-name | String | Yes | |
-| given-name | String | No | |
+| family | String | Yes | |
+| given | String | No | |
 | ORCID | URL | No | URL-form of an [ORCID](http://orcid.org) identifier |
 | affiliation | Array of [Affiliation](#affiliation) | No | |
 
