@@ -21,7 +21,7 @@
 - v16: 2014-05-19, new `/journals` route, new CrossMark (updates and update policy) filters, new `sort` and `order` parameters
 - v17: 2014-05-19, new `facet` query parameter
 - v18: 2014-05-29, new `/works/{doi}/agency` route
-- v19: 2014-06-23, new textual filters - `container-title`, `publisher-name`, `category-name`.
+- v19: 2014-06-23, new textual filters - `container-title`, `category-name`.
 - v20: 2014-06-24, OR filter queries, `type-name` filter.
 - v21: 2014-07-01, new `award.number` and `award.funder` relational filters.
 - v22: 2014-07-16, changed title to more accurately reflect scope of API. 
@@ -306,7 +306,6 @@ Facets are specified with the `facet` parameter:
 | `issn` | 100 | Journal ISSN (any - print, electronic, link) |
 | `published` | `*` | Earliest year of publication |
 | `type-name` | `*` | Work type name, such as `journal-article` or `book-chapter` |
-| `publisher-name` | 100 | Publisher of work |
 | `license` | `*` | License URI of work |
 | `category-name` | `*` | Category name of work |
 | `relation-type` | `*` | Relation type described by work or described by another work with work as object |
@@ -362,7 +361,6 @@ Filters allow you to narrow queries. All filter results are lists.  The followin
 | `is-update` | | metadata for records that represent editorial updates |
 | `has-update-policy` | | metadata for records that include a link to an editorial update policy |
 | `container-title` | | metadata for records with a publication title exactly with an exact match |
-| `publisher-name` | | metadata for records with an exact matching publisher name |
 | `category-name` | | metadata for records with an exact matching category label. Category labels come from [this list](https://www.elsevier.com/solutions/scopus/content) published by Scopus |
 | `type` | | metadata for records with type matching a type identifier (e.g. `journal-article`) |
 | `type-name` | | metadata for records with an exacty matching type label |
