@@ -1,4 +1,4 @@
-# CrossRef RESTful Deposit API
+# CrossRef RESTful Deposit API (Alpha)
 
 ## Versioning
 
@@ -6,6 +6,8 @@
 |------|---------|---------|
 | 2014-03-10 | v1 | Initial version |
 | 2015-01-15 | v2 | Mention PDF deposits |
+
+Note: this code is used by the Open Journals System (OJS) integration. It is not intended for use by other Crossref members, who should use the production deposit system at http://doi.crossref.org
 
 ## Background
 
