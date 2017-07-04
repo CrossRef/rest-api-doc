@@ -49,6 +49,7 @@
 - v44, 2017-04-28, clarify that field queries apply to `/works` route
 - v45, 2017-04-28, document `location` filter for `/funders` route
 - v46, 2017-06-14, minor text changes and new funder registry link
+- v47, 2017-07-04, clarify `query.affiliation`
 
 ## Reporting issues, requesting features
 
@@ -260,6 +261,7 @@ These field queries are available on the `/works` route:
 | `query.translator` | Query translator first and given names |
 | `query.contributor` | Query author, editor, chair and translator first and given names |
 | `query.bibliographic` | Query bibliographic infomration, useful for citation look up. Includes titles, authors, ISSNs and publication years |
+| `query.affiliation` | Query contributor affiliations |
 
 ## Sorting
 
@@ -370,7 +372,6 @@ Filters allow you to narrow queries. All filter results are lists.  The followin
 | `has-assertion` | | metadata for records with any assertions |
 | `assertion-group` | | metadata for records with an assertion in a particular group |
 | `assertion` | | metadata for records with a particular named assertion |
-| `affiliation` | | metadata for records with at least one contributor with the given affiliation |
 | `has-affiliation` | | metadata for records that have any affiliation information |
 | `alternative-id` | | metadata for records with the given alternative ID, which may be a publisher-specific ID, or any other identifier a publisher may have provided |
 | `article-number` | | metadata for records with a given article number |
