@@ -50,7 +50,7 @@
 - v45, 2017-04-28, document `location` filter for `/funders` route
 - v46, 2017-06-14, minor text changes and new funder registry link
 - v47, 2017-07-04, clarify `query.affiliation`
-
+- v48, 2017-07-13, correct "first and given" names to "given and family"
 ## Reporting issues, requesting features
 
 Please report problems with the API or the documentation on our [issue tracker](https://github.com/CrossRef/rest-api-doc/issues).
@@ -255,11 +255,11 @@ These field queries are available on the `/works` route:
 |-----------------------|-------------|
 | `query.title` | Query `title` and `subtitle` |
 | `query.container-title` | Query `container-title` aka. publication name |
-| `query.author` | Query author first and given names |
-| `query.editor` | Query editor first and given names |
-| `query.chair` | Query chair first and given names |
-| `query.translator` | Query translator first and given names |
-| `query.contributor` | Query author, editor, chair and translator first and given names |
+| `query.author` | Query author given and family names |
+| `query.editor` | Query editor given and family names |
+| `query.chair` | Query chair given and family names |
+| `query.translator` | Query translator given and family names |
+| `query.contributor` | Query author, editor, chair and translator given and family names |
 | `query.bibliographic` | Query bibliographic infomration, useful for citation look up. Includes titles, authors, ISSNs and publication years |
 | `query.affiliation` | Query contributor affiliations |
 
