@@ -1,5 +1,14 @@
 # Crossref REST API
 
+## What's New
+July 2017
+- References are now included if the publisher has made them public.
+- Metadata for preprints, listed as "posted-content"
+- Links from preprints to subsequent publications using "isPreprintOf" relationship
+- Abstracts for over 1 million DOIs
+- Subject categories have been updated to cover more of the content (~45,000 journal titles)
+- "is-referenced-by-count" - also known as cited-by counts. __NOTE 18 JULY 2017__: cited-by counts are not are not updating and should not be considered accurate. We are working on a fix and will update when it is in place
+ 
 ## Version History
 
 - V1: 2013-09-08, first draft.
