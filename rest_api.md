@@ -19,7 +19,7 @@
 - [Facet counts](#facet-counts)
 - [Filter names](#filter-names)
 - [Result controls](#result-controls)
-- [Versioning](#versioning)
+- [API versioning](#api-versioning)
 - [Documentation history](#documentation-history)
 
 <!-- /MarkdownTOC -->
@@ -555,7 +555,7 @@ Note that the filters for license URL and maximum license embargo period (licens
 
     https://api.crossref.org/works?filter=award.number:1F31MH11745,award.funder:10.13039/100000025
 
-## Versioning
+## API versioning
 
 In theory, the syntax of the API can vary independently of the result representations. In practice, major version changes in either will require changes to API clients and so versioning of the API will apply to both the API syntax and the result representation.
 
