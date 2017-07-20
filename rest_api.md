@@ -1,78 +1,111 @@
 # Crossref REST API
 
-## What's New
-July 2017
+<!-- This TOC was generated with the following SublimeText package: -->
+<!-- https://packagecontrol.io/packages/MarkdownTOC#configuration -->
+
+<!-- MarkdownTOC depth=1 indent='\t\t' autolink=true bracket='round'-->
+
+- [Service alert: 18 July 2017](#service-alert-18-july-2017)
+- [What's new: July 2017](#whats-new-july-2017)
+- [Preamble](#preamble)
+- [Meta](#meta)
+- [API overview](#api-overview)
+- [Result types](#result-types)
+- [Resource components](#resource-components)
+- [Parameters](#parameters)
+- [Queries](#queries)
+- [Field Queries](#field-queries)
+- [Sorting](#sorting)
+- [Facet counts](#facet-counts)
+- [Filter names](#filter-names)
+- [Result controls](#result-controls)
+- [Versioning](#versioning)
+- [Documentation history](#documentation-history)
+
+<!-- /MarkdownTOC -->
+
+## Service alert: 18 July 2017
+
+ Cited-by counts are not are not updating and should not be considered accurate. We are working on a fix and will update you ([see below](#learning-about-performanceavialability-problems)) when it is in place.
+
+## What's new: July 2017
+
 - References are now included if the publisher has made them public.
 - Metadata for preprints, listed as "posted-content"
 - Links from preprints to subsequent publications using "isPreprintOf" relationship
 - Abstracts for over 1 million DOIs
 - Subject categories have been updated to cover more of the content (~45,000 journal titles)
-- "is-referenced-by-count" - also known as cited-by counts. __NOTE 18 JULY 2017__: cited-by counts are not are not updating and should not be considered accurate. We are working on a fix and will update when it is in place
- 
-## Version History
+- "is-referenced-by-count" - also known as cited-by counts.
 
-- V1: 2013-09-08, first draft.
-- V2: 2013-09-24, reference platform deployed
-- v3: 2013-09-25, reworked filters. Added API versioning doc 
-- v4: 2013-09-25, more filter changes.
-- v5: 2013-09-27, doc mime-type and message-type relationship
-- v6: 2013-10-01, updated `sample` & added examples with filters
-- v6: 2013-10-01, corrected warning date
-- v7: 2013-10-02, fixed typos
-- v8: 2013-10-17, updated warning. Added email address
-- v9: 2013-12-13, update example urls
-- v10: 2013-12-13, /types routes, type filter, issn filter
-- v11: 2013-12-14, indexed timestamps, has-archive and archive implemented
-- v12: 2014-01-06, directory filter
-- v13: 2014-02-10, new `/members`, `/publishers` becomes `/prefixes`, new `member` filter, `publisher` filter becomes `prefix`
-- v14: 2014-02-14, new `has-funder` filter.
-- v15: 2014-02-27, new `/licenses` route
-- v16: 2014-05-19, new `/journals` route, new CrossMark (updates and update policy) filters, new `sort` and `order` parameters
-- v17: 2014-05-19, new `facet` query parameter
-- v18: 2014-05-29, new `/works/{doi}/agency` route
-- v19: 2014-06-23, new textual filters - `container-title`, `category-name`.
-- v20: 2014-06-24, OR filter queries, `type-name` filter.
-- v21: 2014-07-01, new `award.number` and `award.funder` relational filters.
-- v22: 2014-07-16, changed title to more accurately reflect scope of API. 
-- v23, 2014-09-01, semantics of mutliple filters, dot filters
-- v24, 2014-10-15, added info on license of Crossref metadata itself. Doh.
-- v25, 2015-05-06, added link to issue tracker. Removed Warning section.
-- v26, 2015-10-20, added new filters - `from-created-date`, `until-created-date`, `affiliation`, `has-affiliation`, `assertion-group`, `assertion`, `article-number`, `alternative-id`
-- v27, 2015-10-30, added `cursor` parameter to `/works` resources
-- v28, 2016-05-09, added link to source of category lables
-- v29, 2016-05-24, added field queries
-- v30, 2016-09-26, highlight issue tracker
-- v31, 2016-10-05, document `has-clinical-trial-number` and `has-abstract` filters
-- v32, 2016-10-27, document rate limit headers
-- v33, 2016-11-07, guidance on when to use `offset` vs `cursor`
-- v34, 2017-04-26, document support for HTTPS. Update examples to use HTTPS.
-- v35, 2017-04-26, document use of head reqeusts to determine `existence`
-- v36, 2017-04-27, fixed license route examples to use facet/filter instead
-- v37, 2017-04-27, `query.bibliographic`
-- v38, 2017-04-27, add v1.1 filters and sort fields
-- v39, 2017-04-27, remove mention of dismax
-- v40, 2017-04-27, clarify faceting feature
-- v41, 2017-04-28, document `sample` max = 100, clarify cursors only work on some routes
-- v42, 2017-04-28, life, the universe, and everything
-- v43, 2017-04-28, reminder on the wisdom of url-encoding
-- v44, 2017-04-28, clarify that field queries apply to `/works` route
-- v45, 2017-04-28, document `location` filter for `/funders` route
-- v46, 2017-06-14, minor text changes and new funder registry link
-- v47, 2017-07-04, clarify `query.affiliation`
-- v48, 2017-07-13, correct "first and given" names to "given and family"
-## Reporting issues, requesting features
 
-Please report problems with the API or the documentation on our [issue tracker](https://github.com/CrossRef/rest-api-doc/issues).
+## Preamble
 
-## License
+The Crossref REST API is one of [a variety of tools and APIs](https://www.crossref.org/services/metadata-delivery/) that allow anybody to search and reuse our members' metadata in sophisticated ways.
 
-Crossref asserts no claims of ownership to individual items of bibliographic metadata and associated Digital Object Identifiers (DOIs) acquired through the use of the Crossref Free Services. Individual items of bibliographic metadata and associated DOIs may be cached and incorporated into the user's content and systems. More information can be found [on our web site](https://www.crossref.org/privacy/).
 
-## Rate limits
+## Meta
+### Learning about performance or avialability problems
+
+Note that we generally post notice any ongoing performance problems with our services on our twitter feeds at [CrossRefOrg](https://twitter.com/CrossrefOrg) and [CrossRefSupport](https://twitter.com/@CrossrefSupport). We also report them on our [support site](https://support.crossref.org/hc/en-us). You might want to check these to see if we are already aware of a problem before you report it.
+
+### Reporting performance or avialability problems
+
+Report performance/avialability at our [support site](https://support.crossref.org/hc/en-us)
+
+### Reporting bugs, requesting features ###
+
+Please report bugs with the API or the documentation on our [issue tracker](https://github.com/CrossRef/rest-api-doc/issues).
+
+### License
+
+
+Crossref asserts no claims of ownership to individual items of bibliographic metadata and associated Digital Object Identifiers (DOIs) acquired through the use of the Crossref Free Services. Individual items of bibliographic metadata and associated DOIs may be cached and incorporated into the user's content and systems.
+
+### Privacy
+
+We also have a [privacy policy](https://www.crossref.org/privacy/).
+
+### Libraries
+
+You might be able to avoid reading all this documentation if you instead use one of the several excellent libraries that have been written for the Crossref REST API. For example:
+
+- [habanero](https://github.com/sckott/habanero) (Python)
+- [serrano](https://github.com/sckott/serrano) (Ruby)
+- [rcrossref](https://github.com/ropensci/rcrossref) (R)
+- [crossrefapi](https://github.com/fabiobatalha/crossrefapi) (Python)
+
+If you know of another library you would like to see listed here, please let us know about it via the [issue tracker](https://github.com/CrossRef/rest-api-doc/issues).
+
+### Etiquette
+
+We want to provide a public, open,  and free API for all. And we don't want to unnecessarily burden developers (or ourselves) with cumbersome API tokens or registration processes in order to use the public REST API. For that to work, we ask that you be polite and try not to do anything that will take the public REST API down or otherwise make it unusable for others. Specifically, we encourage the following polite behaviour:
+
+- Cache data so you don't request the same data over and over again. 
+- Actively monitor API response times. If they start to go up, back-off for a while. For example, add pauses between requests and/or reduce the number of parallel requests.
+- Specify a `User-Agent` header that properly identifies your script or tool and that provides some type of means of contacting you. For example:
+`GroovyBib/1.1 (https://example.org/GroovyBib/; GroovyBib@example.org) BasedOnFunkyLib/1.4`.
+
+This way we can contact you if we see a problem.
+
+- report problems and/or ask questions on our [issue tracker](https://github.com/CrossRef/rest-api-doc/issues).
+
+Alas, not all people are polite. And for this reason we reserve the right to impose rate limits and/or to block clients that are disrupting the public service.
+
+#### Rate limits
 
 From time to time Crossref needs to impose rate limits to ensure that the free API is usable by all. Any rate limits that are in effect will be advertised in the `X-Rate-Limit-Limit` and `X-Rate-Limit-Interval` HTTP headers.
 
-## Overview
+#### Blocking
+
+This is always our last resort, and you can generally avoid it if you include contact information in the `User-Agent` header as described above.
+
+But seriously... this is a bummer. We really want you to use the API. If you are polite about it, you shouldn't have any problems.
+
+### Use for production services
+
+What if you want to use our API for a production service that cannot depend on the performance uncertainties of the free and open public API? What if you don't want to be affected by impolite people who do not follow the [API Etiquette](#api-etiquette) guidelines? Well, if you’re interested in using these tools or APIs for production services, we’ll soon have a service-level offering with access to all supported APIs and metadata, but with extra service and support guarantees. If you are interested in the upcoming service-based offering please contact our [outreach team](mailto://member@crossref.org). 
+
+## API overview
 
 The API is generally RESTFUL and returns results in JSON. JSON formats returned by the API are documented [here](https://github.com/CrossRef/rest-api-doc/blob/master/api_format.md).
 
@@ -111,7 +144,7 @@ Will return the following result:
 
 If you use any of the API calls listed below with a non-Crossref DOI, you will get a `404` HTTP status response. Typical agency IDs include `crossref`, `datacite`, `medra` and also `public` for test DOIs.
 
-## Results Overview
+## Result types
 
 All results are returned in JSON. There are three general types of results:
 
@@ -125,7 +158,7 @@ The mime-type for API results is `application/vnd.crossref-api-message+json`
 
 Singletons are single results. Retrieving metadata for a specific identifier (e.g. DOI, ISSN, funder_identifier) typically returns in a singleton result.
 
-### Headers Only
+### Headers only
 
 You can use HTTP HEAD requests to quickly determine "existence" of a singleton. The advantage of this technique is that it is very fast because it does not return any metadata- it only retruns headers and an HTTP status code (200=exists, 404=does not exist).
 
@@ -161,12 +194,12 @@ Note that the "message-type" returned will differ from the mime-type:
 
 Normally, an API list result will return both the summary and the items. If you want to just retrieve the summary, you can do so by specifying that the number of rows returned should be zero. 
 
-### Sort order
+#### Sort order
 
 If the API call includes a query, then the sort order will be by the relevance score. If no query is included, then the sort order will be by DOI update date.
 
 
-## Resource Components
+## Resource components
 Major resource components supported by the Crossref API are:
 
 - works
@@ -295,7 +328,7 @@ An example that sorts results in order of publication, beginning with the least 
 
     https://api.crossref.org/works?query=josiah+carberry&sort=published&order=asc
 
-## Facet Counts
+## Facet counts
 
 Facet counts can be retrieved by enabling faceting. Facets are enabled by providing facet field names along with a maximum number of returned term values. The larger the number of returned values, the longer the query will take. Some facet fields
 can accept a `*` as their maximum, which indicates that all values should be returned.
@@ -323,7 +356,7 @@ Facets are specified with the `facet` parameter:
 | `relation-type` | `*` | Relation type described by work or described by another work with work as object |
 | `assertion-group` | `*` | Custom Crossmark assertion group name |
 
-## Filter Names
+## Filter names
 
 Filters allow you to narrow queries. All filter results are lists.  The following filters are supported:
 
@@ -459,7 +492,7 @@ The number of returned items is controlled by the `rows` parameter, but you can 
 
 Offsets for `/works` are limited to 10K. Use `cursor` (see below) for larger `/works` results sets.
 
-### Deep Paging with Cursors
+### Deep paging with cursors
 
 Using large `offset` values can result in extremely long response times. Offsets in the 100,000s and beyond will likely cause a timeout before the API is able to respond. An alternative to paging through very large result sets (like a corpus used for text and data mining) it to use the API's exposure of Solr's deep paging cursors. Any combination of query, filters and facets may be used with deep paging cursors. While `rows` may be specified along with `cursor`, `offset` and `sample` cannot be used. To use deep paging make a query as normal, but include the `cursor` parameter with a value of `*`. In this example we will page through all `journal-article` works from member `311`:
 
@@ -482,7 +515,7 @@ Being able to select random results is useful for both testing and sampling. You
 Note that when you use the `sample` parameter, the `rows` and `offset` parameters are ignored.
 
 
-### Example Queries
+### Example queries
 
 **All works published by owner prefix `10.1016` in January 2010**
 
@@ -547,3 +580,57 @@ If you need to tie your implementation to a specific major version of the API, y
     https://api.crossref.orv/v1/works
     
 Each major version has no backwards incompatible changes within its public interface.
+
+## Documentation history
+
+- V1: 2013-09-08, first draft.
+- V2: 2013-09-24, reference platform deployed
+- v3: 2013-09-25, reworked filters. Added API versioning doc 
+- v4: 2013-09-25, more filter changes.
+- v5: 2013-09-27, doc mime-type and message-type relationship
+- v6: 2013-10-01, updated `sample` & added examples with filters
+- v6: 2013-10-01, corrected warning date
+- v7: 2013-10-02, fixed typos
+- v8: 2013-10-17, updated warning. Added email address
+- v9: 2013-12-13, update example urls
+- v10: 2013-12-13, /types routes, type filter, issn filter
+- v11: 2013-12-14, indexed timestamps, has-archive and archive implemented
+- v12: 2014-01-06, directory filter
+- v13: 2014-02-10, new `/members`, `/publishers` becomes `/prefixes`, new `member` filter, `publisher` filter becomes `prefix`
+- v14: 2014-02-14, new `has-funder` filter.
+- v15: 2014-02-27, new `/licenses` route
+- v16: 2014-05-19, new `/journals` route, new CrossMark (updates and update policy) filters, new `sort` and `order` parameters
+- v17: 2014-05-19, new `facet` query parameter
+- v18: 2014-05-29, new `/works/{doi}/agency` route
+- v19: 2014-06-23, new textual filters - `container-title`, `category-name`.
+- v20: 2014-06-24, OR filter queries, `type-name` filter.
+- v21: 2014-07-01, new `award.number` and `award.funder` relational filters.
+- v22: 2014-07-16, changed title to more accurately reflect scope of API. 
+- v23, 2014-09-01, semantics of mutliple filters, dot filters
+- v24, 2014-10-15, added info on license of Crossref metadata itself. Doh.
+- v25, 2015-05-06, added link to issue tracker. Removed Warning section.
+- v26, 2015-10-20, added new filters - `from-created-date`, `until-created-date`, `affiliation`, `has-affiliation`, `assertion-group`, `assertion`, `article-number`, `alternative-id`
+- v27, 2015-10-30, added `cursor` parameter to `/works` resources
+- v28, 2016-05-09, added link to source of category lables
+- v29, 2016-05-24, added field queries
+- v30, 2016-09-26, highlight issue tracker
+- v31, 2016-10-05, document `has-clinical-trial-number` and `has-abstract` filters
+- v32, 2016-10-27, document rate limit headers
+- v33, 2016-11-07, guidance on when to use `offset` vs `cursor`
+- v34, 2017-04-26, document support for HTTPS. Update examples to use HTTPS.
+- v35, 2017-04-26, document use of head reqeusts to determine `existence`
+- v36, 2017-04-27, fixed license route examples to use facet/filter instead
+- v37, 2017-04-27, `query.bibliographic`
+- v38, 2017-04-27, add v1.1 filters and sort fields
+- v39, 2017-04-27, remove mention of dismax
+- v40, 2017-04-27, clarify faceting feature
+- v41, 2017-04-28, document `sample` max = 100, clarify cursors only work on some routes
+- v42, 2017-04-28, life, the universe, and everything
+- v43, 2017-04-28, reminder on the wisdom of url-encoding
+- v44, 2017-04-28, clarify that field queries apply to `/works` route
+- v45, 2017-04-28, document `location` filter for `/funders` route
+- v46, 2017-06-14, minor text changes and new funder registry link
+- v47, 2017-07-04, clarify `query.affiliation`
+- v48, 2017-07-13, correct "first and given" names to "given and family"
+- v49, 2017-07-20, move document version history, add section on libraries
+- v50, 2017-07-20, add TOC, move document history, add etiquet section, add production use section, general formatting + cleanup
