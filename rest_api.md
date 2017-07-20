@@ -1,4 +1,4 @@
 # Crossref REST API
 
-[We have moved the main odcumentation page to](https://github.com/CrossRef/rest-api-doc)
+[We have moved the main documentation page.](https://github.com/CrossRef/rest-api-doc)
 
