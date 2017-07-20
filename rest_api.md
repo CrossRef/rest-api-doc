@@ -26,7 +26,7 @@
 
 ## Service alert: 18 July 2017
 
- Cited-by counts are not are not updating and should not be considered accurate. We are working on a fix and will update you ([see below](#learning-about-performanceavailability-problems)) when it is in place.
+ Cited-by counts are not updating and should not be considered accurate. We are working on a fix and will update you ([see below](#learning-about-performanceavailability-problems)) when it is in place.
 
 ## What's new: July 2017
 
