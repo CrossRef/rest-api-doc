@@ -50,7 +50,7 @@ Note that we generally post notice any ongoing performance problems with our ser
 
 ### Reporting performance or avialability problems
 
-Report performance/avialability at our [support site](https://support.crossref.org/hc/en-us)
+Report performance/avialability at our [support site](https://support.crossref.org/hc/en-us).
 
 ### Reporting bugs, requesting features ###
 
