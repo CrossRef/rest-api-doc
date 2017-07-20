@@ -26,7 +26,7 @@
 
 ## Service alert: 18 July 2017
 
- Cited-by counts are not are not updating and should not be considered accurate. We are working on a fix and will update you ([see below](#learning-about-performanceavialability-problems)) when it is in place.
+ Cited-by counts are not are not updating and should not be considered accurate. We are working on a fix and will update you ([see below](#learning-about-performanceavailability-problems)) when it is in place.
 
 ## What's new: July 2017
 
@@ -44,13 +44,13 @@ The Crossref REST API is one of [a variety of tools and APIs](https://www.crossr
 
 
 ## Meta
-### Learning about performance or avialability problems
+### Learning about performance or availability problems
 
 Note that we generally post notice any ongoing performance problems with our services on our twitter feeds at [CrossRefOrg](https://twitter.com/CrossrefOrg) and [CrossRefSupport](https://twitter.com/@CrossrefSupport). We also report them on our [support site](https://support.crossref.org/hc/en-us). You might want to check these to see if we are already aware of a problem before you report it.
 
-### Reporting performance or avialability problems
+### Reporting performance or availability problems
 
-Report performance/avialability at our [support site](https://support.crossref.org/hc/en-us).
+Report performance/availability at our [support site](https://support.crossref.org/hc/en-us).
 
 ### Reporting bugs, requesting features ###
 
@@ -567,9 +567,9 @@ The API uses a semantic versioning scheme whereby the version number is divided 
         major  |
            minor
 
- **Major** version increments will are defined as releases that can break backwards compatibility. Crossref will only commit to supporting the latest two major releases simultaneously and legacy major releases will be supported for no more than nine months. Exceptions to these rules may be made when major releases are required to ensure the security or stability of the system. 
+ **Major** version increments are defined as releases that can break backwards compatibility. Crossref will only commit to supporting the latest two major releases simultaneously and legacy major releases will be supported for no more than nine months. Exceptions to these rules may be made when major releases are required to ensure the security or stability of the system. 
 
-**Minor** version increments are defined as backwards compatible. There is no limit on the number of minor versions that can Crossref can roll out. Note that client applications should not have dependencies on minor versions, and Crossref will only maintain the latest minor version for the two most recent major versions.
+**Minor** version increments are defined as backwards compatible. There is no limit on the number of minor versions that Crossref can roll out. Note that client applications should not have dependencies on minor versions, and Crossref will only maintain the latest minor version for the two most recent major versions.
 
 Adding syntax options or metadata to representations will normally be backwards compatible and will thus normally only trigger minor version changes. Renaming or restructuring syntax options of metadata tends not to be backward compatible and will thus typically trigger major version changes
 
