@@ -83,7 +83,7 @@ We want to provide a public, open,  and free API for all. And we don't want to u
 - Cache data so you don't request the same data over and over again. 
 - Actively monitor API response times. If they start to go up, back-off for a while. For example, add pauses between requests and/or reduce the number of parallel requests.
 - Specify a `User-Agent` header that properly identifies your script or tool and that provides some type of means of contacting you. For example:
-`GroovyBib/1.1 (https://example.org/GroovyBib/; GroovyBib@example.org) BasedOnFunkyLib/1.4`.
+`GroovyBib/1.1 (https://example.org/GroovyBib/; mailto:GroovyBib@example.org) BasedOnFunkyLib/1.4`.
 
 This way we can contact you if we see a problem.
 
