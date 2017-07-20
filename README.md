@@ -2,7 +2,7 @@
 
 Documentation for CrossRef's REST API.
 
-## How to us this repository
+## How to use this repository
 
 This is a simple documentation repo. The following files can help you navigate CrossRef's API:
 
