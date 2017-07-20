@@ -35,7 +35,7 @@
 <!-- /TOC -->
 
 
-## Version History
+## Document Version History
 
 - V01: 2013-09-08, first draft.
 - V02: 2013-09-09, add examples + links.
@@ -50,6 +50,7 @@
 - v11: 2013-12-11, Added third party archive arrangements section. Updated examples to include archive locations.
 - v12: 2015-11-27, Revisions to describe deposit workflow to support alerting funders/instituions when content has been "accepted". Pointers to latest schemas. General cleanup.
 - v13: 2016-03-22, Updated mentions of "FunRef" to "Funding Data" and "Open Funder Registry" as appropriate. Updated "CrossRef" to "Crossref." Updated section on registered content to indicate impending finalization of process. 
+- v14: 2017-07-20, Cleanup links.
 
 ## Contact info
 
