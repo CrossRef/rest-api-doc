@@ -214,7 +214,7 @@ These can be used alone like this
 | resource      | description                       |
 |:--------------|:----------------------------------|
 | `/works`      | returns a list of all works (journal articles, conference proceedings, books, components, etc), 20 per page
-| `/funders`    | returns a list of all funders in the [Funder Registry](https://github.com/CrossRef/open-funder-registry
+| `/funders`    | returns a list of all funders in the [Funder Registry](https://github.com/CrossRef/open-funder-registry)
 | `/members` | returns a list of all Crossref members (mostly publishers) |
 | `/types`      | returns a list of valid work types | 
 | `/licenses`  | return a list of licenses applied to works in Crossref metadata |
