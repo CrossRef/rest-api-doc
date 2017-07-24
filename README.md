@@ -56,8 +56,11 @@ Report performance/availability at our [support site](https://support.crossref.o
 
 Please report bugs with the API or the documentation on our [issue tracker](https://github.com/CrossRef/rest-api-doc/issues).
 
-### License
+### Documentation License
 
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+
+### Metadata License
 
 Crossref asserts no claims of ownership to individual items of bibliographic metadata and associated Digital Object Identifiers (DOIs) acquired through the use of the Crossref Free Services. Individual items of bibliographic metadata and associated DOIs may be cached and incorporated into the user's content and systems.
 
@@ -634,3 +637,4 @@ Each major version has no backwards incompatible changes within its public inter
 - v48, 2017-07-13, correct "first and given" names to "given and family"
 - v49, 2017-07-20, move document version history, add section on libraries
 - v50, 2017-07-20, add TOC, move document history, add etiquet section, add production use section, general formatting + cleanup
+- v51, 2017-07-24, clarified license of the documentation (as opposed to metadata)
