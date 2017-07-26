@@ -5,6 +5,7 @@
 | Version | Release Date | Comments |
 |---------|--------------|----------|
 | v1 | 11th July 2016 | First documented version |
+| v2 | 26th July 2017 | Add abstract, authenticated-orcid, fix contributor fields |
 
 ## Work
 
@@ -12,6 +13,7 @@
 |-------|------|----------|-------------|
 | publisher | String | Yes | Name of work's publisher |
 | title | Array of String | Yes | Work titles, including original language title and translated titles |
+| abstract | XML String | No | Abstract as a JSON string or a JATS XML snippet encoded into a JSON string |
 | reference-count | Number | Yes | Count of outbound references deposited with Crossref |
 | source | String | Yes | Currently always `CrossRef` |
 | prefix | URL | Yes | DOI prefix identifier of the form `http://id.crossref.org/prefix/DOI_PREFIX` |
@@ -70,9 +72,10 @@
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| family-name | String | Yes | |
-| given-name | String | No | |
+| family | String | Yes | |
+| given | String | No | |
 | ORCID | URL | No | URL-form of an [ORCID](http://orcid.org) identifier |
+| authenticated-orcid | Boolean | No | If true, record owner asserts that the ORCID user completed ORCID OAuth authentication |
 | affiliation | Array of [Affiliation](#affiliation) | No | |
 
 ### Affiliation
