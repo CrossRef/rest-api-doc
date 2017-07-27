@@ -22,6 +22,8 @@
 
 <!-- /MarkdownTOC -->
 
+> <span style="color:#ef3340">Note: Cited-by counts are up-to-date as of 2017-07-27</span>
+
 ## Preamble
 
 The Crossref REST API is one of [a variety of tools and APIs](https://www.crossref.org/services/metadata-delivery/) that allow anybody to search and reuse our members' metadata in sophisticated ways.
