@@ -5,7 +5,7 @@
 
 <!-- MarkdownTOC depth=1 indent='\t\t' autolink=true bracket='round'-->
 
-- [Service alert: 18 July 2017](#service-alert-18-july-2017)
+- [Service update: 27 July 2017](#service-alert-18-july-2017)
 - [What's new: July 2017](#whats-new-july-2017)
 - [Preamble](#preamble)
 - [Meta](#meta)
@@ -24,9 +24,9 @@
 
 <!-- /MarkdownTOC -->
 
-## Service alert: 18 July 2017
+## Service update: 27 July 2017
 
- Cited-by counts are not updating and should not be considered accurate. We are working on a fix and will update you ([see below](#learning-about-performanceavailability-problems)) when it is in place.
+ Cited-by counts are now up-to-date in the API.
 
 ## What's new: July 2017
 
