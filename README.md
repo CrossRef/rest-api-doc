@@ -5,8 +5,6 @@
 
 <!-- MarkdownTOC depth=1 indent='\t\t' autolink=true bracket='round'-->
 
-- [Service update: 27 July 2017](#service-alert-18-july-2017)
-- [What's new: July 2017](#whats-new-july-2017)
 - [Preamble](#preamble)
 - [Meta](#meta)
 - [API overview](#api-overview)
@@ -23,20 +21,6 @@
 - [Documentation history](#documentation-history)
 
 <!-- /MarkdownTOC -->
-
-## Service update: 27 July 2017
-
- Cited-by counts are now up-to-date in the API.
-
-## What's new: July 2017
-
-- References are now included if the publisher has made them public.
-- Metadata for preprints, listed as "posted-content"
-- Links from preprints to subsequent publications using "isPreprintOf" relationship
-- Abstracts for over 1 million DOIs
-- Subject categories have been updated to cover more of the content (~45,000 journal titles)
-- "is-referenced-by-count" - also known as cited-by counts.
-
 
 ## Preamble
 
@@ -638,3 +622,4 @@ Each major version has no backwards incompatible changes within its public inter
 - v49, 2017-07-20, move document version history, add section on libraries
 - v50, 2017-07-20, add TOC, move document history, add etiquet section, add production use section, general formatting + cleanup
 - v51, 2017-07-24, clarified license of the documentation (as opposed to metadata)
+- v52, 2018-07-27, removed service notice and what's new section.
