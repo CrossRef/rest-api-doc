@@ -60,7 +60,7 @@
 | alternative-id | String | No | Other identifiers for the work provided by the depositing member |
 | reference | Array of [Reference](#reference) | No | List of references made by the work |
 | content-domain | [Content Domain](#content-domain) | No | Information on domains that support Crossmark for this work |
-| relation | [Relations]#(relations) | No | Relations to other works |
+| relation | [Relations](#relations) | No | Relations to other works |
 
 
 ## Work Nested Types
@@ -200,7 +200,7 @@
 
 ### Relations
 
-A hashmap containing relation name, [Relation]#(relation) pairs.
+A hashmap containing relation name, [Relation](#relation) pairs.
 
 ### Relation
 
