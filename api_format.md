@@ -139,7 +139,7 @@
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| intended-application | String | Yes | Either `text-mining` or `unspecified` |
+| intended-application | String | Yes | Either `text-mining`, `similarity-checking` or `unspecified` |
 | content-version | String | Yes | Either `vor` (version of record,) `am` (accepted manuscript) or `unspecified` |
 | URL | URL | Yes | Direct link to a full-text download location |
 | content-type | String | No | Content type (or MIME type) of the full-text object |
