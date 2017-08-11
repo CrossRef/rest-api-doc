@@ -381,6 +381,7 @@ Filters allow you to narrow queries. All filter results are lists.  The followin
 | `has-full-text` |  | metadata that includes any full text `<resource>` elements. |
 | `full-text.version` | `{string}`  | metadata where `<resource>` element's `content_version` attribute is `{string}`. |
 | `full-text.type` | `{mime_type}`  | metadata where `<resource>` element's `content_type` attribute is `{mime_type}` (e.g. `application/pdf`). |
+| `full-text.application` | `{string}` | metadata where `<resource>` link has one of the following intended applications: `text-mining`, `similarity-checking` or `unspecified` |
 | `has-references` | | metadata for works that have a list of references |
 | `has-archive` | | metadata which include name of archive partner |
 | `archive` | `{string}` | metadata which where value of archive partner is `{string}` |
@@ -624,4 +625,5 @@ Each major version has no backwards incompatible changes within its public inter
 - v49, 2017-07-20, move document version history, add section on libraries
 - v50, 2017-07-20, add TOC, move document history, add etiquet section, add production use section, general formatting + cleanup
 - v51, 2017-07-24, clarified license of the documentation (as opposed to metadata)
-- v52, 2018-07-27, removed service notice and what's new section.
+- v52, 2017-07-27, removed service notice and what's new section.
+- v53, 2017-08-11, mention `full-text.application` filter
