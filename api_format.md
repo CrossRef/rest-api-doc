@@ -19,7 +19,7 @@
 | reference-count | Number | Yes | *Deprecated* Same as `references-count` |
 | references-count | Number | Yes | Count of outbound references deposited with Crossref |
 | is-referenced-by-count | Number | Yes | Count of inbound references deposited with Crossref |
-| source | String | Yes | Currently always `CrossRef` |
+| source | String | Yes | Currently always `Crossref` |
 | prefix | String | Yes | DOI prefix identifier of the form `http://id.crossref.org/prefix/DOI_PREFIX` |
 | DOI | String | Yes | DOI of the work |
 | URL | URL | Yes | URL form of the work's DOI |

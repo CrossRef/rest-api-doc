@@ -32,7 +32,7 @@ The Crossref REST API is one of [a variety of tools and APIs](https://www.crossr
 ## Meta
 ### Learning about performance or availability problems
 
-Note that we generally post notice any ongoing performance problems with our services on our twitter feeds at [CrossRefOrg](https://twitter.com/CrossrefOrg) and [CrossRefSupport](https://twitter.com/@CrossrefSupport). We also report them on our [support site](https://support.crossref.org/hc/en-us). You might want to check these to see if we are already aware of a problem before you report it.
+Note that we generally post notice any ongoing performance problems with our services on our twitter feeds at [CrossrefOrg](https://twitter.com/CrossrefOrg) and [CrossrefSupport](https://twitter.com/@CrossrefSupport). We also report them on our [support site](https://support.crossref.org/hc/en-us). You might want to check these to see if we are already aware of a problem before you report it.
 
 ### Reporting performance or availability problems
 
@@ -40,7 +40,7 @@ Report performance/availability at our [support site](https://support.crossref.o
 
 ### Reporting bugs, requesting features ###
 
-Please report bugs with the API or the documentation on our [issue tracker](https://github.com/CrossRef/rest-api-doc/issues).
+Please report bugs with the API or the documentation on our [issue tracker](https://github.com/Crossref/rest-api-doc/issues).
 
 ### Documentation License
 
@@ -63,7 +63,7 @@ You might be able to avoid reading all this documentation if you instead use one
 - [rcrossref](https://github.com/ropensci/rcrossref) (R)
 - [crossrefapi](https://github.com/fabiobatalha/crossrefapi) (Python)
 
-If you know of another library you would like to see listed here, please let us know about it via the [issue tracker](https://github.com/CrossRef/rest-api-doc/issues).
+If you know of another library you would like to see listed here, please let us know about it via the [issue tracker](https://github.com/Crossref/rest-api-doc/issues).
 
 ### Etiquette
 
@@ -76,7 +76,7 @@ We want to provide a public, open,  and free API for all. And we don't want to u
 
 This way we can contact you if we see a problem.
 
-- report problems and/or ask questions on our [issue tracker](https://github.com/CrossRef/rest-api-doc/issues).
+- report problems and/or ask questions on our [issue tracker](https://github.com/Crossref/rest-api-doc/issues).
 
 Alas, not all people are polite. And for this reason we reserve the right to impose rate limits and/or to block clients that are disrupting the public service.
 
@@ -96,7 +96,7 @@ What if you want to use our API for a production service that cannot depend on t
 
 ## API overview
 
-The API is generally RESTFUL and returns results in JSON. JSON formats returned by the API are documented [here](https://github.com/CrossRef/rest-api-doc/blob/master/api_format.md).
+The API is generally RESTFUL and returns results in JSON. JSON formats returned by the API are documented [here](https://github.com/Crossref/rest-api-doc/blob/master/api_format.md).
 
 The API supports HTTP and HTTPS. Examples here are provided using HTTPS.
 
@@ -203,7 +203,7 @@ These can be used alone like this
 | resource      | description                       |
 |:--------------|:----------------------------------|
 | `/works`      | returns a list of all works (journal articles, conference proceedings, books, components, etc), 20 per page
-| `/funders`    | returns a list of all funders in the [Funder Registry](https://github.com/CrossRef/open-funder-registry)
+| `/funders`    | returns a list of all funders in the [Funder Registry](https://github.com/Crossref/open-funder-registry)
 | `/members` | returns a list of all Crossref members (mostly publishers) |
 | `/types`      | returns a list of valid work types | 
 | `/licenses`  | return a list of licenses applied to works in Crossref metadata |
@@ -355,7 +355,7 @@ Filters allow you to narrow queries. All filter results are lists.  The followin
 | `funder` | `{funder_id}` | metadata which include the `{funder_id}` in FundRef data |
 | `location` |`{country_name}` | funder records where location = `{country name}`. Only works on `/funders` route |
 | `prefix` | `{owner_prefix}` | metadata belonging to a DOI owner prefix `{owner_prefix}` (e.g. `10.1016` ) |
-| `member` | `{member_id}` | metadata belonging to a CrossRef member |
+| `member` | `{member_id}` | metadata belonging to a Crossref member |
 | `from-index-date` | `{date}` | metadata indexed since (inclusive) `{date}` |
 | `until-index-date` | `{date}` | metadata indexed before (inclusive) `{date}` |
 | `from-deposit-date` | `{date}` | metadata last (re)deposited since (inclusive) `{date}` |
