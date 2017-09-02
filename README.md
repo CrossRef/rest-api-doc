@@ -126,7 +126,7 @@ Will return the following result:
         DOI: "10.1037/0003-066x.59.1.29",
         agency: {
           id: "crossref",
-          label: "CrossRef"
+          label: "Crossref"
         }
       }
     }
