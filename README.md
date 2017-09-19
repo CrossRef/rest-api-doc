@@ -92,7 +92,7 @@ How does it work? Simple. You can do one of two things to get directed to the "p
 
 1) Include a "mailto" parameter in your query. For example:
 
-`http://api.crossref.org/works?filter=has-full-text:true&mailto=GroovyBib@example.org` 
+`https://api.crossref.org/works?filter=has-full-text:true&mailto=GroovyBib@example.org` 
 
 2) Include a "mailto:" in your User-Agent header. For example:
 
@@ -103,15 +103,22 @@ Note that this only works if you query the API using HTTPS. You really should be
 #### Frequently anticpated questions
 
 **Q:** Will you spam me with marketing bumpf once you have our contact info?
+
 **A:** No. We will only use it to contact you about problems with your scripts.
 
+
 **Q:** Is this a secret plot to kill public access to your API?
+
 **A:** No. It is an attempt to keep a public API reliable.
 
+
 **Q:** What if I provide fake or incorrect contact info?
+
 **A:** That is not very polite. If there is a problem and you don't repond, we'll block you.
 
+
 **Q:** Does the contact info have to be a real name?
+
 **A:** No. As long as somebody actually recieves and pays attention to email at the address, it can be pseudoanonymous, or whatever.
 
 
