@@ -100,7 +100,7 @@ How does it work? Simple. You can do one of two things to get directed to the "p
 
 Note that this only works if you query the API using HTTPS. You really should be doing that anyway (wags finger).
 
-#### Frequently anticpated questions
+##### Frequently anticpated questions
 
 **Q:** Will you spam me with marketing bumpf once you have our contact info?
 
@@ -109,7 +109,7 @@ Note that this only works if you query the API using HTTPS. You really should be
 
 **Q:** Is this a secret plot to kill public access to your API?
 
-**A:** No. It is an attempt to keep a public API reliable.
+**A:** No. It is an attempt to keep the public API reliable.
 
 
 **Q:** What if I provide fake or incorrect contact info?
