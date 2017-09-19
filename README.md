@@ -102,7 +102,7 @@ Note that this only works if you query the API using HTTPS. You really should be
 
 ##### Frequently anticpated questions
 
-**Q:** Will you spam me with marketing bumpf once you have our contact info?
+**Q:** Will you spam me with marketing [bumf](https://en.oxforddictionaries.com/definition/bumf) once you have our contact info?
 
 **A:** No. We will only use it to contact you about problems with your scripts.
 
