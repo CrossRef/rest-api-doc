@@ -67,11 +67,11 @@ If you know of another library you would like to see listed here, please let us 
 
 ### Etiquette
 
-We want to provide a public, open,  and free API for all. And we don't want to unnecessarily burden developers (or ourselves) with cumbersome API tokens or registration processes in order to use the public REST API. For that to work, we ask that you be polite and try not to do anything that will take the public REST API down or otherwise make it unusable for others. Specifically, we encourage the following polite behaviour:
+We want to provide a public, open, and free API for all. And we don't want to unnecessarily burden developers (or ourselves) with cumbersome API tokens or registration processes in order to use the public REST API. For that to work, we ask that you be polite and try not to do anything that will take the public REST API down or otherwise make it unusable for others. Specifically, we encourage the following polite behaviour:
 
 - Cache data so you don't request the same data over and over again. 
 - Actively monitor API response times. If they start to go up, back-off for a while. For example, add pauses between requests and/or reduce the number of parallel requests.
-- Specify a `User-Agent` header that properly identifies your script or tool and that provides some type of means of contacting you. For example:
+- Specify a `User-Agent` header that properly identifies your script or tool and that provides a means of contacting you vai email using "mailto:". For example:
 `GroovyBib/1.1 (https://example.org/GroovyBib/; mailto:GroovyBib@example.org) BasedOnFunkyLib/1.4`.
 
 This way we can contact you if we see a problem.
@@ -79,6 +79,41 @@ This way we can contact you if we see a problem.
 - report problems and/or ask questions on our [issue tracker](https://github.com/Crossref/rest-api-doc/issues).
 
 Alas, not all people are polite. And for this reason we reserve the right to impose rate limits and/or to block clients that are disrupting the public service.
+
+### Good manners = faster service.
+
+But we prefer carrots to sticks. As of September 18th 2017 any API queries that **use HTTPS and have appropriate contact information** will be directed to a special pool of API machines that are reserved for polite users. Why are are we doing this? Well- we don't want to force users to have to register with us. But this means that if some user of the public server writes a buggy script or ignores timeouts and errors- they can really bring the API service to its knees. Whats more, it is very hard for us to identify these problem users because they tend to work off multiple parallel machines and use generic User-Agent headers. They are effectively anonymous. We're starting to have to spend a lot of time dealing with these problems and the degraded pefromance of the public API is affecting all the polite users as well.
+
+So... we are keeping the public service as is. It will probably continue to flutuate widely in performance. But now, if a client connects to the API using HTTPS and provides contact information either in their User-Agent header or as a parameter on their queries, then we will send them to a separate pool of machines. We expect to be able to better control the performance of these machines because, if a script starts causing problems, we can contact the people repsonsible for the script to ask them to fix it. Or, in extremis, we can block it.
+
+How does it work? Simple. You can do one of two things to get directed to the "polite pool":
+
+1) Include a "mailto" parameter in your query. For example:
+
+`http://api.crossref.org/works?filter=has-full-text:true&mailto=GroovyBib@example.org` 
+
+2) Include a "mailto:" in your User-Agent header. For example:
+
+`GroovyBib/1.1 (https://example.org/GroovyBib/; mailto:GroovyBib@example.org) BasedOnFunkyLib/1.4`.
+
+Note that this only works if you query the API using HTTPS. You really should be doing that anyway (wags finger).
+
+#### Frequently anticpated questions
+
+**Q:** Will you spam me with marketing bumpf once you have our contact info?
+**A:** No. We will only use it to contact you about problems with your scripts.
+
+**Q:** Is this a secret plot to kill public access to your API?
+**A:** No. It is an attempt to keep a public API reliable.
+
+**Q:** What if I provide fake or incorrect contact info?
+**A:** That is not very polite. If there is a problem and you don't repond, we'll block you.
+
+**Q:** Does the contact info have to be a real name?
+**A:** No. As long as somebody actually recieves and pays attention to email at the address, it can be pseudoanonymous, or whatever.
+
+
+
 
 #### Rate limits
 
@@ -627,3 +662,4 @@ Each major version has no backwards incompatible changes within its public inter
 - v51, 2017-07-24, clarified license of the documentation (as opposed to metadata)
 - v52, 2017-07-27, removed service notice and what's new section.
 - v53, 2017-08-11, mention `full-text.application` filter
+- v54, 2017-09-18, add info about new "polite pool"
