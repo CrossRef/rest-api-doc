@@ -86,7 +86,7 @@ But we prefer carrots to sticks. As of September 18th 2017 any API queries that 
 
 Why are are we doing this? Well- we don't want to force users to have to register with us. But this means that if some user of the public server writes a buggy script or ignores timeouts and errors- they can really bring the API service to its knees. Whats more, it is very hard for us to identify these problem users because they tend to work off multiple parallel machines and use generic User-Agent headers. They are effectively anonymous. We're starting to have to spend a lot of time dealing with these problems and the degraded pefromance of the public API is affecting all the polite users as well.
 
-So... we are keeping the public service as is. It will probably continue to flutuate widely in performance. But now, if a client connects to the API using HTTPS and provides contact information either in their User-Agent header or as a parameter on their queries, then we will send them to a separate pool of machines. We expect to be able to better control the performance of these machines because, if a script starts causing problems, we can contact the people repsonsible for the script to ask them to fix it. Or, in extremis, we can block it.
+So... we are keeping the public service as is. It will probably continue to fluctuate widely in performance. But now, if a client connects to the API using HTTPS and provides contact information either in their User-Agent header or as a parameter on their queries, then we will send them to a separate pool of machines. We expect to be able to better control the performance of these machines because, if a script starts causing problems, we can contact the people repsonsible for the script to ask them to fix it. Or, in extremis, we can block it.
 
 How does it work? Simple. You can do one of two things to get directed to the "polite pool":
 
@@ -114,7 +114,7 @@ Note that this only works if you query the API using HTTPS. You really should be
 
 **Q:** What if I provide fake or incorrect contact info?
 
-**A:** That is not very polite. If there is a problem and you don't repond, we'll block you.
+**A:** That is not very polite. If there is a problem and you don't respond, we'll block you.
 
 
 **Q:** Does the contact info have to be a real name?
