@@ -1,28 +1,26 @@
 # Crossref REST API
 
-<!-- This TOC was generated with the following SublimeText package: -->
-<!-- https://packagecontrol.io/packages/MarkdownTOC#configuration -->
+<!-- TOC depthFrom:1 depthTo:2 withLinks:1 updateOnSave:1 orderedList:0 -->
 
-<!-- MarkdownTOC depth=1 indent='\t\t' autolink=true bracket='round'-->
+- [Crossref REST API](#crossref-rest-api)
+	- [Preamble](#preamble)
+	- [Meta](#meta)
+	- [API overview](#api-overview)
+	- [Result types](#result-types)
+	- [Resource components](#resource-components)
+	- [Parameters](#parameters)
+	- [Queries](#queries)
+	- [Field Queries](#field-queries)
+	- [Sorting](#sorting)
+	- [Facet counts](#facet-counts)
+	- [Filter names](#filter-names)
+	- [Result controls](#result-controls)
+	- [API versioning](#api-versioning)
+	- [Documentation history](#documentation-history)
 
-- [Preamble](#preamble)
-- [Meta](#meta)
-- [API overview](#api-overview)
-- [Result types](#result-types)
-- [Resource components](#resource-components)
-- [Parameters](#parameters)
-- [Queries](#queries)
-- [Field Queries](#field-queries)
-- [Sorting](#sorting)
-- [Facet counts](#facet-counts)
-- [Filter names](#filter-names)
-- [Result controls](#result-controls)
-- [API versioning](#api-versioning)
-- [Documentation history](#documentation-history)
+<!-- /TOC -->
 
-<!-- /MarkdownTOC -->
 
-> <span style="color:#ef3340">Note: Cited-by counts are up-to-date as of 2017-07-27</span>
 
 ## Preamble
 
@@ -38,7 +36,7 @@ Note that we generally post notice any ongoing performance problems with our ser
 
 Report performance/availability at our [support site](https://support.crossref.org/hc/en-us).
 
-### Reporting bugs, requesting features ###
+### Reporting bugs, requesting features
 
 Please report bugs with the API or the documentation on our [issue tracker](https://github.com/Crossref/rest-api-doc/issues).
 
@@ -69,7 +67,7 @@ If you know of another library you would like to see listed here, please let us 
 
 We want to provide a public, open, and free API for all. And we don't want to unnecessarily burden developers (or ourselves) with cumbersome API tokens or registration processes in order to use the public REST API. For that to work, we ask that you be polite and try not to do anything that will take the public REST API down or otherwise make it unusable for others. Specifically, we encourage the following polite behaviour:
 
-- Cache data so you don't request the same data over and over again. 
+- Cache data so you don't request the same data over and over again.
 - Actively monitor API response times. If they start to go up, back-off for a while. For example, add pauses between requests and/or reduce the number of parallel requests.
 - Specify a `User-Agent` header that properly identifies your script or tool and that provides a means of contacting you vai email using "mailto:". For example:
 `GroovyBib/1.1 (https://example.org/GroovyBib/; mailto:GroovyBib@example.org) BasedOnFunkyLib/1.4`.
@@ -80,19 +78,19 @@ This way we can contact you if we see a problem.
 
 Alas, not all people are polite. And for this reason we reserve the right to impose rate limits and/or to block clients that are disrupting the public service.
 
-### Good manners = faster service.
+### Good manners = more reliable service.
 
 But we prefer carrots to sticks. As of September 18th 2017 any API queries that **use HTTPS and have appropriate contact information** will be directed to a special pool of API machines that are reserved for polite users.
 
 Why are are we doing this? Well- we don't want to force users to have to register with us. But this means that if some user of the public server writes a buggy script or ignores timeouts and errors- they can really bring the API service to its knees. What's more, it is very hard for us to identify these problem users because they tend to work off multiple parallel machines and use generic User-Agent headers. They are effectively anonymous. We're starting to have to spend a lot of time dealing with these problems and the degraded performance of the public API is affecting all the polite users as well.
 
-So... we are keeping the public service as is. It will probably continue to fluctuate widely in performance. But now, if a client connects to the API using HTTPS and provides contact information either in their User-Agent header or as a parameter on their queries, then we will send them to a separate pool of machines. We expect to be able to better control the performance of these machines because, if a script starts causing problems, we can contact the people repsonsible for the script to ask them to fix it. Or, in extremis, we can block it.
+So... we are keeping the public service as is. It will probably continue to fluctuate widely in performance. But now, if a client connects to the API using HTTPS and provides contact information either in their User-Agent header or as a parameter on their queries, then we will send them to a separate pool of machines. We expect to be able to better control the performance of these machines because, if a script starts causing problems, we can contact the people responsible for the script to ask them to fix it. Or, in extremis, we can block it.
 
 How does it work? Simple. You can do one of two things to get directed to the "polite pool":
 
 1) Include a "mailto" parameter in your query. For example:
 
-`https://api.crossref.org/works?filter=has-full-text:true&mailto=GroovyBib@example.org` 
+`https://api.crossref.org/works?filter=has-full-text:true&mailto=GroovyBib@example.org`
 
 2) Include a "mailto:" in your User-Agent header. For example:
 
@@ -100,7 +98,7 @@ How does it work? Simple. You can do one of two things to get directed to the "p
 
 Note that this only works if you query the API using HTTPS. You really should be doing that anyway (wags finger).
 
-##### Frequently anticpated questions
+##### Frequently anticipated questions
 
 **Q:** Will you spam me with marketing [bumf](https://en.oxforddictionaries.com/definition/bumf) once you have our contact info?
 
@@ -123,20 +121,19 @@ Note that this only works if you query the API using HTTPS. You really should be
 
 
 
-
 #### Rate limits
 
 From time to time Crossref needs to impose rate limits to ensure that the free API is usable by all. Any rate limits that are in effect will be advertised in the `X-Rate-Limit-Limit` and `X-Rate-Limit-Interval` HTTP headers.
 
 #### Blocking
 
-This is always our last resort, and you can generally avoid it if you include contact information in the `User-Agent` header as described above.
+This is always our last resort, and you can generally avoid it if you include contact information in the `User-Agent` header or `mailto` parameter as described above.
 
 But seriously... this is a bummer. We really want you to use the API. If you are polite about it, you shouldn't have any problems.
 
 ### Use for production services
 
-What if you want to use our API for a production service that cannot depend on the performance uncertainties of the free and open public API? What if you don't want to be affected by impolite people who do not follow the [API Etiquette](#api-etiquette) guidelines? Well, if you’re interested in using these tools or APIs for production services, we’ll soon have a service-level offering with access to all supported APIs and metadata, but with extra service and support guarantees. If you are interested in the upcoming service-based offering please contact our [outreach team](mailto://member@crossref.org). 
+What if you want to use our API for a production service that cannot depend on the performance uncertainties of the free and open public API? What if you don't want to be affected by impolite people who do not follow the [API Etiquette](#api-etiquette) guidelines? Well, if you’re interested in using these tools or APIs for production services, we’ll soon have a service-level offering with access to all supported APIs and metadata, but with extra service and support guarantees. If you are interested in the upcoming service-based offering please contact our [outreach team](mailto://member@crossref.org).
 
 ## API overview
 
@@ -146,7 +143,7 @@ The API supports HTTP and HTTPS. Examples here are provided using HTTPS.
 
 You should always url-encode DOIs and parameter values when using the API. DOIs are notorious for including characters that break URLs (e.g. semicolons, hashes, slashes, ampersands, question marks, etc.).
 
-Note that, for the sake of clarity, the examples in this document do *not* url-encode DOIs or parameter values. 
+Note that, for the sake of clarity, the examples in this document do *not* url-encode DOIs or parameter values.
 
 The API will only work for Crossref DOIs. You can test the registration agency for a DOI using the following route:
 
@@ -185,7 +182,7 @@ All results are returned in JSON. There are three general types of results:
 - Headers-only
 - Lists
 
-The mime-type for API results is `application/vnd.crossref-api-message+json` 
+The mime-type for API results is `application/vnd.crossref-api-message+json`
 
 ### Singletons
 
@@ -211,8 +208,8 @@ Lists results can contain multiple entries. Searching or filtering typically ret
     - status (e.g. "ok", error)
     - message-type (e.g. "work-list" )
     - message-version (e.g. 1.0.0 )
-    
-- Items, which will will contain the items matching the query or filter. 
+
+- Items, which will will contain the items matching the query or filter.
 
 Note that the "message-type" returned will differ from the mime-type:
 
@@ -225,7 +222,7 @@ Note that the "message-type" returned will differ from the mime-type:
 - prefix-list (list)
 - member-list (list)
 
-Normally, an API list result will return both the summary and the items. If you want to just retrieve the summary, you can do so by specifying that the number of rows returned should be zero. 
+Normally, an API list result will return both the summary and the items. If you want to just retrieve the summary, you can do so by specifying that the number of rows returned should be zero.
 
 #### Sort order
 
@@ -249,7 +246,7 @@ These can be used alone like this
 | `/works`      | returns a list of all works (journal articles, conference proceedings, books, components, etc), 20 per page
 | `/funders`    | returns a list of all funders in the [Funder Registry](https://github.com/Crossref/open-funder-registry)
 | `/members` | returns a list of all Crossref members (mostly publishers) |
-| `/types`      | returns a list of valid work types | 
+| `/types`      | returns a list of valid work types |
 | `/licenses`  | return a list of licenses applied to works in Crossref metadata |
 | `/journals` | return a list of journals in the Crossref database |
 
@@ -287,7 +284,7 @@ Parameters can be used to query, filter and control the results returned by the 
 |:-----------------------------|:----------------------------|
 | `query`                      | query terms |
 | `filter={filter_name}:{value}`| filter results by specific fields |
-| `rows={#}`                   | results per per page | 
+| `rows={#}`                   | results per per page |
 | `offset={#}` (mak 10k)               | result offset (user `cursor` for larger `/works` result sets)  |                         
 | `sample={#}` (max 100)                | return random N results |
 | `sort={#}`                   | sort results by a certain field |
@@ -308,7 +305,7 @@ Multiple filters can be specified by separating name:value pairs with a comma:
 Free form search queries can be made, for example, works that include `renear` and `ontologies`:
 
     https://api.crossref.org/works?query=renear+ontologies
-	
+
 ## Field Queries
 
 Field queries are available on the `/works` route and allow for queries that match only particular fields
@@ -316,12 +313,12 @@ of metadata. For example, this query matches records that contain the tokens `ri
 in any author field:
 
     https://api.crossref.org/works?query.author=richard+feynman
-	
+
 Field queries can be combined with the general `query` paramter and each other. Each query parameter
 is ANDed with the others:
 
     https://api.crossref.org/works?query.title=room+at+the+bottom&query.author=richard+feynman
-	
+
 ### `/works` Field Queries
 
 These field queries are available on the `/works` route:
@@ -369,14 +366,14 @@ can accept a `*` as their maximum, which indicates that all values should be ret
 Facets are specified with the `facet` parameter:
 
     https://api.crossref.org/works?rows=0&facet=type-name:*
-    
+
 | Facet name | Maximum values | Description |
 |:-----------|:---------------|-------------|
-| `affiliation` | `*` | Author affiliation | 
+| `affiliation` | `*` | Author affiliation |
 | `year` | `*` | Earliest year of publication, synonym for `published` |
 | `funder-name` | `*` | Funder literal name as deposited alongside DOIs |
 | `funder-doi` | `*` | Funder DOI |
-| `orcid` | 100 | Contributor ORCID | 
+| `orcid` | 100 | Contributor ORCID |
 | `container-title` | 100 | Work container title, such as journal title, or book title |
 | `assertion` | `*` | Custom Crossmark assertion name |
 | `archive` | `*` | Archive location |
@@ -473,24 +470,24 @@ Multiple filters can be specified in a single query. In such a case, different f
 would locate documents that are updates, were published on or after 3rd March 2014 and were funded by either the National Science Foundation (`10.13039/100000001`) or the National Heart, Lung, and Blood Institute (`10.13039/100000050`). These filters would be specified by joining each filter together with a comma:
 
     /works?filter=is-update:true,from-pub-date:2014-03-03,funder:10.13039/100000001,funder:10.13039/100000050
-    
+
 ### Dot filters
 
 A filter with a dot in its name is special. The dot signifies that the filter will be applied to some other record type that is related to primary resource record type. For example, with work queries, one can filter on works that have an award, where the same award has a particular award number and award-gving funding agency:
 
     /works?filter=award.number:CBET-0756451,award.funder:10.13039/100000001
-    
+
 Here we filter on works that have an award by the National Science Foundation that also has the award number `CBET-0756451`.
 
 ### Notes on owner prefixes
 
-The prefix of a Crossref DOI does **NOT** indicate who currently owns the DOI. It only reflects who originally registered the DOI. Crossref metadata has an **owner_prefix** element that records the current owner of the Crossref DOI in question. 
+The prefix of a Crossref DOI does **NOT** indicate who currently owns the DOI. It only reflects who originally registered the DOI. Crossref metadata has an **owner_prefix** element that records the current owner of the Crossref DOI in question.
 
 Crossref also has member IDs for depositing organisations. A single member may control multiple owner prefixes, which in turn may control a number of DOIs. When looking at works published by a certain organisaton, member IDs and the member routes should be used.
 
 ### Notes on dates
 
-Note that dates in filters should always be of the form `YYYY-MM-DD`, `YYYY-MM` or `YYYY`. Also note that date information in Crossref metadata can often be incomplete. So, for example, a publisher may only include the year and month of publication for a journal article. For a monograph they might just include the year. In these cases the API selects the earliest possible date given the information provided. So, for instance, if the publisher only provided 2013-02 as the published date, then the date would be treated as 2013-02-01. Similarly, if the publisher only provided the year 2013 as the date, it would be treated at 2013-01-01. 
+Note that dates in filters should always be of the form `YYYY-MM-DD`, `YYYY-MM` or `YYYY`. Also note that date information in Crossref metadata can often be incomplete. So, for example, a publisher may only include the year and month of publication for a journal article. For a monograph they might just include the year. In these cases the API selects the earliest possible date given the information provided. So, for instance, if the publisher only provided 2013-02 as the published date, then the date would be treated as 2013-02-01. Similarly, if the publisher only provided the year 2013 as the date, it would be treated at 2013-01-01.
 
 ### Notes on incremental metadata updates
 
@@ -506,7 +503,7 @@ You can control the delivery and selection results using the `rows`, `offset` an
 
  If you are expecting results beyond 10K, then use a `cursor` to deep page through the results. Note that not all routes support cursors.
 
-### Rows 
+### Rows
 
 Normally, results are returned 20 at a time. You can control the number of results returns by using the `rows` parameter. To limit results to 5, for example, you could do the following:
 
@@ -515,7 +512,7 @@ Normally, results are returned 20 at a time. You can control the number of resul
 If you would just like to get the `summary` of the results, you can set the rows to 0 (zero).
 
     https://api.crossref.org/works?query=allen+renear&rows=0
-    
+
 The maximum number rows you can ask for in one query is `1000`.
 
 ### Offset
@@ -535,7 +532,7 @@ Using large `offset` values can result in extremely long response times. Offsets
 A `next-cursor` field will be provided in the JSON response. To get the next page of results, pass the value of `next-cursor` as the `cursor` parameter:
 
     https://api.crossref.org/members/311/works?filter=type:journal-article&cursor=AoE/CGh0dHA6Ly9keC5kb2kub3JnLzEwLjEwMDIvdGRtX2xpY2Vuc2VfMQ==
- 
+
 Clients should check the number of returned items. If the number of returned items is fewer than the number of expected rows then the end of the result set has been reached. Using `next-cursor` beyond this point will result in responses with an empty items list.
 
 The `cursor` parameter is available on all `/works` resources.
@@ -545,7 +542,7 @@ The `cursor` parameter is available on all `/works` resources.
 Being able to select random results is useful for both testing and sampling. You can use the `sample` parameter to retrieve random results. So, for example, the following select 10 random works:
 
     https://api.crossref.org/works?sample=10
-    
+
 Note that when you use the `sample` parameter, the `rows` and `offset` parameters are ignored.
 
 
@@ -572,19 +569,19 @@ Note that the filters for license URL and maximum license embargo period (licens
 **All works where the archive partner listed = 'CLOCKSS'**
 
     https://api.crossref.org/works?filter=archive:CLOCKSS
-    
+
 **All members with `hind` in their name (e.g. Hindawi)**
 
     https://api.crossref.org/members?query=hind
-    
+
 **All licenses linked to works published by Elsevier**
 
     http://api.crossref.org/v1/works?facet=license:*&filter=member:78&rows=0
-    
+
 **All licenses applied to works published in the journal `Pathology Research International`**
 
     https://api.crossref.org/works?facet=license:*&filter=issn:2090-8091
-    
+
 **All works with an award numbered roughly `1 F31 MH11745` also awarded by funder with ID `10.13039/100000025`:
 
     https://api.crossref.org/works?filter=award.number:1F31MH11745,award.funder:10.13039/100000025
@@ -594,14 +591,14 @@ Note that the filters for license URL and maximum license embargo period (licens
 In theory, the syntax of the API can vary independently of the result representations. In practice, major version changes in either will require changes to API clients and so versioning of the API will apply to both the API syntax and the result representation.
 
 The API uses a semantic versioning scheme whereby the version number is divided into three parts delimited by periods. The first number represents the "major" release number. The second represents a "minor" release number.
-      
+
     Version 1.20
             ^  ^
             |  |
         major  |
            minor
 
- **Major** version increments are defined as releases that can break backwards compatibility. Crossref will only commit to supporting the latest two major releases simultaneously and legacy major releases will be supported for no more than nine months. Exceptions to these rules may be made when major releases are required to ensure the security or stability of the system. 
+ **Major** version increments are defined as releases that can break backwards compatibility. Crossref will only commit to supporting the latest two major releases simultaneously and legacy major releases will be supported for no more than nine months. Exceptions to these rules may be made when major releases are required to ensure the security or stability of the system.
 
 **Minor** version increments are defined as backwards compatible. There is no limit on the number of minor versions that Crossref can roll out. Note that client applications should not have dependencies on minor versions, and Crossref will only maintain the latest minor version for the two most recent major versions.
 
@@ -612,14 +609,14 @@ Adding syntax options or metadata to representations will normally be backwards 
 If you need to tie your implementation to a specific major version of the API, you can do so by using version-specific routes. The default route redirects to the most recent version of the API. Some older major versions may be available using a version prefix. For example, to access version `v1` of the API:
 
     https://api.crossref.orv/v1/works
-    
+
 Each major version has no backwards incompatible changes within its public interface.
 
 ## Documentation history
 
 - V1: 2013-09-08, first draft.
 - V2: 2013-09-24, reference platform deployed
-- v3: 2013-09-25, reworked filters. Added API versioning doc 
+- v3: 2013-09-25, reworked filters. Added API versioning doc
 - v4: 2013-09-25, more filter changes.
 - v5: 2013-09-27, doc mime-type and message-type relationship
 - v6: 2013-10-01, updated `sample` & added examples with filters
@@ -639,7 +636,7 @@ Each major version has no backwards incompatible changes within its public inter
 - v19: 2014-06-23, new textual filters - `container-title`, `category-name`.
 - v20: 2014-06-24, OR filter queries, `type-name` filter.
 - v21: 2014-07-01, new `award.number` and `award.funder` relational filters.
-- v22: 2014-07-16, changed title to more accurately reflect scope of API. 
+- v22: 2014-07-16, changed title to more accurately reflect scope of API.
 - v23, 2014-09-01, semantics of mutliple filters, dot filters
 - v24, 2014-10-15, added info on license of Crossref metadata itself. Doh.
 - v25, 2015-05-06, added link to issue tracker. Removed Warning section.
