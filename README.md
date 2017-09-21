@@ -228,6 +228,12 @@ Normally, an API list result will return both the summary and the items. If you 
 
 If the API call includes a query, then the sort order will be by the relevance score. If no query is included, then the sort order will be by DOI update date.
 
+### Selecting which elements to return
+
+Crossref metadata records can be quite large. Sometimes you just want a few elements from the schema. You can "select" a subset of elements to return using the `select` parameter. This can make your API calls much more efficient. For example:
+
+`http://api.crossref.org/works?sample=10&select=DOI,title`
+
 
 ## Resource components
 Major resource components supported by the Crossref API are:
@@ -689,4 +695,4 @@ Each major version has no backwards incompatible changes within its public inter
 - v52, 2017-07-27, removed service notice and what's new section.
 - v53, 2017-08-11, mention `full-text.application` filter
 - v54, 2017-09-18, add info about new "polite pool"
-- v55, 2017-09-21, add info about `/member` and `/funder` filters. add info about `publisher-name` facet.
+- v55, 2017-09-21, document `/member` and `/funder` filters. document `publisher-name` facet. document `select` parameter.
