@@ -385,10 +385,14 @@ Facets are specified with the `facet` parameter:
 | `category-name` | `*` | Category name of work |
 | `relation-type` | `*` | Relation type described by work or described by another work with work as object |
 | `assertion-group` | `*` | Custom Crossmark assertion group name |
+| `publisher-name` | `*` | Publisher name of work |
 
 ## Filter names
 
-Filters allow you to narrow queries. All filter results are lists.  The following filters are supported:
+Filters allow you to narrow queries. All filter results are lists.
+
+
+The following filters are supported for the `/works` route:
 
 | filter     | possible values | description|
 |:-----------|:----------------|:-----------|
@@ -457,6 +461,22 @@ Filters allow you to narrow queries. All filter results are lists.  The followin
 | `relation.type` | | One of the relation types from the Crossref relations schema (e.g. `is-referenced-by`, `is-parent-of`, `is-preprint-of`) |
 | `relation.object` | | Relations where the object identifier matches the identifier provided |
 | `relation.object-type` | | One of the identifier types from the Crossref relations schema (e.g. `doi`, `issn`) |
+
+
+The following filters are supported for the `/members` route:
+
+| filter     | possible values | description|
+|:-----------|:----------------|:-----------|
+| `has-public-references` | | Member has made their references public for one or more of their prefixes |
+| `backfile-doi-count` | {integer} | count of DOIs for material published more than two years ago |
+| `current-doi-count` | {integer} | count of DOIs for material published within last two years |
+
+The following filters are supported for the `/funders` route:
+
+| filter     | possible values | description|
+|:-----------|:----------------|:-----------|
+| `location` | | funders located in specified country |
+
 
 ### Multiple filters
 
@@ -669,3 +689,4 @@ Each major version has no backwards incompatible changes within its public inter
 - v52, 2017-07-27, removed service notice and what's new section.
 - v53, 2017-08-11, mention `full-text.application` filter
 - v54, 2017-09-18, add info about new "polite pool"
+- v55, 2017-09-21, add info about `/member` and `/funder` filters. add info about `publisher-name` facet.
