@@ -338,7 +338,7 @@ These field queries are available on the `/works` route:
 | `query.chair` | Query chair given and family names |
 | `query.translator` | Query translator given and family names |
 | `query.contributor` | Query author, editor, chair and translator given and family names |
-| `query.bibliographic` | Query bibliographic infomration, useful for citation look up. Includes titles, authors, ISSNs and publication years |
+| `query.bibliographic` | Query bibliographic information, useful for citation look up. Includes titles, authors, ISSNs and publication years |
 | `query.affiliation` | Query contributor affiliations |
 
 ## Sorting
