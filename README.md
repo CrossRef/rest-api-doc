@@ -357,8 +357,8 @@ sorted. Possible values are:
 | `published-print` | Sort by print publication date |
 | `published-online` | Sort by online publication date |
 | `issued` | Sort by issued date (earliest known publication date) |
-| `is-referenced-by-count` | Sort by number of references to documents |
-| `references-count` | Sort by number of references made by documents |
+| `is-referenced-by-count` | Sort by number of times this DOI is referenced by other Crossref DOIs |
+| `references-count` | Sort by number of references included in the references section of the document identified by this DOI |
 
 An example that sorts results in order of publication, beginning with the least recent:
 
