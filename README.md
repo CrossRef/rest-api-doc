@@ -28,6 +28,13 @@ The Crossref REST API is one of [a variety of tools and APIs](https://www.crossr
 
 
 ## Meta
+
+### Frequency of indexing
+
+Records typically appear in the REST API within 20 minutes of their having been successfully deposited with Crossref.
+
+Summary information (e.g. counts, etc.) are processed in batch every 24 hours.
+
 ### Learning about performance or availability problems
 
 Note that we generally post notice any ongoing performance problems with our services on our twitter feeds at [CrossrefOrg](https://twitter.com/CrossrefOrg) and [CrossrefSupport](https://twitter.com/@CrossrefSupport). We also report them on our [support site](https://support.crossref.org/hc/en-us). You might want to check these to see if we are already aware of a problem before you report it.
@@ -696,3 +703,4 @@ Each major version has no backwards incompatible changes within its public inter
 - v53, 2017-08-11, mention `full-text.application` filter
 - v54, 2017-09-18, add info about new "polite pool"
 - v55, 2017-09-21, document `/member` and `/funder` filters. document `publisher-name` facet. document `select` parameter.
+- v56, 2018-01-26, add info on frequency of indexing
