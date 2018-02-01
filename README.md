@@ -447,6 +447,7 @@ The following filters are supported for the `/works` route:
 | `has-authenticated-orcid` | | metadata which includes one or more ORCIDs where the depositing publisher claims to have witness the ORCID owner authenticate with ORCID |
 | `orcid` | `{orcid}` | metadata where `<orcid>` element's value = `{orcid}` |
 | `issn` | `{issn}` | metadata where record has an ISSN = `{issn}`. Format is `xxxx-xxxx`. |
+| `isbn` | `{isbn}` | metadata where record has an ISBN = `{issn}`. |
 | `type` | `{type}` | metadata records whose type = `{type}`. Type must be an ID value from the list of types returned by the `/types` resource |
 | `directory` | `{directory}` | metadata records whose article or serial are mentioned in the given `{directory}`. Currently the only supported value is `doaj`. |
 | `doi` | `{doi}` | metadata describing the DOI `{doi}` |
@@ -704,3 +705,4 @@ Each major version has no backwards incompatible changes within its public inter
 - v54, 2017-09-18, add info about new "polite pool"
 - v55, 2017-09-21, document `/member` and `/funder` filters. document `publisher-name` facet. document `select` parameter.
 - v56, 2018-01-26, add info on frequency of indexing
+- v57, 2018-02-01, document ISBN filter
