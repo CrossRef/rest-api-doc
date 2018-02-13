@@ -441,6 +441,7 @@ The following filters are supported for the `/works` route:
 | `full-text.type` | `{mime_type}`  | metadata where `<resource>` element's `content_type` attribute is `{mime_type}` (e.g. `application/pdf`). |
 | `full-text.application` | `{string}` | metadata where `<resource>` link has one of the following intended applications: `text-mining`, `similarity-checking` or `unspecified` |
 | `has-references` | | metadata for works that have a list of references |
+| `reference-visibility` | `[open, closed, mixed]` | metadata for works where references are either `open`, `closed` or `mixed` |
 | `has-archive` | | metadata which include name of archive partner |
 | `archive` | `{string}` | metadata which where value of archive partner is `{string}` |
 | `has-orcid` | | metadata which includes one or more ORCIDs |
@@ -482,6 +483,7 @@ The following filters are supported for the `/members` route:
 | filter     | possible values | description|
 |:-----------|:----------------|:-----------|
 | `has-public-references` | | Member has made their references public for one or more of their prefixes |
+| `reference-visibility` | `[open, closed, mixed]` | Members who have made their references either `open`, `closed` or `mixed` |
 | `backfile-doi-count` | {integer} | count of DOIs for material published more than two years ago |
 | `current-doi-count` | {integer} | count of DOIs for material published within last two years |
 
@@ -706,3 +708,4 @@ Each major version has no backwards incompatible changes within its public inter
 - v55, 2017-09-21, document `/member` and `/funder` filters. document `publisher-name` facet. document `select` parameter.
 - v56, 2018-01-26, add info on frequency of indexing
 - v57, 2018-02-01, document ISBN filter
+- v58, 2018-02-13, document `reference-visibility` filter for `/works` and `/members` routes
