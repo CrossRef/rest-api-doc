@@ -76,7 +76,7 @@ We want to provide a public, open, and free API for all. And we don't want to un
 
 - Cache data so you don't request the same data over and over again.
 - Actively monitor API response times. If they start to go up, back-off for a while. For example, add pauses between requests and/or reduce the number of parallel requests.
-- Specify a `User-Agent` header that properly identifies your script or tool and that provides a means of contacting you vai email using "mailto:". For example:
+- Specify a `User-Agent` header that properly identifies your script or tool and that provides a means of contacting you via email using "mailto:". For example:
 `GroovyBib/1.1 (https://example.org/GroovyBib/; mailto:GroovyBib@example.org) BasedOnFunkyLib/1.4`.
 
 This way we can contact you if we see a problem.
@@ -124,7 +124,7 @@ Note that this only works if you query the API using HTTPS. You really should be
 
 **Q:** Does the contact info have to be a real name?
 
-**A:** No. As long as somebody actually recieves and pays attention to email at the address, it can be pseudoanonymous, or whatever.
+**A:** No. As long as somebody actually receives and pays attention to email at the address, it can be pseudo-anonymous, or whatever.
 
 
 
@@ -140,7 +140,7 @@ But seriously... this is a bummer. We really want you to use the API. If you are
 
 ### Use for production services
 
-What if you want to use our API for a production service that cannot depend on the performance uncertainties of the free and open public API? What if you don't want to be affected by impolite people who do not follow the [API Etiquette](#api-etiquette) guidelines? Well, if you’re interested in using these tools or APIs for production services, we’ll soon have a service-level offering with access to all supported APIs and metadata, but with extra service and support guarantees. If you are interested in the upcoming service-based offering please contact our [outreach team](mailto://member@crossref.org).
+What if you want to use our API for a production service that cannot depend on the performance uncertainties of the free and open public API? What if you don't want to be affected by impolite people who do not follow the [API Etiquette](#api-etiquette) guidelines? Well, if you’re interested in using these tools or APIs for production services, we [have a service-level offering](https://www.crossref.org/services/metadata-delivery/plus-service/) with access to all supported APIs and metadata, but with extra service and support guarantees.
 
 ## API overview
 
@@ -441,7 +441,7 @@ The following filters are supported for the `/works` route:
 | `full-text.type` | `{mime_type}`  | metadata where `<resource>` element's `content_type` attribute is `{mime_type}` (e.g. `application/pdf`). |
 | `full-text.application` | `{string}` | metadata where `<resource>` link has one of the following intended applications: `text-mining`, `similarity-checking` or `unspecified` |
 | `has-references` | | metadata for works that have a list of references |
-| `reference-visibility` | `[open, closed, mixed]` | metadata for works where references are either `open`, `closed` or `mixed` |
+| `reference-visibility` | `[open, limited, closed]` | metadata for works where references are either `open`, `limited` (to [Metadata Plus subscribers](https://www.crossref.org/services/metadata-delivery/plus-service/)) or `closed` |
 | `has-archive` | | metadata which include name of archive partner |
 | `archive` | `{string}` | metadata which where value of archive partner is `{string}` |
 | `has-orcid` | | metadata which includes one or more ORCIDs |
@@ -483,7 +483,7 @@ The following filters are supported for the `/members` route:
 | filter     | possible values | description|
 |:-----------|:----------------|:-----------|
 | `has-public-references` | | Member has made their references public for one or more of their prefixes |
-| `reference-visibility` | `[open, closed, mixed]` | Members who have made their references either `open`, `closed` or `mixed` |
+| `reference-visibility` | `[open, limited, closed]` | Members who have made their references either `open`, `limited` (to [Metadata Plus subscribers](https://www.crossref.org/services/metadata-delivery/plus-service/)) or `closed` |
 | `backfile-doi-count` | {integer} | count of DOIs for material published more than two years ago |
 | `current-doi-count` | {integer} | count of DOIs for material published within last two years |
 
@@ -586,41 +586,64 @@ Note that when you use the `sample` parameter, the `rows` and `offset` parameter
 
 **All works published by owner prefix `10.1016` in January 2010**
 
-    https://api.crossref.org/prefixes/10.1016/works?filter=from-pub-date:2010-01,until-pub-date:2010-01
+```
+https://api.crossref.org/prefixes/10.1016/works?filter=from-pub-date:2010-01,until-pub-date:2010-01
+```
 
 **All works funded by `10.13039/100000001` that have a CC-BY license**
 
-    https://api.crossref.org/funders/10.13039/100000001/works?filter=license.url:http://creativecommons.org/licenses/by/3.0/
+```
+https://api.crossref.org/funders/10.13039/100000001/works?filter=license.url:http://creativecommons.org/licenses/by/3.0/
+```
 
 **All works published by owner prefix 10.6064 from February 2010 to February 2013 that have a CC-BY license**
 
-    https://api.crossref.org/prefixes/10.6064/works?filter=license.url:http://creativecommons.org/licenses/by/3.0/,from-pub-date:2010-02,until-pub-date:2013-02
+```
+https://api.crossref.org/prefixes/10.6064/works?filter=license.url:http://creativecommons.org/licenses/by/3.0/,from-pub-date:2010-02,until-pub-date:2013-02
+```
 
 **All works funded by `10.13039/100000015` where license = CC-BY and embargo <= 365 days**
 
-    https://api.crossref.org/funders/10.13039/100000015/works?filter=license.url:http://creativecommons.org/licenses/by/3.0/,license.delay:365
-
+```
+https://api.crossref.org/funders/10.13039/100000015/works?filter=license.url:http://creativecommons.org/licenses/by/3.0/,license.delay:365
+```
 Note that the filters for license URL and maximum license embargo period (license.url and license.delay) combine to filter each document's metadata for a license with both of these properties.
 
 **All works where the archive partner listed = 'CLOCKSS'**
 
-    https://api.crossref.org/works?filter=archive:CLOCKSS
+```
+https://api.crossref.org/works?filter=archive:CLOCKSS
+```
 
 **All members with `hind` in their name (e.g. Hindawi)**
 
-    https://api.crossref.org/members?query=hind
+```
+https://api.crossref.org/members?query=hind
+```
 
 **All licenses linked to works published by Elsevier**
 
-    http://api.crossref.org/v1/works?facet=license:*&filter=member:78&rows=0
+```
+http://api.crossref.org/v1/works?facet=license:*&filter=member:78&rows=0
+```
 
 **All licenses applied to works published in the journal `Pathology Research International`**
 
-    https://api.crossref.org/works?facet=license:*&filter=issn:2090-8091
+```
+https://api.crossref.org/works?facet=license:*&filter=issn:2090-8091
+```
 
 **All works with an award numbered roughly `1 F31 MH11745` also awarded by funder with ID `10.13039/100000025`:
 
-    https://api.crossref.org/works?filter=award.number:1F31MH11745,award.funder:10.13039/100000025
+```
+https://api.crossref.org/works?filter=award.number:1F31MH11745,award.funder:10.13039/100000025
+```
+
+** The number of DOIs that have references AND where references are `open` faceted by publisher name **
+
+```
+http://api.crossref.org/v1.0/works?filter=has-references:true,reference-visibility:open&facet=publisher-name:*&rows=0
+```
 
 ## API versioning
 
@@ -709,3 +732,4 @@ Each major version has no backwards incompatible changes within its public inter
 - v56, 2018-01-26, add info on frequency of indexing
 - v57, 2018-02-01, document ISBN filter
 - v58, 2018-02-13, document `reference-visibility` filter for `/works` and `/members` routes
+- v59, 2018-02,13, added info about Mtedata Plus service. Corrected spelling. Added example of using `reference-visibility` filter.
