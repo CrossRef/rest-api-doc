@@ -471,7 +471,7 @@ The following filters are supported for the `/works` route:
 | `has-clinical-trial-number` | | metadata for records which include a clinical trial number |
 | `content-domain` | | metadata where the publisher records a particular domain name as the location Crossmark content will appear |
 | `has-content-domain` | | metadata where the publisher records a domain name location for Crossmark content |
-| `has-crossmark-restriction` | | metadata where the publisher restricts Crossmark usage to content domains |
+| `has-domain-restriction` | | metadata where the publisher restricts Crossmark usage to content domains |
 | `has-relation` | | metadata for records that either assert or are the object of a relation |
 | `relation.type` | | One of the relation types from the Crossref relations schema (e.g. `is-referenced-by`, `is-parent-of`, `is-preprint-of`) |
 | `relation.object` | | Relations where the object identifier matches the identifier provided |
