@@ -140,7 +140,9 @@ But seriously... this is a bummer. We really want you to use the API. If you are
 
 ### Use for production services
 
-What if you want to use our API for a production service that cannot depend on the performance uncertainties of the free and open public API? What if you don't want to be affected by impolite people who do not follow the [API Etiquette](#api-etiquette) guidelines? Well, if you’re interested in using these tools or APIs for production services, we [have a service-level offering](https://www.crossref.org/services/metadata-delivery/plus-service/) with access to all supported APIs and metadata, but with extra service and support guarantees.
+What if you want to use our API for a production service that cannot depend on the performance uncertainties of the free and open public API? What if you don't want to be affected by impolite people who do not follow the [API Etiquette](#api-etiquette) guidelines? Well, if you’re interested in using these tools or APIs for production services, we [have a service-level offering](https://www.crossref.org/services/metadata-delivery/plus-service/) called "Plus". This service provides you with with access to all supported APIs and metadata, but with extra service and support guarantees.
+
+When you sign up for the Plus service, you will be issued an API token that you should put in the `Authorization` header of all your rest API requests. This token will ensure that said requests get directed to a pool of machines that are reserved for "Plus" SLA users.
 
 ## API overview
 
@@ -732,4 +734,5 @@ Each major version has no backwards incompatible changes within its public inter
 - v56, 2018-01-26, add info on frequency of indexing
 - v57, 2018-02-01, document ISBN filter
 - v58, 2018-02-13, document `reference-visibility` filter for `/works` and `/members` routes
-- v59, 2018-02,13, added info about Mtedata Plus service. Corrected spelling. Added example of using `reference-visibility` filter.
+- v59, 2018-02-13, added info about Mtedata Plus service. Corrected spelling. Added example of using `reference-visibility` filter.
+- v60, 2018-02-22, added info for "Plus" users on use of toekn in `Authorization` header.
