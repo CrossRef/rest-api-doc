@@ -144,7 +144,16 @@ What if you want to use our API for a production service that cannot depend on t
 
 #### Authorization token for Plus service
 
-When you sign up for the Plus service, you will be issued an API token that you should put in the `Authorization` header of all your rest API requests. This token will ensure that said requests get directed to a pool of machines that are reserved for "Plus" SLA users.
+When you sign up for the Plus service, you will be issued an API token that you should put in the `Authorization` header of all your rest API requests. This token will ensure that said requests get directed to a pool of machines that are reserved for "Plus" SLA users. For example, with [curl](https://curl.haxx.se/):
+
+```
+curl -X GET \
+  https://api.crossref.org/works \
+  -H 'Authorization: Bearer yJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vY3Jvc3NyZWYub3JnLyIsImF1ZXYZImVuaGFuY2VkY21zIiwianRpIjoiN0M5ODlFNTItMTFEQS00QkY3LUJCRUUtODFCMUM3QzE0OTZEIn0.NYe3-O066sce9R1fjMzNEvP88VqSEaYdBY622FDiG8Uq' \
+  -H 'User-Agent: GroovyBib/1.1 (https://example.org/GroovyBib/; mailto:GroovyBib@example.org) BasedOnFunkyLib/1.4'
+  ```
+
+Note that you can still be "polite" and identify yourself as well. And, of course, replace the fake token above with the real token.
 
 ## API overview
 
@@ -737,4 +746,5 @@ Each major version has no backwards incompatible changes within its public inter
 - v57, 2018-02-01, document ISBN filter
 - v58, 2018-02-13, document `reference-visibility` filter for `/works` and `/members` routes
 - v59, 2018-02-13, added info about Mtedata Plus service. Corrected spelling. Added example of using `reference-visibility` filter.
-- v60, 2018-02-22, added info for "Plus" users on use of toekn in `Authorization` header.
+- v60, 2018-02-22, added info for "Plus" users on use of token in `Authorization` header.
+- v61, 2018-02-26, add curl example for use of token.
