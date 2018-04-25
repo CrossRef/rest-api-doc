@@ -8,7 +8,7 @@
 
 ## Overview
 
-The following short examples show how the CrossRef REST APIs can be used to provide CrossPublisher suport for TDM applications. This demonstration is a bit of a paradox- it is targeted at a  non-technical audience who wants to understand a little but about the technical infrastructure that researchers can leverage for TDM applications.
+The following short examples show how the CrossRef REST APIs can be used to provide CrossPublisher support for TDM applications. This demonstration is a bit of a paradox- it is targeted at a  non-technical audience who wants to understand a little but about the technical infrastructure that researchers can leverage for TDM applications.
 
 ## Technical notes
 
