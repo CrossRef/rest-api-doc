@@ -35,7 +35,7 @@
 <!-- /TOC -->
 
 
-## Version History
+## Document Version History
 
 - V01: 2013-09-08, first draft.
 - V02: 2013-09-09, add examples + links.
@@ -50,12 +50,11 @@
 - v11: 2013-12-11, Added third party archive arrangements section. Updated examples to include archive locations.
 - v12: 2015-11-27, Revisions to describe deposit workflow to support alerting funders/instituions when content has been "accepted". Pointers to latest schemas. General cleanup.
 - v13: 2016-03-22, Updated mentions of "FunRef" to "Funding Data" and "Open Funder Registry" as appropriate. Updated "CrossRef" to "Crossref." Updated section on registered content to indicate impending finalization of process. 
+- v14: 2017-07-20, Cleanup links.
 
 ## Contact info
 
-If you encounter problems with the API or the documentation, please report them to:
-
-![](http://labs.crossref.org/wp-content/uploads/2013/01/labs_email.png)
+If you encounter problems with the API or the documentation, please report them using our [issue tracker](https://github.com/CrossRef/rest-api-doc/issues).
 
 ## Background
 
@@ -63,7 +62,7 @@ Funders are increasingly setting mandates around publications that result from r
 
 Crossref has extended its metadata schemas and Application Programming Interfaces (APIs) to enable funding agencies, institutions and publishers to use Crossref as a metadata source that can be used to track research that is subject to these mandates and to ensure that said research is being disseminated according to the requirements of the mandates.
 
-Funders, institutions, publishers and third parties providing research information management tools (e.g. *[CHORUS](http://publishers.org/press/107/)*, *[SHARE](http://www.arl.org/news/arl-news/2773-shared-access-research-ecosystem-proposed-by-aau-aplu-arl)*,*[Symplectic](http://symplectic.co.uk)* can make use of Crossref APIs and metadata in order to identify:
+Funders, institutions, publishers and third parties providing research information management tools (e.g. *[CHORUS](https://www.chorusaccess.org/)*, *[SHARE](http://www.arl.org/news/arl-news/2773-shared-access-research-ecosystem-proposed-by-aau-aplu-arl)*,*[Symplectic](http://symplectic.co.uk)* can make use of Crossref APIs and metadata in order to identify:
 
 - Publications relating to research supported by particular funders.
 - Publications from particular researchers identified by their ORCID ID.
@@ -118,7 +117,7 @@ In order to alert funders of relevant publications as soon as possible, Crossref
 
 ## Funding information
 
-Crossref supports the recording of funding information for a publication via its [Funding Data](http://www.crossref.org/fundingdata/index.html) program. The Open Funder Registry defines an open, standard [registry of funder names and funder identifiers](http://www.crossref.org/fundingdata/registry.html) that can be used in order to increase the accuracy of the funding information recorded. Although Funding Data supports recording award_numbers along with funder identifiers, Crossref does __not__ define standards for recording award numbers as practice varies greatly across funders.
+Crossref supports the recording of funding information for a publication via its [Funding Data](http://www.crossref.org/fundingdata/index.html) program. The Open Funder Registry defines an open, standard [registry of funder names and funder identifiers](https://www.crossref.org/services/funder-registry/) that can be used in order to increase the accuracy of the funding information recorded. Although Funding Data supports recording award_numbers along with funder identifiers, Crossref does __not__ define standards for recording award numbers as practice varies greatly across funders.
 
 To support funder KPIs, members __must__ deposits funder metadata using the specifications defined for the Funder Data program. Specifically, when depositing metadata you:
 
@@ -128,7 +127,7 @@ To support funder KPIs, members __must__ deposits funder metadata using the spec
 3. __should__ include award numbers in Funder Data when possible. Although the standard KPI API does not make direct use of award numbers, individual agencies may be able to make use of included award numbers where found.
 4. __should__ deposit Funder Data as part of a CrossMark record if you (the publisher) already are (or *are planning* to become) a participant in CrossMark. There are two reasons for this: First, it ensures that the Funder Data is available __both__ in a standard machine readable format __AND__ via a standard UI for readers. Second, it ensures that the Funder Data is made maximally reusable via a CC Zero license waiver. Note that publishers do not __need__ to have implemented CrossMark yet to deposit Funder metadata via CrossMark. We expect that publishers may take a year or more before they have fully implemented all of CrossMark's features.
 
-See Crossref's Help pages for [Technical details on depositing Funder Data.](http://help.crossref.org/#fundref)
+See Crossref's Help pages for [Technical details on depositing Funder Data.](https://support.crossref.org/hc/en-us/articles/214360746-Funding-data-overview)
 
 ## License information
 
@@ -198,7 +197,7 @@ Note that, by recording a `<resource>` that points to the full text, you are not
 
 Note also that the publisher could theoretically choose only to deposit `<resource>` elements for full text representations once an embargo has ended. However, this approach may prove fraught, as any mistakes or delays in the redeposit process might lead the funding agency to believe that the publisher has not made the relevant content accessible at the end of the embargo period.
 
-Further detail on using the `<resource>` element for recording links to full text can be found on the [Prospect support site](http://prospectsupport.labs.crossref.org/full-text-uris-technical-details/) and in the Crossref deposit schema documentation for the [ `<collection>` ](http://www.crossref.org/schema/documentation/4.3.4/4.3.4.html#collection) and [ `<resource>` ](http://www.crossref.org/schema/documentation/4.3.4/4.3.4.html#resource) elements.
+Further detail on using the `<resource>` element for recording links to full text can be found on the [Text & data mining support site](https://support.crossref.org/hc/en-us/articles/214298866-Full-Text-URIs-Technical-Details) and in the Crossref deposit schema documentation for the [ `<collection>` ](http://data.crossref.org/reports/help/schema_doc/4.4.0/schema_4_4_0.html#collection) and [ `<resource>` ](http://data.crossref.org/reports/help/schema_doc/4.4.0/schema_4_4_0.html#resource) elements.
 
 ## Different licenses for different versions of the content
 
@@ -289,7 +288,7 @@ Publishers can record the archive arrangement or archive intention of a document
 	  <archive name="Portico"/>
     </archive_locations>
 
-Crossref maintains a vocabulary of archive locations within the Crossref deposit schema. The latest list of possible archive location values can be found in the documentation for the [ `<archive>` element ](http://www.crossref.org/help/schema_doc/4.3.6/4.3.6.html).
+Crossref maintains a vocabulary of archive locations within the Crossref deposit schema. The latest list of possible archive location values can be found in the documentation for the [ `<archive>` element ](http://data.crossref.org/reports/help/schema_doc/4.4.0/schema_4_4_0.html#archive).
 
 ## Assigning and registering DOIs at acceptance
 
@@ -306,8 +305,6 @@ Crossref has always supported the deposit of DOIs for accepted manuscripts __if_
  These rules reflect that, though there may be significant value added by he publisher between acceptance and final publication,  the accepted and the final published version are interchangeable from a citation point of view. This is because the transition from acceptance to the final published version should not introduce any changes that are likely to effect the interpretation of crediting of the work.  
 
 ### Assigning and registering DOIs for manuscripts that the publisher *has not yet* made available online
-
-*(Please note that this section includes a draft rules and guidelines. These are being finalised and this section will be updated accordingly)*
 
 Crossref will support a new mechanism and workflow to support the registration of DOIs for accepted manuscripts __before__ they are made publicly available online. This feature can be used by publishers as a mechanism for informing funders and institutions of impending publications. To use this, publishers will deposit a special type of Crossref record called "registered content."
 
@@ -386,7 +383,7 @@ Crossref supports the deposit of abstracts conforming to the [JATS](http://jats.
 
 **Q:** What license applies to the metadata retrieved by the [Crossref APIs to support key performance indicators (KPIs) for funding agencies](funder_kpi_api.html)?
 <br />
-**A:** Crossref asserts no claims of ownership to individual items of bibliographic metadata and associated Digital Object Identifiers (DOIs) acquired through the use of the Crossref Free Services. Individual items of bibliographic metadata and associated DOIs may be cached and incorporated into the user's content and systems. More information can be found [on our web site](http://www.crossref.org/requestaccount/).
+**A:** Crossref asserts no claims of ownership to individual items of bibliographic metadata and associated Digital Object Identifiers (DOIs) acquired through the use of the Crossref Free Services. Individual items of bibliographic metadata and associated DOIs may be cached and incorporated into the user's content and systems. 
 
 **Q:** What does it mean if a `<license_ref>` element has no `start_date` attribute?
 <br />
@@ -410,14 +407,14 @@ Crossref supports the deposit of abstracts conforming to the [JATS](http://jats.
 
 ### Full Deposits
 
-Full deposits use the [standard deposit schema](http://www.crossref.org/schema/deposit/crossref4.3.4.xsd).
+Full deposits use the [standard deposit schema](http://data.crossref.org/reports/help/schema_doc/4.4.0/4.4.0.html).
 
 - [Full deposit](examples/full.xml)
 - [Full deposit with CrossMark](examples/full-crossmark.xml)
 
 ### Partial Deposits
 
-Partial deposits use the [resource deposit schema](http://doi.crossref.org/schemas/doi_resources4.3.2.xsd).
+Partial deposits use the [resource deposit schema](http://data.crossref.org/schemas/doi_resources4.3.2.xsd).
 
 Partial deposits update only part of a DOI's metadata. In the Crossref help system
 they are referred to as **resource deposits**, but it is not just resources that can

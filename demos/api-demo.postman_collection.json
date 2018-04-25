@@ -1,0 +1,612 @@
+{
+	"variables": [],
+	"info": {
+		"name": "api-demo",
+		"_postman_id": "34579ef5-e86d-c116-c607-eeae07a1dae5",
+		"description": "Crossref REST API demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "members",
+			"request": {
+				"url": "https://api.crossref.org/members",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "find a member",
+			"request": {
+				"url": {
+					"raw": "https://api.crossref.org/members?query=\"Hindawi\"",
+					"protocol": "https",
+					"host": [
+						"api",
+						"crossref",
+						"org"
+					],
+					"path": [
+						"members"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "\"Hindawi\"",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "a specific member",
+			"request": {
+				"url": "https://api.crossref.org/members/78",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "members with open references",
+			"request": {
+				"url": {
+					"raw": "https://api.crossref.org/members?filter=has-public-references:true",
+					"protocol": "https",
+					"host": [
+						"api",
+						"crossref",
+						"org"
+					],
+					"path": [
+						"members"
+					],
+					"query": [
+						{
+							"key": "filter",
+							"value": "has-public-references:true",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "journals",
+			"request": {
+				"url": "https://api.crossref.org/journals",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "specific journal",
+			"request": {
+				"url": "https://api.crossref.org/journals/1476-4687",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "types",
+			"request": {
+				"url": "https://api.crossref.org/types",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "works",
+			"request": {
+				"url": "https://api.crossref.org/works",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "a specific work",
+			"request": {
+				"url": "https://api.crossref.org/works/10.1371/journal.pbio.2001655",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "another specific work",
+			"request": {
+				"url": "https://api.crossref.org/works/10.6084/m9.figshare.1314859.v1",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "what the hell?",
+			"request": {
+				"url": "https://api.crossref.org/works/10.6084/m9.figshare.1314859.v1/agency",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "a Crossref DOI",
+			"request": {
+				"url": "https://api.crossref.org/works/10.1371/journal.pbio.2001655/agency",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "10 random works",
+			"request": {
+				"url": {
+					"raw": "https://api.crossref.org/works?sample=10",
+					"protocol": "https",
+					"host": [
+						"api",
+						"crossref",
+						"org"
+					],
+					"path": [
+						"works"
+					],
+					"query": [
+						{
+							"key": "sample",
+							"value": "10",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "works that are monographs",
+			"request": {
+				"url": {
+					"raw": "https://api.crossref.org/works?filter=type:monograph",
+					"protocol": "https",
+					"host": [
+						"api",
+						"crossref",
+						"org"
+					],
+					"path": [
+						"works"
+					],
+					"query": [
+						{
+							"key": "filter",
+							"value": "type:monograph",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "works containing \"zika\"",
+			"request": {
+				"url": {
+					"raw": "https://api.crossref.org/works?query=\"zika\"",
+					"protocol": "https",
+					"host": [
+						"api",
+						"crossref",
+						"org"
+					],
+					"path": [
+						"works"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "\"zika\"",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "works containing \"zika\" in title",
+			"request": {
+				"url": {
+					"raw": "https://api.crossref.org/works?query.title=\"zika\"",
+					"protocol": "https",
+					"host": [
+						"api",
+						"crossref",
+						"org"
+					],
+					"path": [
+						"works"
+					],
+					"query": [
+						{
+							"key": "query.title",
+							"value": "\"zika\"",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "works containing \"zika\" faceted by top ten funders",
+			"request": {
+				"url": {
+					"raw": "https://api.crossref.org/works?query.title=\"zika\"&facet=funder-name:10",
+					"protocol": "https",
+					"host": [
+						"api",
+						"crossref",
+						"org"
+					],
+					"path": [
+						"works"
+					],
+					"query": [
+						{
+							"key": "query.title",
+							"value": "\"zika\"",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "facet",
+							"value": "funder-name:10",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "works containing \"zika\" faceted by top ten publishers",
+			"request": {
+				"url": {
+					"raw": "https://api.crossref.org/works?query.title=\"zika\"&facet=publisher-name:10",
+					"protocol": "https",
+					"host": [
+						"api",
+						"crossref",
+						"org"
+					],
+					"path": [
+						"works"
+					],
+					"query": [
+						{
+							"key": "query.title",
+							"value": "\"zika\"",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "facet",
+							"value": "publisher-name:10",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "works- matching a reference",
+			"request": {
+				"url": {
+					"raw": "https://api.crossref.org/works?query.bibliographic=Neylon, C., Pattinson, D., Bilder, G.,  Lin, J. (2017). On the origin of nonequivalent states: How we can talk about preprints. F1000Research, 6, 608.",
+					"protocol": "https",
+					"host": [
+						"api",
+						"crossref",
+						"org"
+					],
+					"path": [
+						"works"
+					],
+					"query": [
+						{
+							"key": "query.bibliographic",
+							"value": "Neylon, C., Pattinson, D., Bilder, G.,  Lin, J. (2017). On the origin of nonequivalent states: How we can talk about preprints. F1000Research, 6, 608.",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "works that have a full text link + a license",
+			"request": {
+				"url": {
+					"raw": "https://api.crossref.org/works?filter=has-full-text:true,has-license:true",
+					"protocol": "https",
+					"host": [
+						"api",
+						"crossref",
+						"org"
+					],
+					"path": [
+						"works"
+					],
+					"query": [
+						{
+							"key": "filter",
+							"value": "has-full-text:true,has-license:true",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "a work's updates",
+			"request": {
+				"url": {
+					"raw": "https://api.crossref.org/works?filter=updates:10.1007/s00540-006-0468-8",
+					"protocol": "https",
+					"host": [
+						"api",
+						"crossref",
+						"org"
+					],
+					"path": [
+						"works"
+					],
+					"query": [
+						{
+							"key": "filter",
+							"value": "updates:10.1007/s00540-006-0468-8",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "works with orcid faceted by top 10 publishers",
+			"request": {
+				"url": {
+					"raw": "http://api.crossref.org/works?filter=has-orcid:true&facet=publisher-name:10&rows=0",
+					"protocol": "http",
+					"host": [
+						"api",
+						"crossref",
+						"org"
+					],
+					"path": [
+						"works"
+					],
+					"query": [
+						{
+							"key": "filter",
+							"value": "has-orcid:true",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "facet",
+							"value": "publisher-name:10",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "rows",
+							"value": "0",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "funders",
+			"request": {
+				"url": "https://api.crossref.org/funders",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "funders in United Kingdom",
+			"request": {
+				"url": {
+					"raw": "https://api.crossref.org/funders?filter=location:United Kingdom",
+					"protocol": "https",
+					"host": [
+						"api",
+						"crossref",
+						"org"
+					],
+					"path": [
+						"funders"
+					],
+					"query": [
+						{
+							"key": "filter",
+							"value": "location:United Kingdom",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "find a funder",
+			"request": {
+				"url": {
+					"raw": "https://api.crossref.org/funders?query=\"Wellcome\"",
+					"protocol": "https",
+					"host": [
+						"api",
+						"crossref",
+						"org"
+					],
+					"path": [
+						"funders"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "\"Wellcome\"",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "a specific funder",
+			"request": {
+				"url": "https://api.crossref.org/funders/100000936",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "a funder sub-organisation",
+			"request": {
+				"url": "https://api.crossref.org/funders/100008902",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
