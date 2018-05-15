@@ -217,10 +217,10 @@ A hashmap containing relation name, [Relation](#relation) pairs.
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| running-number | String | Yes | |
-| revision-round | String | Yes | |
-| stage | String | Yes | One of `pre-publication` or `post-publication` |
-| recommendation | String | Yes | One of `major-revision` or `minor-revision` or `reject` or `reject-with-resubmit` or `accept` |
-| type | String | Yes | One of `referee-report` or `editor-report` or `author-comment` or `community-comment` or `aggregate` |
-| competing-interest-statement | String | Yes | |
-| language | String | Yes | |
+| running-number | String | No | |
+| revision-round | String | No | |
+| stage | String | No | One of `pre-publication` or `post-publication` |
+| recommendation | String | No | One of `major-revision` or `minor-revision` or `reject` or `reject-with-resubmit` or `accept` |
+| type | String | No | One of `referee-report` or `editor-report` or `author-comment` or `community-comment` or `aggregate` |
+| competing-interest-statement | String | No | |
+| language | String | No | |
