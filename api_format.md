@@ -6,6 +6,7 @@
 |---------|--------------|----------|
 | v1 | 11th July 2016 | First documented version |
 | v2 | 26th July 2017 | Add abstract, authenticated-orcid, fix contributor fields |
+| v3 | 15th May 2018 | Add peer review fields |
 
 ## Work
 
@@ -61,6 +62,7 @@
 | reference | Array of [Reference](#reference) | No | List of references made by the work |
 | content-domain | [Content Domain](#content-domain) | No | Information on domains that support Crossmark for this work |
 | relation | [Relations](#relations) | No | Relations to other works |
+| review | [Review](#review) | No | Peer review metadata |
 
 
 ## Work Nested Types
@@ -209,3 +211,16 @@ A hashmap containing relation name, [Relation](#relation) pairs.
 | id-type | String | Yes | |
 | id | String | Yes | |
 | asserted-by | String | Yes | One of `subject` or `object` |
+
+
+### Review
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| running-number | String | No | |
+| revision-round | String | No | |
+| stage | String | No | One of `pre-publication` or `post-publication` |
+| recommendation | String | No | One of `major-revision` or `minor-revision` or `reject` or `reject-with-resubmit` or `accept` |
+| type | String | No | One of `referee-report` or `editor-report` or `author-comment` or `community-comment` or `aggregate` |
+| competing-interest-statement | String | No | |
+| language | String | No | |
