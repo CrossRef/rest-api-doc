@@ -132,6 +132,21 @@ Note that this only works if you query the API using HTTPS. You really should be
 
 From time to time Crossref needs to impose rate limits to ensure that the free API is usable by all. Any rate limits that are in effect will be advertised in the `X-Rate-Limit-Limit` and `X-Rate-Limit-Interval` HTTP headers.
 
+For ease-of-parsing, the `X-Rate-Limit-Interval` will always be expressed in seconds. So, for example the following tells you that you should expect to be able to perform 50 requests a second:
+
+```
+`X-Rate-Limit-Limit`: 50
+`X-Rate-Limit-Interval`: 1s
+```
+
+Note that if we wanted to adjust the measurement window, we could specify:
+
+```
+`X-Rate-Limit-Limit`: 3000
+`X-Rate-Limit-Interval`: 60s
+```
+
+
 #### Blocking
 
 This is always our last resort, and you can generally avoid it if you include contact information in the `User-Agent` header or `mailto` parameter as described above.
@@ -748,3 +763,4 @@ Each major version has no backwards incompatible changes within its public inter
 - v59, 2018-02-13, added info about Mtedata Plus service. Corrected spelling. Added example of using `reference-visibility` filter.
 - v60, 2018-02-22, added info for "Plus" users on use of token in `Authorization` header.
 - v61, 2018-02-26, add curl example for use of token.
+- v62, 2018-06-18, clarify how to parse `X-Rate-Limit-Limit-Interval`
