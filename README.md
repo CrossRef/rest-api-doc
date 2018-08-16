@@ -411,7 +411,6 @@ Facets are specified with the `facet` parameter:
 | Facet name | Maximum values | Description |
 |:-----------|:---------------|-------------|
 | `affiliation` | `*` | Author affiliation |
-| `year` | `*` | Earliest year of publication, synonym for `published` |
 | `funder-name` | `*` | Funder literal name as deposited alongside DOIs |
 | `funder-doi` | `*` | Funder DOI |
 | `orcid` | 100 | Contributor ORCID |
@@ -764,3 +763,4 @@ Each major version has no backwards incompatible changes within its public inter
 - v60, 2018-02-22, added info for "Plus" users on use of token in `Authorization` header.
 - v61, 2018-02-26, add curl example for use of token.
 - v62, 2018-06-18, clarify how to parse `X-Rate-Limit-Limit-Interval`
+- v63, 2018-08-16, remove mistakenly listed `year` facet. `published` is correct facet name.
