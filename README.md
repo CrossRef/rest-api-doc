@@ -37,7 +37,7 @@ Summary information (e.g. counts, etc.) are processed in batch every 24 hours.
 
 ### Learning about performance or availability problems
 
-Note that we generally post notice any ongoing performance problems with our services on our twitter feeds at [CrossrefOrg](https://twitter.com/CrossrefOrg) and [CrossrefSupport](https://twitter.com/@CrossrefSupport). We also report them on our [support site](https://support.crossref.org/hc/en-us). You might want to check these to see if we are already aware of a problem before you report it.
+Note that we generally post notice of any ongoing performance problems with our services on our twitter feeds at [CrossrefOrg](https://twitter.com/CrossrefOrg) and [CrossrefSupport](https://twitter.com/@CrossrefSupport). We also report them on our [support site](https://support.crossref.org/hc/en-us). You might want to check these to see if we are already aware of a problem before you report it.
 
 ### Reporting performance or availability problems
 
