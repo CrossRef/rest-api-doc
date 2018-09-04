@@ -37,7 +37,11 @@ Summary information (e.g. counts, etc.) are processed in batch every 24 hours.
 
 ### Learning about performance or availability problems
 
-Note that we generally post notice of any ongoing performance problems with our services on our twitter feeds at [CrossrefOrg](https://twitter.com/CrossrefOrg) and [CrossrefSupport](https://twitter.com/@CrossrefSupport). We also report them on our [support site](https://support.crossref.org/hc/en-us). You might want to check these to see if we are already aware of a problem before you report it.
+We record and report service issues on our [status page](http://status.crossref.org).
+
+You might want to check this to see if we are already aware of a problem before you report it.
+
+We also post notice of any ongoing performance problems with our services on our twitter feeds at [CrossrefOrg](https://twitter.com/CrossrefOrg) and [CrossrefSupport](https://twitter.com/@CrossrefSupport).
 
 ### Reporting performance or availability problems
 
@@ -764,3 +768,4 @@ Each major version has no backwards incompatible changes within its public inter
 - v61, 2018-02-26, add curl example for use of token.
 - v62, 2018-06-18, clarify how to parse `X-Rate-Limit-Limit-Interval`
 - v63, 2018-08-16, remove mistakenly listed `year` facet. `published` is correct facet name.
+- v64, 2018-09-04, add text and link to status page.
