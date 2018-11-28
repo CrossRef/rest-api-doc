@@ -170,7 +170,7 @@ curl -X GET \
   https://api.crossref.org/works \
   -H 'Authorization: Bearer yJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vY3Jvc3NyZWYub3JnLyIsImF1ZXYZImVuaGFuY2VkY21zIiwianRpIjoiN0M5ODlFNTItMTFEQS00QkY3LUJCRUUtODFCMUM3QzE0OTZEIn0.NYe3-O066sce9R1fjMzNEvP88VqSEaYdBY622FDiG8Uq' \
   -H 'User-Agent: GroovyBib/1.1 (https://example.org/GroovyBib/; mailto:GroovyBib@example.org) BasedOnFunkyLib/1.4'
-  ```
+```
 
 Note that you can still be "polite" and identify yourself as well. And, of course, replace the fake token above with the real token.
 
@@ -330,7 +330,7 @@ Parameters can be used to query, filter and control the results returned by the 
 | `query`                      | query terms |
 | `filter={filter_name}:{value}`| filter results by specific fields |
 | `rows={#}`                   | results per per page |
-| `offset={#}` (mak 10k)               | result offset (user `cursor` for larger `/works` result sets)  |                         
+| `offset={#}` (max 10k)               | result offset (user `cursor` for larger `/works` result sets)  |
 | `sample={#}` (max 100)                | return random N results |
 | `sort={#}`                   | sort results by a certain field |
 | `order={#}`                  | set the sort order to `asc` or `desc` |
@@ -664,13 +664,13 @@ http://api.crossref.org/v1/works?facet=license:*&filter=member:78&rows=0
 https://api.crossref.org/works?facet=license:*&filter=issn:2090-8091
 ```
 
-**All works with an award numbered roughly `1 F31 MH11745` also awarded by funder with ID `10.13039/100000025`:
+**All works with an award numbered roughly `1 F31 MH11745` also awarded by funder with ID `10.13039/100000025`**
 
 ```
 https://api.crossref.org/works?filter=award.number:1F31MH11745,award.funder:10.13039/100000025
 ```
 
-** The number of DOIs that have references AND where references are `open` faceted by publisher name **
+**The number of DOIs that have references AND where references are `open` faceted by publisher name**
 
 ```
 http://api.crossref.org/v1.0/works?filter=has-references:true,reference-visibility:open&facet=publisher-name:*&rows=0
