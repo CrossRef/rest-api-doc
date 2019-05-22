@@ -596,9 +596,11 @@ Using large `offset` values can result in extremely long response times. Offsets
 
     https://api.crossref.org/members/311/works?filter=type:journal-article&cursor=*
 
-A `next-cursor` field will be provided in the JSON response. To get the next page of results, pass the value of `next-cursor` as the `cursor` parameter:
+A `next-cursor` field will be provided in the JSON response. To get the next page of results, pass the value of `next-cursor` as the `cursor` parameter. For example:
 
     https://api.crossref.org/members/311/works?filter=type:journal-article&cursor=AoE/CGh0dHA6Ly9keC5kb2kub3JnLzEwLjEwMDIvdGRtX2xpY2Vuc2VfMQ==
+
+Note that the actual cursor value will be different from this illustration.
 
 Clients should check the number of returned items. If the number of returned items is fewer than the number of expected rows then the end of the result set has been reached. Using `next-cursor` beyond this point will result in responses with an empty items list.
 
