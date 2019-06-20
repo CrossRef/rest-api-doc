@@ -560,7 +560,7 @@ Note that dates in filters should always be of the form `YYYY-MM-DD`, `YYYY-MM` 
 
 When using time filters to retrieve periodic, incremental metadata updates,
 the `from-index-date` filter should be used over `from-update-date`,
-`from-deposit-date`, `from-first-deposit-date` and `from-pub-date`. The
+`from-deposit-date`, `from-created-date` and `from-pub-date`. The
 timestamp that `from-index-date` filters on is guaranteed to be updated
 every time there is a change to metadata requiring a reindex.
 
