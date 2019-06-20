@@ -67,6 +67,7 @@ We also have a [privacy policy](https://www.crossref.org/privacy/).
 
 You might be able to avoid reading all this documentation if you instead use one of the several excellent libraries that have been written for the Crossref REST API. For example:
 
+- [crossref-commons](https://gitlab.com/crossref/crossref_commons_py) (Python, developed by Crossref)
 - [habanero](https://github.com/sckott/habanero) (Python)
 - [serrano](https://github.com/sckott/serrano) (Ruby)
 - [rcrossref](https://github.com/ropensci/rcrossref) (R)
@@ -560,7 +561,7 @@ Note that dates in filters should always be of the form `YYYY-MM-DD`, `YYYY-MM` 
 
 When using time filters to retrieve periodic, incremental metadata updates,
 the `from-index-date` filter should be used over `from-update-date`,
-`from-deposit-date`, `from-first-deposit-date` and `from-pub-date`. The
+`from-deposit-date`, `from-created-date` and `from-pub-date`. The
 timestamp that `from-index-date` filters on is guaranteed to be updated
 every time there is a change to metadata requiring a reindex.
 
