@@ -701,7 +701,7 @@ Adding syntax options or metadata to representations will normally be backwards 
 
 If you need to tie your implementation to a specific major version of the API, you can do so by using version-specific routes. The default route redirects to the most recent version of the API. Some older major versions may be available using a version prefix. For example, to access version `v1` of the API:
 
-    https://api.crossref.orv/v1/works
+    https://api.crossref.org/v1/works
 
 Each major version has no backwards incompatible changes within its public interface.
 
