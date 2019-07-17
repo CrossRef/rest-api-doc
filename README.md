@@ -169,7 +169,7 @@ When you sign up for the Plus service, you will be issued an API token that you 
 ```
 curl -X GET \
   https://api.crossref.org/works \
-  -H 'Authorization: Bearer yJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vY3Jvc3NyZWYub3JnLyIsImF1ZXYZImVuaGFuY2VkY21zIiwianRpIjoiN0M5ODlFNTItMTFEQS00QkY3LUJCRUUtODFCMUM3QzE0OTZEIn0.NYe3-O066sce9R1fjMzNEvP88VqSEaYdBY622FDiG8Uq' \
+  -H 'Crossref-Plus-API-Token: Bearer yJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vY3Jvc3NyZWYub3JnLyIsImF1ZXYZImVuaGFuY2VkY21zIiwianRpIjoiN0M5ODlFNTItMTFEQS00QkY3LUJCRUUtODFCMUM3QzE0OTZEIn0.NYe3-O066sce9R1fjMzNEvP88VqSEaYdBY622FDiG8Uq' \
   -H 'User-Agent: GroovyBib/1.1 (https://example.org/GroovyBib/; mailto:GroovyBib@example.org) BasedOnFunkyLib/1.4'
 ```
 
@@ -772,3 +772,4 @@ Each major version has no backwards incompatible changes within its public inter
 - v62, 2018-06-18, clarify how to parse `X-Rate-Limit-Limit-Interval`
 - v63, 2018-08-16, remove mistakenly listed `year` facet. `published` is correct facet name.
 - v64, 2018-09-04, add text and link to status page.
+- v65, 2019-07-17, updated Plus token name to new recommendation 
