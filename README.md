@@ -3,20 +3,20 @@
 <!-- TOC depthFrom:1 depthTo:2 withLinks:1 updateOnSave:1 orderedList:0 -->
 
 - [Crossref REST API](#crossref-rest-api)
-	- [Preamble](#preamble)
-	- [Meta](#meta)
-	- [API overview](#api-overview)
-	- [Result types](#result-types)
-	- [Resource components](#resource-components)
-	- [Parameters](#parameters)
-	- [Queries](#queries)
-	- [Field Queries](#field-queries)
-	- [Sorting](#sorting)
-	- [Facet counts](#facet-counts)
-	- [Filter names](#filter-names)
-	- [Result controls](#result-controls)
-	- [API versioning](#api-versioning)
-	- [Documentation history](#documentation-history)
+    - [Preamble](#preamble)
+    - [Meta](#meta)
+    - [API overview](#api-overview)
+    - [Result types](#result-types)
+    - [Resource components](#resource-components)
+    - [Parameters](#parameters)
+    - [Queries](#queries)
+    - [Field Queries](#field-queries)
+    - [Sorting](#sorting)
+    - [Facet counts](#facet-counts)
+    - [Filter names](#filter-names)
+    - [Result controls](#result-controls)
+    - [API versioning](#api-versioning)
+    - [Documentation history](#documentation-history)
 
 <!-- /TOC -->
 
@@ -49,7 +49,7 @@ Report performance/availability at our [support site](https://support.crossref.o
 
 ### Reporting bugs, requesting features
 
-Please report bugs with the API or the documentation on our [issue tracker](https://github.com/Crossref/rest-api-doc/issues).
+Please report bugs with the API or the documentation on our [issue tracker](https://gitlab.com/crossref/issues).
 
 ### Documentation License
 
@@ -73,7 +73,7 @@ You might be able to avoid reading all this documentation if you instead use one
 - [rcrossref](https://github.com/ropensci/rcrossref) (R)
 - [crossrefapi](https://github.com/fabiobatalha/crossrefapi) (Python)
 
-If you know of another library you would like to see listed here, please let us know about it via the [issue tracker](https://github.com/Crossref/rest-api-doc/issues).
+If you know of another library you would like to see listed here, please let us know about it via the [issue tracker](https://gitlab.com/crossref/issues).
 
 ### Etiquette
 
@@ -86,7 +86,7 @@ We want to provide a public, open, and free API for all. And we don't want to un
 
 This way we can contact you if we see a problem.
 
-- report problems and/or ask questions on our [issue tracker](https://github.com/Crossref/rest-api-doc/issues).
+- report problems and/or ask questions on our [issue tracker](https://gitlab.com/crossref/issues).
 
 Alas, not all people are polite. And for this reason we reserve the right to impose rate limits and/or to block clients that are disrupting the public service.
 
@@ -336,7 +336,7 @@ Parameters can be used to query, filter and control the results returned by the 
 | `sort={#}`                   | sort results by a certain field |
 | `order={#}`                  | set the sort order to `asc` or `desc` |
 | `facet={#}`                    | enable facet information in responses |
-| `cursor={#}`		       | deep page through `/works` result sets |
+| `cursor={#}`             | deep page through `/works` result sets |
 
 Multiple filters can be specified by separating name:value pairs with a comma:
 
