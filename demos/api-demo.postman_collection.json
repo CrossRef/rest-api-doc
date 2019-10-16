@@ -276,7 +276,7 @@
 			"name": "works containing \"zika\" in title",
 			"request": {
 				"url": {
-					"raw": "https://api.crossref.org/works?query.title=\"zika\"",
+					"raw": "https://api.crossref.org/works?query.bibliographic=\"zika\"",
 					"protocol": "https",
 					"host": [
 						"api",
@@ -288,7 +288,7 @@
 					],
 					"query": [
 						{
-							"key": "query.title",
+							"key": "query.bibliographic",
 							"value": "\"zika\"",
 							"equals": true,
 							"description": ""
@@ -307,7 +307,7 @@
 			"name": "works containing \"zika\" faceted by top ten funders",
 			"request": {
 				"url": {
-					"raw": "https://api.crossref.org/works?query.title=\"zika\"&facet=funder-name:10",
+					"raw": "https://api.crossref.org/works?query.bibliographic=\"zika\"&facet=funder-name:10",
 					"protocol": "https",
 					"host": [
 						"api",
@@ -319,7 +319,7 @@
 					],
 					"query": [
 						{
-							"key": "query.title",
+							"key": "query.bibliographic",
 							"value": "\"zika\"",
 							"equals": true,
 							"description": ""
@@ -344,7 +344,7 @@
 			"name": "works containing \"zika\" faceted by top ten publishers",
 			"request": {
 				"url": {
-					"raw": "https://api.crossref.org/works?query.title=\"zika\"&facet=publisher-name:10",
+					"raw": "https://api.crossref.org/works?query.bibliographic=\"zika\"&facet=publisher-name:10",
 					"protocol": "https",
 					"host": [
 						"api",
@@ -356,7 +356,7 @@
 					],
 					"query": [
 						{
-							"key": "query.title",
+							"key": "query.bibliographic",
 							"value": "\"zika\"",
 							"equals": true,
 							"description": ""
