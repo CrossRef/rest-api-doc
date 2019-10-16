@@ -363,7 +363,7 @@ in any author field:
 Field queries can be combined with the general `query` paramter and each other. Each query parameter
 is ANDed with the others:
 
-    https://api.crossref.org/works?query.title=room+at+the+bottom&query.author=richard+feynman
+    https://api.crossref.org/works?query.bibliographic=room+at+the+bottom&query.author=richard+feynman
 
 ### `/works` Field Queries
 
@@ -371,7 +371,6 @@ These field queries are available on the `/works` route:
 
 | Field query parameter | Description |
 |-----------------------|-------------|
-| `query.title` | Query `title` and `subtitle` |
 | `query.container-title` | Query `container-title` aka. publication name |
 | `query.author` | Query author given and family names |
 | `query.editor` | Query editor given and family names |
@@ -380,6 +379,8 @@ These field queries are available on the `/works` route:
 | `query.contributor` | Query author, editor, chair and translator given and family names |
 | `query.bibliographic` | Query bibliographic information, useful for citation look up. Includes titles, authors, ISSNs and publication years |
 | `query.affiliation` | Query contributor affiliations |
+
+Note that `query.title` has been deprecated and is no longer available. Please use `query.bibliographic` instead.
 
 ## Sorting
 
@@ -773,3 +774,4 @@ Each major version has no backwards incompatible changes within its public inter
 - v63, 2018-08-16, remove mistakenly listed `year` facet. `published` is correct facet name.
 - v64, 2018-09-04, add text and link to status page.
 - v65, 2019-07-17, updated Plus token name to new recommendation 
+- v66, 2019-10-16, deprecated query.title for query.bibliographic
