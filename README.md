@@ -491,7 +491,7 @@ The following filters are supported for the `/works` route:
 | `container-title` | | metadata for records with a publication title exactly with an exact match |
 | `category-name` | | metadata for records with an exact matching category label. Category labels come from [this list](https://www.elsevier.com/solutions/scopus/content) published by Scopus |
 | `type` | | metadata for records with type matching a type identifier (e.g. `journal-article`) |
-| `type-name` | | metadata for records with an exacty matching type label |
+| `type-name` | | metadata for records with an exactly matching type label |
 | `award.number` | `{award_number}` | metadata for records with a matching award nunber. Optionally combine with `award.funder` |
 | `award.funder` | `{funder doi or id}` | metadata for records with an award with matching funder. Optionally combine with `award.number` |
 | `has-assertion` | | metadata for records with any assertions |
