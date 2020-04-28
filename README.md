@@ -183,6 +183,8 @@ The API supports HTTP and HTTPS. Examples here are provided using HTTPS.
 
 You should always url-encode DOIs and parameter values when using the API. DOIs are notorious for including characters that break URLs (e.g. semicolons, hashes, slashes, ampersands, question marks, etc.).
 
+Note url-encoding applies to cursors as well since they too are likely to include characters that will break URLs (e.g. `+` symbol)
+
 Note that, for the sake of clarity, the examples in this document do *not* url-encode DOIs or parameter values.
 
 The API will only work for Crossref DOIs. You can test the registration agency for a DOI using the following route:
@@ -775,3 +777,4 @@ Each major version has no backwards incompatible changes within its public inter
 - v64, 2018-09-04, add text and link to status page.
 - v65, 2019-07-17, updated Plus token name to new recommendation 
 - v66, 2019-10-16, deprecated query.title for query.bibliographic
+- v67, 2020-04-28, clarify that url-encoding should be applied to all parameters including cursors.
