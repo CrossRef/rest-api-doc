@@ -334,7 +334,7 @@ Parameters can be used to query, filter and control the results returned by the 
 | `query`                      | query terms |
 | `filter={filter_name}:{value}`| filter results by specific fields |
 | `rows={#}`                   | results per per page |
-| `offset={#}` (max 10k)               | result offset (user `cursor` for larger `/works` result sets)  |
+| `offset={#}` (max 10k)               | result offset (use `cursor` for larger `/works` result sets)  |
 | `sample={#}` (max 100)                | return random N results |
 | `sort={#}`                   | sort results by a certain field |
 | `order={#}`                  | set the sort order to `asc` or `desc` |
