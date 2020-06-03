@@ -597,7 +597,7 @@ Offsets for `/works` are limited to 10K. Use `cursor` (see below) for larger `/w
 
 ### Deep paging with cursors
 
-Using large `offset` values can result in extremely long response times. Offsets in the 100,000s and beyond will likely cause a timeout before the API is able to respond. An alternative to paging through very large result sets (like a corpus used for text and data mining) it to use the API's exposure of Solr's deep paging cursors. Any combination of query, filters and facets may be used with deep paging cursors. While `rows` may be specified along with `cursor`, `offset` and `sample` cannot be used. To use deep paging make a query as normal, but include the `cursor` parameter with a value of `*`. In this example we will page through all `journal-article` works from member `311`:
+Using large `offset` values can result in extremely long response times. Offsets in the 100,000s and beyond will likely cause a timeout before the API is able to respond. An alternative to paging through very large result sets (like a corpus used for text and data mining) is to use the API's exposure of Solr's deep paging cursors. Any combination of query, filters and facets may be used with deep paging cursors. While `rows` may be specified along with `cursor`, `offset` and `sample` cannot be used. To use deep paging make a query as normal, but include the `cursor` parameter with a value of `*`. In this example we will page through all `journal-article` works from member `311`:
 
     https://api.crossref.org/members/311/works?filter=type:journal-article&cursor=*
 
