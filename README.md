@@ -141,15 +141,15 @@ From time to time Crossref needs to impose rate limits to ensure that the free A
 For ease-of-parsing, the `X-Rate-Limit-Interval` will always be expressed in seconds. So, for example the following tells you that you should expect to be able to perform 50 requests a second:
 
 ```
-`X-Rate-Limit-Limit`: 50
-`X-Rate-Limit-Interval`: 1s
+X-Rate-Limit-Limit: 50
+X-Rate-Limit-Interval: 1s
 ```
 
 Note that if we wanted to adjust the measurement window, we could specify:
 
 ```
-`X-Rate-Limit-Limit`: 3000
-`X-Rate-Limit-Interval`: 60s
+X-Rate-Limit-Limit: 3000
+X-Rate-Limit-Interval: 60s
 ```
 
 
@@ -233,7 +233,7 @@ Singletons are single results. Retrieving metadata for a specific identifier (e.
 
 ### Headers only
 
-You can use HTTP HEAD requests to quickly determine "existence" of a singleton. The advantage of this technique is that it is very fast because it does not return any metadata- it only retruns headers and an HTTP status code (200=exists, 404=does not exist).
+You can use HTTP HEAD requests to quickly determine "existence" of a singleton. The advantage of this technique is that it is very fast because it does not return any metadata- it only returns headers and an HTTP status code (200=exists, 404=does not exist).
 
 To determine if member ID `98` exists:
 
