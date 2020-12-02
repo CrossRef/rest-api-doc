@@ -63,6 +63,7 @@
 | content-domain | [Content Domain](#content-domain) | No | Information on domains that support Crossmark for this work |
 | relation | [Relations](#relations) | No | Relations to other works |
 | review | [Review](#review) | No | Peer review metadata |
+| publisher-location | String | No | Location of work's publisher |
 
 
 ## Work Nested Types
