@@ -37,7 +37,7 @@ Summary information (e.g. counts, etc.) are processed in batch every 24 hours.
 
 ### Learning about performance or availability problems
 
-We record and report service issues on our [status page](http://status.crossref.org).
+We record and report service issues on our [status page](https://status.crossref.org).
 
 You might want to check this to see if we are already aware of a problem before you report it.
 
@@ -53,7 +53,7 @@ Please report bugs with the API or the documentation on our [issue tracker](http
 
 ### Documentation License
 
-<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+<a rel="license" href="https://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
 
 ### Metadata License
 
@@ -237,11 +237,11 @@ You can use HTTP HEAD requests to quickly determine "existence" of a singleton. 
 
 To determine if member ID `98` exists:
 
-`curl --head "http://api.crossref.org/members/98"`
+`curl --head "https://api.crossref.org/members/98"`
 
 To determine if a journal with ISSN `1549-7712` exists:
 
-`curl --head "http://api.crossref.org/journals/1549-7712"`
+`curl --head "https://api.crossref.org/journals/1549-7712"`
 
 ### Lists
 Lists results can contain multiple entries. Searching or filtering typically returns a list result. A list has two parts:
@@ -275,7 +275,7 @@ If the API call includes a query, then the sort order will be by the relevance s
 
 Crossref metadata records can be quite large. Sometimes you just want a few elements from the schema. You can "select" a subset of elements to return using the `select` parameter. This can make your API calls much more efficient. For example:
 
-`http://api.crossref.org/works?sample=10&select=DOI,title`
+`https://api.crossref.org/works?sample=10&select=DOI,title`
 
 
 ## Resource components
@@ -662,7 +662,7 @@ https://api.crossref.org/members?query=hind
 **All licenses linked to works published by Elsevier**
 
 ```
-http://api.crossref.org/v1/works?facet=license:*&filter=member:78&rows=0
+https://api.crossref.org/v1/works?facet=license:*&filter=member:78&rows=0
 ```
 
 **All licenses applied to works published in the journal `Pathology Research International`**
@@ -680,7 +680,7 @@ https://api.crossref.org/works?filter=award.number:1F31MH11745,award.funder:10.1
 **The number of DOIs that have references AND where references are `open` faceted by publisher name**
 
 ```
-http://api.crossref.org/v1.0/works?filter=has-references:true,reference-visibility:open&facet=publisher-name:*&rows=0
+https://api.crossref.org/v1.0/works?filter=has-references:true,reference-visibility:open&facet=publisher-name:*&rows=0
 ```
 
 ## API versioning
