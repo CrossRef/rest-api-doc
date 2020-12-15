@@ -23,7 +23,7 @@ Our advice is split into three sections:
 
 ### Pick the right service level.
 
-Consider using our “Polite” or “Plus” versions of the REST API. 
+Consider using our “[Polite](https://github.com/CrossRef/rest-api-doc#good-manners--more-reliable-service)” or “[Plus](https://www.crossref.org/services/metadata-retrieval/metadata-plus/)” versions of the REST API. 
 
 What does this mean?
 
@@ -42,7 +42,6 @@ So we offer a compromise as well. If you do not have a requirement for anonymity
 Note that, in asking you to self-identify, we are not asking you to completely give up privacy. We do not  sell (or give) this contact information to anybody else and we only use it to contact users who are causing problems. Also- any contact information that you provide in your requests will only stay in our logs for 90 days.
 
 And finally, if you are using our REST API for a production service that requires high predictability- *you should really consider using our paid-for “Plus” service.* This service gets you an authentication token which, in turn, directs your request as a reserved pool of servers that are extremely predictable.
-
 
 ### Understand the performance characteristics of REST API queries.
 
@@ -65,6 +64,7 @@ http://api.crossref.org/works?query="Toward a Unified Theory of High-Energy Meta
 Using the plain `query` parameter will search the entire record- including funder and other non bibliographic elements. This means that it will also match any record that includes the query text in these other elements- resulting in many, many false positives and distorted scores.
 
 If you are trying to match references- the simplest approach is the best. Just use the `query.bibliographic` parameter. It restricts the matching to the bibliographic metadata and the default sort order and scoring mechanism will reliably list the best match first. Restricting the number of rows to `2` allows you to check to see if there is an ambiguous match (e.g. a “tie” in the scores of the first two items returned” (see above tip). So the best way to do the above queries is like this:
+
 ```
 http://api.crossref.org/works?query.bibliographic="Toward a Unified Theory of High-Energy Metaphysics, Josiah Carberry 2008-08-13"&rows=2
 ```
@@ -72,26 +72,35 @@ http://api.crossref.org/works?query.bibliographic="Toward a Unified Theory of Hi
 ### Optimise your requests and pay attention to errors.
 
 If you have an overall error (`4XX` + `5XX`) rate >= 10%,  seriously- please *stop* your script and figure out what is going on. Don’t just leave it hammering the API and generating errors- you will just be making other users (and Crossref staff) miserable until you fix your script.
+
 <hr/>
+
 If you get a `404` (not found) when looking up a DOI, do not just endlessly poll Crossref to see if it ever resolves correctly. First check to make sure the DOI is a Crossref DOI. If it is not a Crossref DOI, you can stop checking it with us and try checking it with another registration agency’s API. You can check the registration agency to which a DOI belongs as follows:
+
 ```
 https://api.crossref.org/works/{doi}/agency
 ``` 
+
 <hr/>
+
 Adhere to rate limits. We rate limit by IP- so *yes*, you can “get around” the rate limit by running your scripts on multiple machines with different IPs- but then all you are doing is being inconsiderate of other users. And that makes us grumpy. You won’t like us when we are grumpy. There can be other good reasons to run your scripts on multiple machines with different IPs- but if you do, please continue to respect the overall-rate limit by restricting each process to working at an appropriate sub-rate of the overall rate limit. 
+
 <hr/>
+
 Check your errors and respond to them. If you get an error - particularly a timeout error, a rate limit error (`429`), or a server error (`5XX`)- do not just repeat the request or immediately move onto the next request, back-off your request rate. Ideally, back-off exponentially. There are lots of libraries that make this very easy. Since a lot of our API users seem to use Python, here are links to a few libraries that allow you to do this properly:
-- Backoff
-- Retry
+
+- [Backoff](https://pypi.org/project/backoff/)
+- [Retry](https://pypi.org/project/retry/)
+
 But there are similar libraries for Java, Javascript, R, Ruby, PHP, Clojure, Golang, Rust, etc.
 <hr/> 
 Make sure you URL-encode DOIs. DOIs can contain lots of characters that need to be escaped properly. We see lots of errors that are simply the result of people not taking care to properly encode their requests. Don’t be one of those people.
 <hr/>
 Cache the results of your requests. We know a lot of our users are extracting DOIs from references or other sources and then looking up their metadata. This means that, often, they will end up looking up metadata for the same DOI multiple times. We recommend that, at a minimum, you cache the results of your requests so that subsequent requests for the same resource don’t hit the API directly. Again, there are some very easy ways to do this using standard libraries. In Python, for example, the following libraries allow you to easily add caching to any function with just a single line of code:
 
-- Requests-cache
-- Diskcache
-- Cachew 
+- [Requests-cache](https://pypi.org/project/requests-cache/)
+- [Diskcache](https://pypi.org/project/diskcache/)
+- [Cachew](https://github.com/karlicoss/cachew#what-is-cachew) 
 
 There are similar libraries for other languages.
 
@@ -100,4 +109,8 @@ If you are using the Plus API, make sure that you are making intelligent use of 
 
 <hr/>
 
-Managing the snapshot can be cumbersome as it is inconveniently large-ish. Remember that you do *not have to uncompress and unarchive the snapshot in order to use it.* Most major programming languages have libraries that allow you to open and read files directly from a compressed archive. If you parallelize the process of reading data from the snapshot and loading it into your database, you should be able to scale the process linearly with the number of cores you are able to take advantage of.
+Managing the snapshot can be cumbersome as it is inconveniently large-ish. Remember that you do *not have to uncompress and unarchive the snapshot in order to use it.* Most major programming languages have libraries that allow you to open and read files directly from a compressed archive. For example:
+
+- [tarfile](https://docs.python.org/3/library/tarfile.html)
+
+If you parallelize the process of reading data from the snapshot and loading it into your database, you should be able to scale the process linearly with the number of cores you are able to take advantage of.
