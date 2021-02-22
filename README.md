@@ -73,6 +73,7 @@ You might be able to avoid reading all this documentation if you instead use one
 - [rcrossref](https://github.com/ropensci/rcrossref) (R)
 - [crossrefapi](https://github.com/fabiobatalha/crossrefapi) (Python)
 - [crossref-rs](https://github.com/MattsSe/crossref-rs) (rust)
+- [pitaya](https://github.com/naustica/Pitaya) (Julia)
 
 If you know of another library you would like to see listed here, please let us know about it via the [issue tracker](https://gitlab.com/crossref/issues).
 
@@ -779,3 +780,4 @@ Each major version has no backwards incompatible changes within its public inter
 - v65, 2019-07-17, updated Plus token name to new recommendation 
 - v66, 2019-10-16, deprecated query.title for query.bibliographic
 - v67, 2020-04-28, clarify that url-encoding should be applied to all parameters including cursors.
+- v68, 2021-02-22, Added link to Pitaya Julia library
