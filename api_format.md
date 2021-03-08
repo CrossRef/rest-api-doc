@@ -58,7 +58,7 @@
 | update-policy | URL | No | Link to an update policy covering Crossmark updates for this work |
 | link | Array of [Resource Link](#resource-link) | No | URLs to full-text locations |
 | clinical-trial-number | Array of [Clinical Trial Number](#clinical-trial-number) | No | |
-| alternative-id | String | No | Other identifiers for the work provided by the depositing member |
+| alternative-id | Array of String | No | Other identifiers for the work provided by the depositing member |
 | reference | Array of [Reference](#reference) | No | List of references made by the work |
 | content-domain | [Content Domain](#content-domain) | No | Information on domains that support Crossmark for this work |
 | relation | [Relations](#relations) | No | Relations to other works |
