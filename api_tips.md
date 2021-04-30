@@ -75,6 +75,9 @@ If you are trying to match references- the simplest approach is the best. Just u
 ```
 http://api.crossref.org/works?query.bibliographic="Toward a Unified Theory of High-Energy Metaphysics, Josiah Carberry 2008-08-13"&rows=2
 ```
+### Don't use `rows`/`offsets` in the `/works` route . They are very expensive and slow. Use cursors instead.
+
+Note much to say. We implimented rows/offsets early in the development of the API and regretted it emmediately. So we implimented cursors instead and kept rows/offsets so as to not break existing scripts. But NOBODY should use them.
 
 ### Optimise your requests and pay attention to errors.
 
