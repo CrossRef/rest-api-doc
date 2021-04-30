@@ -26,6 +26,8 @@
 
 The Crossref REST API is one of [a variety of tools and APIs](https://www.crossref.org/services/metadata-delivery/) that allow anybody to search and reuse our members' metadata in sophisticated ways.
 
+If you read nothing else, please at least look at the [API TIPs](https://github.com/CrossRef/rest-api-doc/blob/master/api_tips.md) document and the ["Etiquette" section](https://github.com/CrossRef/rest-api-doc#etiquette) of this document. It will save you (and us) much heartburn.
+
 
 ## Meta
 
@@ -781,3 +783,4 @@ Each major version has no backwards incompatible changes within its public inter
 - v66, 2019-10-16, deprecated query.title for query.bibliographic
 - v67, 2020-04-28, clarify that url-encoding should be applied to all parameters including cursors.
 - v68, 2021-02-22, Added link to Pitaya Julia library
+- v69, 2021-04-30, Update preamble with reading advise
