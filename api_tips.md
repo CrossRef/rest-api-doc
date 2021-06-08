@@ -1,6 +1,6 @@
 ## Tips for using the Crossref REST API (aka- how to avoid being blocked)
 
-The [REST API documentation](https://api.crossref.org) is useful, but it doesn't tell you much about best practice. It also doesn't tell you how you can best avoid getting blocked. With this document hope to remedy that.
+The [REST API documentation](https://api.crossref.org) is useful, but it doesn't tell you much about best practice. It also doesn't tell you how you can best avoid getting blocked. With this document we hope to remedy that.
 
 Please read this entire document carefully- it includes some advice that may seem counter-intuitive.
 
