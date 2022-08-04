@@ -370,7 +370,7 @@ in any author field:
 
     https://api.crossref.org/works?query.author=richard+feynman
 
-Field queries can be combined with the general `query` paramter and each other. Each query parameter
+Field queries can be combined with the general `query` parameter and each other. Each query parameter
 is ANDed with the others:
 
     https://api.crossref.org/works?query.bibliographic=room+at+the+bottom&query.author=richard+feynman
