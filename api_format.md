@@ -73,7 +73,7 @@
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | name | String | Yes | Funding body primary name |
-| DOI | String | No | Optional [Open Funder Registry](http://www.crossref.org/fundingdata/registry.html) DOI uniquely identifing the funding body |
+| DOI | String | No | Optional [Open Funder Registry](http://www.crossref.org/fundingdata/registry.html) DOI uniquely identifying the funding body |
 | award | Array of String | No | Award number(s) for awards given by the funding body |
 | doi-asserted-by | String | No | Either `crossref` or `publisher` |
 
@@ -82,7 +82,7 @@
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | clinical-trial-number | String | Yes | Identifier of the clinical trial |
-| registry | String | Yes | DOI of the clinical trial regsitry that assigned the trial number |
+| registry | String | Yes | DOI of the clinical trial registry that assigned the trial number |
 | type | String | No | One of `preResults`, `results` or `postResults` |
 
 ### Contributor

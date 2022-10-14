@@ -15,11 +15,11 @@ CrossRef provides a deposit mechanisms for our members and manuscript system ven
 The current deposit mechanism provides a URL end-point that can accept deposits of
 CrossRef metadata. However, this mechanism has some deficiencies, including:
 
-- an inability to programatically track the status of a deposit
+- an inability to programmatically track the status of a deposit
 - an outdated method of returning deposit results to a user (e-mail responses containing
   success or failure notices)
-- no way of programatically querying for a historic list of deposits
-- no way of programatically retrieveing previously deposited XML.
+- no way of programmatically querying for a historic list of deposits
+- no way of programmatically retrieveing previously deposited XML.
 
 This document proposes a RESTful deposit API that attempts to address deficiencies
 within the current CrossRef XML deposit mechanism.
@@ -109,7 +109,7 @@ attempts the API will make is undefined.
 
     POST /deposits?test=true
 
-Set the `test` paramter to `true`, `t` or `1` (any other value is considered false)
+Set the `test` parameter to `true`, `t` or `1` (any other value is considered false)
 to make a test deposit. Such a deposit will go through the normal deposit process
 but its contents will not be made live. By default, `test` is false.
 

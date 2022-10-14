@@ -93,7 +93,7 @@ This is a critical point, because even though we are providing 'hints' to the us
 
 
 
-crawler="subsciber"
+crawler="subscriber"
 crawler="public"
 crawler="syndicator"
 
@@ -115,7 +115,7 @@ we then have following sections:
 
 "text-mining" misnomer- but set that aside for a bit
 
-What are things we want to distnguish:
+What are things we want to distinguish:
 
 Batch v Query
 
@@ -123,7 +123,7 @@ Human v Bot
 
 *minimally* they want to text mine what they can see- e.g. the PDF. So conflating this made sense- until Elsevier came around.
 
-OPDS has what they call "aquisition links" where rel attribute is set to a URI indicating what is being pointed to. They have the following types:
+OPDS has what they call "acquisition links" where rel attribute is set to a URI indicating what is being pointed to. They have the following types:
 
 http://opds-spec.org/acquisition/open-access for Open Access publications
 http://opds-spec.org/acquisition/buy for publications that you can buy

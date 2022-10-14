@@ -180,6 +180,6 @@ What license type does the journal with a particular ISSN support
 
     http://api.crossref.org/works?facet=license:*&filter=issn:2090-8091
 
-What licenses does a reasearcher with a particular ORCID publish under
+What licenses does a researcher with a particular ORCID publish under
 
     http://api.crossref.org/works?facet=license:*&filter=orcid:0000-0003-1340-5202

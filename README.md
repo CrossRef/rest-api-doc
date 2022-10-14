@@ -562,7 +562,7 @@ Here we filter on works that have an award by the National Science Foundation th
 
 The prefix of a Crossref DOI does **NOT** indicate who currently owns the DOI. It only reflects who originally registered the DOI. Crossref metadata has an **owner_prefix** element that records the current owner of the Crossref DOI in question.
 
-Crossref also has member IDs for depositing organisations. A single member may control multiple owner prefixes, which in turn may control a number of DOIs. When looking at works published by a certain organisaton, member IDs and the member routes should be used.
+Crossref also has member IDs for depositing organisations. A single member may control multiple owner prefixes, which in turn may control a number of DOIs. When looking at works published by a certain organisation, member IDs and the member routes should be used.
 
 ### Notes on dates
 
