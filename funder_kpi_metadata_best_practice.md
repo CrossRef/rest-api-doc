@@ -19,7 +19,7 @@
 	- ["Libre" vs "Gratis"](#libre-vs-gratis)
 	- [Recording third party archive arrangements](#recording-third-party-archive-arrangements)
 	- [Assigning and registering DOIs at acceptance](#assigning-and-registering-dois-at-acceptance)
-		- [Assigning and registering DOIs for manuscripts that the publisher *has* made avaialble online](#assigning-and-registering-dois-for-manuscripts-that-the-publisher-has-made-avaialble-online)
+		- [Assigning and registering DOIs for manuscripts that the publisher *has* made available online](#assigning-and-registering-dois-for-manuscripts-that-the-publisher-has-made-available-online)
 		- [Assigning and registering DOIs for manuscripts that the publisher *has not yet* made available online](#assigning-and-registering-dois-for-manuscripts-that-the-publisher-has-not-yet-made-available-online)
 	- [Bonus points](#bonus-points)
 			- [Distributing standard bibliographic metadata](#distributing-standard-bibliographic-metadata)

@@ -23,7 +23,7 @@ Our advice is split into three sections:
 
 ### Consider not using the API
 
-What? No, seriously- Crossref periodically releases [public data file](https://www.crossref.org/blog/new-public-data-file-120-million-metadata-records/) of all the metdata that is available via our public API. You can download this file from [Academic Torrents](https://academictorrents.com/) with your favorite torrent client and do a lot of work locally if you want to. At the very least, having the local file will allow you to focus on using the API only for metadata records that have been updated since the last public data file was released.
+What? No, seriously- Crossref periodically releases [public data file](https://www.crossref.org/blog/new-public-data-file-120-million-metadata-records/) of all the metadata that is available via our public API. You can download this file from [Academic Torrents](https://academictorrents.com/) with your favorite torrent client and do a lot of work locally if you want to. At the very least, having the local file will allow you to focus on using the API only for metadata records that have been updated since the last public data file was released.
 
 
 ### Pick the right service level.
@@ -77,7 +77,7 @@ http://api.crossref.org/works?query.bibliographic="Toward a Unified Theory of Hi
 ```
 ### Don't use `rows`/`offsets` in the `/works` route . They are very expensive and slow. Use cursors instead.
 
-Note much to say. We implimented rows/offsets early in the development of the API and regretted it emmediately. So we implimented cursors instead and kept rows/offsets so as to not break existing scripts. But NOBODY should use them.
+Note much to say. We implimented rows/offsets early in the development of the API and regretted it immediately. So we implimented cursors instead and kept rows/offsets so as to not break existing scripts. But NOBODY should use them.
 
 ### Optimise your requests and pay attention to errors.
 

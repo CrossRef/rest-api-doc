@@ -18,7 +18,7 @@ An alternative deposit process exists that allows a member to deposit XML with C
 of members' normal processes of XML deposit. This alternative involves three steps:
 
 1. Optionally retrieve deposit XML via [CrossRef My Deposits](http://mydeposits.labs.crossref.org).
-2. Manually or programatically alter or create deposit XML.
+2. Manually or programmatically alter or create deposit XML.
 3. Manually deposit XML files via the [CrossRef admin interface](http://doi.crossref.org).
 
 # Step 1. XML Retrieval (Optional)
