@@ -4,7 +4,7 @@
 
 The Crossref REST API has been updated to use Elasticsearch instead of Solr -- read more about that project [here](https://www.crossref.org/blog/behind-the-scenes-improvements-to-the-rest-api/). 
 
-This documentation is **deprecated**. Documentation for the new API can still be found at [https://api.crossref.org/](https://api.crossref.org/), and issues should be reported to us at support@crossref.org.
+This documentation is **deprecated**. Documentation for the new API can still be found at [https://api.crossref.org/](https://api.crossref.org/), and issues should be reported to us via the [community forum]([url](https://community.crossref.org/) or to support@crossref.org.
 
 <!-- TOC depthFrom:1 depthTo:2 withLinks:1 updateOnSave:1 orderedList:0 -->
 
